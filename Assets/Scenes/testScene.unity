@@ -130,6 +130,7 @@ MonoBehaviour:
   DeathScripts: []
   DamageScripts:
   - {fileID: 10147323}
+  currentHealth: 0
 --- !u!23 &10147318
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2612,6 +2613,7 @@ MonoBehaviour:
   StartHealthPercent: 100
   DeathScripts: []
   DamageScripts: []
+  currentHealth: 0
 --- !u!1 &1348537431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d148bd46a5a4c4e4d96a7c02442100fc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.9505
+      value: 5.38
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d148bd46a5a4c4e4d96a7c02442100fc, type: 3}
       propertyPath: m_LocalRotation.x
