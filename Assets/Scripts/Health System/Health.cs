@@ -18,7 +18,7 @@ public class Health : MonoBehaviour {
 	public List<MBAction> DamageScripts;		// Scripts run when the object takes damage
 
 	private bool alive = true;					// Tracks if the object is alive
-	private float currentHealth;				// The current health of the object
+	public float currentHealth;				// The current health of the object
 	private float lastHealth;					// Used to identify changes in health
 	public float CurrentHealth
 	{
@@ -80,7 +80,7 @@ public class Health : MonoBehaviour {
 				if (!scriptsHaveBeenRun) 
 				{
 					// No death script was specified
-					Debug.Log ("Object " + tag + " has no specified onDeath script");
+					Debug.Log ("Object " + name + " has no specified onDeath script");
 				}
 			}
 		}

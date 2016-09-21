@@ -184,9 +184,9 @@ public class Weapon_Base_Script : MBAction {
 					}
 
 					// BULLET METHOD TO BE DECIDED, EITHER SHOOT AN OBJECT OR USE A RAYCAST FOR INSTANT HITTING BULLETS
-					ShootType_Bullet_ObjectProjectile ();	// Shoots a physical bullet
+					//ShootType_Bullet_ObjectProjectile ();	// Shoots a physical bullet
 
-					//ShootType_Bullet_Ray ();				// Shoots an instant ray
+					ShootType_Bullet_Ray ();				// Shoots an instant ray
 				} 
 				else 
 				{
@@ -284,7 +284,7 @@ public class Weapon_Base_Script : MBAction {
 				foreach (Health h in healthComponents)
 				{
 					h.ApplyDamage(Damage);
-					Debug.Log("Applying damage to: " + h.transform.name);
+					//Debug.Log("Applying damage to: " + h.transform.name);
 				}
 			}
 		}

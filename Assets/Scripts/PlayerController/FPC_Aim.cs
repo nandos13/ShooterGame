@@ -20,13 +20,13 @@ public class FPC_Aim : MonoBehaviour {
 	[Range(0.0f, 10.0f)]
 	public float smoothing = 1.0f;		// 
 
-	GameObject player;
+	public Camera WorldViewCam;
+	public Camera ViewModelCam;
 
 	// Use this for initialization
 	void Start () 
 	{
 		//TODO: Apply initial rotation so the player spawns facing the same direction as it is in the editor
-		player = this.transform.parent.gameObject;
 	}
 
 	// Update is called once per frame
@@ -54,8 +54,11 @@ public class FPC_Aim : MonoBehaviour {
 		//(preventing looking backwards with an upside down view)
 		mouseMovement.y = Mathf.Clamp(mouseMovement.y, -88.0f, 88.0f);
 
-		transform.localRotation = Quaternion.AngleAxis (-mouseMovement.y, Vector3.right);
-		player.transform.localRotation = Quaternion.AngleAxis (mouseMovement.x, player.transform.up);
+		if (WorldViewCam)
+			WorldViewCam.transform.localRotation = Quaternion.AngleAxis (-mouseMovement.y, Vector3.right);
+		if (ViewModelCam)
+			ViewModelCam.transform.localRotation = Quaternion.AngleAxis (-mouseMovement.y, Vector3.right);
+		transform.localRotation = Quaternion.AngleAxis (mouseMovement.x, transform.up);
 
 
 	}
