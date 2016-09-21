@@ -655,26 +655,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2012654983}
   m_RootOrder: 0
---- !u!1 &599741557 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011375305822, guid: 1286a351dff93fe4e93008d7616c4dac,
-    type: 2}
-  m_PrefabInternal: {fileID: 1914428806}
---- !u!114 &599741558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 599741557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be00e7d93533c641bd98e86e568f7b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 4
-  smoothing: 1
-  WorldViewCam: {fileID: 919541623}
-  ViewModelCam: {fileID: 1821951328}
 --- !u!1 &821985119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,11 +2486,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2012654983}
   m_RootOrder: 1
---- !u!20 &919541623 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 20000012678379320, guid: 1286a351dff93fe4e93008d7616c4dac,
-    type: 2}
-  m_PrefabInternal: {fileID: 1914428806}
 --- !u!1 &1021239251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,6 +2499,7 @@ GameObject:
   - 65: {fileID: 1021239253}
   - 23: {fileID: 1021239252}
   - 114: {fileID: 1021239256}
+  - 114: {fileID: 1021239257}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -2611,9 +2587,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   StartHealthPercent: 100
-  DeathScripts: []
+  DeathScripts:
+  - {fileID: 1021239257}
   DamageScripts: []
   currentHealth: 0
+--- !u!114 &1021239257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021239251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnOnDead: {fileID: 1000010846417658, guid: c73aacaaea16bf244b40235be9089165,
+    type: 2}
 --- !u!1 &1348537431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2829,11 +2819,6 @@ MonoBehaviour:
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
   DespawnBulletAfter: 2
---- !u!20 &1821951328 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 20000011937964028, guid: 1286a351dff93fe4e93008d7616c4dac,
-    type: 2}
-  m_PrefabInternal: {fileID: 1914428806}
 --- !u!1001 &1914428806
 Prefab:
   m_ObjectHideFlags: 0
@@ -2873,8 +2858,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000011507658742, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1996034753

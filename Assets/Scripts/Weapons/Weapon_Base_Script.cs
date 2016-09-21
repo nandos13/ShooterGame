@@ -291,6 +291,12 @@ public class Weapon_Base_Script : MBAction {
 
 		// Disable firing to maintain fire rate
 		StartCoroutine (DisableShootForFireRate ());
+
+		// Show muzzle flash
+		if (muzzleFlash) 
+		{
+			muzzleFlash.Play();
+		}
 	}
 
 	private void ShootType_Launcher ()
