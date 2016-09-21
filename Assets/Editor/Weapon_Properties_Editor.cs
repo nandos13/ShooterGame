@@ -20,6 +20,9 @@ public class Weapon_Properties_Editor : Editor {
 		EditorGUILayout.HelpBox ("All projectiles are fired in the forward position (blue axis). Please ensure the transform is rotated appropriately", MessageType.Info);
 
 		EditorGUILayout.Space();
+		script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField ("Muzzle Flash:", script.muzzleFlash, typeof(ParticleSystem), true);
+
+		EditorGUILayout.Space();
 		script.type = (WEAPON_TYPE)EditorGUILayout.EnumPopup ("Weapon Type:", script.type);
 
 		EditorGUILayout.Space();

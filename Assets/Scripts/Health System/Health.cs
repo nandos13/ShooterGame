@@ -79,9 +79,8 @@ public class Health : MonoBehaviour {
 
 				if (!scriptsHaveBeenRun) 
 				{
-					// No death script was specified, destroy the object
-					Debug.Log ("Object " + tag + " destroyed on death due to no specified onDeath script");
-					Destroy (gameObject);
+					// No death script was specified
+					Debug.Log ("Object " + tag + " has no specified onDeath script");
 				}
 			}
 		}

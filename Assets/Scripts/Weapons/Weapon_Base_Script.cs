@@ -18,6 +18,7 @@ public class Weapon_Base_Script : MBAction {
 	/* GENERAL VARIABLES */
 	public WEAPON_TYPE type = WEAPON_TYPE.Bullet;	// Type of weapon
 	public Transform shotOrigin;			// Transform where the bullet should come out
+	public ParticleSystem muzzleFlash;		// Particle system played at the end of the barrel when a shot is fired
 
 	public bool BottomlessClip = false;		// Will the weapon ever need to reload?
 	public uint ClipSize = 30;				// Ammo in a single clip
@@ -244,6 +245,10 @@ public class Weapon_Base_Script : MBAction {
 
 		// Disable firing to maintain fire rate
 		StartCoroutine (DisableShootForFireRate ());
+
+		// Show muzzle flash
+		if (muzzleFlash)
+			muzzleFlash.Play();
 	}
 
 	private void ShootType_Bullet_Ray ()
