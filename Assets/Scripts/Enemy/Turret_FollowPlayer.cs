@@ -18,6 +18,9 @@ public class Turret_FollowPlayer : MonoBehaviour {
 	public Transform muzzleEnd;				// The location 
 	public Transform visionPoint;			// The location which the turret sees out of
 
+	[Range(20.0f, 90.0f)]
+	public float VisionAngle;				// Angle in degrees the turret can see the player
+
 	[Range(2.0f, 50.0f)]
 	public float TrackingRange;				// The view distance of the turret
 
@@ -32,7 +35,8 @@ public class Turret_FollowPlayer : MonoBehaviour {
 
 	private GameObject player;				// Reference to the player
 	private float distanceToPlayer;			// Track the distance to player
-	private float rotateSpeed = 2.0f;		// Speed the turret will rotate at
+	[Range(1.0f, 10.0f)]
+	public float rotateSpeed = 2.0f;		// Speed the turret will rotate at
 
 	private enum BehaviourState 
 	{ PreparingFire, Firing, Searching };	
@@ -70,33 +74,43 @@ public class Turret_FollowPlayer : MonoBehaviour {
 				{
 					if (hit.collider.gameObject == player) 
 					{
-						// Turret has line of sight to player, rotate to look at the player
-
-						// Handle turret rotation towards player
-						RotateToFacePoint (player.transform);
-
-						// Raycast directly ahead of the turret to see if the player is being aimed at
-						Physics.Raycast (new Ray (muzzleEnd.position, muzzleEnd.forward), out hit, TrackingRange);
-						Debug.DrawRay (muzzleEnd.position, muzzleEnd.forward * 9.0f, Color.red);
-
-						// Did the ray collide with anything?
-						if (hit.collider) 
+						// Only allow line of sight if the player is in front of the turret
+						float angleDegreesToPlayer = Vector3.Angle (visionPoint.position, player.transform.position);
+						if (angleDegreesToPlayer < VisionAngle)
 						{
-							// Was it the player?
-							if (hit.collider.gameObject == player) 
+							// Turret has line of sight to player, rotate to look at the player
+
+							// Handle turret rotation towards player
+							RotateToFacePoint (player.transform);
+
+							// Raycast directly ahead of the turret to see if the player is being aimed at
+							Physics.Raycast (new Ray (muzzleEnd.position, muzzleEnd.forward), out hit, TrackingRange);
+							Debug.DrawRay (muzzleEnd.position, muzzleEnd.forward * 9.0f, Color.red);
+
+							// Did the ray collide with anything?
+							if (hit.collider) 
 							{
-								// Is the turret ready to fire?
-								if (!((state == BehaviourState.PreparingFire) || (state == BehaviourState.Firing))) 
+								// Was it the player?
+								if (hit.collider.gameObject == player) 
 								{
-									// Warm up the turret
-									state = BehaviourState.PreparingFire;
-									Debug.Log ("Warming up turret");
-									StartCoroutine (WarmUpGun ());
+									// Is the turret ready to fire?
+									if (!((state == BehaviourState.PreparingFire) || (state == BehaviourState.Firing))) 
+									{
+										// Warm up the turret
+										state = BehaviourState.PreparingFire;
+										Debug.Log ("Warming up turret");
+										StartCoroutine (WarmUpGun ());
+									}
 								}
 							}
-						}
 
-						TryShoot ();
+							TryShoot ();
+						}
+						else 
+						{
+							// Turret does not have line of sight to player, stop shooting and go back to searching
+							StopShooting();
+						}
 					} 
 					else 
 					{
@@ -263,6 +277,11 @@ public class Turret_FollowPlayer : MonoBehaviour {
 		medialAngle = Mathf.Clamp (medialAngle, -MinClampAngle, MaxClampAngle);
 		Quaternion otherRotation = Quaternion.AngleAxis (medialAngle, Vector3.Cross (transform.forward, medialDir));
 
-		transform.rotation = Quaternion.Slerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * rotateSpeed);
+		// While firing, the turret's aiming will be faster so bullets do not lag behind a moving player
+		float currentRotateSpeed = rotateSpeed;
+		if (state == BehaviourState.Firing)
+			currentRotateSpeed *= 2.5f;
+
+		transform.rotation = Quaternion.Slerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * currentRotateSpeed);
 	}
 }

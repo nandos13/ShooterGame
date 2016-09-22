@@ -184,9 +184,9 @@ public class Weapon_Base_Script : MBAction {
 					}
 
 					// BULLET METHOD TO BE DECIDED, EITHER SHOOT AN OBJECT OR USE A RAYCAST FOR INSTANT HITTING BULLETS
-					//ShootType_Bullet_ObjectProjectile ();	// Shoots a physical bullet
+					ShootType_Bullet_ObjectProjectile ();	// Shoots a physical bullet
 
-					ShootType_Bullet_Ray ();				// Shoots an instant ray
+					//ShootType_Bullet_Ray ();				// Shoots an instant ray
 				} 
 				else 
 				{
@@ -210,9 +210,15 @@ public class Weapon_Base_Script : MBAction {
 		 */
 
 		// Get angle of projectile
-		// TODO: APPLY SLIGHTLY RANDOM AIM
 		Vector3 projectAngle = shotOrigin.forward;
 		projectAngle.Normalize ();
+
+		// Apply random bullet spread
+		projectAngle.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		projectAngle.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		projectAngle.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+
+		// Apply bullet projectile force
 		projectAngle *= bulletForce;
 
 		// Find next available bullet in the pool
@@ -260,9 +266,13 @@ public class Weapon_Base_Script : MBAction {
 		 */
 
 		// Get the angle of projectile
-		// TODO: APPLY SLIGHTLY RANDOM AIM
 		Vector3 projectAngle = shotOrigin.forward;
 		projectAngle.Normalize ();
+
+		// Apply random bullet spread
+		projectAngle.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		projectAngle.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		projectAngle.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
 
 		// Raycast from the muzzle to see what the gun hit
 		RaycastHit hit;

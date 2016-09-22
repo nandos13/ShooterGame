@@ -540,10 +540,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleEnd: {fileID: 2012654983}
   visionPoint: {fileID: 1996034754}
+  VisionAngle: 20
   TrackingRange: 25.1
   MinClampAngle: 47
   MaxClampAngle: 15.5
   ShootDelayOnTargetAcquire: 0.57
+  rotateSpeed: 2
 --- !u!114 &510566948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,6 +2764,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.6731371
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: d148bd46a5a4c4e4d96a7c02442100fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d148bd46a5a4c4e4d96a7c02442100fc, type: 3}
   m_IsPrefabParent: 0
@@ -2786,10 +2792,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleEnd: {fileID: 1348537432}
   visionPoint: {fileID: 134272364}
+  VisionAngle: 0
   TrackingRange: 18.9
   MinClampAngle: 40.2
   MaxClampAngle: 39.9
   ShootDelayOnTargetAcquire: 1.28
+  rotateSpeed: 2
 --- !u!114 &1733887417
 MonoBehaviour:
   m_ObjectHideFlags: 0
