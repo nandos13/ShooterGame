@@ -43,6 +43,7 @@ public class Weapon_Base_Script : MBAction {
 	/* BULLET WEAPON SPECIFIC VARIABLES */
 	public int bulletForce = 100;			// Initial force of a fired bullet
 	public GameObject bulletProjectile;		// Prefab: projectile for Bullet weapons
+	public bool hitscan = false;			// Does this weapon use raycasting or physical bullets?
 
 	public float DespawnBulletAfter = 2.0f;	// Time in seconds a bullet will exist for after firing
 	private uint bulletPoolSize = 20;		// Size of the bullet pool
@@ -184,10 +185,11 @@ public class Weapon_Base_Script : MBAction {
 						currentAmmoTotal--;
 					}
 
-					// BULLET METHOD TO BE DECIDED, EITHER SHOOT AN OBJECT OR USE A RAYCAST FOR INSTANT HITTING BULLETS
-					ShootType_Bullet_ObjectProjectile ();	// Shoots a physical bullet
-
-					//ShootType_Bullet_Ray ();				// Shoots an instant ray
+					// Does this bullet weapon use instant raycast method or physical bullets?
+					if (hitscan)
+						ShootType_Bullet_Ray ();
+					else
+						ShootType_Bullet_ObjectProjectile ();
 				} 
 				else 
 				{
@@ -278,6 +280,7 @@ public class Weapon_Base_Script : MBAction {
 		// Raycast from the muzzle to see what the gun hit
 		RaycastHit hit;
 		Physics.Raycast (new Ray (shotOrigin.position, projectAngle), out hit);
+		Debug.DrawRay (shotOrigin.position, projectAngle, Color.cyan, 0.5f);
 
 		/* Next we need to get the health script of the object hit. However, it's possible
 		 * the ray hit a child of the object with health (eg hit an arm, but the body has the health script).

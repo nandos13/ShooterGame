@@ -485,20 +485,21 @@ MonoBehaviour:
   type: 0
   shotOrigin: {fileID: 4000011147005636}
   muzzleFlash: {fileID: 198000013305437330}
-  BottomlessClip: 0
+  BottomlessClip: 1
   ClipSize: 30
   UnlimitedAmmo: 0
   StartingAmmo: 100
   Damage: 10
-  SpeedRPM: 529
-  Speed: 8.816667
-  Spread: 0
+  SpeedRPM: 1500
+  Speed: 25
+  Spread: 0.73
   HeatPerSecond: 10
   HeatFalloff: 10
   TimeBeforeCooldown: 1
   bulletForce: 100
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
+  hitscan: 0
   DespawnBulletAfter: 2
 --- !u!124 &124000010813219776
 Behaviour:

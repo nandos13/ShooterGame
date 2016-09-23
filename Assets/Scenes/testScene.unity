@@ -500,8 +500,6 @@ GameObject:
   - 33: {fileID: 510566951}
   - 65: {fileID: 510566950}
   - 23: {fileID: 510566949}
-  - 114: {fileID: 510566948}
-  - 114: {fileID: 510566947}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -525,59 +523,6 @@ Transform:
   - {fileID: 1996034754}
   m_Father: {fileID: 1021239255}
   m_RootOrder: 0
---- !u!114 &510566947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000013583486664, guid: 81d5994f730fb9043bde1d616d53c7b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 510566945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728253889fc0a7a4c9b1aeadde4c31df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleEnd: {fileID: 2012654983}
-  visionPoint: {fileID: 1996034754}
-  VisionAngle: 90
-  SeeThroughTags:
-  - Bullet
-  showTags: 0
-  TrackingRange: 50
-  MinClampAngle: 47
-  MaxClampAngle: 15.5
-  ShootDelayOnTargetAcquire: 0.57
-  rotateSpeed: 2
---- !u!114 &510566948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000012305222648, guid: 81d5994f730fb9043bde1d616d53c7b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 510566945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dabf0e45ae1fb947a37327165fa33dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  shotOrigin: {fileID: 586929090}
-  muzzleFlash: {fileID: 821985121}
-  BottomlessClip: 1
-  ClipSize: 30
-  UnlimitedAmmo: 0
-  StartingAmmo: 100
-  Damage: 140
-  SpeedRPM: 75
-  Speed: 1.25
-  Spread: 0
-  HeatPerSecond: 28
-  HeatFalloff: 1
-  TimeBeforeCooldown: 0.5
-  bulletForce: 50
-  bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
-    type: 2}
-  DespawnBulletAfter: 2
 --- !u!23 &510566949
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2503,7 +2448,8 @@ GameObject:
   - 65: {fileID: 1021239253}
   - 23: {fileID: 1021239252}
   - 114: {fileID: 1021239256}
-  - 114: {fileID: 1021239257}
+  - 114: {fileID: 1021239259}
+  - 114: {fileID: 1021239258}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -2591,10 +2537,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1.54
   StartHealthPercent: 100
-  DeathScripts:
-  - {fileID: 1021239257}
+  DeathScripts: []
   DamageScripts: []
---- !u!114 &1021239257
+--- !u!114 &1021239258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2602,11 +2547,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 1021239251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
+  m_Script: {fileID: 11500000, guid: 728253889fc0a7a4c9b1aeadde4c31df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnDead: {fileID: 1000010846417658, guid: c73aacaaea16bf244b40235be9089165,
+  muzzleEnd: {fileID: 586929090}
+  visionPoint: {fileID: 1996034754}
+  rotationPiece: {fileID: 510566946}
+  VisionAngle: 90
+  SeeThroughTags:
+  - Bullet
+  showTags: 0
+  TrackingRange: 50
+  MinClampAngle: 63.8
+  MaxClampAngle: 59.2
+  ShootDelayOnTargetAcquire: 1.12
+  rotateSpeed: 2
+--- !u!114 &1021239259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021239251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dabf0e45ae1fb947a37327165fa33dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  shotOrigin: {fileID: 586929090}
+  muzzleFlash: {fileID: 821985121}
+  BottomlessClip: 1
+  ClipSize: 30
+  UnlimitedAmmo: 0
+  StartingAmmo: 100
+  Damage: 20
+  SpeedRPM: 1166
+  Speed: 19.433332
+  Spread: 10
+  HeatPerSecond: 10
+  HeatFalloff: 10
+  TimeBeforeCooldown: 1
+  bulletForce: 100
+  bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
+  hitscan: 1
+  DespawnBulletAfter: 2
 --- !u!1 &1348537431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,6 +2778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleEnd: {fileID: 1348537432}
   visionPoint: {fileID: 134272364}
+  rotationPiece: {fileID: 0}
   VisionAngle: 0
   SeeThroughTags: []
   showTags: 0
@@ -2829,6 +2815,7 @@ MonoBehaviour:
   bulletForce: 50
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
+  hitscan: 0
   DespawnBulletAfter: 2
 --- !u!1001 &1914428806
 Prefab:

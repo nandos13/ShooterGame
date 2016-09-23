@@ -17,8 +17,8 @@ public class Turret_Follow_Properties_Editor : Editor {
 		// Show general information options
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("General:", EditorStyles.boldLabel);
+		script.rotationPiece = (Transform)EditorGUILayout.ObjectField ("Rotation Piece:", script.rotationPiece, typeof(Transform), true);
 		script.muzzleEnd = (Transform)EditorGUILayout.ObjectField ("Shot Origin Point:", script.muzzleEnd, typeof(Transform), true);
-		script.visionPoint = (Transform)EditorGUILayout.ObjectField ("Vision Point:", script.visionPoint, typeof(Transform), true);
 		script.VisionAngle = EditorGUILayout.Slider ("Vision Angle:", script.VisionAngle, 40.0f, 90.0f);
 
 		script.showTags = EditorGUILayout.Foldout(script.showTags, "See Through Tags");
