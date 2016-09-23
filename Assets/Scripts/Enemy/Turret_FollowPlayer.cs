@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /* DESCRIPTION:
  * Script that makes a turret find and track the player if in range
@@ -18,24 +19,21 @@ public class Turret_FollowPlayer : MonoBehaviour {
 	public Transform muzzleEnd;				// The location 
 	public Transform visionPoint;			// The location which the turret sees out of
 
-	[Range(20.0f, 90.0f)]
 	public float VisionAngle;				// Angle in degrees the turret can see the player
 
-	[Range(2.0f, 50.0f)]
+	public List<string>SeeThroughTags;		// A list of object tags the turret has vision through
+	public bool showTags = false;			// Used in the inspector to track state of Foldout element
+
 	public float TrackingRange;				// The view distance of the turret
 
-	[Range(0.0f, 88.0f)]
 	public float MinClampAngle;				// The maximum angle the turret can look DOWN ( 0 = horizontal, 88 = almost directly up )
 
-	[Range(0.0f, 88.0f)]
 	public float MaxClampAngle;				// The maximum angle the turret can look UP ( 0 = horizontal, 88 = almost directly up )
 
-	[Range(0.0f, 3.0f)]
 	public float ShootDelayOnTargetAcquire;	// Amount of delay in seconds before firing at player
 
 	private GameObject player;				// Reference to the player
 	private float distanceToPlayer;			// Track the distance to player
-	[Range(1.0f, 10.0f)]
 	public float rotateSpeed = 2.0f;		// Speed the turret will rotate at
 
 	private enum BehaviourState 
@@ -66,16 +64,45 @@ public class Turret_FollowPlayer : MonoBehaviour {
 			{
 				// Raycast to check if the turret has line of sight to the target
 				Vector3 angleMuzzleToPlayer = player.transform.position - muzzleEnd.transform.position;
-				RaycastHit hit;
-				Physics.Raycast (new Ray (visionPoint.position, angleMuzzleToPlayer), out hit, TrackingRange);
+				RaycastHit hit = new RaycastHit();
+				RaycastHit[] hits = Physics.RaycastAll (new Ray (visionPoint.position, angleMuzzleToPlayer), Vector3.Distance(player.transform.position, visionPoint.transform.position) + 0.01f);
 				Debug.DrawRay (visionPoint.position, angleMuzzleToPlayer, Color.green);
+
+				// Find first collision that shouldn't be ignored (prevents losing LOS if a bullet, etc gets in the way)
+				foreach (RaycastHit h in hits)
+				{
+					bool hitVisible = true;
+
+					// Ignore the turret itself including all child objects
+					if ( !(h.transform.IsChildOf(transform)) )
+					{
+						// Check if raycast hit an object that should be ignored
+						foreach (string s in SeeThroughTags)
+						{
+							if (h.collider.tag == s)
+							{
+								hitVisible = false;
+								break;
+							}
+						}
+					}
+					else
+						hitVisible = false;
+
+					if (hitVisible)
+					{
+						hit = h;
+						Debug.Log(hit.collider.name);
+						break;
+					}
+				}
 
 				if (hit.collider) 
 				{
-					if (hit.collider.gameObject == player) 
+					if (hit.collider.gameObject == player || hit.collider.transform.IsChildOf(player.transform)) 
 					{
 						// Only allow line of sight if the player is in front of the turret
-						float angleDegreesToPlayer = Vector3.Angle (visionPoint.position, player.transform.position);
+						float angleDegreesToPlayer = Vector3.Angle (visionPoint.forward, (player.transform.position - visionPoint.transform.position).normalized);
 						if (angleDegreesToPlayer < VisionAngle)
 						{
 							// Turret has line of sight to player, rotate to look at the player

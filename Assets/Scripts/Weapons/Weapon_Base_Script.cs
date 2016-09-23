@@ -81,6 +81,7 @@ public class Weapon_Base_Script : MBAction {
 		case WEAPON_TYPE.Bullet:
 			{
 				// Spawn bullet objects in pool (for optimized efficiency)
+				// TODO: Turn this off if we end up going with raycast for bullet weapons
 				bulletPoolSize = (uint)(DespawnBulletAfter * Speed) + 1;
 
 				for (uint i = 0; i < bulletPoolSize; i++)

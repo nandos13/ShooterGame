@@ -130,7 +130,6 @@ MonoBehaviour:
   DeathScripts: []
   DamageScripts:
   - {fileID: 10147323}
-  currentHealth: 0
 --- !u!23 &10147318
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -540,8 +539,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleEnd: {fileID: 2012654983}
   visionPoint: {fileID: 1996034754}
-  VisionAngle: 20
-  TrackingRange: 25.1
+  VisionAngle: 90
+  SeeThroughTags:
+  - Bullet
+  showTags: 0
+  TrackingRange: 50
   MinClampAngle: 47
   MaxClampAngle: 15.5
   ShootDelayOnTargetAcquire: 0.57
@@ -2587,12 +2589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ed0a48fda327a49bbe3e2a07107226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 1.54
   StartHealthPercent: 100
   DeathScripts:
   - {fileID: 1021239257}
   DamageScripts: []
-  currentHealth: 0
 --- !u!114 &1021239257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2793,6 +2794,8 @@ MonoBehaviour:
   muzzleEnd: {fileID: 1348537432}
   visionPoint: {fileID: 134272364}
   VisionAngle: 0
+  SeeThroughTags: []
+  showTags: 0
   TrackingRange: 18.9
   MinClampAngle: 40.2
   MaxClampAngle: 39.9
@@ -2893,7 +2896,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1996034753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.218, z: 1.062}
+  m_LocalPosition: {x: 0, y: 0.218, z: 0.923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []

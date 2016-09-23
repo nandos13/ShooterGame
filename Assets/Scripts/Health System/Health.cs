@@ -18,8 +18,7 @@ public class Health : MonoBehaviour {
 	public List<MBAction> DamageScripts;		// Scripts run when the object takes damage
 
 	private bool alive = true;					// Tracks if the object is alive
-	public float currentHealth;				// The current health of the object
-	private float lastHealth;					// Used to identify changes in health
+	private float currentHealth;				// The current health of the object
 	public float CurrentHealth
 	{
 		get { return currentHealth; }
@@ -29,60 +28,14 @@ public class Health : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		currentHealth = MaxHealth * StartHealthPercent / 100.0f;
-		lastHealth = currentHealth;
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if (alive) 
+		if (MaxHealth < 0.0f) 
 		{
-			// Check if the object took damage 
-			if (currentHealth < lastHealth)
-			{
-				// Run anything that happens on damage here
-				if (DamageScripts.Count > 0) 
-				{
-					foreach (MBAction script in DamageScripts) 
-					{
-						if (script) 
-						{
-							script.Execute ();
-						}
-					}
-				}
-
-				// Store the new health value
-				lastHealth = currentHealth;
-			}
-
-			// Check if the object dies this frame
-			if (currentHealth <= 0.0f) 
-			{
-				alive = false;
-
-				bool scriptsHaveBeenRun = false;
-
-				// Run anything that happens on death here
-				if (DeathScripts.Count > 0) 
-				{
-					foreach (MBAction script in DeathScripts) 
-					{
-						if (script) 
-						{
-							script.Execute ();
-							scriptsHaveBeenRun = true;
-						}
-					}
-				} 
-
-				if (!scriptsHaveBeenRun) 
-				{
-					// No death script was specified
-					Debug.Log ("Object " + name + " has no specified onDeath script");
-				}
-			}
+			MaxHealth = 0.0f;
+			currentHealth = 0.0f;
+		}
+		else
+		{
+			currentHealth = MaxHealth * StartHealthPercent / 100.0f;
 		}
 	}
 
@@ -92,6 +45,41 @@ public class Health : MonoBehaviour {
 		{
 			currentHealth -= dmg;
 			Debug.Log(transform.name + " took " + dmg + " damage. Health now at " + currentHealth);
+
+			// Run anything that happens on damage here
+			if (DamageScripts.Count > 0) 
+			{
+				foreach (MBAction script in DamageScripts) 
+				{
+					if (script) 
+					{
+						script.Execute ();
+					}
+				}
+			}
+
+			// Check if the object dies this frame
+			if (currentHealth <= 0.0f) 
+			{
+				alive = false;
+
+				// Run anything that happens on death here
+				if (DeathScripts.Count > 0) 
+				{
+					foreach (MBAction script in DeathScripts) 
+					{
+						if (script) 
+						{
+							script.Execute ();
+						}
+					}
+				} 
+				else 
+				{
+					// No death script was specified
+					Debug.Log ("Object " + name + " has no specified onDeath script");
+				}
+			}
 		}
 	}
 }
