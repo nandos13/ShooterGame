@@ -164,6 +164,46 @@ public class Weapon_Base_Script : MBAction {
 		canFire = true;
 	}
 
+	private Vector3 VectorToCrosshair ()
+	{
+		/* Calculates the vector between the shot origin and the surface
+		 * in the center of the screen.
+		 */
+
+		// Raycast forward from the center of the camera
+		Ray ray = Camera.main.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0.0f));
+		RaycastHit[] hits = Physics.RaycastAll (ray, 1000.0f);
+		RaycastHit hit = new RaycastHit();
+
+		// Find the first hit that is not part of the player
+		bool aimingCollides = false;
+		foreach (RaycastHit h in hits)
+		{
+			// Ignore player
+			if ( !(h.collider.tag == "Player") )
+			{
+				aimingCollides = true;
+				hit = h;
+				break;
+			}
+		}
+
+		Debug.Log(aimingCollides);
+		// Is the raycast aiming at something?
+		if (aimingCollides)
+		{
+			float distance = Vector3.Distance (shotOrigin.transform.position, hit.point);
+			Vector3 result = ray.direction.normalized * distance;
+			return result;
+		}
+		else
+		{
+			// Point 1000 units away from the center of the screen
+			Vector3 result = ray.direction.normalized * 1000.0f;
+			return result;
+		}
+	}
+
 	private void ShootType_Bullet ()
 	{
 		/* Handles shooting for the Bullet type weapon.
@@ -213,7 +253,12 @@ public class Weapon_Base_Script : MBAction {
 		 */
 
 		// Get angle of projectile
-		Vector3 projectAngle = shotOrigin.forward;
+		Vector3 projectAngle;
+		if (transform.tag == "Player")
+			projectAngle = VectorToCrosshair();
+		else
+			projectAngle = shotOrigin.forward;
+		
 		projectAngle.Normalize ();
 
 		// Apply random bullet spread
@@ -278,7 +323,7 @@ public class Weapon_Base_Script : MBAction {
 		projectAngle.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
 
 		// Raycast from the muzzle to see what the gun hit
-		RaycastHit hit;
+		RaycastHit hit = new RaycastHit();
 		Physics.Raycast (new Ray (shotOrigin.position, projectAngle), out hit);
 		Debug.DrawRay (shotOrigin.position, projectAngle, Color.cyan, 0.5f);
 
@@ -287,7 +332,7 @@ public class Weapon_Base_Script : MBAction {
 		 * To achieve this, we use a custom function which will return the most immediate instance
 		 * of a component contained by a transform or any parent in its family tree.
 		 */
-		if (hit.collider)
+		if ( Physics.Raycast (new Ray (shotOrigin.position, projectAngle)) )
 		{
 			Health healthComponent = hit.transform.GetComponentAscendingImmediate<Health>(true);
 

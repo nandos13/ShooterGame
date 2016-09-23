@@ -25,7 +25,7 @@ GameObject:
   - 81: {fileID: 81000011805721364}
   m_Layer: 0
   m_Name: WorldViewCamera
-  m_TagString: Player
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,9 +130,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011879322650}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0924756, y: 0.08000016, z: 0.83}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: -0.016358742, y: 0.12253153, z: -0.007875125, w: 0.99229854}
+  m_LocalPosition: {x: 3.412542, y: -2.5540528, z: 4.1104674}
+  m_LocalScale: {x: 4.769478, y: 4.9953785, z: 6.0754423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000014044961512}
@@ -143,9 +143,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011421974522}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.554}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.016358742, y: 0.12253153, z: -0.007875125, w: 0.99229854}
+  m_LocalPosition: {x: 4.0431075, y: -2.796107, z: 4.089079}
+  m_LocalScale: {x: 0.95389557, y: 0.9990758, z: 1.2150884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000014044961512}
@@ -198,10 +198,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012774182862}
-  m_LocalRotation: {x: -0, y: -0.07287463, z: -0, w: 0.9973411}
-  m_LocalPosition: {x: 0.23200072, y: -0.19900006, z: 0.31000057}
+  m_LocalRotation: {x: -0, y: -0.07940073, z: -0, w: 0.99684286}
+  m_LocalPosition: {x: 0.13, y: -0.19900006, z: 0.302}
   m_LocalScale: {x: 0.059996437, y: 0.059996344, z: 0.27438292}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -8.871, z: 0}
   m_Children:
   - {fileID: 4000011147005636}
   - {fileID: 4000011024380618}
@@ -225,7 +225,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageParents: 0
+  KillChildrenOnDeath: 0
   MaxHealth: 100
   StartHealthPercent: 100
   DeathScripts:
@@ -493,14 +494,14 @@ MonoBehaviour:
   Damage: 10
   SpeedRPM: 1500
   Speed: 25
-  Spread: 0.73
+  Spread: 0
   HeatPerSecond: 10
   HeatFalloff: 10
   TimeBeforeCooldown: 1
-  bulletForce: 100
+  bulletForce: 50
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
-  hitscan: 1
+  hitscan: 0
   DespawnBulletAfter: 2
 --- !u!124 &124000010813219776
 Behaviour:
@@ -779,7 +780,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSizeY:
-      scalar: 2.98
+      scalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -814,7 +815,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSizeZ:
-      scalar: 3.23
+      scalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:

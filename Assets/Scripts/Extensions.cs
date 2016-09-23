@@ -46,6 +46,7 @@ public static class Extensions {
 			if (targetParent != null)
 			{
 				T targetsFirstComponent = targetParent.GetComponent<T> ();
+				targetParent = targetParent.parent;
 				if (targetsFirstComponent != null)
 					return targetsFirstComponent;
 			}
@@ -79,6 +80,7 @@ public static class Extensions {
 					}
 					return components;
 				}
+				targetParent = targetParent.parent;
 			}
 			else {break;}
 		}
