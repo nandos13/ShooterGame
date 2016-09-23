@@ -284,15 +284,26 @@ public class Weapon_Base_Script : MBAction {
 
 		/* Next we need to get the health script of the object hit. However, it's possible
 		 * the ray hit a child of the object with health (eg hit an arm, but the body has the health script).
-		 * To achieve this, we use a custom function which will return all instances of a component
-		 * contained by a transform or any parent in its family tree.
+		 * To achieve this, we use a custom function which will return the most immediate instance
+		 * of a component contained by a transform or any parent in its family tree.
 		 */
 		if (hit.collider)
+		{
+			Health healthComponent = hit.transform.GetComponentAscendingImmediate<Health>(true);
+
+			// Did the ray hit something that has health?
+			if (healthComponent)
+			{
+				healthComponent.ApplyDamage(Damage);
+				//Debug.Log("Applying damage to: " + h.transform.name);
+			}
+		}
+
+		/*if (hit.collider)
 		{
 			List<Health> healthComponents = hit.transform.GetComponentsAscending<Health>();
 			
 			// Did the ray hit something that has health?
-			Debug.Log(healthComponents.Count);
 			if (healthComponents.Count > 0)
 			{
 				foreach (Health h in healthComponents)
@@ -301,7 +312,7 @@ public class Weapon_Base_Script : MBAction {
 					//Debug.Log("Applying damage to: " + h.transform.name);
 				}
 			}
-		}
+		}*/
 
 		// Disable firing to maintain fire rate
 		StartCoroutine (DisableShootForFireRate ());

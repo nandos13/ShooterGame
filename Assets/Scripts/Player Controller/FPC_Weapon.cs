@@ -24,7 +24,6 @@ public class FPC_Weapon : MonoBehaviour
 		{
 			if (weapon) 
 			{
-				Debug.Log ("Firing player weapon");
 				weapon.Execute ();
 			}
 		}

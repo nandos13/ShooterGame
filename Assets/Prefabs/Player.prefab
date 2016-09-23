@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ed0a48fda327a49bbe3e2a07107226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageParents: 0
   MaxHealth: 100
   StartHealthPercent: 100
   DeathScripts:
@@ -499,7 +500,7 @@ MonoBehaviour:
   bulletForce: 100
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
-  hitscan: 0
+  hitscan: 1
   DespawnBulletAfter: 2
 --- !u!124 &124000010813219776
 Behaviour:

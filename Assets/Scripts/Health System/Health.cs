@@ -9,6 +9,8 @@ using System.Collections.Generic;
 
 public class Health : MonoBehaviour {
 
+	public bool DamageParents = false;			// Will damaging the object also apply damage to any parents with the health script?
+	public bool KillChildrenOnDeath = false;	// Will killing the object also kill any child objects with the health script?
 	public float MaxHealth = 100;				// The maximum health value for the object
 
 	[Range(0, 100)]
@@ -18,6 +20,33 @@ public class Health : MonoBehaviour {
 	public List<MBAction> DamageScripts;		// Scripts run when the object takes damage
 
 	private bool alive = true;					// Tracks if the object is alive
+	public bool Alive
+	{
+		get { return alive;}
+		set 
+		{ 
+			alive = value; 
+			if (value == false)
+			{
+				// Run anything that happens on death here
+				if (DeathScripts.Count > 0) 
+				{
+					foreach (MBAction script in DeathScripts) 
+					{
+						if (script) 
+						{
+							script.Execute ();
+						}
+					}
+				} 
+				else 
+				{
+					// No death script was specified
+					Debug.Log ("Object " + name + " has no specified onDeath script");
+				}
+			}
+		}
+	}
 	private float currentHealth;				// The current health of the object
 	public float CurrentHealth
 	{
@@ -44,7 +73,7 @@ public class Health : MonoBehaviour {
 		if (alive) 
 		{
 			currentHealth -= dmg;
-			Debug.Log(transform.name + " took " + dmg + " damage. Health now at " + currentHealth);
+			//Debug.Log(transform.name + " took " + dmg + " damage. Health now at " + currentHealth);
 
 			// Run anything that happens on damage here
 			if (DamageScripts.Count > 0) 
@@ -78,6 +107,29 @@ public class Health : MonoBehaviour {
 				{
 					// No death script was specified
 					Debug.Log ("Object " + name + " has no specified onDeath script");
+				}
+
+				// Should child health objects also die upon death of this object?
+				if (KillChildrenOnDeath)
+				{
+					// Use custom function to get all health scripts of children in the heirarchy
+					List<Health> childrenHealthComponents = transform.GetComponentsDescending<Health>(false);
+
+					// Kill all children
+					foreach (Health h in childrenHealthComponents)
+						h.Alive = false;
+				}
+			}
+
+			// Should parent health objects also take damage?
+			if (DamageParents)
+			{
+				// Use custom function to get health script of parents in the family tree heirarchy 
+				Health parentHealthComponent = transform.GetComponentAscendingImmediate<Health>(false);
+
+				if (parentHealthComponent)
+				{
+					parentHealthComponent.ApplyDamage(dmg);
 				}
 			}
 		}
