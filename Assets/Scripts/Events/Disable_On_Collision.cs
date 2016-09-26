@@ -19,7 +19,7 @@ public class Disable_On_Collision : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision)
 	{
-		
+		// Should this collision be ignored?
 		bool ignoring = false;
 		foreach (Transform t in IgnoreCollisions)
 		{

@@ -164,4 +164,17 @@ public static class Extensions {
 			RecursiveAddChildComponents(targetChild, ref list);
 		}
 	}
+
+	public static void ApplyDamage (this Transform target, float dmg)
+	{
+		/* Finds the first instance of a health script on the target
+		 * transform or one of its parents, and applies damage.
+		 */
+
+		Health h = target.GetComponentAscendingImmediate<Health>(true);
+
+		// Was a health script found?
+		if (h)
+			h.ApplyDamage(dmg);
+	}
 }

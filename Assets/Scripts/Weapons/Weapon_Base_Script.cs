@@ -92,14 +92,24 @@ public class Weapon_Base_Script : MBAction {
 						GameObject bullet = Instantiate (bulletProjectile) as GameObject;
 						bullet.hideFlags = HideFlags.HideInHierarchy;
 						bullet.SetActive (false);
+
 						// Add despawn conditions
 						bullet.AddComponent<Disable_After_Seconds> ();
 						bullet.GetComponent<Disable_After_Seconds> ().Delay = DespawnBulletAfter;
 						bullet.AddComponent<Disable_On_Collision> ();
+
+						// Add damage to the bullet
+						bullet.AddComponent<Damage_On_Collision> ();
+						bullet.GetComponent<Damage_On_Collision> ().Damage = Damage;
+
+						// Make the bullet ignore the weapon owner
 						foreach (Transform t in ownerTransforms)
 						{
 							bullet.GetComponent<Disable_On_Collision> ().IgnoreCollisions.Add(t);
+							bullet.GetComponent<Damage_On_Collision> ().IgnoreCollisions.Add(t);
 						}
+
+						// Add bullet to the pool
 						bulletPool.Add(bullet);
 					}
 				}
@@ -175,7 +185,8 @@ public class Weapon_Base_Script : MBAction {
 
 	private Vector3 VectorToCrosshair ()
 	{
-		/* TODO WRITE DESCRIPTION HERE
+		/* Calculates and returns the vector between the shot origin and
+		 * the surface under the crosshair (in the center of the screen).
 		 */
 
 		// Raycast forward from the center of the camera
@@ -192,7 +203,6 @@ public class Weapon_Base_Script : MBAction {
 			{
 				aimingCollides = true;
 				hit = h;
-				Debug.Log("Hit a point");
 				break;
 			}
 		}
@@ -210,6 +220,16 @@ public class Weapon_Base_Script : MBAction {
 			Vector3 result = ray.direction.normalized * 1000.0f;
 			return result;
 		}
+	}
+
+	private void ApplySpread(ref Vector3 vec)
+	{
+		/* Applies bullet spread to a Vector3
+		 */
+
+		vec.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		vec.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		vec.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
 	}
 
 	private void ShootType_Bullet ()
@@ -270,9 +290,7 @@ public class Weapon_Base_Script : MBAction {
 		projectAngle.Normalize ();
 
 		// Apply random bullet spread
-		projectAngle.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		ApplySpread(ref projectAngle);
 
 		// Apply bullet projectile force
 		projectAngle *= bulletForce;
@@ -331,9 +349,7 @@ public class Weapon_Base_Script : MBAction {
 		projectAngle.Normalize ();
 
 		// Apply random bullet spread
-		projectAngle.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		ApplySpread(ref projectAngle);
 
 		// Raycast from the muzzle to see what the gun hit
 		RaycastHit hit = new RaycastHit();
@@ -353,7 +369,7 @@ public class Weapon_Base_Script : MBAction {
 			if (healthComponent)
 			{
 				healthComponent.ApplyDamage(Damage);
-				Debug.Log("Applying damage to: " + healthComponent.transform.name);
+				//Debug.Log("Applying damage to: " + healthComponent.transform.name);
 			}
 		}
 

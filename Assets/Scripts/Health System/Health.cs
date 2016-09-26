@@ -101,38 +101,6 @@ public class Health : MonoBehaviour {
 			// Check if the object dies this frame
 			if (currentHealth <= 0.0f)
 				Alive = false;
-			//if (currentHealth <= 0.0f) 
-			//{
-			//	alive = false;
-			//
-			//	// Run anything that happens on death here
-			//	if (DeathScripts.Count > 0) 
-			//	{
-			//		foreach (MBAction script in DeathScripts) 
-			//		{
-			//			if (script) 
-			//			{
-			//				script.Execute ();
-			//			}
-			//		}
-			//	} 
-			//	else 
-			//	{
-			//		// No death script was specified
-			//		Debug.Log ("Object " + name + " has no specified onDeath script");
-			//	}
-			//
-			//	// Should child health objects also die upon death of this object?
-			//	if (KillChildrenOnDeath)
-			//	{
-			//		// Use custom function to get all health scripts of children in the heirarchy
-			//		List<Health> childrenHealthComponents = transform.GetComponentsDescending<Health>(false);
-			//
-			//		// Kill all children
-			//		foreach (Health h in childrenHealthComponents)
-			//			h.Alive = false;
-			//	}
-			//}
 
 			// Should parent health objects also take damage?
 			if (DamageParents)
