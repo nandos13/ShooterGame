@@ -8,8 +8,6 @@ using System.Collections.Generic;
  * Several different weapon types allow for different gunplay.
  */
 
-public enum WEAPON_TYPE { Bullet, Launcher, Pulse, Beam }			// Different weapon types for diverse gunplay
-
 //TODO: FINISH ALL WEAPON TYPES AND IMPLEMENT RELOADING
 //TODO: DISPLAY TRACER FOR RAYCAST SHOTS??? MAYBE??
 
@@ -105,8 +103,8 @@ public class Weapon_Base_Script : MBAction {
 						// Make the bullet ignore the weapon owner
 						foreach (Transform t in ownerTransforms)
 						{
-							bullet.GetComponent<Disable_On_Collision> ().IgnoreCollisions.Add(t);
-							bullet.GetComponent<Damage_On_Collision> ().IgnoreCollisions.Add(t);
+							bullet.GetComponent<Disable_On_Collision> ().CollisionList.Add(t);
+							bullet.GetComponent<Damage_On_Collision> ().CollisionList.Add(t);
 						}
 
 						// Add bullet to the pool
