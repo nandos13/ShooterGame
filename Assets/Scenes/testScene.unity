@@ -129,6 +129,7 @@ MonoBehaviour:
   KillChildrenOnDeath: 0
   MaxHealth: 100
   StartHealthPercent: 100
+  ImmunityTime: 0
   DeathScripts: []
   DamageScripts:
   - {fileID: 10147323}
@@ -663,6 +664,7 @@ MonoBehaviour:
   KillChildrenOnDeath: 1
   MaxHealth: 100
   StartHealthPercent: 100
+  ImmunityTime: 0
   DeathScripts:
   - {fileID: 581606352}
   DamageScripts: []
@@ -2747,6 +2749,7 @@ MonoBehaviour:
   KillChildrenOnDeath: 0
   MaxHealth: 182.66
   StartHealthPercent: 100
+  ImmunityTime: 0
   DeathScripts: []
   DamageScripts: []
   currentHealth: 0
@@ -2793,7 +2796,7 @@ MonoBehaviour:
   Damage: 20
   SpeedRPM: 1166
   Speed: 19.433332
-  Spread: 10
+  Spread: 0
   HeatPerSecond: 10
   HeatFalloff: 10
   TimeBeforeCooldown: 1
@@ -3151,6 +3154,7 @@ MonoBehaviour:
   KillChildrenOnDeath: 0
   MaxHealth: 100
   StartHealthPercent: 100
+  ImmunityTime: 0
   DeathScripts:
   - {fileID: 1962526166}
   DamageScripts: []
