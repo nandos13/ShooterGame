@@ -81,18 +81,27 @@ public class Weapon_Base_Script : MBAction {
 		{
 		case WEAPON_TYPE.Bullet:
 			{
-				// Spawn bullet objects in pool (for optimized efficiency)
-				// TODO: Turn this off if we end up going with raycast for bullet weapons
-				bulletPoolSize = (uint)(DespawnBulletAfter * Speed) + 1;
-
-				for (uint i = 0; i < bulletPoolSize; i++)
+				if (!hitscan) 
 				{
-					GameObject bullet = Instantiate (bulletProjectile) as GameObject;
-					bullet.hideFlags = HideFlags.HideInHierarchy;
-					bullet.SetActive (false);
-					bullet.AddComponent<Bullet_Timer_Deactivate> ();
-					bullet.GetComponent<Bullet_Timer_Deactivate> ().DisableAfterSeconds = DespawnBulletAfter;
-					bulletPool.Add(bullet);
+					// Spawn bullet objects in pool (for optimized efficiency)
+					bulletPoolSize = (uint)(DespawnBulletAfter * Speed) + 1;
+					List<Transform> ownerTransforms = transform.GetComponentsDescending<Transform> (true);
+
+					for (uint i = 0; i < bulletPoolSize; i++)
+					{
+						GameObject bullet = Instantiate (bulletProjectile) as GameObject;
+						bullet.hideFlags = HideFlags.HideInHierarchy;
+						bullet.SetActive (false);
+						// Add despawn conditions
+						bullet.AddComponent<Disable_After_Seconds> ();
+						bullet.GetComponent<Disable_After_Seconds> ().Delay = DespawnBulletAfter;
+						bullet.AddComponent<Disable_On_Collision> ();
+						foreach (Transform t in ownerTransforms)
+						{
+							bullet.GetComponent<Disable_On_Collision> ().IgnoreCollisions.Add(t);
+						}
+						bulletPool.Add(bullet);
+					}
 				}
 
 				break;
@@ -166,8 +175,7 @@ public class Weapon_Base_Script : MBAction {
 
 	private Vector3 VectorToCrosshair ()
 	{
-		/* Calculates the vector between the shot origin and the surface
-		 * in the center of the screen.
+		/* TODO WRITE DESCRIPTION HERE
 		 */
 
 		// Raycast forward from the center of the camera
@@ -184,16 +192,16 @@ public class Weapon_Base_Script : MBAction {
 			{
 				aimingCollides = true;
 				hit = h;
+				Debug.Log("Hit a point");
 				break;
 			}
 		}
 
-		Debug.Log(aimingCollides);
 		// Is the raycast aiming at something?
 		if (aimingCollides)
 		{
 			float distance = Vector3.Distance (shotOrigin.transform.position, hit.point);
-			Vector3 result = ray.direction.normalized * distance;
+			Vector3 result = (hit.point - shotOrigin.position).normalized * distance;
 			return result;
 		}
 		else
@@ -314,7 +322,12 @@ public class Weapon_Base_Script : MBAction {
 		 */
 
 		// Get the angle of projectile
-		Vector3 projectAngle = shotOrigin.forward;
+		Vector3 projectAngle;
+		if (transform.tag == "Player")
+			projectAngle = VectorToCrosshair();
+		else
+			projectAngle = shotOrigin.forward;
+		
 		projectAngle.Normalize ();
 
 		// Apply random bullet spread
@@ -325,7 +338,7 @@ public class Weapon_Base_Script : MBAction {
 		// Raycast from the muzzle to see what the gun hit
 		RaycastHit hit = new RaycastHit();
 		Physics.Raycast (new Ray (shotOrigin.position, projectAngle), out hit);
-		Debug.DrawRay (shotOrigin.position, projectAngle, Color.cyan, 0.5f);
+		Debug.DrawRay (shotOrigin.position, projectAngle, Color.cyan, 1.0f);
 
 		/* Next we need to get the health script of the object hit. However, it's possible
 		 * the ray hit a child of the object with health (eg hit an arm, but the body has the health script).
@@ -340,24 +353,9 @@ public class Weapon_Base_Script : MBAction {
 			if (healthComponent)
 			{
 				healthComponent.ApplyDamage(Damage);
-				//Debug.Log("Applying damage to: " + h.transform.name);
+				Debug.Log("Applying damage to: " + healthComponent.transform.name);
 			}
 		}
-
-		/*if (hit.collider)
-		{
-			List<Health> healthComponents = hit.transform.GetComponentsAscending<Health>();
-			
-			// Did the ray hit something that has health?
-			if (healthComponents.Count > 0)
-			{
-				foreach (Health h in healthComponents)
-				{
-					h.ApplyDamage(Damage);
-					//Debug.Log("Applying damage to: " + h.transform.name);
-				}
-			}
-		}*/
 
 		// Disable firing to maintain fire rate
 		StartCoroutine (DisableShootForFireRate ());

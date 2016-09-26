@@ -16,7 +16,7 @@ public class Health : MonoBehaviour {
 	[Range(0, 100)]
 	public float StartHealthPercent = 100;		// The object will spawn with this percentage of MaxHealth
 
-	public List<MBAction> DeathScripts;			// Scripts run when the object reaches 0 health
+	public List<MBAction> DeathScripts = new List<MBAction>();			// Scripts run when the object reaches 0 health
 	public List<MBAction> DamageScripts;		// Scripts run when the object takes damage
 
 	private bool alive = true;					// Tracks if the object is alive
@@ -24,9 +24,8 @@ public class Health : MonoBehaviour {
 	{
 		get { return alive;}
 		set 
-		{ 
-			alive = value; 
-			if (value == false)
+		{
+			if (value == false && alive == true)
 			{
 				// Run anything that happens on death here
 				if (DeathScripts.Count > 0) 
@@ -44,10 +43,22 @@ public class Health : MonoBehaviour {
 					// No death script was specified
 					Debug.Log ("Object " + name + " has no specified onDeath script");
 				}
+
+				// Should child health objects also die upon death of this object?
+				if (KillChildrenOnDeath)
+				{
+					// Use custom function to get all health scripts of children in the heirarchy
+					List<Health> childrenHealthComponents = transform.GetComponentsDescending<Health>(false);
+				
+					// Kill all children
+					foreach (Health h in childrenHealthComponents)
+						h.Alive = false;
+				}
 			}
+			alive = value;
 		}
 	}
-	private float currentHealth;				// The current health of the object
+	public float currentHealth;				// The current health of the object
 	public float CurrentHealth
 	{
 		get { return currentHealth; }
@@ -88,38 +99,40 @@ public class Health : MonoBehaviour {
 			}
 
 			// Check if the object dies this frame
-			if (currentHealth <= 0.0f) 
-			{
-				alive = false;
-
-				// Run anything that happens on death here
-				if (DeathScripts.Count > 0) 
-				{
-					foreach (MBAction script in DeathScripts) 
-					{
-						if (script) 
-						{
-							script.Execute ();
-						}
-					}
-				} 
-				else 
-				{
-					// No death script was specified
-					Debug.Log ("Object " + name + " has no specified onDeath script");
-				}
-
-				// Should child health objects also die upon death of this object?
-				if (KillChildrenOnDeath)
-				{
-					// Use custom function to get all health scripts of children in the heirarchy
-					List<Health> childrenHealthComponents = transform.GetComponentsDescending<Health>(false);
-
-					// Kill all children
-					foreach (Health h in childrenHealthComponents)
-						h.Alive = false;
-				}
-			}
+			if (currentHealth <= 0.0f)
+				Alive = false;
+			//if (currentHealth <= 0.0f) 
+			//{
+			//	alive = false;
+			//
+			//	// Run anything that happens on death here
+			//	if (DeathScripts.Count > 0) 
+			//	{
+			//		foreach (MBAction script in DeathScripts) 
+			//		{
+			//			if (script) 
+			//			{
+			//				script.Execute ();
+			//			}
+			//		}
+			//	} 
+			//	else 
+			//	{
+			//		// No death script was specified
+			//		Debug.Log ("Object " + name + " has no specified onDeath script");
+			//	}
+			//
+			//	// Should child health objects also die upon death of this object?
+			//	if (KillChildrenOnDeath)
+			//	{
+			//		// Use custom function to get all health scripts of children in the heirarchy
+			//		List<Health> childrenHealthComponents = transform.GetComponentsDescending<Health>(false);
+			//
+			//		// Kill all children
+			//		foreach (Health h in childrenHealthComponents)
+			//			h.Alive = false;
+			//	}
+			//}
 
 			// Should parent health objects also take damage?
 			if (DamageParents)
