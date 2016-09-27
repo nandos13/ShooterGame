@@ -462,7 +462,6 @@ MonoBehaviour:
   DeathScripts:
   - {fileID: 114000011241288938}
   DamageScripts: []
-  currentHealth: 0
 --- !u!114 &114000013687865020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,8 +496,8 @@ MonoBehaviour:
   UnlimitedAmmo: 0
   StartingAmmo: 100
   Damage: 10
-  SpeedRPM: 211
-  Speed: 3.5166667
+  SpeedRPM: 1020
+  Speed: 17
   Spread: 0.6
   HeatPerSecond: 10
   HeatFalloff: 10
@@ -506,7 +505,7 @@ MonoBehaviour:
   bulletForce: 50
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
-  hitscan: 0
+  hitscan: 1
   DespawnBulletAfter: 2
 --- !u!124 &124000010813219776
 Behaviour:

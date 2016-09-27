@@ -31,7 +31,7 @@ public class Health : MonoBehaviour {
 		{
 			if (value == false && alive == true)
 			{
-				Debug.Log(transform.name + " died.");
+				Debug.Log(transform.name + " died");
 				// Run anything that happens on death here
 				if (DeathScripts.Count > 0) 
 				{
@@ -52,8 +52,8 @@ public class Health : MonoBehaviour {
 				// Should child health objects also die upon death of this object?
 				if (KillChildrenOnDeath)
 				{
-					// Use custom function to get all health scripts of children in the heirarchy
-					List<Health> childrenHealthComponents = transform.GetComponentsDescending<Health>(false);
+					// Use custom function to get most immediate health scripts of children in each branch the heirarchy
+					List<Health> childrenHealthComponents = transform.GetComponentsDescendingImmediate<Health>(false);
 				
 					// Kill all children
 					foreach (Health h in childrenHealthComponents)
@@ -63,7 +63,7 @@ public class Health : MonoBehaviour {
 			alive = value;
 		}
 	}
-	public float currentHealth;				// The current health of the object
+	private float currentHealth;				// The current health of the object
 	public float CurrentHealth
 	{
 		get { return currentHealth; }
