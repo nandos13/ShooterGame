@@ -23,7 +23,7 @@ GameObject:
   - 124: {fileID: 124000010813219776}
   - 92: {fileID: 92000010902635918}
   - 81: {fileID: 81000011805721364}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WorldViewCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - 114: {fileID: 114000011241288938}
   - 114: {fileID: 114000011553360304}
   - 114: {fileID: 114000013687865020}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 4476612413928447662, guid: 0000000000000000d000000000000000, type: 0}
@@ -80,7 +80,7 @@ GameObject:
   - 4: {fileID: 4000011024380618}
   - 198: {fileID: 198000013305437330}
   - 199: {fileID: 199000011381726642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Test_MuzzleFlash
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - 124: {fileID: 124000011290272664}
   - 92: {fileID: 92000011503711680}
   - 81: {fileID: 81000011970024326}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ViewModelCamera
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 1000012774182862}
   m_LocalRotation: {x: -0, y: -0.07940073, z: -0, w: 0.99684286}
   m_LocalPosition: {x: 0.141, y: -0.19900006, z: 0.234}
-  m_LocalScale: {x: 0.059996437, y: 0.059996344, z: 0.27090707}
+  m_LocalScale: {x: 0.059996437, y: 0.059996344, z: 0.33529377}
   m_LocalEulerAnglesHint: {x: 0, y: -8.871, z: 0}
   m_Children:
   - {fileID: 4000011147005636}
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layers:
     serializedVersion: 2
-    m_Bits: 4294966527
+    m_Bits: 4294965503
 --- !u!114 &114000011898252764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,8 +497,8 @@ MonoBehaviour:
   UnlimitedAmmo: 0
   StartingAmmo: 100
   Damage: 10
-  SpeedRPM: 1238
-  Speed: 20.633333
+  SpeedRPM: 1500
+  Speed: 25
   Spread: 0.6
   HeatPerSecond: 10
   HeatFalloff: 10

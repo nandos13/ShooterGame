@@ -813,7 +813,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014044961512, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.27090707
+      value: 0.33529377
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
@@ -2664,6 +2664,7 @@ GameObject:
   - 114: {fileID: 1021239256}
   - 114: {fileID: 1021239259}
   - 114: {fileID: 1021239258}
+  - 114: {fileID: 1021239257}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -2754,9 +2755,21 @@ MonoBehaviour:
   MaxHealth: 182.66
   StartHealthPercent: 100
   ImmunityTime: 0
-  DeathScripts: []
+  DeathScripts:
+  - {fileID: 1021239257}
   DamageScripts: []
   currentHealth: 0
+--- !u!114 &1021239257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021239251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c5b75782dd86941862b4c6815b6b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1021239258
 MonoBehaviour:
   m_ObjectHideFlags: 0

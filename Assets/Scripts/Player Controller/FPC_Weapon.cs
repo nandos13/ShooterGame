@@ -28,9 +28,8 @@ public class FPC_Weapon : MonoBehaviour
 			if (weapon.shotOrigin)
 			{
 				// Should the weapon be up?
-				Ray ray = new Ray(weapon.shotOrigin.position, transform.position);
 				RaycastHit hit = new RaycastHit();
-				Physics.Raycast (ray, out hit, 100.0f, layers);
+				Physics.Linecast (weapon.shotOrigin.position, transform.position, out hit, layers);
 
 				if (hit.collider)
 				{
@@ -40,6 +39,7 @@ public class FPC_Weapon : MonoBehaviour
 						//TODO: ANIMATE WEAPON GOING UP
 						weaponUp = true;
 					}
+					Debug.Log(hit.transform.name);
 				}
 				else
 				{
