@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public class FPC_Weapon : MonoBehaviour 
 {
 
+	public LayerMask layers;
 	private Weapon_Base_Script weapon;
 	private bool weaponUp = false;			// Track if the weapon is up while against a wall
 
@@ -27,43 +28,23 @@ public class FPC_Weapon : MonoBehaviour
 			if (weapon.shotOrigin)
 			{
 				// Should the weapon be up?
-				// Raycast forward from the center of the camera
-				//TODO: ALSO CHECK IF THE SHOTORIGIN IS INSIDE AN OBJECT (MAYBE RAYCAST IN A DIRECTION, CHECK IF IN BOUNDS OF HIT?)
-				Ray ray = Camera.main.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0.0f));
-				RaycastHit[] hits = Physics.RaycastAll (ray, 1000.0f);
+				Ray ray = new Ray(weapon.shotOrigin.position, transform.position);
 				RaycastHit hit = new RaycastHit();
-
-				// Find the first hit that is not part of the player
-				foreach (RaycastHit h in hits)
-				{
-					// Ignore player
-					if ( !(h.collider.tag == "Player") )
-					{
-						hit = h;
-						break;
-					}
-				}
+				Physics.Raycast (ray, out hit, 100.0f, layers);
 
 				if (hit.collider)
 				{
-					if (Vector3.Distance(hit.point, transform.position) < Vector3.Distance(transform.position, weapon.shotOrigin.position))
+					// Wall in the way
+					if (!weaponUp)
 					{
-						// Wall in the way
-						if (!weaponUp)
-						{
-							//TODO: ANIMATE WEAPON GOING UP
-							weaponUp = true;
-						}
+						//TODO: ANIMATE WEAPON GOING UP
+						weaponUp = true;
 					}
-					else
-					{
-						// Nothing in the way
-						if (weaponUp)
-						{
-							//TODO: ANIMATE WEAPON GOING DOWN
-							weaponUp = false;
-						}
-					}
+				}
+				else
+				{
+					//TODO: ANIMATE WEAPON GOING DOWN
+					weaponUp = false;
 				}
 
 				// Can the player fire?
