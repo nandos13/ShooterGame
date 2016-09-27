@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 /* DESCRIPTION:
- * Damage a component that is collided with.
+ * On colliding with an object, executes a list of actions.
  */
 
-public class Damage_On_Collision : MonoBehaviour {
+public class On_Collision : MonoBehaviour {
 
-	public float Damage;
-	public List<Transform> CollisionList = new List<Transform>();	// A list of collisions to ignore
+	public List<string> CollisionTags = new List<string>();			// List of tags that are either ignored or exclusively-hit
 	public COLLISION_MODE mode = COLLISION_MODE.IgnoreSelected;
+	public List<MBAction> Actions = new List<MBAction>();			// List of actions to execute on collision
 
 	void OnCollisionEnter (Collision collision)
 	{
@@ -19,9 +19,9 @@ public class Damage_On_Collision : MonoBehaviour {
 		if (mode == COLLISION_MODE.HitSelected)
 			ignoring = true;
 
-		foreach (Transform t in CollisionList)
+		foreach (string str in CollisionTags)
 		{
-			if (collision.transform == t)
+			if (collision.transform.tag == str)
 			{
 				if (mode == COLLISION_MODE.IgnoreSelected)
 				{
@@ -36,7 +36,14 @@ public class Damage_On_Collision : MonoBehaviour {
 			}
 		}
 
+		// Run actions
 		if (!ignoring)
-			collision.transform.ApplyDamage(Damage);
+		{
+			foreach (MBAction action in Actions)
+			{
+				action.collision = collision;
+				action.Execute();
+			}
+		}
 	}
 }

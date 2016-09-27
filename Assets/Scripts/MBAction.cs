@@ -28,6 +28,9 @@ using System.Collections;
 
 public class MBAction : MonoBehaviour {
 
+	// Variables that may be needed by certain actions
+	public Collision collision = new Collision();
+
 	// Execute can be called externally at any point
 	public virtual void Execute () {}
 }

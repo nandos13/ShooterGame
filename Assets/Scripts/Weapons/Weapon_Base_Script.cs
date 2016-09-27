@@ -87,25 +87,34 @@ public class Weapon_Base_Script : MBAction {
 
 					for (uint i = 0; i < bulletPoolSize; i++)
 					{
+						//TODO: THIS NEEDS TO BE OPTIMIZED ONCE IT IS FINISHED
 						GameObject bullet = Instantiate (bulletProjectile) as GameObject;
 						bullet.hideFlags = HideFlags.HideInHierarchy;
 						bullet.SetActive (false);
 
+						// Get collision handler
+						On_Collision collisionHandler = bullet.GetComponent<On_Collision>();
+						if ( !(bullet.GetComponent<On_Collision>()) )
+						{
+							bullet.AddComponent<On_Collision> ();
+							collisionHandler = bullet.GetComponent<On_Collision> ();
+						}
+						Debug.Log(collisionHandler);
+
 						// Add despawn conditions
 						bullet.AddComponent<Disable_After_Seconds> ();
 						bullet.GetComponent<Disable_After_Seconds> ().Delay = DespawnBulletAfter;
-						bullet.AddComponent<Disable_On_Collision> ();
+
+						bullet.AddComponent<Disable> ();
+						collisionHandler.Actions.Add(bullet.GetComponent<Disable>());
 
 						// Add damage to the bullet
-						bullet.AddComponent<Damage_On_Collision> ();
-						bullet.GetComponent<Damage_On_Collision> ().Damage = Damage;
+						bullet.AddComponent<ApplyDamage> ();
+						collisionHandler.Actions.Add(bullet.GetComponent<ApplyDamage>());
 
-						// Make the bullet ignore the weapon owner
-						foreach (Transform t in ownerTransforms)
-						{
-							bullet.GetComponent<Disable_On_Collision> ().CollisionList.Add(t);
-							bullet.GetComponent<Damage_On_Collision> ().CollisionList.Add(t);
-						}
+						// Set collision-ignore-tags
+						collisionHandler.CollisionTags.Add(transform.tag);
+						collisionHandler.CollisionTags.Add("Bullet");
 
 						// Add bullet to the pool
 						bulletPool.Add(bullet);
@@ -326,7 +335,7 @@ public class Weapon_Base_Script : MBAction {
 
 		// Show muzzle flash
 		if (muzzleFlash)
-			muzzleFlash.Play();
+			muzzleFlash.Emit(7);
 	}
 
 	private void ShootType_Bullet_Ray ()
@@ -376,9 +385,7 @@ public class Weapon_Base_Script : MBAction {
 
 		// Show muzzle flash
 		if (muzzleFlash) 
-		{
-			muzzleFlash.Play();
-		}
+			muzzleFlash.Emit(7);
 	}
 
 	private void ShootType_Launcher ()

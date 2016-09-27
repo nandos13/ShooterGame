@@ -54,7 +54,7 @@ public class Weapon_Properties_Editor : Editor {
 				{
 					// Show physical bullet options
 					script.bulletProjectile = (GameObject)EditorGUILayout.ObjectField ("Projectile:", script.bulletProjectile, typeof(Object), false);
-					script.bulletForce = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.bulletForce, 50, 150);
+					script.bulletForce = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.bulletForce, 20, 150);
 					script.DespawnBulletAfter = EditorGUILayout.Slider ("Despawn Time:", script.DespawnBulletAfter, 1.0f, 10.0f);
 				}
 
