@@ -99,7 +99,6 @@ public class Weapon_Base_Script : MBAction {
 							bullet.AddComponent<On_Collision> ();
 							collisionHandler = bullet.GetComponent<On_Collision> ();
 						}
-						Debug.Log(collisionHandler);
 
 						// Add despawn conditions
 						bullet.AddComponent<Disable_After_Seconds> ();
@@ -110,6 +109,7 @@ public class Weapon_Base_Script : MBAction {
 
 						// Add damage to the bullet
 						bullet.AddComponent<ApplyDamage> ();
+						bullet.GetComponent<ApplyDamage> ().Damage = Damage;
 						collisionHandler.Actions.Add(bullet.GetComponent<ApplyDamage>());
 
 						// Set collision-ignore-tags
