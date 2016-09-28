@@ -1188,10 +1188,10 @@ MonoBehaviour:
   KillChildrenOnDeath: 0
   MaxHealth: 100
   StartHealthPercent: 100
+  ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000013937687450}
   DamageScripts: []
-  currentHealth: 0
 --- !u!114 &114000013937687450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1203,4 +1203,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnDead: {fileID: 143422, guid: ffdd86d4e1e5ecf4abc3680e394c7b02, type: 2}
+  spawnOnDead: {fileID: 1000010132272382, guid: ffdd86d4e1e5ecf4abc3680e394c7b02,
+    type: 2}
