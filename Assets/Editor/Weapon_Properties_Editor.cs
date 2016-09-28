@@ -23,6 +23,12 @@ public class Weapon_Properties_Editor : Editor {
 		script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField ("Muzzle Flash:", script.muzzleFlash, typeof(ParticleSystem), true);
 
 		EditorGUILayout.Space();
+		script.hitEffect = (ParticleSystem)EditorGUILayout.ObjectField ("Hit Effect:", script.hitEffect, typeof(ParticleSystem), true);
+
+		EditorGUILayout.Space();
+		script.particlesEmitted = (uint)EditorGUILayout.Slider ("Particles Emitted:", script.particlesEmitted, 0, 100);
+
+		EditorGUILayout.Space();
 		script.type = (WEAPON_TYPE)EditorGUILayout.EnumPopup ("Weapon Type:", script.type);
 
 		EditorGUILayout.Space();

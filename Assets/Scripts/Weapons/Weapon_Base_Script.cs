@@ -17,6 +17,8 @@ public class Weapon_Base_Script : MBAction {
 	public WEAPON_TYPE type = WEAPON_TYPE.Bullet;	// Type of weapon
 	public Transform shotOrigin;			// Transform where the bullet should come out
 	public ParticleSystem muzzleFlash;		// Particle system played at the end of the barrel when a shot is fired
+	public ParticleSystem hitEffect;		// Particle system played where the projectile hits
+	public uint particlesEmitted;			// Number of particles to emit on hit
 
 	public bool BottomlessClip = false;		// Will the weapon ever need to reload?
 	public uint ClipSize = 30;				// Ammo in a single clip
@@ -116,6 +118,7 @@ public class Weapon_Base_Script : MBAction {
 						bullet.AddComponent<Explosion> ();
 						bullet.GetComponent<Explosion> ().CollisionTags.Add(transform.tag);
 						collisionHandler.Actions.Add(bullet.GetComponent<Explosion>());
+						//TODO ADD HIT PARTICLE EFFECT
 
 						// Set collision-ignore-tags
 						collisionHandler.CollisionTags.Add(transform.tag);
@@ -375,6 +378,14 @@ public class Weapon_Base_Script : MBAction {
 		 */
 		if ( Physics.Raycast (new Ray (shotOrigin.position, projectAngle)) )
 		{
+			//TEMPORARY: DISPLAY HIT PARTICLE EFFECT AT HIT
+			if (hitEffect)
+			{
+				ParticleSystem effect = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal)) as ParticleSystem;
+				effect.Emit((int)particlesEmitted);
+				//TODO: DESPAWN ONCE THE EFFECT HAS PLAYED.
+			}
+
 			Health healthComponent = hit.transform.GetComponentAscendingImmediate<Health>(true);
 
 			// Did the ray hit something that has health?
