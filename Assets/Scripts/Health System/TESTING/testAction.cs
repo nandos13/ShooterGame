@@ -27,7 +27,7 @@ public class testAction : MBAction {
 	public override void Execute ()
 	{
 		if (rb)
-			rb.AddForce (new Vector3 (100, 100, 100), ForceMode.Force);
+			rb.AddForce (new Vector3 (0, 5000, 0), ForceMode.Force);
 		
 		Debug.Log ("testAction is being executed");
 	}

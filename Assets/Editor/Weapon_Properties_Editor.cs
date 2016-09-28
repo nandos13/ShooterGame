@@ -49,9 +49,14 @@ public class Weapon_Properties_Editor : Editor {
 				// Show relevant variables for BULLET Weapon
 				EditorGUILayout.LabelField ("Bullet Weapon Specifics:", EditorStyles.boldLabel);
 
-				script.bulletForce = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.bulletForce, 50, 150);
-				script.bulletProjectile = (GameObject)EditorGUILayout.ObjectField ("Projectile:", script.bulletProjectile, typeof(Object), false);
-				script.DespawnBulletAfter = EditorGUILayout.Slider ("Bullet Despawn Time:", script.DespawnBulletAfter, 1.0f, 10.0f);
+				script.hitscan = EditorGUILayout.Toggle ("Use Hitscan:", script.hitscan);
+				if (!script.hitscan)
+				{
+					// Show physical bullet options
+					script.bulletProjectile = (GameObject)EditorGUILayout.ObjectField ("Projectile:", script.bulletProjectile, typeof(Object), false);
+					script.bulletForce = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.bulletForce, 20, 150);
+					script.DespawnBulletAfter = EditorGUILayout.Slider ("Despawn Time:", script.DespawnBulletAfter, 1.0f, 10.0f);
+				}
 
 				break;
 			}

@@ -5,15 +5,15 @@ using System.Collections;
  * Disables the object after specified time elapsed
  */
 
-public class Bullet_Timer_Deactivate : MonoBehaviour {
+public class Disable_After_Seconds : MonoBehaviour {
 
 	[Range(0.1f, 7.0f)]
-	public float DisableAfterSeconds = 7.0f;
+	public float Delay = 7.0f;
 
 	// Called once the object is activated
 	void OnEnable () 
 	{
-		StartCoroutine (DeactivateOnTimer(DisableAfterSeconds));
+		StartCoroutine (DeactivateOnTimer(Delay));
 	}
 
 	public IEnumerator DeactivateOnTimer(float x)

@@ -31,7 +31,64 @@ public static class Extensions {
 		return null;
 	}
 
-	public static List<T> GetComponentsAscending<T> (this Transform target)
+	public static T GetComponentAscendingImmediate<T> (this Transform target, bool includeSelf)
+	{
+		/* Returns the most immediate single component contained by a transform
+		 * in target's parent heirarchy
+		 */
+
+		// Check through parents in family tree
+		Transform targetParent = target.parent;
+		if (includeSelf)
+			targetParent = target;
+		while (true)
+		{
+			if (targetParent != null)
+			{
+				T targetsFirstComponent = targetParent.GetComponent<T> ();
+				targetParent = targetParent.parent;
+				if (targetsFirstComponent != null)
+					return targetsFirstComponent;
+			}
+			else {break;}
+		}
+
+		return default(T);
+	}
+
+	public static List<T> GetComponentsAscendingImmediate<T> (this Transform target, bool includeSelf)
+	{
+		/* Returns the components of type T that exists in the most immediate
+		 * parent in target's parent heirarchy containing a T-component.
+		 */
+		List<T> components = new List<T>();
+
+		// Check through parents in family tree
+		Transform targetParent = target.parent;
+		if (includeSelf)
+			targetParent = target;
+		while (true)
+		{
+			if (targetParent != null)
+			{
+				T[] targetsComponents = targetParent.GetComponents<T> ();
+				if (targetsComponents.Length > 0)
+				{
+					foreach (T comp in targetsComponents)
+					{
+						components.Add (comp);
+					}
+					return components;
+				}
+				targetParent = targetParent.parent;
+			}
+			else {break;}
+		}
+
+		return null;
+	}
+
+	public static List<T> GetComponentsAscending<T> (this Transform target, bool includeSelf)
 	{
 		/* Returns a list of all components of type T that exist in target
 		 * and target's parent heirarchy.
@@ -39,20 +96,21 @@ public static class Extensions {
 		List<T> components = new List<T>();
 
 		// Check target transform
-		ListAddGetComponentsAscending (target, ref components);
+		if (includeSelf)
+			ListAddGetComponents (target, ref components);
 
 		// Check all parents through family tree
 		Transform targetParent = target.parent;
 		while (targetParent != null)
 		{
-			ListAddGetComponentsAscending (targetParent, ref components);
+			ListAddGetComponents (targetParent, ref components);
 			targetParent = targetParent.parent;
 		}
 
 		return components;
 	}
 
-	private static void ListAddGetComponentsAscending<T> (Transform target, ref List<T> list)
+	private static void ListAddGetComponents<T> (Transform target, ref List<T> list)
 	{
 		/* Adds all components of type T contained in target to the List<T> list */
 		if (target)
@@ -61,5 +119,84 @@ public static class Extensions {
 			foreach (T comp in targetsComponents)
 				list.Add (comp);
 		}
+	}
+
+	public static List<T> GetComponentsDescending<T> (this Transform target, bool includeSelf)
+	{
+		/* Returns a list of all components of type T that exist in target
+		 * and target's children.
+		 */
+		List<T> components = new List<T>();
+
+		// Check target transform
+		if (includeSelf)
+			ListAddGetComponents (target, ref components);
+
+		// Check all children through family tree
+		if (target.transform.childCount > 0)
+		{
+			RecursiveAddChildComponents(target, ref components, false);
+		}
+
+		return components;
+	}
+
+	public static List<T> GetComponentsDescendingImmediate<T> (this Transform target, bool includeSelf)
+	{
+		/* Returns the components of type T that exists in the most immediate
+		 * child in target's child heirarchy containing a T-component.
+		 */
+		List<T> components = new List<T>();
+
+		// Check target transform
+		if (includeSelf)
+			ListAddGetComponents (target, ref components);
+
+		// Check all children through family tree
+		if (target.transform.childCount > 0)
+		{
+			RecursiveAddChildComponents(target, ref components, true);
+		}
+
+		return components;
+	}
+
+	private static void RecursiveAddChildComponents<T> (Transform target, ref List<T> list, bool exitOnFind)
+	{
+		/* Recursively searches through all children of a transform and adds
+		 * any any contained components of type T to a list.
+		 */
+		List<Transform> children = new List<Transform>();
+
+		// Get an array of all children in the current target
+		for (int i = 0; i < target.childCount; i++)
+		{
+			children.Add(target.GetChild(i));
+		}
+
+		// Get the components contained in each child, then recursively check all children of the target child
+		foreach (Transform targetChild in children)
+		{
+			T[] targetsComponents = targetChild.GetComponents<T> ();
+			foreach (T comp in targetsComponents)
+				list.Add(comp);
+
+			// Does the function stop looking through one tree deviation if something is found?
+			if (!exitOnFind)
+				RecursiveAddChildComponents(targetChild, ref list, true);
+		}
+	}
+
+	public static void ApplyDamage (this Transform target, float dmg)
+	{
+		/* Finds the first instance of a health script on the target
+		 * transform or one of its parents, and applies damage.
+		 */
+
+		Health h = target.GetComponentAscendingImmediate<Health>(true);
+
+		// Was a health script found?
+		if (h)
+			h.ApplyDamage(dmg);
 	}
 }

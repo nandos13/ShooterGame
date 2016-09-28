@@ -9,17 +9,61 @@ using System.Collections.Generic;
 
 public class Health : MonoBehaviour {
 
+	public bool DamageParents = false;			// Will damaging the object also apply damage to any parents with the health script?
+	public bool KillChildrenOnDeath = false;	// Will killing the object also kill any child objects with the health script?
 	public float MaxHealth = 100;				// The maximum health value for the object
 
 	[Range(0, 100)]
 	public float StartHealthPercent = 100;		// The object will spawn with this percentage of MaxHealth
+	[Range(0.0f, 1.0f)]
+	public float ImmunityTime;					// Object will become invulnerable to damage for x seconds after taking damage
+	private bool immune = false;
+	private float immuneCurHighestDmg = 0;		// Tracks the highest damage the player has taken during immunity
 
-	public List<MBAction> DeathScripts;			// Scripts run when the object reaches 0 health
+	public List<MBAction> DeathScripts = new List<MBAction>();			// Scripts run when the object reaches 0 health
 	public List<MBAction> DamageScripts;		// Scripts run when the object takes damage
 
 	private bool alive = true;					// Tracks if the object is alive
-	public float currentHealth;				// The current health of the object
-	private float lastHealth;					// Used to identify changes in health
+	public bool Alive
+	{
+		get { return alive;}
+		set 
+		{
+			if (value == false && alive == true)
+			{
+				Debug.Log(transform.name + " died");
+				// Run anything that happens on death here
+				if (DeathScripts.Count > 0) 
+				{
+					foreach (MBAction script in DeathScripts) 
+					{
+						if (script) 
+						{
+							script.Execute ();
+						}
+					}
+				} 
+				else 
+				{
+					// No death script was specified
+					Debug.Log ("Object " + name + " has no specified onDeath script");
+				}
+
+				// Should child health objects also die upon death of this object?
+				if (KillChildrenOnDeath)
+				{
+					// Use custom function to get most immediate health scripts of children in each branch the heirarchy
+					List<Health> childrenHealthComponents = transform.GetComponentsDescendingImmediate<Health>(false);
+				
+					// Kill all children
+					foreach (Health h in childrenHealthComponents)
+						h.Alive = false;
+				}
+			}
+			alive = value;
+		}
+	}
+	private float currentHealth;				// The current health of the object
 	public float CurrentHealth
 	{
 		get { return currentHealth; }
@@ -29,69 +73,92 @@ public class Health : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		currentHealth = MaxHealth * StartHealthPercent / 100.0f;
-		lastHealth = currentHealth;
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if (alive) 
+		if (MaxHealth < 0.0f) 
 		{
-			// Check if the object took damage 
-			if (currentHealth < lastHealth)
-			{
-				// Run anything that happens on damage here
-				if (DamageScripts.Count > 0) 
-				{
-					foreach (MBAction script in DamageScripts) 
-					{
-						if (script) 
-						{
-							script.Execute ();
-						}
-					}
-				}
+			MaxHealth = 0.0f;
+			currentHealth = 0.0f;
+		}
+		else
+		{
+			currentHealth = MaxHealth * StartHealthPercent / 100.0f;
+		}
+	}
 
-				// Store the new health value
-				lastHealth = currentHealth;
+	private IEnumerator DisableImmunity ()
+	{
+		/* Puts the player in an immune state for a number of seconds.
+		 */
+		immune = true;
+		yield return new WaitForSeconds (ImmunityTime);
+		immune = false;
+		immuneCurHighestDmg = 0;
+	}
+
+	private void doDamage (float dmg)
+	{
+		currentHealth -= dmg;
+		//Debug.Log(transform.name + " took " + dmg + " damage. Health now at " + currentHealth);
+
+		// Run anything that happens on damage here
+		if (DamageScripts.Count > 0) 
+		{
+			foreach (MBAction script in DamageScripts) 
+			{
+				if (script) 
+				{
+					script.Execute ();
+				}
 			}
+		}
 
-			// Check if the object dies this frame
-			if (currentHealth <= 0.0f) 
+		// Check if the object dies this frame
+		if (currentHealth <= 0.0f)
+			Alive = false;
+
+		// Should parent health objects also take damage?
+		if (DamageParents)
+		{
+			// Use custom function to get health script of parents in the family tree heirarchy 
+			Health parentHealthComponent = transform.GetComponentAscendingImmediate<Health>(false);
+
+			if (parentHealthComponent)
 			{
-				alive = false;
-
-				bool scriptsHaveBeenRun = false;
-
-				// Run anything that happens on death here
-				if (DeathScripts.Count > 0) 
-				{
-					foreach (MBAction script in DeathScripts) 
-					{
-						if (script) 
-						{
-							script.Execute ();
-							scriptsHaveBeenRun = true;
-						}
-					}
-				} 
-
-				if (!scriptsHaveBeenRun) 
-				{
-					// No death script was specified
-					Debug.Log ("Object " + name + " has no specified onDeath script");
-				}
+				parentHealthComponent.ApplyDamage(dmg);
 			}
 		}
 	}
 
 	public void ApplyDamage (float dmg)
 	{
+		// Is the object alive?
 		if (alive) 
 		{
-			currentHealth -= dmg;
-			Debug.Log(transform.name + " took " + dmg + " damage. Health now at " + currentHealth);
+			// Is the object in an immune state?
+			if (immune)
+			{
+				/* If the object is immune, we will only apply the largest ammount of damage
+				 * taken in this time frame. 
+				 * Example, the player is shot by a low damage bullet. They take damage and become
+				 * 'immune'. Then they are hit with an explosion while immune. If the explosion 
+				 * damage is higer than the bullet, apply the damage minus the current damage taken.
+				*/
+
+				// Is this damage higher than the current highest while immune?
+				if (dmg > immuneCurHighestDmg)
+				{
+					doDamage(dmg - immuneCurHighestDmg);
+					immuneCurHighestDmg = dmg;
+				}
+			}
+			else
+			{
+				// Make the player immune
+				StartCoroutine(DisableImmunity ());
+				immuneCurHighestDmg = dmg;
+
+				// Apply the damage
+				doDamage(dmg);
+			}
 		}
 	}
 }

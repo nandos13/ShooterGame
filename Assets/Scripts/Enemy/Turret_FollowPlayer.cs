@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /* DESCRIPTION:
  * Script that makes a turret find and track the player if in range
@@ -16,23 +17,24 @@ using System.Collections;
 public class Turret_FollowPlayer : MonoBehaviour {
 
 	public Transform muzzleEnd;				// The location 
-	public Transform visionPoint;			// The location which the turret sees out of
+	public Transform rotationPiece;			// Part of the turret that will rotate
 
-	[Range(2.0f, 50.0f)]
+	public float VisionAngle;				// Angle in degrees the turret can see the player
+
+	public List<string>SeeThroughTags;		// A list of object tags the turret has vision through
+	public bool showTags = false;			// Used in the inspector to track state of Foldout element
+
 	public float TrackingRange;				// The view distance of the turret
 
-	[Range(0.0f, 88.0f)]
 	public float MinClampAngle;				// The maximum angle the turret can look DOWN ( 0 = horizontal, 88 = almost directly up )
 
-	[Range(0.0f, 88.0f)]
 	public float MaxClampAngle;				// The maximum angle the turret can look UP ( 0 = horizontal, 88 = almost directly up )
 
-	[Range(0.0f, 3.0f)]
 	public float ShootDelayOnTargetAcquire;	// Amount of delay in seconds before firing at player
 
 	private GameObject player;				// Reference to the player
 	private float distanceToPlayer;			// Track the distance to player
-	private float rotateSpeed = 2.0f;		// Speed the turret will rotate at
+	public float rotateSpeed = 2.0f;		// Speed the turret will rotate at
 
 	private enum BehaviourState 
 	{ PreparingFire, Firing, Searching };	
@@ -62,41 +64,79 @@ public class Turret_FollowPlayer : MonoBehaviour {
 			{
 				// Raycast to check if the turret has line of sight to the target
 				Vector3 angleMuzzleToPlayer = player.transform.position - muzzleEnd.transform.position;
-				RaycastHit hit;
-				Physics.Raycast (new Ray (visionPoint.position, angleMuzzleToPlayer), out hit, TrackingRange);
-				Debug.DrawRay (visionPoint.position, angleMuzzleToPlayer, Color.green);
+				RaycastHit hit = new RaycastHit();
+				RaycastHit[] hits = Physics.RaycastAll (new Ray (rotationPiece.position, angleMuzzleToPlayer), Vector3.Distance(player.transform.position, rotationPiece.transform.position) + 0.01f);
+				Debug.DrawRay (rotationPiece.position, angleMuzzleToPlayer, Color.green);
+
+				// Find first collision that shouldn't be ignored (prevents losing LOS if a bullet, etc gets in the way)
+				foreach (RaycastHit h in hits)
+				{
+					bool hitVisible = true;
+
+					// Ignore the turret itself including all child objects
+					if ( !(h.transform.IsChildOf(transform)) )
+					{
+						// Check if raycast hit an object that should be ignored
+						foreach (string s in SeeThroughTags)
+						{
+							if (h.collider.tag == s)
+							{
+								hitVisible = false;
+								break;
+							}
+						}
+					}
+					else
+						hitVisible = false;
+
+					if (hitVisible)
+					{
+						hit = h;
+						break;
+					}
+				}
 
 				if (hit.collider) 
 				{
-					if (hit.collider.gameObject == player) 
+					if (hit.collider.gameObject == player || hit.collider.transform.IsChildOf(player.transform)) 
 					{
-						// Turret has line of sight to player, rotate to look at the player
-
-						// Handle turret rotation towards player
-						RotateToFacePoint (player.transform);
-
-						// Raycast directly ahead of the turret to see if the player is being aimed at
-						Physics.Raycast (new Ray (muzzleEnd.position, muzzleEnd.forward), out hit, TrackingRange);
-						Debug.DrawRay (muzzleEnd.position, muzzleEnd.forward * 9.0f, Color.red);
-
-						// Did the ray collide with anything?
-						if (hit.collider) 
+						// Only allow line of sight if the player is in front of the turret
+						float angleDegreesToPlayer = Vector3.Angle (rotationPiece.forward, (player.transform.position - rotationPiece.transform.position).normalized);
+						if (angleDegreesToPlayer < VisionAngle)
 						{
-							// Was it the player?
-							if (hit.collider.gameObject == player) 
+							// Turret has line of sight to player, rotate to look at the player
+
+							// Handle turret rotation towards player
+							RotateToFacePoint (player.transform);
+
+							// Raycast directly ahead of the turret to see if the player is being aimed at
+							Physics.Raycast (new Ray (muzzleEnd.position, muzzleEnd.forward), out hit, TrackingRange);
+							Debug.DrawRay (muzzleEnd.position, muzzleEnd.forward * 9.0f, Color.red);
+
+							// Did the ray collide with anything?
+							if (hit.collider) 
 							{
-								// Is the turret ready to fire?
-								if (!((state == BehaviourState.PreparingFire) || (state == BehaviourState.Firing))) 
+								// Was it the player?
+								if (hit.collider.gameObject == player) 
 								{
-									// Warm up the turret
-									state = BehaviourState.PreparingFire;
-									Debug.Log ("Warming up turret");
-									StartCoroutine (WarmUpGun ());
+									// Is the turret ready to fire?
+									if (!((state == BehaviourState.PreparingFire) || (state == BehaviourState.Firing))) 
+									{
+										// Warm up the turret
+										state = BehaviourState.PreparingFire;
+										Debug.Log ("Warming up turret");
+										StartCoroutine (WarmUpGun ());
+									}
 								}
 							}
-						}
 
-						TryShoot ();
+							TryShoot ();
+						}
+						else 
+						{
+							// Turret does not have line of sight to player, stop shooting and go back to searching
+							StopShooting();
+						}
 					} 
 					else 
 					{
@@ -167,11 +207,11 @@ public class Turret_FollowPlayer : MonoBehaviour {
 
 		// Is the turret looking at it's target already?
 		bool needsNewTarget = false;
-		Vector3 angleTurretToPoint = (randomPoint - transform.position).normalized;
+		Vector3 angleTurretToPoint = (randomPoint - rotationPiece.transform.position).normalized;
 
 		if (randomPoint != Vector3.zero) 
 		{
-			float precision = Vector3.Dot (angleTurretToPoint, transform.forward);
+			float precision = Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward);
 
 			if (precision == 1) 
 			{
@@ -190,17 +230,16 @@ public class Turret_FollowPlayer : MonoBehaviour {
 		{
 			// Try 4 times to find a good direction which will not cause the
 			// turret to stare at a wall
-			Transform vision = transform.Search("Eyes");
 			for (uint i = 0; i < 4; i++) 
 			{
 				randomPoint = Random.insideUnitSphere;
-				randomPoint += transform.position;
-				randomPoint.y = transform.position.y;
+				randomPoint += rotationPiece.transform.position;
+				randomPoint.y = rotationPiece.transform.position.y;
 
 				// Raycast in the direction of this point to see if there is a wall in close proximity
-				angleTurretToPoint = (randomPoint - transform.position);
+				angleTurretToPoint = (randomPoint - rotationPiece.transform.position);
 				RaycastHit hit;
-				Physics.Raycast (new Ray (vision.position, angleTurretToPoint), out hit, TrackingRange);
+				Physics.Raycast (new Ray (rotationPiece.position, angleTurretToPoint), out hit, TrackingRange);
 				//Debug.DrawRay (vision.position, angleTurretToPoint, Color.blue, 1.0f);
 
 				if (!hit.collider) 
@@ -211,7 +250,7 @@ public class Turret_FollowPlayer : MonoBehaviour {
 				else 
 				{
 					// Get the distance between the turret and the object it will be looking at
-					float dist = Vector3.Distance (randomPoint, transform.position);
+					float dist = Vector3.Distance (randomPoint, rotationPiece.transform.position);
 
 					// Is the object too close?
 					if (! (dist < 5.5f) ) 
@@ -238,31 +277,39 @@ public class Turret_FollowPlayer : MonoBehaviour {
 		 * to the minimum and maximum angle variables.
 		 */
 
-		// Store old rotation for later
-		Quaternion oldRotation = transform.rotation;
-
-		// Find vector from the turret to the player
-		Vector3 angleToPoint = point.position - transform.position;
-
-		// Calculate lateral angle needed to rotate towards specified point (angle for turret to look side to side)
-		Vector3 lateralDir = angleToPoint;
-		lateralDir.y = 0;
-		lateralDir.Normalize ();
-
-		// Ensure the turret will turn the correct way (instead of turning the long way around)
-		float lateralAngle = Vector3.Angle (Vector3.forward, lateralDir) * Mathf.Sign (Vector3.Cross (Vector3.forward, lateralDir).y);
-		Quaternion lateralRotation = Quaternion.AngleAxis (lateralAngle, Vector3.up);
-		transform.rotation = lateralRotation;
-
-		// Calculate medial angle needed to rotate towards specified point (angle for turret to look up and down)
-		Vector3 medialDir = angleToPoint;
-		medialDir.Normalize ();				
-		float medialAngle = Vector3.Angle (transform.forward, medialDir);
-
-		// Clamp medial angle to specified range
-		medialAngle = Mathf.Clamp (medialAngle, -MinClampAngle, MaxClampAngle);
-		Quaternion otherRotation = Quaternion.AngleAxis (medialAngle, Vector3.Cross (transform.forward, medialDir));
-
-		transform.rotation = Quaternion.Slerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * rotateSpeed);
+		if (rotationPiece)
+		{
+			// Store old rotation for later
+			Quaternion oldRotation = rotationPiece.transform.rotation;
+			
+			// Find vector from the turret to the player
+			Vector3 angleToPoint = point.position - rotationPiece.transform.position;
+			
+			// Calculate lateral angle needed to rotate towards specified point (angle for turret to look side to side)
+			Vector3 lateralDir = angleToPoint;
+			lateralDir.y = 0;
+			lateralDir.Normalize ();
+			
+			// Ensure the turret will turn the correct way (instead of turning the long way around)
+			float lateralAngle = Vector3.Angle (Vector3.forward, lateralDir) * Mathf.Sign (Vector3.Cross (Vector3.forward, lateralDir).y);
+			Quaternion lateralRotation = Quaternion.AngleAxis (lateralAngle, Vector3.up);
+			rotationPiece.transform.rotation = lateralRotation;
+			
+			// Calculate medial angle needed to rotate towards specified point (angle for turret to look up and down)
+			Vector3 medialDir = angleToPoint;
+			medialDir.Normalize ();				
+			float medialAngle = Vector3.Angle (rotationPiece.transform.forward, medialDir);
+			
+			// Clamp medial angle to specified range
+			medialAngle = Mathf.Clamp (medialAngle, -MinClampAngle, MaxClampAngle);
+			Quaternion otherRotation = Quaternion.AngleAxis (medialAngle, Vector3.Cross (rotationPiece.transform.forward, medialDir));
+			
+			// While firing, the turret's aiming will be faster so bullets do not lag behind a moving player
+			float currentRotateSpeed = rotateSpeed;
+			if (state == BehaviourState.Firing)
+				currentRotateSpeed *= 2.5f;
+			
+			rotationPiece.transform.rotation = Quaternion.Slerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * currentRotateSpeed);
+		}
 	}
 }

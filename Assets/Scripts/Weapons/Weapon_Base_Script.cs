@@ -8,8 +8,6 @@ using System.Collections.Generic;
  * Several different weapon types allow for different gunplay.
  */
 
-public enum WEAPON_TYPE { Bullet, Launcher, Pulse, Beam }			// Different weapon types for diverse gunplay
-
 //TODO: FINISH ALL WEAPON TYPES AND IMPLEMENT RELOADING
 //TODO: DISPLAY TRACER FOR RAYCAST SHOTS??? MAYBE??
 
@@ -43,6 +41,7 @@ public class Weapon_Base_Script : MBAction {
 	/* BULLET WEAPON SPECIFIC VARIABLES */
 	public int bulletForce = 100;			// Initial force of a fired bullet
 	public GameObject bulletProjectile;		// Prefab: projectile for Bullet weapons
+	public bool hitscan = false;			// Does this weapon use raycasting or physical bullets?
 
 	public float DespawnBulletAfter = 2.0f;	// Time in seconds a bullet will exist for after firing
 	private uint bulletPoolSize = 20;		// Size of the bullet pool
@@ -80,17 +79,46 @@ public class Weapon_Base_Script : MBAction {
 		{
 		case WEAPON_TYPE.Bullet:
 			{
-				// Spawn bullet objects in pool (for optimized efficiency)
-				bulletPoolSize = (uint)(DespawnBulletAfter * Speed) + 1;
-
-				for (uint i = 0; i < bulletPoolSize; i++)
+				if (!hitscan) 
 				{
-					GameObject bullet = Instantiate (bulletProjectile) as GameObject;
-					bullet.hideFlags = HideFlags.HideInHierarchy;
-					bullet.SetActive (false);
-					bullet.AddComponent<Bullet_Timer_Deactivate> ();
-					bullet.GetComponent<Bullet_Timer_Deactivate> ().DisableAfterSeconds = DespawnBulletAfter;
-					bulletPool.Add(bullet);
+					// Spawn bullet objects in pool (for optimized efficiency)
+					bulletPoolSize = (uint)(DespawnBulletAfter * Speed) + 1;
+					List<Transform> ownerTransforms = transform.GetComponentsDescending<Transform> (true);
+
+					for (uint i = 0; i < bulletPoolSize; i++)
+					{
+						//TODO: THIS NEEDS TO BE OPTIMIZED ONCE IT IS FINISHED
+						GameObject bullet = Instantiate (bulletProjectile) as GameObject;
+						bullet.hideFlags = HideFlags.HideInHierarchy;
+						bullet.SetActive (false);
+
+						// Get collision handler
+						On_Collision collisionHandler = bullet.GetComponent<On_Collision>();
+						if ( !(bullet.GetComponent<On_Collision>()) )
+						{
+							bullet.AddComponent<On_Collision> ();
+							collisionHandler = bullet.GetComponent<On_Collision> ();
+						}
+
+						// Add despawn conditions
+						bullet.AddComponent<Disable_After_Seconds> ();
+						bullet.GetComponent<Disable_After_Seconds> ().Delay = DespawnBulletAfter;
+
+						bullet.AddComponent<Disable> ();
+						collisionHandler.Actions.Add(bullet.GetComponent<Disable>());
+
+						// Add damage to the bullet
+						bullet.AddComponent<ApplyDamage> ();
+						bullet.GetComponent<ApplyDamage> ().Damage = Damage;
+						collisionHandler.Actions.Add(bullet.GetComponent<ApplyDamage>());
+
+						// Set collision-ignore-tags
+						collisionHandler.CollisionTags.Add(transform.tag);
+						collisionHandler.CollisionTags.Add("Bullet");
+
+						// Add bullet to the pool
+						bulletPool.Add(bullet);
+					}
 				}
 
 				break;
@@ -162,6 +190,55 @@ public class Weapon_Base_Script : MBAction {
 		canFire = true;
 	}
 
+	private Vector3 VectorToCrosshair ()
+	{
+		/* Calculates and returns the vector between the shot origin and
+		 * the surface under the crosshair (in the center of the screen).
+		 */
+
+		// Raycast forward from the center of the camera
+		Ray ray = Camera.main.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0.0f));
+		RaycastHit[] hits = Physics.RaycastAll (ray, 1000.0f);
+		RaycastHit hit = new RaycastHit();
+
+		// Find the first hit that is not part of the player
+		bool aimingCollides = false;
+		foreach (RaycastHit h in hits)
+		{
+			// Ignore player
+			if ( !(h.collider.tag == "Player") )
+			{
+				aimingCollides = true;
+				hit = h;
+				break;
+			}
+		}
+
+		// Is the raycast aiming at something?
+		if (aimingCollides)
+		{
+			float distance = Vector3.Distance (shotOrigin.transform.position, hit.point);
+			Vector3 result = (hit.point - shotOrigin.position).normalized * distance;
+			return result;
+		}
+		else
+		{
+			// Point 1000 units away from the center of the screen
+			Vector3 result = ray.direction.normalized * 1000.0f;
+			return result;
+		}
+	}
+
+	private void ApplySpread(ref Vector3 vec)
+	{
+		/* Applies bullet spread to a Vector3
+		 */
+
+		vec.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		vec.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		vec.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+	}
+
 	private void ShootType_Bullet ()
 	{
 		/* Handles shooting for the Bullet type weapon.
@@ -183,10 +260,11 @@ public class Weapon_Base_Script : MBAction {
 						currentAmmoTotal--;
 					}
 
-					// BULLET METHOD TO BE DECIDED, EITHER SHOOT AN OBJECT OR USE A RAYCAST FOR INSTANT HITTING BULLETS
-					//ShootType_Bullet_ObjectProjectile ();	// Shoots a physical bullet
-
-					ShootType_Bullet_Ray ();				// Shoots an instant ray
+					// Does this bullet weapon use instant raycast method or physical bullets?
+					if (hitscan)
+						ShootType_Bullet_Ray ();
+					else
+						ShootType_Bullet_ObjectProjectile ();
 				} 
 				else 
 				{
@@ -210,9 +288,18 @@ public class Weapon_Base_Script : MBAction {
 		 */
 
 		// Get angle of projectile
-		// TODO: APPLY SLIGHTLY RANDOM AIM
-		Vector3 projectAngle = shotOrigin.forward;
+		Vector3 projectAngle;
+		if (transform.tag == "Player")
+			projectAngle = VectorToCrosshair();
+		else
+			projectAngle = shotOrigin.forward;
+		
 		projectAngle.Normalize ();
+
+		// Apply random bullet spread
+		ApplySpread(ref projectAngle);
+
+		// Apply bullet projectile force
 		projectAngle *= bulletForce;
 
 		// Find next available bullet in the pool
@@ -248,7 +335,7 @@ public class Weapon_Base_Script : MBAction {
 
 		// Show muzzle flash
 		if (muzzleFlash)
-			muzzleFlash.Play();
+			muzzleFlash.Emit(7);
 	}
 
 	private void ShootType_Bullet_Ray ()
@@ -260,32 +347,36 @@ public class Weapon_Base_Script : MBAction {
 		 */
 
 		// Get the angle of projectile
-		// TODO: APPLY SLIGHTLY RANDOM AIM
-		Vector3 projectAngle = shotOrigin.forward;
+		Vector3 projectAngle;
+		if (transform.tag == "Player")
+			projectAngle = VectorToCrosshair();
+		else
+			projectAngle = shotOrigin.forward;
+		
 		projectAngle.Normalize ();
 
+		// Apply random bullet spread
+		ApplySpread(ref projectAngle);
+
 		// Raycast from the muzzle to see what the gun hit
-		RaycastHit hit;
+		RaycastHit hit = new RaycastHit();
 		Physics.Raycast (new Ray (shotOrigin.position, projectAngle), out hit);
+		Debug.DrawRay (shotOrigin.position, projectAngle, Color.cyan, 1.0f);
 
 		/* Next we need to get the health script of the object hit. However, it's possible
 		 * the ray hit a child of the object with health (eg hit an arm, but the body has the health script).
-		 * To achieve this, we use a custom function which will return all instances of a component
-		 * contained by a transform or any parent in its family tree.
+		 * To achieve this, we use a custom function which will return the most immediate instance
+		 * of a component contained by a transform or any parent in its family tree.
 		 */
-		if (hit.collider)
+		if ( Physics.Raycast (new Ray (shotOrigin.position, projectAngle)) )
 		{
-			List<Health> healthComponents = hit.transform.GetComponentsAscending<Health>();
-			
+			Health healthComponent = hit.transform.GetComponentAscendingImmediate<Health>(true);
+
 			// Did the ray hit something that has health?
-			Debug.Log(healthComponents.Count);
-			if (healthComponents.Count > 0)
+			if (healthComponent)
 			{
-				foreach (Health h in healthComponents)
-				{
-					h.ApplyDamage(Damage);
-					//Debug.Log("Applying damage to: " + h.transform.name);
-				}
+				healthComponent.ApplyDamage(Damage);
+				//Debug.Log("Applying damage to: " + healthComponent.transform.name);
 			}
 		}
 
@@ -294,9 +385,7 @@ public class Weapon_Base_Script : MBAction {
 
 		// Show muzzle flash
 		if (muzzleFlash) 
-		{
-			muzzleFlash.Play();
-		}
+			muzzleFlash.Emit(7);
 	}
 
 	private void ShootType_Launcher ()

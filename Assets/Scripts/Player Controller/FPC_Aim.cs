@@ -27,6 +27,8 @@ public class FPC_Aim : MonoBehaviour {
 	void Start () 
 	{
 		//TODO: Apply initial rotation so the player spawns facing the same direction as it is in the editor
+		smoothV.x = transform.rotation.eulerAngles.y;
+		mouseMovement.x = transform.rotation.eulerAngles.y;
 	}
 
 	// Update is called once per frame
