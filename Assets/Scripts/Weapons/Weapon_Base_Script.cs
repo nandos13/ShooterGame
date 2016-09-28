@@ -8,8 +8,6 @@ using System.Collections.Generic;
  * Several different weapon types allow for different gunplay.
  */
 
-public enum WEAPON_TYPE { Bullet, Launcher, Pulse, Beam }			// Different weapon types for diverse gunplay
-
 //TODO: FINISH ALL WEAPON TYPES AND IMPLEMENT RELOADING
 //TODO: DISPLAY TRACER FOR RAYCAST SHOTS??? MAYBE??
 
@@ -89,17 +87,36 @@ public class Weapon_Base_Script : MBAction {
 
 					for (uint i = 0; i < bulletPoolSize; i++)
 					{
+						//TODO: THIS NEEDS TO BE OPTIMIZED ONCE IT IS FINISHED
 						GameObject bullet = Instantiate (bulletProjectile) as GameObject;
 						bullet.hideFlags = HideFlags.HideInHierarchy;
 						bullet.SetActive (false);
+
+						// Get collision handler
+						On_Collision collisionHandler = bullet.GetComponent<On_Collision>();
+						if ( !(bullet.GetComponent<On_Collision>()) )
+						{
+							bullet.AddComponent<On_Collision> ();
+							collisionHandler = bullet.GetComponent<On_Collision> ();
+						}
+
 						// Add despawn conditions
 						bullet.AddComponent<Disable_After_Seconds> ();
 						bullet.GetComponent<Disable_After_Seconds> ().Delay = DespawnBulletAfter;
-						bullet.AddComponent<Disable_On_Collision> ();
-						foreach (Transform t in ownerTransforms)
-						{
-							bullet.GetComponent<Disable_On_Collision> ().IgnoreCollisions.Add(t);
-						}
+
+						bullet.AddComponent<Disable> ();
+						collisionHandler.Actions.Add(bullet.GetComponent<Disable>());
+
+						// Add damage to the bullet
+						bullet.AddComponent<ApplyDamage> ();
+						bullet.GetComponent<ApplyDamage> ().Damage = Damage;
+						collisionHandler.Actions.Add(bullet.GetComponent<ApplyDamage>());
+
+						// Set collision-ignore-tags
+						collisionHandler.CollisionTags.Add(transform.tag);
+						collisionHandler.CollisionTags.Add("Bullet");
+
+						// Add bullet to the pool
 						bulletPool.Add(bullet);
 					}
 				}
@@ -175,7 +192,8 @@ public class Weapon_Base_Script : MBAction {
 
 	private Vector3 VectorToCrosshair ()
 	{
-		/* TODO WRITE DESCRIPTION HERE
+		/* Calculates and returns the vector between the shot origin and
+		 * the surface under the crosshair (in the center of the screen).
 		 */
 
 		// Raycast forward from the center of the camera
@@ -192,7 +210,6 @@ public class Weapon_Base_Script : MBAction {
 			{
 				aimingCollides = true;
 				hit = h;
-				Debug.Log("Hit a point");
 				break;
 			}
 		}
@@ -210,6 +227,16 @@ public class Weapon_Base_Script : MBAction {
 			Vector3 result = ray.direction.normalized * 1000.0f;
 			return result;
 		}
+	}
+
+	private void ApplySpread(ref Vector3 vec)
+	{
+		/* Applies bullet spread to a Vector3
+		 */
+
+		vec.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		vec.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		vec.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
 	}
 
 	private void ShootType_Bullet ()
@@ -270,9 +297,7 @@ public class Weapon_Base_Script : MBAction {
 		projectAngle.Normalize ();
 
 		// Apply random bullet spread
-		projectAngle.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		ApplySpread(ref projectAngle);
 
 		// Apply bullet projectile force
 		projectAngle *= bulletForce;
@@ -310,7 +335,7 @@ public class Weapon_Base_Script : MBAction {
 
 		// Show muzzle flash
 		if (muzzleFlash)
-			muzzleFlash.Play();
+			muzzleFlash.Emit(7);
 	}
 
 	private void ShootType_Bullet_Ray ()
@@ -331,9 +356,7 @@ public class Weapon_Base_Script : MBAction {
 		projectAngle.Normalize ();
 
 		// Apply random bullet spread
-		projectAngle.x += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.y += Random.Range (-Spread / 40.0f, Spread / 40.0f);
-		projectAngle.z += Random.Range (-Spread / 40.0f, Spread / 40.0f);
+		ApplySpread(ref projectAngle);
 
 		// Raycast from the muzzle to see what the gun hit
 		RaycastHit hit = new RaycastHit();
@@ -353,7 +376,7 @@ public class Weapon_Base_Script : MBAction {
 			if (healthComponent)
 			{
 				healthComponent.ApplyDamage(Damage);
-				Debug.Log("Applying damage to: " + healthComponent.transform.name);
+				//Debug.Log("Applying damage to: " + healthComponent.transform.name);
 			}
 		}
 
@@ -362,9 +385,7 @@ public class Weapon_Base_Script : MBAction {
 
 		// Show muzzle flash
 		if (muzzleFlash) 
-		{
-			muzzleFlash.Play();
-		}
+			muzzleFlash.Emit(7);
 	}
 
 	private void ShootType_Launcher ()

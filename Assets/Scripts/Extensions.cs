@@ -135,13 +135,33 @@ public static class Extensions {
 		// Check all children through family tree
 		if (target.transform.childCount > 0)
 		{
-			RecursiveAddChildComponents(target, ref components);
+			RecursiveAddChildComponents(target, ref components, false);
 		}
 
 		return components;
 	}
 
-	private static void RecursiveAddChildComponents<T> (Transform target, ref List<T> list)
+	public static List<T> GetComponentsDescendingImmediate<T> (this Transform target, bool includeSelf)
+	{
+		/* Returns the components of type T that exists in the most immediate
+		 * child in target's child heirarchy containing a T-component.
+		 */
+		List<T> components = new List<T>();
+
+		// Check target transform
+		if (includeSelf)
+			ListAddGetComponents (target, ref components);
+
+		// Check all children through family tree
+		if (target.transform.childCount > 0)
+		{
+			RecursiveAddChildComponents(target, ref components, true);
+		}
+
+		return components;
+	}
+
+	private static void RecursiveAddChildComponents<T> (Transform target, ref List<T> list, bool exitOnFind)
 	{
 		/* Recursively searches through all children of a transform and adds
 		 * any any contained components of type T to a list.
@@ -161,7 +181,22 @@ public static class Extensions {
 			foreach (T comp in targetsComponents)
 				list.Add(comp);
 
-			RecursiveAddChildComponents(targetChild, ref list);
+			// Does the function stop looking through one tree deviation if something is found?
+			if (!exitOnFind)
+				RecursiveAddChildComponents(targetChild, ref list, true);
 		}
+	}
+
+	public static void ApplyDamage (this Transform target, float dmg)
+	{
+		/* Finds the first instance of a health script on the target
+		 * transform or one of its parents, and applies damage.
+		 */
+
+		Health h = target.GetComponentAscendingImmediate<Health>(true);
+
+		// Was a health script found?
+		if (h)
+			h.ApplyDamage(dmg);
 	}
 }
