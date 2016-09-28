@@ -112,6 +112,11 @@ public class Weapon_Base_Script : MBAction {
 						bullet.GetComponent<ApplyDamage> ().Damage = Damage;
 						collisionHandler.Actions.Add(bullet.GetComponent<ApplyDamage>());
 
+						// TEMPORARY: EXPLOSIONS
+						bullet.AddComponent<Explosion> ();
+						bullet.GetComponent<Explosion> ().CollisionTags.Add(transform.tag);
+						collisionHandler.Actions.Add(bullet.GetComponent<Explosion>());
+
 						// Set collision-ignore-tags
 						collisionHandler.CollisionTags.Add(transform.tag);
 						collisionHandler.CollisionTags.Add("Bullet");
