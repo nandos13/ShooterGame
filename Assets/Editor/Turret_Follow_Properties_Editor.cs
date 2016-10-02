@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 
 /* DESCRIPTION:
@@ -28,13 +29,24 @@ public class Turret_Follow_Properties_Editor : Editor {
 		{
 			for (int i = 0; i < script.SeeThroughTags.Count; i++)
 			{
-				script.SeeThroughTags[i] = EditorGUILayout.TextField(script.SeeThroughTags[i]);
+				EditorGUILayout.BeginHorizontal();
+
+				if (GUILayout.Button("-", GUILayout.Width(23)))
+					script.SeeThroughTags.RemoveAt(i);
+				else
+					script.SeeThroughTags[i] = EditorGUILayout.TextField(script.SeeThroughTags[i]);
+
+				EditorGUILayout.EndHorizontal();
 			}
-			if (GUILayout.Button("+"))
+			if (script.SeeThroughTags.Count > 0)
+				EditorGUILayout.Space();
+			if (GUILayout.Button("+", GUILayout.Width(23)))
 			{
 				script.SeeThroughTags.Add("");
 			}
 			EditorGUILayout.Space();
+
+
 		}
 
 		script.ShootDelayOnTargetAcquire = EditorGUILayout.Slider ("Shoot Delay:", script.ShootDelayOnTargetAcquire, 0.0f, 3.0f);

@@ -280,8 +280,8 @@ public class Weapon_Base_Script : MBAction {
 						ShootType_Bullet_ObjectProjectile ();
 
 					// Play shot sound
-					//int soundIndex = Random.Range(0, shotSound.Count);
-					//float soundVol = Random.Range(0.9f, 1.0f);
+					int soundIndex = Random.Range(0, shotSound.Count);
+					float soundVol = Random.Range(0.9f, 1.0f);
 					//if (shotSound[soundIndex] != null)
 					//	audioSrc.PlayOneShot(shotSound[soundIndex], soundVol);
 				} 

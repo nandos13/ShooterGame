@@ -18,21 +18,23 @@ public class Weapon_Properties_Editor : Editor {
 	{
 		Weapon_Base_Script script = (Weapon_Base_Script)target;
 
+		/* GENERAL SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("General:", EditorStyles.boldLabel);
 		script.type = (WEAPON_TYPE)EditorGUILayout.EnumPopup ("Weapon Type:", script.type);
 		script.shotOrigin = (Transform)EditorGUILayout.ObjectField ("Shot Origin Point:", script.shotOrigin, typeof(Transform), true);
 		script.audioSrc = (AudioSource)EditorGUILayout.ObjectField ("Audio Source:", script.audioSrc, typeof(AudioSource), true);
 
+		/* VISUAL SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("Visual:", EditorStyles.boldLabel);
 		script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField ("Muzzle Flash:", script.muzzleFlash, typeof(ParticleSystem), true);
 		script.hitEffect = (ParticleSystem)EditorGUILayout.ObjectField ("Hit Effect:", script.hitEffect, typeof(ParticleSystem), true);
 		script.particlesEmitted = (uint)EditorGUILayout.Slider ("Particles Emitted:", script.particlesEmitted, 0, 100);
 
+		/* AUDIO SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("Audio:", EditorStyles.boldLabel);
-
 		showSounds = EditorGUILayout.Foldout(showSounds, "Fire Sounds");
 		if (showSounds)
 		{
@@ -56,6 +58,7 @@ public class Weapon_Properties_Editor : Editor {
 			EditorGUILayout.Space();
 		}
 
+		/* WEAPON SPECIFIC SETTINGS */
 		EditorGUILayout.Space();
 		// Show the correct properties based on Weapon Type
 		switch (script.type) 
@@ -110,8 +113,9 @@ public class Weapon_Properties_Editor : Editor {
 			}
 		}
 
+		/* STANDARD SETTINGS */
 		// Show general variables
-		EditorGUILayout.LabelField ("Gun Properties:", EditorStyles.boldLabel);
+		EditorGUILayout.LabelField ("Standard Gun Properties:", EditorStyles.boldLabel);
 
 		// Show ammo count variables (does not apply to beam weapons)
 		if (script.type != WEAPON_TYPE.Beam) 
