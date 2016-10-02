@@ -22,7 +22,6 @@ public class Turret_FollowPlayer : MonoBehaviour {
 	public float VisionAngle;				// Angle in degrees the turret can see the player
 
 	public List<string>SeeThroughTags;		// A list of object tags the turret has vision through
-	public bool showTags = false;			// Used in the inspector to track state of Foldout element
 
 	public float TrackingRange;				// The view distance of the turret
 

@@ -94,8 +94,11 @@ public class Health : MonoBehaviour {
 		immuneCurHighestDmg = 0;
 	}
 
-	private void doDamage (float dmg)
+	private void doDamage (float dmg, bool relayDamage = true)
 	{
+		/* Directly applies damage to an object. All other classes should call the
+		 * ApplyDamage method which then calls this method with proper values.
+		 */
 		currentHealth -= dmg;
 		//Debug.Log(transform.name + " took " + dmg + " damage. Health now at " + currentHealth);
 
@@ -116,7 +119,7 @@ public class Health : MonoBehaviour {
 			Alive = false;
 
 		// Should parent health objects also take damage?
-		if (DamageParents)
+		if (DamageParents && relayDamage)
 		{
 			// Use custom function to get health script of parents in the family tree heirarchy 
 			Health parentHealthComponent = transform.GetComponentAscendingImmediate<Health>(false);
@@ -128,8 +131,10 @@ public class Health : MonoBehaviour {
 		}
 	}
 
-	public void ApplyDamage (float dmg)
+	public void ApplyDamage (float dmg, bool relayDamage = true)
 	{
+		/* Performs checks and calculates how much damage the object should take.
+		 */
 		// Is the object alive?
 		if (alive) 
 		{
@@ -146,7 +151,7 @@ public class Health : MonoBehaviour {
 				// Is this damage higher than the current highest while immune?
 				if (dmg > immuneCurHighestDmg)
 				{
-					doDamage(dmg - immuneCurHighestDmg);
+					doDamage(dmg - immuneCurHighestDmg, relayDamage);
 					immuneCurHighestDmg = dmg;
 				}
 			}
@@ -157,7 +162,7 @@ public class Health : MonoBehaviour {
 				immuneCurHighestDmg = dmg;
 
 				// Apply the damage
-				doDamage(dmg);
+				doDamage(dmg, relayDamage);
 			}
 		}
 	}

@@ -10,6 +10,8 @@ using UnityEditor;
 [CustomEditor(typeof(Turret_FollowPlayer))]
 public class Turret_Follow_Properties_Editor : Editor {
 
+	public bool showTags = false;
+
 	public override void OnInspectorGUI ()
 	{
 		Turret_FollowPlayer script = (Turret_FollowPlayer)target;
@@ -21,8 +23,8 @@ public class Turret_Follow_Properties_Editor : Editor {
 		script.muzzleEnd = (Transform)EditorGUILayout.ObjectField ("Shot Origin Point:", script.muzzleEnd, typeof(Transform), true);
 		script.VisionAngle = EditorGUILayout.Slider ("Vision Angle:", script.VisionAngle, 40.0f, 90.0f);
 
-		script.showTags = EditorGUILayout.Foldout(script.showTags, "See Through Tags");
-		if (script.showTags)
+		showTags = EditorGUILayout.Foldout(showTags, "See Through Tags");
+		if (showTags)
 		{
 			for (int i = 0; i < script.SeeThroughTags.Count; i++)
 			{

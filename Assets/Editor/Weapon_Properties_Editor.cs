@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 
 /* DESCRIPTION:
@@ -11,28 +12,51 @@ using UnityEditor;
 [CustomEditor(typeof(Weapon_Base_Script))]
 public class Weapon_Properties_Editor : Editor {
 
+	public bool showSounds = false;
+
 	public override void OnInspectorGUI ()
 	{
 		Weapon_Base_Script script = (Weapon_Base_Script)target;
 
 		EditorGUILayout.Space();
+		EditorGUILayout.LabelField ("General:", EditorStyles.boldLabel);
+		script.type = (WEAPON_TYPE)EditorGUILayout.EnumPopup ("Weapon Type:", script.type);
 		script.shotOrigin = (Transform)EditorGUILayout.ObjectField ("Shot Origin Point:", script.shotOrigin, typeof(Transform), true);
-		EditorGUILayout.HelpBox ("All projectiles are fired in the forward position (blue axis). Please ensure the transform is rotated appropriately", MessageType.Info);
+		script.audioSrc = (AudioSource)EditorGUILayout.ObjectField ("Audio Source:", script.audioSrc, typeof(AudioSource), true);
 
 		EditorGUILayout.Space();
+		EditorGUILayout.LabelField ("Visual:", EditorStyles.boldLabel);
 		script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField ("Muzzle Flash:", script.muzzleFlash, typeof(ParticleSystem), true);
-
-		EditorGUILayout.Space();
 		script.hitEffect = (ParticleSystem)EditorGUILayout.ObjectField ("Hit Effect:", script.hitEffect, typeof(ParticleSystem), true);
-
-		EditorGUILayout.Space();
 		script.particlesEmitted = (uint)EditorGUILayout.Slider ("Particles Emitted:", script.particlesEmitted, 0, 100);
 
 		EditorGUILayout.Space();
-		script.type = (WEAPON_TYPE)EditorGUILayout.EnumPopup ("Weapon Type:", script.type);
+		EditorGUILayout.LabelField ("Audio:", EditorStyles.boldLabel);
+
+		showSounds = EditorGUILayout.Foldout(showSounds, "Fire Sounds");
+		if (showSounds)
+		{
+			for (int i = 0; i < script.shotSound.Count; i++)
+			{
+				EditorGUILayout.BeginHorizontal();
+
+				if (GUILayout.Button("-", GUILayout.Width(23)))
+					script.shotSound.RemoveAt(i);
+				else
+					script.shotSound[i] = (AudioClip)EditorGUILayout.ObjectField ("", script.shotSound[i], typeof(AudioClip), false);
+				
+				EditorGUILayout.EndHorizontal();
+			}
+			if (script.shotSound.Count > 0)
+				EditorGUILayout.Space();
+			if (GUILayout.Button("+", GUILayout.Width(23)))
+			{
+				script.shotSound.Add(new AudioClip());
+			}
+			EditorGUILayout.Space();
+		}
 
 		EditorGUILayout.Space();
-
 		// Show the correct properties based on Weapon Type
 		switch (script.type) 
 		{
@@ -87,7 +111,7 @@ public class Weapon_Properties_Editor : Editor {
 		}
 
 		// Show general variables
-		EditorGUILayout.LabelField ("General Gun Properties:", EditorStyles.boldLabel);
+		EditorGUILayout.LabelField ("Gun Properties:", EditorStyles.boldLabel);
 
 		// Show ammo count variables (does not apply to beam weapons)
 		if (script.type != WEAPON_TYPE.Beam) 

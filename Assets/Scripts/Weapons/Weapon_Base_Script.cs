@@ -16,9 +16,13 @@ public class Weapon_Base_Script : MBAction {
 	/* GENERAL VARIABLES */
 	public WEAPON_TYPE type = WEAPON_TYPE.Bullet;	// Type of weapon
 	public Transform shotOrigin;			// Transform where the bullet should come out
+	//TODO: FIX PARTICLE SYSTEM USAGE TO EMIT PARTICLES AND THEN DESPAWN
 	public ParticleSystem muzzleFlash;		// Particle system played at the end of the barrel when a shot is fired
 	public ParticleSystem hitEffect;		// Particle system played where the projectile hits
 	public uint particlesEmitted;			// Number of particles to emit on hit
+
+	public AudioSource audioSrc;			// Audio Source
+	public List<AudioClip> shotSound = new List<AudioClip>();	// Sounds that can be played when the gun is fired
 
 	public bool BottomlessClip = false;		// Will the weapon ever need to reload?
 	public uint ClipSize = 30;				// Ammo in a single clip
@@ -117,6 +121,7 @@ public class Weapon_Base_Script : MBAction {
 						// TEMPORARY: EXPLOSIONS
 						bullet.AddComponent<Explosion> ();
 						bullet.GetComponent<Explosion> ().CollisionTags.Add(transform.tag);
+						bullet.GetComponent<Explosion> ().Damage = Damage;
 						collisionHandler.Actions.Add(bullet.GetComponent<Explosion>());
 						//TODO ADD HIT PARTICLE EFFECT
 
@@ -273,6 +278,12 @@ public class Weapon_Base_Script : MBAction {
 						ShootType_Bullet_Ray ();
 					else
 						ShootType_Bullet_ObjectProjectile ();
+
+					// Play shot sound
+					//int soundIndex = Random.Range(0, shotSound.Count);
+					//float soundVol = Random.Range(0.9f, 1.0f);
+					//if (shotSound[soundIndex] != null)
+					//	audioSrc.PlayOneShot(shotSound[soundIndex], soundVol);
 				} 
 				else 
 				{
