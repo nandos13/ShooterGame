@@ -7,4 +7,4 @@
 public enum COLLISION_MODE { HitSelected, IgnoreSelected }
 
 // Type of weapon, used in weapon script
-public enum WEAPON_TYPE { Bullet, Launcher, Pulse, Beam }
+public enum WEAPON_TYPE { Default, Bullet, Launcher, Pulse, Beam }

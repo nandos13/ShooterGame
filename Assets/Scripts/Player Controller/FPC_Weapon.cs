@@ -6,18 +6,17 @@ using System.Collections.Generic;
  * 
  */
 
-[RequireComponent(typeof(Weapon_Base_Script))]
 public class FPC_Weapon : MonoBehaviour 
 {
 
 	public LayerMask layers;
-	private Weapon_Base_Script weapon;
+	private WeaponBase weapon;
 	private bool weaponUp = false;			// Track if the weapon is up while against a wall
 
 	// Use this for initialization
 	void Start () 
 	{
-		weapon = GetComponent<Weapon_Base_Script> ();
+		weapon = GetComponent<WeaponBase> ();
 	}
 	
 	// Update is called once per frame
