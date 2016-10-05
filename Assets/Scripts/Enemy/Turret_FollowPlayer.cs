@@ -13,7 +13,6 @@ using System.Collections.Generic;
  * Maybe use a Coroutine to achieve this
  */
 
-[RequireComponent (typeof(Weapon_Base_Script))]
 public class Turret_FollowPlayer : MonoBehaviour {
 
 	public Transform muzzleEnd;				// The location 
@@ -176,7 +175,7 @@ public class Turret_FollowPlayer : MonoBehaviour {
 		if (state == BehaviourState.Firing) 
 		{
 			// Shoot weapon
-			Weapon_Base_Script turretGun = GetComponent<Weapon_Base_Script>();
+			WeaponBase turretGun = GetComponent<WeaponBase>();
 			turretGun.Execute ();
 		}
 	}

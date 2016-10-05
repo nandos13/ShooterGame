@@ -95,7 +95,7 @@ public class LauncherWeaponInspector : Editor {
 			else
 				script.missileProjectile = proj;
 		}
-		script.muzzleVelocity = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.muzzleVelocity, 1, 20);
+		script.muzzleVelocity = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.muzzleVelocity, 20, 100);
 		script.despawnAfter = EditorGUILayout.Slider ("Despawn Time:", script.despawnAfter, 1.0f, 10.0f);
 		script.projectileGravity = EditorGUILayout.Slider ("Gravity:", script.projectileGravity, 0.0f, 100.0f);
 		script.projectileDrag = EditorGUILayout.Slider ("Drag:", script.projectileDrag, 0.0f, 10.0f);

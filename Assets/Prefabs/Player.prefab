@@ -44,10 +44,11 @@ GameObject:
   - 114: {fileID: 114000010687968070}
   - 114: {fileID: 114000011898252764}
   - 114: {fileID: 114000011241288938}
-  - 114: {fileID: 114000011553360304}
   - 114: {fileID: 114000013687865020}
+  - 114: {fileID: 114000011553360304}
   - 114: {fileID: 114000012990187520}
   - 82: {fileID: 82000014252880662}
+  - 114: {fileID: 114000011747712424}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -488,6 +489,43 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 4294965503
+  Guns:
+  - {fileID: 114000012990187520}
+--- !u!114 &114000011747712424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011375305822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ad1e91fc92b5646b402822fc0f5430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotOrigin: {fileID: 4000011147005636}
+  bottomlessClip: 1
+  clipSize: 30
+  unlimitedAmmo: 0
+  startingAmmo: 100
+  damage: 10
+  speedRPM: 60
+  speed: 1
+  spread: 2.33
+  muzzleFlash: {fileID: 198000013305437330}
+  muzzleParticles: 2
+  hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
+    type: 2}
+  hitParticles: 10
+  audioSrc: {fileID: 82000014252880662}
+  shotSound: []
+  muzzleVelocity: 100
+  missileProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
+    type: 2}
+  despawnAfter: 5
+  projectileGravity: 61.6
+  projectileDrag: 10
+  projectileAngularDrag: 0
+  ExplosiveForce: 5
 --- !u!114 &114000011898252764
 MonoBehaviour:
   m_ObjectHideFlags: 1

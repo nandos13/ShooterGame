@@ -17,6 +17,6 @@ public class ApplyGravity : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		if (rb)
-			rb.AddForce (Vector3.down * gravity, ForceMode.VelocityChange);
+			rb.AddForce (Vector3.down * gravity * Time.fixedDeltaTime, ForceMode.VelocityChange);
 	}
 }

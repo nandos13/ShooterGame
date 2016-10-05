@@ -10,25 +10,28 @@ public class FPC_Weapon : MonoBehaviour
 {
 
 	public LayerMask layers;
-	private WeaponBase weapon;
-	private bool weaponUp = false;			// Track if the weapon is up while against a wall
+	public List<WeaponBase> Guns = new List<WeaponBase>();		// A list of all the weapons held by the player
+	private WeaponBase currentWeapon;
+	private bool weaponUp = false;								// Track if the weapon is up while against a wall
 
 	// Use this for initialization
 	void Start () 
 	{
-		weapon = GetComponent<WeaponBase> ();
+		//currentWeapon = GetComponent<WeaponBase> ();
+		if (Guns.Count > 0)
+			currentWeapon = Guns[0];
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (weapon)
+		if (currentWeapon)
 		{
-			if (weapon.shotOrigin)
+			if (currentWeapon.shotOrigin)
 			{
 				// Should the weapon be up?
 				RaycastHit hit = new RaycastHit();
-				Physics.Linecast (weapon.shotOrigin.position, transform.position, out hit, layers);
+				Physics.Linecast (currentWeapon.shotOrigin.position, transform.position, out hit, layers);
 
 				if (hit.collider)
 				{
@@ -52,7 +55,7 @@ public class FPC_Weapon : MonoBehaviour
 					// Has the player tried to fire?
 					if (Input.GetAxisRaw ("Fire1") > 0) 
 					{
-						weapon.Execute ();
+						currentWeapon.Execute ();
 					}
 				}
 			}
