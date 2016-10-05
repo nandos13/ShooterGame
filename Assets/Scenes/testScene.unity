@@ -3313,6 +3313,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82000014252880662, guid: 1286a351dff93fe4e93008d7616c4dac,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
   m_IsPrefabParent: 0
@@ -3424,10 +3429,10 @@ GameObject:
   - 65: {fileID: 1021239253}
   - 23: {fileID: 1021239252}
   - 114: {fileID: 1021239256}
-  - 114: {fileID: 1021239258}
   - 114: {fileID: 1021239260}
   - 114: {fileID: 1021239257}
   - 82: {fileID: 1021239259}
+  - 114: {fileID: 1021239261}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -3532,27 +3537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c5b75782dd86941862b4c6815b6b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1021239258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1021239251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728253889fc0a7a4c9b1aeadde4c31df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleEnd: {fileID: 586929090}
-  rotationPiece: {fileID: 510566946}
-  VisionAngle: 90
-  SeeThroughTags:
-  - Bullet
-  TrackingRange: 50
-  MinClampAngle: 63.8
-  MaxClampAngle: 59.2
-  ShootDelayOnTargetAcquire: 1.12
-  rotateSpeed: 2
 --- !u!82 &1021239259
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3659,6 +3643,26 @@ MonoBehaviour:
   bulletForce: 100
   bulletProjectile: {fileID: 0}
   despawnAfter: 2
+--- !u!114 &1021239261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021239251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33efa2cb037168d468be726f2ca4c9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationPiece: {fileID: 510566946}
+  rotateSpeed: 2
+  visionAngle: 90
+  seeThroughTags:
+  - Bullet
+  trackingRange: 50
+  clampAngleDown: 50
+  clampAngleUp: 50
+  shootDelay: 1.12
 --- !u!1 &1024122587
 GameObject:
   m_ObjectHideFlags: 0

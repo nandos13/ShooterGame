@@ -103,7 +103,6 @@ public class LauncherWeapon : WeaponBase {
 
 			// Set collision-ignore-tags
 			collisionHandler.CollisionTags.Add(transform.tag);
-			collisionHandler.CollisionTags.Add("Bullet");
 
 			// Add bullet to the pool
 			missilePool.Add(missile);

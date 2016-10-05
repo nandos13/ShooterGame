@@ -13,7 +13,7 @@ public abstract class WeaponBase : MBAction
 
 	/* GENERAL VARIABLES */
 
-	protected WEAPON_TYPE type = WEAPON_TYPE.Default;						// Type of weapon.
+	protected WEAPON_TYPE type;												// Type of weapon.
 	public Transform shotOrigin;											// Transform at the end of the muzzle where projectiles start
 	public bool bottomlessClip = false;										// Will the gun ever need to be reloaded?
 	public uint clipSize = 30;												// Ammo in a single clip

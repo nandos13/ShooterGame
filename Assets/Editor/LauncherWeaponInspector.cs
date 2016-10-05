@@ -18,25 +18,33 @@ public class LauncherWeaponInspector : Editor {
 	public override void OnInspectorGUI ()
 	{
 		LauncherWeapon script = (LauncherWeapon)target;
+		GUIContent tooltip = new GUIContent ("", "");
 
 		/* GENERAL SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("General:", EditorStyles.boldLabel);
-		script.shotOrigin = (Transform)EditorGUILayout.ObjectField ("Shot Origin Point:", script.shotOrigin, typeof(Transform), true);
-		script.audioSrc = (AudioSource)EditorGUILayout.ObjectField ("Audio Source:", script.audioSrc, typeof(AudioSource), true);
+		tooltip = new GUIContent ("Origin:", "Transform at the end of the muzzle where projectiles originate from");
+		script.shotOrigin = (Transform)EditorGUILayout.ObjectField (tooltip, script.shotOrigin, typeof(Transform), true);
+		tooltip = new GUIContent ("Audio Source:", "An audio source to handle gun sounds");
+		script.audioSrc = (AudioSource)EditorGUILayout.ObjectField (tooltip, script.audioSrc, typeof(AudioSource), true);
 
 		/* VISUAL SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("Visual:", EditorStyles.boldLabel);
-		script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField ("Muzzle Flash:", script.muzzleFlash, typeof(ParticleSystem), true);
-		script.muzzleParticles = (uint)EditorGUILayout.Slider ("Muzzle Emission:", script.muzzleParticles, 0, 100);
-		script.hitEffect = (ParticleSystem)EditorGUILayout.ObjectField ("Hit Effect:", script.hitEffect, typeof(ParticleSystem), true);
-		script.hitParticles = (uint)EditorGUILayout.Slider ("Hit Emission:", script.hitParticles, 0, 100);
+		tooltip = new GUIContent ("Muzzle Flash:", "Particle System at the end of the muzzle. Played when the gun is fired");
+		script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField (tooltip, script.muzzleFlash, typeof(ParticleSystem), true);
+		tooltip = new GUIContent ("Muzzle Emission:", "Number of muzzle particles emitted when the gun is shot");
+		script.muzzleParticles = (uint)EditorGUILayout.Slider (tooltip, script.muzzleParticles, 0, 100);
+		tooltip = new GUIContent ("Hit Effect:", "Prefab Particle System to be played where the bullet hits");
+		script.hitEffect = (ParticleSystem)EditorGUILayout.ObjectField (tooltip, script.hitEffect, typeof(ParticleSystem), true);
+		tooltip = new GUIContent ("Hit Emission:", "Number of hit particles emitted when the bullet collides");
+		script.hitParticles = (uint)EditorGUILayout.Slider (tooltip, script.hitParticles, 0, 100);
 
 		/* AUDIO SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("Audio:", EditorStyles.boldLabel);
-		showSoundList = EditorGUILayout.Foldout(showSoundList, "Fire Sounds");
+		tooltip = new GUIContent ("Fire sounds", "A list of sounds that can be played when the gun is fired. One will be picked at random");
+		showSoundList = EditorGUILayout.Foldout(showSoundList, tooltip);
 		if (showSoundList)
 		{
 			for (int i = 0; i < script.shotSound.Count; i++)
@@ -61,28 +69,36 @@ public class LauncherWeaponInspector : Editor {
 
 		/* GUN SETTINGS */
 		EditorGUILayout.LabelField ("Standard Properties:", EditorStyles.boldLabel);
-		script.bottomlessClip = EditorGUILayout.Toggle ("Bottomless Clip:", script.bottomlessClip);
+		tooltip = new GUIContent ("Bottomless Clip:", "Toggle: Will the currently loaded clip ever run out of ammo or fire forever?");
+		script.bottomlessClip = EditorGUILayout.Toggle (tooltip, script.bottomlessClip);
 		// Clip size and maximum ammo variables only show if the weapon is not bottomless clip
 		if (!script.bottomlessClip) 
 		{
-			script.clipSize = (uint)EditorGUILayout.Slider ("   Clip Size:", script.clipSize, 1, 300);
-			script.unlimitedAmmo = EditorGUILayout.Toggle ("   Unlimited Ammo:", script.unlimitedAmmo);
+			tooltip = new GUIContent ("   Clip Size:", "Size of a single clip");
+			script.clipSize = (uint)EditorGUILayout.Slider (tooltip, script.clipSize, 1, 300);
+			tooltip = new GUIContent ("   Unlimited Ammo:", "Toggle: Will a new clip be used when the gun is reloaded?");
+			script.unlimitedAmmo = EditorGUILayout.Toggle (tooltip, script.unlimitedAmmo);
 
 			// Starting ammo variable is only shown if the weapon does not have unlimited ammo
 			if (!script.unlimitedAmmo) 
 			{
-				script.startingAmmo = (uint)EditorGUILayout.Slider ("      Starting Ammo:", script.startingAmmo, 1, 500);
+				tooltip = new GUIContent ("      Starting Ammo:", "The amount of ammo the gun will start with. This includes currently loaded ammo");
+				script.startingAmmo = (uint)EditorGUILayout.Slider (tooltip, script.startingAmmo, 1, 500);
 			}
 		}
-		script.damage = EditorGUILayout.Slider ("Damage:", script.damage, 0.1f, 300.0f);
-		script.speedRPM = EditorGUILayout.Slider ("Shot Speed (rpm):", script.speedRPM, 20.0f, 1500.0f);
+		tooltip = new GUIContent ("Damage:", "The amount of damage a single bullet will inflict on collision");
+		script.damage = EditorGUILayout.Slider (tooltip, script.damage, 0.1f, 300.0f);
+		tooltip = new GUIContent ("Shot Speed (rpm)", "Speed or the gun in Rounds Per Minute");
+		script.speedRPM = EditorGUILayout.Slider (tooltip, script.speedRPM, 20.0f, 1500.0f);
 		script.speed = script.speedRPM / 60;
-		script.spread = EditorGUILayout.Slider ("Spread:", script.spread, 0.0f, 10.0f);
+		tooltip = new GUIContent ("Spread:", "Accuracy of shots, where 0 = completely accurate");
+		script.spread = EditorGUILayout.Slider (tooltip, script.spread, 0.0f, 10.0f);
 		EditorGUILayout.Space();
 
 		/* BULLET WEAPON SETTINGS */
 		EditorGUILayout.LabelField ("Launcher Weapon Specifics:", EditorStyles.boldLabel);
-		GameObject proj = (GameObject)EditorGUILayout.ObjectField ("Projectile:", script.missileProjectile, typeof(Object), false);
+		tooltip = new GUIContent ("Projectile:", "Prefab GameObject to be fired out of the gun");
+		GameObject proj = (GameObject)EditorGUILayout.ObjectField (tooltip, script.missileProjectile, typeof(Object), false);
 		// Do not allow a prefab without a rigidbody
 		if (proj)
 		{
@@ -95,11 +111,16 @@ public class LauncherWeaponInspector : Editor {
 			else
 				script.missileProjectile = proj;
 		}
-		script.muzzleVelocity = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.muzzleVelocity, 20, 100);
-		script.despawnAfter = EditorGUILayout.Slider ("Despawn Time:", script.despawnAfter, 1.0f, 10.0f);
-		script.projectileGravity = EditorGUILayout.Slider ("Gravity:", script.projectileGravity, 0.0f, 100.0f);
-		script.projectileDrag = EditorGUILayout.Slider ("Drag:", script.projectileDrag, 0.0f, 10.0f);
-		script.projectileAngularDrag = EditorGUILayout.Slider ("Angular Drag:", script.projectileAngularDrag, 0.0f, 10.0f);
+		tooltip = new GUIContent ("Muzzle Velocity:", "Initial Velocity of the projectile when being fired");
+		script.muzzleVelocity = EditorGUILayout.IntSlider (tooltip, script.muzzleVelocity, 20, 100);
+		tooltip = new GUIContent ("Despawn Time:", "Time in seconds the projectile will stay alive for before despawning");
+		script.despawnAfter = EditorGUILayout.Slider (tooltip, script.despawnAfter, 1.0f, 10.0f);
+		tooltip = new GUIContent ("Gravity:", "Custom gravity amount to be applied to the projectile");
+		script.projectileGravity = EditorGUILayout.Slider (tooltip, script.projectileGravity, 0.0f, 100.0f);
+		tooltip = new GUIContent ("Drag:", "Amount of drag on the projectile's rigidbody");
+		script.projectileDrag = EditorGUILayout.Slider (tooltip, script.projectileDrag, 0.0f, 10.0f);
+		tooltip = new GUIContent ("Angular Drag:", "Amount of angular drag on the projectile's rigidbody");
+		script.projectileAngularDrag = EditorGUILayout.Slider (tooltip, script.projectileAngularDrag, 0.0f, 10.0f);
 
 		EditorGUILayout.Space();
 	}
