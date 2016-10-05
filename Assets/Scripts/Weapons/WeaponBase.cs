@@ -23,7 +23,7 @@ public abstract class WeaponBase : MBAction
 	protected uint currentAmmoTotal;										// Tracks current total-ammo count
 	public float damage = 10;												// Damage done per shot/second
 	public float speedRPM = 600;											// Firing speed in Rounds Per Minute. Used in inspector
-	protected float speed;													// Firing speed in Rounds Per Second. Calculated using speedRPM
+	public float speed;														// Firing speed in Rounds Per Second. Calculated using speedRPM
 	public float spread;													// Accuracy of shots, where 0 = completely accurate
 	protected bool canFire = true;											// Tracks whether or not the gun can fire
 
@@ -63,14 +63,10 @@ public abstract class WeaponBase : MBAction
 		else
 			currentClip = startingAmmo;
 
-		// Initialize speed (Rounds per second)
-		speed = speedRPM / 60;
-
 		// Initialize the hit effect pool
 		AddHitEffectToPool ();
 
 		// Initialize audio
-		audioSrc = GetComponent<AudioSource> ();
 		if (audioSrc)
 		{
 			audioSrc.playOnAwake = false;

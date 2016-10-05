@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* DESCRIPTION:
+ * Bullet class weapon. Has 2 methods for shooting bullets: Projectile and hitscan.
+ * Intended for most standard human guns.
+ */
+
 public class BulletWeapon : WeaponBase 
 {
 
@@ -74,13 +79,6 @@ public class BulletWeapon : WeaponBase
 			bullet.AddComponent<ApplyDamage> ();
 			bullet.GetComponent<ApplyDamage> ().Damage = damage;
 			collisionHandler.Actions.Add(bullet.GetComponent<ApplyDamage>());
-			
-			// TEMPORARY: EXPLOSIONS
-			//bullet.AddComponent<Explosion> ();
-			//bullet.GetComponent<Explosion> ().CollisionTags.Add(transform.tag);
-			//bullet.GetComponent<Explosion> ().Damage = damage;
-			//collisionHandler.Actions.Add(bullet.GetComponent<Explosion>());
-			//TODO ADD HIT PARTICLE EFFECT
 
 			// Add hit effect
 			bullet.AddComponent<EmitParticle> ();
@@ -174,14 +172,19 @@ public class BulletWeapon : WeaponBase
 		if (bullet)
 		{
 			Rigidbody rb = bullet.GetComponent<Rigidbody> ();
-			rb.velocity = Vector3.zero;
-			rb.angularVelocity = Vector3.zero;
-			bullet.transform.position = shotOrigin.position;
-			bullet.transform.rotation = shotOrigin.rotation;
-			bullet.SetActive (true);
-			
-			// Fire projectile
-			rb.AddForce (projectAngle, ForceMode.Impulse);
+			if (rb)
+			{
+				rb.velocity = Vector3.zero;
+				rb.angularVelocity = Vector3.zero;
+				bullet.transform.position = shotOrigin.position;
+				bullet.transform.rotation = shotOrigin.rotation;
+				bullet.SetActive (true);
+				
+				// Fire projectile
+				rb.AddForce (projectAngle, ForceMode.Impulse);
+			}
+			else
+				Debug.Log("Attempted to fire a bullet projectile without a rigidbody!");
 		}
 	}
 

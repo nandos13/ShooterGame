@@ -20,6 +20,8 @@ public class Weapon_Properties_Editor : Editor {
 
 		/* GENERAL SETTINGS */
 		EditorGUILayout.Space();
+		EditorGUILayout.HelpBox("NOTE: This is the old weapon script! Please use one of the newer weapon scripts such as the BulletWeapon script. This script will be deleted soon.", MessageType.Warning);
+		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("General:", EditorStyles.boldLabel);
 		script.type = (WEAPON_TYPE)EditorGUILayout.EnumPopup ("Weapon Type:", script.type);
 		script.shotOrigin = (Transform)EditorGUILayout.ObjectField ("Shot Origin Point:", script.shotOrigin, typeof(Transform), true);

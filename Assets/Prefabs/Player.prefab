@@ -525,18 +525,19 @@ MonoBehaviour:
   startingAmmo: 100
   damage: 10
   speedRPM: 600
+  speed: 10
   spread: 1.54
   muzzleFlash: {fileID: 198000013305437330}
   muzzleParticles: 2
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
-  audioSrc: {fileID: 0}
+  audioSrc: {fileID: 82000014252880662}
   shotSound:
   - {fileID: 8300000, guid: 761ef0dd9ec49974eac749d44c0110c1, type: 3}
   - {fileID: 8300000, guid: 3ef3ac2679cbf004d85a94f74343014d, type: 3}
-  hitscan: 1
-  bulletForce: 58
+  hitscan: 0
+  bulletForce: 80
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
   despawnAfter: 2

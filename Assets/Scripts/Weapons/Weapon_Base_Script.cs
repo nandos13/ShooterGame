@@ -70,6 +70,7 @@ public class Weapon_Base_Script : MBAction {
 	// Use this for initialization
 	void Start ()
 	{
+		Debug.LogWarning("WARNING: The wrong weapon script is being used. Please use the new weapon scripts. Weapon owner: " + transform.name);
 		// Initialize current ammo
 		currentAmmoTotal = StartingAmmo;
 		if (StartingAmmo >= ClipSize)
