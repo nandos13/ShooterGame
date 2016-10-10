@@ -87,7 +87,7 @@ public abstract class WeaponBase : MBAction
 			// Instantiate a new particle system
 			ParticleSystem effect = Instantiate (hitEffect) as ParticleSystem;
 			//TODO: FIX HIDE IN HEIRARCHY
-			effect.hideFlags = HideFlags.HideInHierarchy;
+			effect.gameObject.hideFlags = HideFlags.HideInHierarchy;
 			effect.Pause();
 
 			// Add effect to the pool

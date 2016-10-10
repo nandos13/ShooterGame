@@ -157,10 +157,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011375305822}
-  m_LocalRotation: {x: -0, y: -0.99999326, z: -0, w: -0.0036930921}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 3.2149885, y: 0.5, z: 15.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: -180.411, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_Children:
   - {fileID: 4000012063995452}
   - {fileID: 4000012654760098}
@@ -490,7 +490,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294965503
   Guns:
-  - {fileID: 114000011747712424}
+  - {fileID: 114000012990187520}
 --- !u!114 &114000011747712424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -562,8 +562,8 @@ MonoBehaviour:
   unlimitedAmmo: 1
   startingAmmo: 100
   damage: 10
-  speedRPM: 306
-  speed: 5.1
+  speedRPM: 1216
+  speed: 20.266666
   spread: 1.54
   muzzleFlash: {fileID: 198000013305437330}
   muzzleParticles: 2
