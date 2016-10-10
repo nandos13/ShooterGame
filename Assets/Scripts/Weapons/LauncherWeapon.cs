@@ -116,30 +116,33 @@ public class LauncherWeapon : WeaponBase {
 	{
 		/* Handles weapon firing */
 
-		// Check firing is not on cooldown, and the gun has an attached muzzle point
-		if (canFire && shotOrigin)
+		if (!Options.Paused)
 		{
-			// Is there enough ammo to fire the gun?
-			if (currentClip > 0 || bottomlessClip == true)
+			// Check firing is not on cooldown, and the gun has an attached muzzle point
+			if (canFire && shotOrigin)
 			{
-				// Consume ammo if needed
-				if (!bottomlessClip)
+				// Is there enough ammo to fire the gun?
+				if (currentClip > 0 || bottomlessClip == true)
 				{
-					currentClip--;
-					currentAmmoTotal--;
+					// Consume ammo if needed
+					if (!bottomlessClip)
+					{
+						currentClip--;
+						currentAmmoTotal--;
+					}
+
+					ShootMissile ();
+
+					// Disable firing to maintain fire rate
+					StartCoroutine (DisableShootForFireRate ());
+
+					FlashMuzzle ();
+
+					PlayShotSound ();
 				}
-
-				ShootMissile ();
-
-				// Disable firing to maintain fire rate
-				StartCoroutine (DisableShootForFireRate ());
-
-				FlashMuzzle ();
-
-				PlayShotSound ();
+				else
+				{/* TODO: GUN NEEDS TO BE RELOADED. DO SOMETHING HERE */}
 			}
-			else
-			{/* TODO: GUN NEEDS TO BE RELOADED. DO SOMETHING HERE */}
 		}
 	}
 

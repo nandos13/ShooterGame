@@ -422,7 +422,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -490,7 +490,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294965503
   Guns:
-  - {fileID: 114000012990187520}
+  - {fileID: 114000011747712424}
 --- !u!114 &114000011747712424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -562,8 +562,8 @@ MonoBehaviour:
   unlimitedAmmo: 1
   startingAmmo: 100
   damage: 10
-  speedRPM: 600
-  speed: 10
+  speedRPM: 306
+  speed: 5.1
   spread: 1.54
   muzzleFlash: {fileID: 198000013305437330}
   muzzleParticles: 2
