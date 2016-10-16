@@ -30,11 +30,12 @@ public abstract class WeaponBase : MBAction
 
 	/* VISUALS VARIABLES */
 
-	public ParticleSystem muzzleFlash;										// Particle system played when a shot is fired
-	public uint muzzleParticles = 10;										// Number of particles to emit at muzzle
+	//public ParticleSystem muzzleFlash;										// Particle system played when a shot is fired
+	//public uint muzzleParticles = 10;										// Number of particles to emit at muzzle
 	public ParticleSystem hitEffect;										// Particle system played where the projectile collides
 	public uint hitParticles = 10;											// Number of particles to emit on hit
 	protected List<ParticleSystem> hitPool = new List<ParticleSystem>();	// Particles are pooled for use
+	public List<MBAction> onFire = new List<MBAction>();					// List of actions to execute on fire
 
 
 	/* AUDIO VARIABLES */
@@ -120,11 +121,22 @@ public abstract class WeaponBase : MBAction
 		}
 	}
 
-	protected void FlashMuzzle ()
+	//protected void FlashMuzzle ()
+	//{
+	//	if (muzzleFlash)
+	//	{
+	//		muzzleFlash.Emit((int)muzzleParticles);
+	//	}
+	//}
+
+	protected void RunFireScripts ()
 	{
-		if (muzzleFlash)
+		/* Iterate through the list of onFire scripts and execute */
+
+		foreach (MBAction action in onFire)
 		{
-			muzzleFlash.Emit((int)muzzleParticles);
+			if (action)
+				action.Execute();
 		}
 	}
 
