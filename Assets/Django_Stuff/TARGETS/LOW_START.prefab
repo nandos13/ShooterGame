@@ -57,7 +57,6 @@ GameObject:
   - 4: {fileID: 4000012621329410}
   - 95: {fileID: 95000013679976480}
   - 114: {fileID: 114000010411042328}
-  - 114: {fileID: 114000011412434252}
   - 114: {fileID: 114000011016805104}
   m_Layer: 0
   m_Name: LOW_START
@@ -190,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010977148802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.031525, y: 4.7683573, z: -41.219456}
+  m_LocalPosition: {x: 35.701073, y: 3.94, z: -32.71}
   m_LocalScale: {x: 0.43269068, y: 0.43269068, z: 0.43269068}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -476,14 +475,3 @@ MonoBehaviour:
   DeathScripts:
   - {fileID: 114000010411042328}
   DamageScripts: []
---- !u!114 &114000011412434252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010977148802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d79192d182cb404d8305ab7808a082c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
