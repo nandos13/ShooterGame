@@ -449,10 +449,9 @@ MonoBehaviour:
   speedRPM: 334
   speed: 5.5666666
   spread: 0
-  muzzleFlash: {fileID: 198000014084643660}
-  muzzleParticles: 3
   hitEffect: {fileID: 0}
   hitParticles: 0
+  onFire: []
   audioSrc: {fileID: 82000014053459728}
   shotSound:
   - {fileID: 8300000, guid: 761ef0dd9ec49974eac749d44c0110c1, type: 3}
@@ -496,6 +495,9 @@ MonoBehaviour:
   visionAngle: 90
   seeThroughTags:
   - Bullet
+  autoPopulateGunList: 0
+  guns:
+  - {fileID: 114000011765119952}
   trackingRange: 50
   clampAngleDown: 50
   clampAngleUp: 50

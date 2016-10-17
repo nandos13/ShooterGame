@@ -14,6 +14,8 @@ public class TurretAI : MonoBehaviour {
 	public float rotateSpeed = 2.0f;							// Speed of rotation
 	public float visionAngle;									// Angle in degrees the turret can see the target
 	public List<string>seeThroughTags = new List<string>();		// List of object tags the turret has vision through
+	public bool autoPopulateGunList = true;						// Will the script use GetComponent to automatically fill the guns list?
+	public List<WeaponBase> guns = new List<WeaponBase>();		// List of guns attached to the turret
 	public float trackingRange;									// View distance of the turret
 	public float clampAngleDown;								// Max angle the turret can look down
 	public float clampAngleUp;									// Max angle the turret can look up
@@ -27,6 +29,17 @@ public class TurretAI : MonoBehaviour {
 	void Start () 
 	{
 		target = GameObject.Find ("Player");
+
+		// Auto populate gun list
+		if (autoPopulateGunList)
+		{
+			WeaponBase[] tempGuns = GetComponents<WeaponBase>();
+			guns = new List<WeaponBase> ();
+			foreach (WeaponBase gun in tempGuns)
+			{
+				guns.Add(gun);
+			}
+		}
 	}
 
 	void Update () 
@@ -94,7 +107,7 @@ public class TurretAI : MonoBehaviour {
 									StartCoroutine (WarmUpGun ());
 								}
 							}
-					
+
 							TryShoot ();
 						} 
 						else 
@@ -130,8 +143,8 @@ public class TurretAI : MonoBehaviour {
 		if (state == TurretBehaviourState.Firing) 
 		{
 			// Shoot weapon
-			WeaponBase turretGun = GetComponent<WeaponBase>();
-			turretGun.Execute ();
+			foreach (WeaponBase gun in guns)
+				gun.Execute ();
 		}
 	}
 
@@ -139,7 +152,7 @@ public class TurretAI : MonoBehaviour {
 	{
 		if (state == TurretBehaviourState.PreparingFire || state == TurretBehaviourState.Firing) 
 		{
-			Debug.Log ("Stopping Turret (line of sight lost), now searching randomly");
+			Debug.Log (transform.name + ": Stopping Turret (line of sight lost), now searching randomly");
 			state = TurretBehaviourState.Searching;
 		}
 		SearchRandomly ();

@@ -14,6 +14,7 @@ using UnityEditor;
 public class TurretAIInspector : Editor {
 
 	public bool showTags = false;
+	public bool showGunList = false;
 
 	public override void OnInspectorGUI ()
 	{
@@ -50,8 +51,37 @@ public class TurretAIInspector : Editor {
 				script.seeThroughTags.Add("");
 			}
 			EditorGUILayout.Space();
+		}
 
+		tooltip = new GUIContent ("Auto Gun-List:", "If checked, the script will automatically find and use all guns attached to the turret. Otherwise you can specify specific gun scripts to be used");
+		script.autoPopulateGunList = EditorGUILayout.Toggle(tooltip, script.autoPopulateGunList);
 
+		if (!script.autoPopulateGunList)
+		{
+			// Show gun list so it can be manually modified
+			tooltip = new GUIContent ("Guns", "A list of attached guns the turret will use");
+			showGunList = EditorGUILayout.Foldout(showGunList, tooltip);
+			if (showGunList)
+			{
+				for (int i = 0; i < script.guns.Count; i++)
+				{
+					EditorGUILayout.BeginHorizontal();
+
+					if (GUILayout.Button("-", GUILayout.Width(23)))
+						script.guns.RemoveAt(i);
+					else
+						script.guns[i] = (WeaponBase)EditorGUILayout.ObjectField ("", script.guns[i], typeof(WeaponBase), true);
+
+					EditorGUILayout.EndHorizontal();
+				}
+				if (script.seeThroughTags.Count > 0)
+					EditorGUILayout.Space();
+				if (GUILayout.Button("+", GUILayout.Width(23)))
+				{
+					script.guns.Add(default(WeaponBase));
+				}
+				EditorGUILayout.Space();
+			}
 		}
 
 		tooltip = new GUIContent ("Shoot Delay:", "Delay in seconds before starting to fire");

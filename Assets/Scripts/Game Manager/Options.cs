@@ -7,13 +7,13 @@ using System.Collections;
 
 public static class Options 
 {
-	private static bool paused = false;
+	private static bool _paused = false;
 	public static bool Paused
 	{
-		get { return paused; }
+		get { return _paused; }
 		set
 		{
-			paused = value;
+			_paused = value;
 			if (value)
 				Time.timeScale = 0;
 			else
