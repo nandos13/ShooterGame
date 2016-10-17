@@ -52,7 +52,7 @@ public class BulletWeaponInspector : Editor {
 				if (GUILayout.Button("-", GUILayout.Width(23)))
 					script.onFire.RemoveAt(i);
 				else
-					script.onFire[i] = (MBAction)EditorGUILayout.ObjectField ("", script.onFire[i], typeof(MBAction), false);
+					script.onFire[i] = (MBAction)EditorGUILayout.ObjectField ("", script.onFire[i], typeof(MBAction), true);
 
 				EditorGUILayout.EndHorizontal();
 			}
