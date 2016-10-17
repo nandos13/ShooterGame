@@ -8,7 +8,7 @@ using System.Collections;
  * function is called.
  */
 
-public class testAction2 : MBAction {
+public class ReplaceObject : MBAction {
 
 	private GameObject thisObject;
 	public GameObject spawnOnDead;
