@@ -136,7 +136,8 @@ public class LauncherWeapon : WeaponBase {
 					// Disable firing to maintain fire rate
 					StartCoroutine (DisableShootForFireRate ());
 
-					FlashMuzzle ();
+					//FlashMuzzle ();
+					RunFireScripts ();
 
 					PlayShotSound ();
 				}

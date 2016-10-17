@@ -14,6 +14,7 @@ using UnityEditor;
 public class LauncherWeaponInspector : Editor {
 
 	public bool showSoundList = false;
+	public bool showFireList = false;
 
 	public override void OnInspectorGUI ()
 	{
@@ -31,14 +32,38 @@ public class LauncherWeaponInspector : Editor {
 		/* VISUAL SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("Visual:", EditorStyles.boldLabel);
-		tooltip = new GUIContent ("Muzzle Flash:", "Particle System at the end of the muzzle. Played when the gun is fired");
-		script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField (tooltip, script.muzzleFlash, typeof(ParticleSystem), true);
-		tooltip = new GUIContent ("Muzzle Emission:", "Number of muzzle particles emitted when the gun is shot");
-		script.muzzleParticles = (uint)EditorGUILayout.Slider (tooltip, script.muzzleParticles, 0, 100);
+		/* Old code for single muzzle flash particle effect */
+		//tooltip = new GUIContent ("Muzzle Flash:", "Particle System at the end of the muzzle. Played when the gun is fired");
+		//script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField (tooltip, script.muzzleFlash, typeof(ParticleSystem), true);
+		//tooltip = new GUIContent ("Muzzle Emission:", "Number of muzzle particles emitted when the gun is shot");
+		//script.muzzleParticles = (uint)EditorGUILayout.Slider (tooltip, script.muzzleParticles, 0, 100);
 		tooltip = new GUIContent ("Hit Effect:", "Prefab Particle System to be played where the bullet hits");
 		script.hitEffect = (ParticleSystem)EditorGUILayout.ObjectField (tooltip, script.hitEffect, typeof(ParticleSystem), true);
 		tooltip = new GUIContent ("Hit Emission:", "Number of hit particles emitted when the bullet collides");
 		script.hitParticles = (uint)EditorGUILayout.Slider (tooltip, script.hitParticles, 0, 100);
+		tooltip = new GUIContent ("On Fire", "List of scripts to execute when the gun fires");
+		showFireList = EditorGUILayout.Foldout(showFireList, tooltip);
+		if (showFireList)
+		{
+			for (int i = 0; i < script.onFire.Count; i++)
+			{
+				EditorGUILayout.BeginHorizontal();
+
+				if (GUILayout.Button("-", GUILayout.Width(23)))
+					script.onFire.RemoveAt(i);
+				else
+					script.onFire[i] = (MBAction)EditorGUILayout.ObjectField ("", script.onFire[i], typeof(MBAction), false);
+
+				EditorGUILayout.EndHorizontal();
+			}
+			if (script.onFire.Count > 0)
+				EditorGUILayout.Space();
+			if (GUILayout.Button("+", GUILayout.Width(23)))
+			{
+				script.onFire.Add(default(MBAction));
+				//script.onFire.Add(new MBAction());
+			}
+		}
 
 		/* AUDIO SETTINGS */
 		EditorGUILayout.Space();

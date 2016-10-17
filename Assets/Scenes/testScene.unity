@@ -1366,6 +1366,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010687968070, guid: 1286a351dff93fe4e93008d7616c4dac,
+        type: 2}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
   m_IsPrefabParent: 0
@@ -1601,6 +1606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
+  OnPause: []
+  OnResume: []
 --- !u!4 &1029182251
 Transform:
   m_ObjectHideFlags: 0
