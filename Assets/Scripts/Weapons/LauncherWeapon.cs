@@ -67,8 +67,8 @@ public class LauncherWeapon : WeaponBase {
 			}
 
 			// Add despawn conditions
-			missile.AddComponent<Disable_After_Seconds> ();
-			missile.GetComponent<Disable_After_Seconds> ().Delay = despawnAfter;
+			missile.AddComponent<DisableAfterSeconds> ();
+			missile.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 
 			missile.AddComponent<Disable> ();
 			collisionHandler.Actions.Add(missile.GetComponent<Disable>());

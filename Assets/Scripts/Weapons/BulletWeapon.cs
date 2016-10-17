@@ -69,8 +69,8 @@ public class BulletWeapon : WeaponBase
 			}
 			
 			// Add despawn conditions
-			bullet.AddComponent<Disable_After_Seconds> ();
-			bullet.GetComponent<Disable_After_Seconds> ().Delay = despawnAfter;
+			bullet.AddComponent<DisableAfterSeconds> ();
+			bullet.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 			
 			bullet.AddComponent<Disable> ();
 			collisionHandler.Actions.Add(bullet.GetComponent<Disable>());

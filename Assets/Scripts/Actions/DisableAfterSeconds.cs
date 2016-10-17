@@ -5,7 +5,7 @@ using System.Collections;
  * Disables the object after specified time elapsed
  */
 
-public class Disable_After_Seconds : MonoBehaviour {
+public class DisableAfterSeconds : MonoBehaviour {
 
 	[Range(0.1f, 7.0f)]
 	public float Delay = 7.0f;
