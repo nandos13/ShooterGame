@@ -13,20 +13,23 @@ public class ReplaceObject : MBAction {
 	private GameObject thisObject;
 	public GameObject spawnOnDead;
 
-	// Use this for initialization
 	void Start () 
 	{
 		thisObject = gameObject;
-		spawnOnDead = Instantiate (spawnOnDead) as GameObject;
-		spawnOnDead.SetActive (false);
+		if (spawnOnDead)
+		{
+			spawnOnDead = Instantiate (spawnOnDead) as GameObject;
+			spawnOnDead.SetActive (false);
+		}
 	}
 
 	public override void Execute ()
 	{
 		thisObject.SetActive (false);
-		spawnOnDead.SetActive (true);
-		spawnOnDead.transform.position = thisObject.transform.position;
-
-		Debug.Log ("testAction2 is being executed");
+		if (spawnOnDead)
+		{
+			spawnOnDead.SetActive (true);
+			spawnOnDead.transform.position = thisObject.transform.position;
+		}
 	}
 }
