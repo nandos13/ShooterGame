@@ -17,9 +17,9 @@ using System.Collections;
 
 [RequireComponent (typeof (Rigidbody))]
 [RequireComponent (typeof (CapsuleCollider))]
-
 public class FPC_Walk : MonoBehaviour {
 
+	[Range (1.0f, 50.0f)]
 	public float speed = 10.0f;					// Walk speed
 	public float gravity = 9.8f;				// Manual gravity factor
 	public float maxVelocityChange = 8.0f;		// Lower values mean more acceleration, feels like ice skates
@@ -138,7 +138,7 @@ public class FPC_Walk : MonoBehaviour {
 		// Apply manual gravity
 		onGround = checkOnGround ();
 		if (!onGround)
-			rb.AddForce(new Vector3(0, -gravity * rb.mass, 0));
+			rb.AddForce(new Vector3(0, -gravity, 0), ForceMode.Acceleration);
 
 		// Only allow player to jump if on the ground
 		if (onGround && canJump && Input.GetButton ("Jump"))
@@ -153,14 +153,30 @@ public class FPC_Walk : MonoBehaviour {
 
 	bool checkOnGround()
 	{
-		Bounds b;
-		float playerHeight = b.size.y;
-		Vector3 playerFeetOffset = transform.position + (new Vector3 (0, -(playerHeight / 2), 0));
+		/* Raycast from several points below the player to determine
+		 * whether or not the player is on the ground. This is used
+		 * for jumping, etc.
+		 */
 
-		if (Physics.Raycast (playerFeetOffset, Vector3.down, 1.8f))
+		float playerHeight = capCollider.bounds.size.y;
+		float playerRadius = capCollider.radius * 0.8f;
+		Vector3 playerFeetOffset = transform.position + (new Vector3 (0, -(playerHeight / 2), 0));
+		float detectionDist = 0.38f;
+
+		// Raycast from the center of the player's feet position
+		if (Physics.Raycast (playerFeetOffset, Vector3.down, detectionDist))
 			return true;
-		else
-			return false;
+
+		// Linecast from all sides
+		Vector3 detectionLength = new Vector3 (0, -detectionDist, 0);
+		if (	Physics.Linecast (playerFeetOffset + new Vector3(playerRadius, 0, 0), playerFeetOffset + new Vector3(playerRadius, 0, 0) + detectionLength)
+			||	Physics.Linecast (playerFeetOffset + new Vector3(-playerRadius, 0, 0), playerFeetOffset + new Vector3(-playerRadius, 0, 0) + detectionLength)
+			||	Physics.Linecast (playerFeetOffset + new Vector3(0, 0, playerRadius), playerFeetOffset + new Vector3(0, 0, playerRadius) + detectionLength)
+			||	Physics.Linecast (playerFeetOffset + new Vector3(0, 0, -playerRadius), playerFeetOffset + new Vector3(0, 0, -playerRadius) + detectionLength))
+			return true;
+
+		// All failed, the player is not grounded
+		return false;
 	}
 
 	float CalculateJumpSpeedVertical()

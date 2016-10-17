@@ -1366,11 +1366,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011553360304, guid: 1286a351dff93fe4e93008d7616c4dac,
+    - target: {fileID: 114000010687968070, guid: 1286a351dff93fe4e93008d7616c4dac,
         type: 2}
-      propertyPath: Guns.Array.data[0]
-      value: 
-      objectReference: {fileID: 1110077077}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
   m_IsPrefabParent: 0
@@ -1621,12 +1621,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &1110077077 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000011747712424, guid: 1286a351dff93fe4e93008d7616c4dac,
-    type: 2}
-  m_PrefabInternal: {fileID: 920172720}
-  m_Script: {fileID: 11500000, guid: 48ad1e91fc92b5646b402822fc0f5430, type: 3}
 --- !u!1 &1113789660
 GameObject:
   m_ObjectHideFlags: 0
