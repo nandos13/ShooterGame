@@ -93,7 +93,6 @@ GameObject:
   - 114: {fileID: 114000013877399458}
   - 114: {fileID: 114000013369114450}
   - 114: {fileID: 114000012961451216}
-  - 114: {fileID: 114000010562951352}
   - 114: {fileID: 114000014058395430}
   m_Layer: 0
   m_Name: Turret_V4
@@ -358,17 +357,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000010562951352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013480708384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d79192d182cb404d8305ab7808a082c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000012830331124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,6 +434,8 @@ MonoBehaviour:
   visionAngle: 90
   seeThroughTags:
   - Bullet
+  autoPopulateGunList: 1
+  guns: []
   trackingRange: 20
   clampAngleDown: 0
   clampAngleUp: 0
