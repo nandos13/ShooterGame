@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class ActionValue
 {
 	public MBAction action;
@@ -14,11 +15,12 @@ public class ActionValue
 	}
 }
 
-public class TimedExecutions : MonoBehaviour {
+public class TimedExecutions : MBAction {
 
+	[SerializeField]
 	public List<ActionValue> actions = new List<ActionValue>();
 
-	void Start () 
+	public override void Execute () 
 	{
 		StartCoroutine(Run());
 	}
@@ -27,11 +29,15 @@ public class TimedExecutions : MonoBehaviour {
 	{
 		foreach (ActionValue av in actions)
 		{
-			// Wait for value time
-			yield return new WaitForSeconds (av.value);
+			if (av != null)
+			{
+				// Wait for value time
+				yield return new WaitForSeconds (av.value);
 
-			// Execute action
-			av.action.Execute();
+				// Execute action
+				if (av.action)
+					av.action.Execute();
+			}
 		}
 	}
 }

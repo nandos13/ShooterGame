@@ -18,6 +18,7 @@ public class TimedExecusionsEditor : Editor {
 
 		for (int i = 0; i < script.actions.Count; i++)
 		{
+			EditorGUILayout.Space();
 			EditorGUILayout.BeginHorizontal();
 		
 			if (GUILayout.Button("-", GUILayout.Width(23)))
@@ -27,10 +28,8 @@ public class TimedExecusionsEditor : Editor {
 				script.actions[i].action = (MBAction)EditorGUILayout.ObjectField ("", script.actions[i].action, typeof(MBAction), true);
 				EditorGUILayout.EndHorizontal();
 
-				script.actions[i].value = EditorGUILayout.Slider ("      Value: ", script.actions[i].value, 0, 600);
+				script.actions[i].value = EditorGUILayout.Slider ("      Time (sec): ", script.actions[i].value, 0, 600);
 			}
-		
-			//EditorGUILayout.EndHorizontal();
 		}
 		if (script.actions.Count > 0)
 			EditorGUILayout.Space();
