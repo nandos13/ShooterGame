@@ -121,14 +121,6 @@ public abstract class WeaponBase : MBAction
 		}
 	}
 
-	//protected void FlashMuzzle ()
-	//{
-	//	if (muzzleFlash)
-	//	{
-	//		muzzleFlash.Emit((int)muzzleParticles);
-	//	}
-	//}
-
 	protected void RunFireScripts ()
 	{
 		/* Iterate through the list of onFire scripts and execute */

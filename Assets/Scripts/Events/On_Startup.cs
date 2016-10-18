@@ -14,7 +14,8 @@ public class On_Startup : MonoBehaviour {
 	{
 		foreach (MBAction action in Actions) 
 		{
-			action.Execute();
+			if (action)
+				action.Execute();
 		}
 	}
 }
