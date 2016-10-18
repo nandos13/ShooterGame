@@ -10,6 +10,17 @@ using System.Collections.Generic;
         // -- W.I.P
             Button branch is a tool to open buttons from pressing buttons
 
+            ~ Add Fader Script to all Buttons
+            ~ Add ButtonBranch script to buttons you want to expand
+            ~ adjust Mode, Independent width height is good
+            ~ set Reference button size ( smaller or match Rect Transform's width/height values )
+            ~ set Reference screen size ( default 800/600 is good )
+            ~ adjust Fade smooth, translate smooth and button Num Offset values
+            ~ set Reveal style to ones liking
+            ~ add button refs size, anymore then 1 is buggy atm
+            
+            add OnClick() drag Prefab button to Element game object that you want to animate in
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 */  ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -58,7 +69,7 @@ public class ButtonBranch : MonoBehaviour
     {
         public enum RevealOption { Linear, Circular };
         public RevealOption option;
-        public float translateSmooth = 5f;   // the speed of the button to move to its position
+        public float translateSmooth = 5.0f;   // the speed of the button to move to its position
         public float fadeSmooth = 0.01f;    // how fast it fades in
         public bool revealOnStart = false;
 
@@ -73,8 +84,10 @@ public class ButtonBranch : MonoBehaviour
     {
         public enum RevealStyle { SlidetToPosition, FadeInAtPosition };
         public RevealStyle revealStyle;
+        [Tooltip("Direction for buttons to spawn")]
         public Vector2 direction = new Vector2(0, 1);   // slide down
-        public float baseButtonSpacing = 5f;    // how much space between each button
+        public float baseButtonSpacing = 5.0f;    // how much space between each button
+        [Tooltip("button space from last button location")]
         public int buttonNumOffset = 0;     // how many button spaces offset? sometimes necessary when using multiple button branches
 
         [HideInInspector]
@@ -111,9 +124,12 @@ public class ButtonBranch : MonoBehaviour
     }
 
     public GameObject[] buttonRefs;
+   // public bool instantiateNewButtons = true;
     public enum ScaleMode { MatchWidthHeight, IndependentWidthHeight };
     public ScaleMode mode;
+    //[Tooltip("")]
     public Vector2 referenceButtonSize;
+    //[Tooltip("")]
     public Vector2 referenceScreenSize;
     ButtonScale buttonScale = new ButtonScale();
     public RevealSettings revealSettings = new RevealSettings();
@@ -187,43 +203,46 @@ public class ButtonBranch : MonoBehaviour
     }
     public void SpawnButtons()  // if revealOnStart == false, this method will be called by the buttom click event
     {
-        revealSettings.opening = true;
-        //clear button list, in case there are some already in it
-        for (int i = buttons.Count - 1; i >= 0; i--)
-            Destroy(buttons[i]);
-        buttons.Clear();
-        //clear buttons on any other button branch that has the same parent as this branch
-        ClearCommonButtonBranch();
-
-        for (int i = 0; i < buttonRefs.Length; i++)
+       // if (instantiateNewButtons)
         {
-            GameObject b = Instantiate(buttonRefs[i] as GameObject);
-            b.transform.SetParent(transform); // makes button child of button branch
-            b.transform.position = transform.position;  //  zeroing the position places the button on the button branch
-            // check if button will fade or not
-            if (linSpawner.revealStyle == LinearSpawner.RevealStyle.FadeInAtPosition || circSpawner.revealStyle == CircularSpawner.RevealStyle.FadeInAtPosition)
+            revealSettings.opening = true;
+            //clear button list, in case there are some already in it
+            for (int i = buttons.Count - 1; i >= 0; i--)
+                Destroy(buttons[i]);
+            buttons.Clear();
+            //clear buttons on any other button branch that has the same parent as this branch
+            ClearCommonButtonBranch();
+
+            for (int i = 0; i < buttonRefs.Length; i++)
             {
-                // change colour alpha of button and its text to 0;
-                Color c = b.GetComponent<Image>().color;
-                c.a = 0;
-                b.GetComponent<Image>().color = c;
-                if (b.GetComponentInChildren<Text>()) // button may not have a text component
+                GameObject b = Instantiate(buttonRefs[i] as GameObject);
+                b.transform.SetParent(transform); // makes button child of button branch
+                b.transform.position = transform.position;  //  zeroing the position places the button on the button branch
+                                                            // check if button will fade or not
+                if (linSpawner.revealStyle == LinearSpawner.RevealStyle.FadeInAtPosition || circSpawner.revealStyle == CircularSpawner.RevealStyle.FadeInAtPosition)
                 {
-                    c = b.GetComponentInChildren<Text>().color;
+                    // change colour alpha of button and its text to 0;
+                    Color c = b.GetComponent<Image>().color;
                     c.a = 0;
-                    b.GetComponentInChildren<Text>().color = c;
+                    b.GetComponent<Image>().color = c;
+                    if (b.GetComponentInChildren<Text>()) // button may not have a text component
+                    {
+                        c = b.GetComponentInChildren<Text>().color;
+                        c.a = 0;
+                        b.GetComponentInChildren<Text>().color = c;
+                    }
                 }
+                buttons.Add(b);
             }
-            buttons.Add(b);
+            revealSettings.spawned = true;
         }
-        revealSettings.spawned = true;
     }
 
     void RevealLinearlyNormal()
     {
         for (int i = 0; i < buttons.Count; i++)
         {
-            //give the button a position to move toward
+            //give the button a position to move towards
             Vector3 targetPos;
             RectTransform buttonRect = buttons[i].GetComponent<RectTransform>();
             // set size
