@@ -11,25 +11,26 @@ using System.Collections;
 public class ReplaceObject : MBAction {
 
 	private GameObject thisObject;
-	public GameObject spawnOnDead;
+	public GameObject spawnObject;
 
 	void Start () 
 	{
 		thisObject = gameObject;
-		if (spawnOnDead)
+		if (spawnObject)
 		{
-			spawnOnDead = Instantiate (spawnOnDead) as GameObject;
-			spawnOnDead.SetActive (false);
+			spawnObject = Instantiate (spawnObject) as GameObject;
+			spawnObject.SetActive (false);
 		}
 	}
 
 	public override void Execute ()
 	{
 		thisObject.SetActive (false);
-		if (spawnOnDead)
+		if (spawnObject)
 		{
-			spawnOnDead.SetActive (true);
-			spawnOnDead.transform.position = thisObject.transform.position;
+			spawnObject.SetActive (true);
+			spawnObject.transform.position = thisObject.transform.position;
+			spawnObject.transform.rotation = thisObject.transform.rotation;
 		}
 	}
 }
