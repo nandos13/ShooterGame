@@ -26,6 +26,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         // var for chasing
         public float chaseSpeed = 1f;
+        public float aggroRange = 20f;
+        public float deAggro = 40f;
         public GameObject target;
 
          
@@ -43,6 +45,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         void Update()
         {
+            if (Vector3.Distance(target.transform.position, transform.position) <= aggroRange)
+                state = AIEnemyControl.State.CHASE;
+            else if (Vector3.Distance(target.transform.position, transform.position) >= deAggro)
+                state = AIEnemyControl.State.PATROL;
             FSM();
         }
         
@@ -64,7 +70,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             agent.speed = patrolSpeed;
             if(Vector3.Distance(this.transform.position, waypoints[waypointInd].transform.position) >= 5)
             {
-                Debug.Log("1");
                 agent.SetDestination(waypoints[waypointInd].transform.position);
                 character.Move(agent.desiredVelocity, false, false);        // 3rdpersoncontroller, false = crouch, jump ect
             }
@@ -76,10 +81,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     waypointInd = 0;
                 }
             }
-            //else
-            //{
-            //    character.Move(Vector3.zero, false, false);
-            //}
         }
 
         void Chase()
@@ -89,17 +90,5 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             character.Move(agent.desiredVelocity, false, false);
 
         }
-
-        void OnTriggerEnter (Collider coll)
-        {
-            if (coll.tag == "Player")
-            {
-                state = AIEnemyControl.State.CHASE;
-                target = coll.gameObject;
-            }
-        }
-
-
     }
-
 }
