@@ -63,8 +63,8 @@ GameObject:
   - 114: {fileID: 114000013687865020}
   - 114: {fileID: 114000011553360304}
   - 114: {fileID: 114000012990187520}
-  - 82: {fileID: 82000014252880662}
   - 114: {fileID: 114000011747712424}
+  - 82: {fileID: 82000014252880662}
   - 114: {fileID: 114000012622591178}
   - 114: {fileID: 114000011610560578}
   m_Layer: 9
@@ -563,8 +563,8 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 10
-  speedRPM: 60
-  speed: 1
+  speedRPM: 20
+  speed: 0.33333334
   spread: 2.33
   canFireSemi: 1
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
@@ -580,7 +580,8 @@ MonoBehaviour:
   projectileGravity: 61.6
   projectileDrag: 10
   projectileAngularDrag: 0
-  ExplosiveForce: 5
+  ExplosiveForce: 19.5
+  ExplosionRange: 5
 --- !u!114 &114000011898252764
 MonoBehaviour:
   m_ObjectHideFlags: 1

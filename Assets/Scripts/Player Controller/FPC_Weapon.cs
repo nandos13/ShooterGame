@@ -52,13 +52,31 @@ public class FPC_Weapon : MonoBehaviour
 				// Can the player fire?
 				if (!weaponUp)
 				{
-					// Has the player tried to fire?
+					// Primary fire will handle all auto weapons, secondary fire will handle all semiauto weapons
+
+					// Has the player tried to primary-fire?
 					if (Input.GetAxisRaw ("Fire1") > 0) 
 					{
 						foreach (WeaponBase wb in Guns)
 						{
 							if (wb)
-								wb.Execute ();
+							{
+								if (wb.fMode == FIRE_MODE.Auto)
+									wb.Execute ();
+							}
+						}
+					}
+
+					// Has the player tried to secondary-fire?
+					if (Input.GetAxisRaw ("Fire2") > 0)
+					{
+						foreach (WeaponBase wb in Guns)
+						{
+							if (wb)
+							{
+								if (wb.fMode == FIRE_MODE.SemiAuto)
+									wb.Execute ();
+							}
 						}
 					}
 					else
