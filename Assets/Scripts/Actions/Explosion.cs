@@ -11,7 +11,7 @@ public class Explosion : MBAction {
 	[Range(0.0f, 100.0f)]
 	public float Radius = 10;
 	public float Damage = 2;
-	public List<string> CollisionTags = new List<string>();	// A list of collisions to ignore
+	public List<string> CollisionTags = new List<string>();			// A list of collisions to ignore
 	public COLLISION_MODE mode = COLLISION_MODE.IgnoreSelected;
 
 	public override void Execute ()

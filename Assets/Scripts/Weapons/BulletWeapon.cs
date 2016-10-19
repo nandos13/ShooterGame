@@ -54,41 +54,23 @@ public class BulletWeapon : WeaponBase
 
 		if (bulletProjectile)
 		{
-			//TODO: THIS NEEDS TO BE OPTIMIZED ONCE IT IS FINISHED
 			// Instantiate a new bullet
 			GameObject bullet = Instantiate (bulletProjectile) as GameObject;
 			bullet.hideFlags = HideFlags.HideInHierarchy;
 			bullet.SetActive (false);
 			
-			// Get collision handler
-			On_Collision collisionHandler = bullet.GetComponent<On_Collision>();
-			if ( !(bullet.GetComponent<On_Collision>()) )
-			{
-				bullet.AddComponent<On_Collision> ();
-				collisionHandler = bullet.GetComponent<On_Collision> ();
-			}
-			
 			// Add despawn conditions
-			bullet.AddComponent<DisableAfterSeconds> ();
 			bullet.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 			
-			bullet.AddComponent<Disable> ();
-			collisionHandler.Actions.Add(bullet.GetComponent<Disable>());
-			
 			// Add damage to the bullet
-			bullet.AddComponent<ApplyDamage> ();
 			bullet.GetComponent<ApplyDamage> ().Damage = damage;
-			collisionHandler.Actions.Add(bullet.GetComponent<ApplyDamage>());
 
 			// Add hit effect
-			bullet.AddComponent<EmitParticle> ();
 			bullet.GetComponent<EmitParticle> ().amount = hitParticles;
 			bullet.GetComponent<EmitParticle> ().particles = AddHitEffectToPool ();
-			collisionHandler.Actions.Add(bullet.GetComponent<EmitParticle>());
 			
 			// Set collision-ignore-tags
-			collisionHandler.CollisionTags.Add(transform.tag);
-			collisionHandler.CollisionTags.Add("Bullet");
+			bullet.GetComponent<On_Collision> ().CollisionTags.Add(transform.tag);
 			
 			// Add bullet to the pool
 			bulletPool.Add(bullet);
@@ -102,10 +84,10 @@ public class BulletWeapon : WeaponBase
 	{
 		/* Handles weapon firing */
 
-		if (!Options.Paused)
+		if (!Options.Paused && enabled)
 		{
 			// Check firing is not on cooldown, and the gun has an attached muzzle point
-			if (canFire && shotOrigin)
+			if (canFire && canFireSemi && shotOrigin)
 			{
 				// Is there enough ammo to fire the gun?
 				if (currentClip > 0 || bottomlessClip == true)
@@ -116,6 +98,10 @@ public class BulletWeapon : WeaponBase
 						currentClip--;
 						currentAmmoTotal--;
 					}
+
+					// If semi-auto, disable firing until fire button is up
+					if (fMode == FIRE_MODE.SemiAuto)
+						canFireSemi = false;
 
 					// Does this bullet weapon use instant raycast method or physical bullets?
 					if (hitscan)
@@ -142,11 +128,7 @@ public class BulletWeapon : WeaponBase
 		/* Fires the gun using a physical projectile */
 
 		// Get angle of projectile
-		Vector3 projectAngle;
-		if (transform.tag == "Player")
-			projectAngle = VectorToCrosshair();
-		else
-			projectAngle = shotOrigin.forward;
+		Vector3 projectAngle = shotOrigin.forward;
 
 		projectAngle.Normalize ();
 
@@ -197,11 +179,7 @@ public class BulletWeapon : WeaponBase
 		/* Fires the gun using an instant raycast */
 
 		// Get the angle of projectile
-		Vector3 projectAngle;
-		if (transform.tag == "Player")
-			projectAngle = VectorToCrosshair();
-		else
-			projectAngle = shotOrigin.forward;
+		Vector3 projectAngle = shotOrigin.forward;
 
 		projectAngle.Normalize ();
 

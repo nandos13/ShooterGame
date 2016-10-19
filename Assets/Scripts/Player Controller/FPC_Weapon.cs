@@ -55,7 +55,20 @@ public class FPC_Weapon : MonoBehaviour
 					// Has the player tried to fire?
 					if (Input.GetAxisRaw ("Fire1") > 0) 
 					{
-						currentWeapon.Execute ();
+						foreach (WeaponBase wb in Guns)
+						{
+							if (wb)
+								wb.Execute ();
+						}
+					}
+					else
+					{
+						// Iterate through weapons and reset the semi-auto firing tracker
+						foreach (WeaponBase wb in Guns)
+						{
+							if (wb)
+								wb.canFireSemi = true;
+						}
 					}
 				}
 			}

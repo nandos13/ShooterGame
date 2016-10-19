@@ -22,8 +22,8 @@ public class TurretAI : MonoBehaviour {
 	public float shootDelay;									// Delay in seconds before starting to fire
 
 	private GameObject target;									// The turret's target (currently will only ever be the player)
-	private TurretBehaviourState state = 
-		TurretBehaviourState.Searching;							// Tracks current behaviour being acted out
+	private TURRET_BEHAVIOUR_STATE state = 
+		TURRET_BEHAVIOUR_STATE.Searching;						// Tracks current behaviour being acted out
 	private Vector3 randomPoint;								// A point used to randomly search around for the target
 
 	void Start () 
@@ -99,10 +99,10 @@ public class TurretAI : MonoBehaviour {
 							// Is the target close to directly in front of the turret?
 							if (angleDegreesToPlayer <= 5.0f)
 							{
-								if (!((state == TurretBehaviourState.PreparingFire) || (state == TurretBehaviourState.Firing))) 
+								if (!((state == TURRET_BEHAVIOUR_STATE.PreparingFire) || (state == TURRET_BEHAVIOUR_STATE.Firing))) 
 								{
 									// Warm up the turret
-									state = TurretBehaviourState.PreparingFire;
+									state = TURRET_BEHAVIOUR_STATE.PreparingFire;
 									Debug.Log ("Warming up turret");
 									StartCoroutine (WarmUpGun ());
 								}
@@ -131,8 +131,8 @@ public class TurretAI : MonoBehaviour {
 		 * instantly once they come around a corner.
 		 */
 		yield return new WaitForSeconds (shootDelay);
-		if (state == TurretBehaviourState.PreparingFire)
-			state = TurretBehaviourState.Firing;
+		if (state == TURRET_BEHAVIOUR_STATE.PreparingFire)
+			state = TURRET_BEHAVIOUR_STATE.Firing;
 		yield return null;
 	}
 
@@ -140,7 +140,7 @@ public class TurretAI : MonoBehaviour {
 	{
 		/* This function attempts to fire if the turret is ready
 		 */
-		if (state == TurretBehaviourState.Firing) 
+		if (state == TURRET_BEHAVIOUR_STATE.Firing) 
 		{
 			// Shoot weapon
 			foreach (WeaponBase gun in guns)
@@ -150,10 +150,10 @@ public class TurretAI : MonoBehaviour {
 
 	private void StopShooting ()
 	{
-		if (state == TurretBehaviourState.PreparingFire || state == TurretBehaviourState.Firing) 
+		if (state == TURRET_BEHAVIOUR_STATE.PreparingFire || state == TURRET_BEHAVIOUR_STATE.Firing) 
 		{
 			Debug.Log (transform.name + ": Stopping Turret (line of sight lost), now searching randomly");
-			state = TurretBehaviourState.Searching;
+			state = TURRET_BEHAVIOUR_STATE.Searching;
 		}
 		SearchRandomly ();
 	}
@@ -300,7 +300,7 @@ public class TurretAI : MonoBehaviour {
 
 			// While firing, the turret's aiming will be faster so bullets do not lag behind a moving player
 			float currentRotateSpeed = rotateSpeed;
-			if (state == TurretBehaviourState.Firing)
+			if (state == TURRET_BEHAVIOUR_STATE.Firing)
 				currentRotateSpeed *= 2.5f;
 
 			rotationPiece.transform.rotation = Quaternion.Slerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * currentRotateSpeed);

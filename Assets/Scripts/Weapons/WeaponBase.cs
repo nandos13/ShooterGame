@@ -15,6 +15,7 @@ public abstract class WeaponBase : MBAction
 
 	protected WEAPON_TYPE type;												// Type of weapon.
 	public Transform shotOrigin;											// Transform at the end of the muzzle where projectiles start
+	public FIRE_MODE fMode = FIRE_MODE.Auto;								// Will the gun continue to fire if the shoot button is held down?
 	public bool bottomlessClip = false;										// Will the gun ever need to be reloaded?
 	public uint clipSize = 30;												// Ammo in a single clip
 	protected uint currentClip;												// Tracks currently loaded ammo
@@ -25,13 +26,12 @@ public abstract class WeaponBase : MBAction
 	public float speedRPM = 600;											// Firing speed in Rounds Per Minute. Used in inspector
 	public float speed;														// Firing speed in Rounds Per Second. Calculated using speedRPM
 	public float spread;													// Accuracy of shots, where 0 = completely accurate
-	protected bool canFire = true;											// Tracks whether or not the gun can fire
+	protected bool canFire = true;											// Tracks whether or not the gun can fire (based on fire rate)
+	public bool canFireSemi = true;											// Tracks whether or not the gun can fire (based on semi-auto/automatic setting)
 
 
 	/* VISUALS VARIABLES */
 
-	//public ParticleSystem muzzleFlash;										// Particle system played when a shot is fired
-	//public uint muzzleParticles = 10;										// Number of particles to emit at muzzle
 	public ParticleSystem hitEffect;										// Particle system played where the projectile collides
 	public uint hitParticles = 10;											// Number of particles to emit on hit
 	protected List<ParticleSystem> hitPool = new List<ParticleSystem>();	// Particles are pooled for use

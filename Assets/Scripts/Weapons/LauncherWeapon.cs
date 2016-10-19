@@ -18,6 +18,7 @@ public class LauncherWeapon : WeaponBase {
 	public float projectileAngularDrag = 0.0f;							// Custom angular drag for missile rigidbody
 	protected List<GameObject> missilePool = new List<GameObject>();	// Projectiles are pooled for use
 	public float ExplosiveForce = 5.0f;									// Explosive force on missile collision
+	public float ExplosionRange = 5.0f;									// Range of explosion
 
 
 	/* MEMBER FUNCTIONS */
@@ -52,49 +53,29 @@ public class LauncherWeapon : WeaponBase {
 
 		if (missileProjectile)
 		{
-			//TODO: THIS NEEDS TO BE OPTIMIZED ONCE IT IS FINISHED
 			// Instantiate a new bullet
 			GameObject missile = Instantiate (missileProjectile) as GameObject;
 			missile.hideFlags = HideFlags.HideInHierarchy;
 			missile.SetActive (false);
 
-			// Get collision handler
-			On_Collision collisionHandler = missile.GetComponent<On_Collision>();
-			if ( !(missile.GetComponent<On_Collision>()) )
-			{
-				missile.AddComponent<On_Collision> ();
-				collisionHandler = missile.GetComponent<On_Collision> ();
-			}
-
 			// Add despawn conditions
-			missile.AddComponent<DisableAfterSeconds> ();
 			missile.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 
-			missile.AddComponent<Disable> ();
-			collisionHandler.Actions.Add(missile.GetComponent<Disable>());
-
-			// Add damage to the missile
-			//TODO: Decide: Should the missile directly apply damage, or just the explosion?
-			//missile.AddComponent<ApplyDamage> ();
-			//missile.GetComponent<ApplyDamage> ().Damage = damage;
-			//collisionHandler.Actions.Add(missile.GetComponent<ApplyDamage>());
-
-			// Add explosion to the missile
-			missile.AddComponent<Explosion> ();
+			// Apply settings to missile explosion
 			missile.GetComponent<Explosion> ().CollisionTags.Add(transform.tag);
 			missile.GetComponent<Explosion> ().Damage = damage;
-			collisionHandler.Actions.Add(missile.GetComponent<Explosion>());
+			missile.GetComponent<Explosion> ().ExplosiveForce = ExplosiveForce;
+			missile.GetComponent<Explosion> ().Radius = ExplosionRange;
 
-			// Add hit effect
-			missile.AddComponent<EmitParticle> ();
+			// Apply hit effect settings
 			missile.GetComponent<EmitParticle> ().amount = hitParticles;
 			missile.GetComponent<EmitParticle> ().particles = AddHitEffectToPool ();
-			collisionHandler.Actions.Add(missile.GetComponent<EmitParticle>());
 
 			// Gravity & rigidbody settings
-			missile.GetComponent<Rigidbody> ().drag = projectileDrag;
-			missile.GetComponent<Rigidbody> ().angularDrag = projectileAngularDrag;
-			missile.GetComponent<Rigidbody> ().useGravity = false;
+			Rigidbody rb = missile.GetComponent<Rigidbody> ();
+			rb.drag = projectileDrag;
+			rb.angularDrag = projectileAngularDrag;
+			rb.useGravity = false;
 			if (projectileGravity > 0)
 			{
 				missile.AddComponent<ApplyGravity> ();
@@ -102,7 +83,7 @@ public class LauncherWeapon : WeaponBase {
 			}
 
 			// Set collision-ignore-tags
-			collisionHandler.CollisionTags.Add(transform.tag);
+			missile.GetComponent<On_Collision> ().CollisionTags.Add(transform.tag);
 
 			// Add bullet to the pool
 			missilePool.Add(missile);
@@ -116,10 +97,10 @@ public class LauncherWeapon : WeaponBase {
 	{
 		/* Handles weapon firing */
 
-		if (!Options.Paused)
+		if (!Options.Paused && enabled)
 		{
 			// Check firing is not on cooldown, and the gun has an attached muzzle point
-			if (canFire && shotOrigin)
+			if (canFire && canFireSemi && shotOrigin)
 			{
 				// Is there enough ammo to fire the gun?
 				if (currentClip > 0 || bottomlessClip == true)
@@ -130,6 +111,10 @@ public class LauncherWeapon : WeaponBase {
 						currentClip--;
 						currentAmmoTotal--;
 					}
+
+					// If semi-auto, disable firing until fire button is up
+					if (fMode == FIRE_MODE.SemiAuto)
+						canFireSemi = false;
 
 					ShootMissile ();
 

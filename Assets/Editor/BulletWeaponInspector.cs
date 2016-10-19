@@ -94,6 +94,12 @@ public class BulletWeaponInspector : Editor {
 
 		/* GUN SETTINGS */
 		EditorGUILayout.LabelField ("Standard Properties:", EditorStyles.boldLabel);
+
+		EditorGUILayout.BeginHorizontal();
+		tooltip = new GUIContent ("Fire Mode:", "Semi-Auto guns will fire once per mouse-click. Auto guns will fire continuously while the fire button is held down");
+		EditorGUILayout.LabelField (tooltip);
+		script.fMode = (FIRE_MODE)EditorGUILayout.EnumPopup (script.fMode);
+		EditorGUILayout.EndHorizontal();
 		tooltip = new GUIContent ("Bottomless Clip:", "Toggle: Will the currently loaded clip ever run out of ammo or fire forever?");
 		script.bottomlessClip = EditorGUILayout.Toggle (tooltip, script.bottomlessClip);
 		// Clip size and maximum ammo variables only show if the weapon is not bottomless clip

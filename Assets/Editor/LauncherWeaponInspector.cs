@@ -94,6 +94,12 @@ public class LauncherWeaponInspector : Editor {
 
 		/* GUN SETTINGS */
 		EditorGUILayout.LabelField ("Standard Properties:", EditorStyles.boldLabel);
+
+		EditorGUILayout.BeginHorizontal();
+		tooltip = new GUIContent ("Fire Mode:", "Semi-Auto guns will fire once per mouse-click. Auto guns will fire continuously while the fire button is held down");
+		EditorGUILayout.LabelField (tooltip);
+		script.fMode = (FIRE_MODE)EditorGUILayout.EnumPopup (script.fMode);
+		EditorGUILayout.EndHorizontal();
 		tooltip = new GUIContent ("Bottomless Clip:", "Toggle: Will the currently loaded clip ever run out of ammo or fire forever?");
 		script.bottomlessClip = EditorGUILayout.Toggle (tooltip, script.bottomlessClip);
 		// Clip size and maximum ammo variables only show if the weapon is not bottomless clip
@@ -146,6 +152,10 @@ public class LauncherWeaponInspector : Editor {
 		script.projectileDrag = EditorGUILayout.Slider (tooltip, script.projectileDrag, 0.0f, 10.0f);
 		tooltip = new GUIContent ("Angular Drag:", "Amount of angular drag on the projectile's rigidbody");
 		script.projectileAngularDrag = EditorGUILayout.Slider (tooltip, script.projectileAngularDrag, 0.0f, 10.0f);
+		tooltip = new GUIContent ("Explosive Force:", "Amount of force applied where the missile explodes");
+		script.ExplosiveForce = EditorGUILayout.Slider (tooltip, script.ExplosiveForce, 0.0f, 50.0f);
+		tooltip = new GUIContent ("Explosive Radius:", "How far the explosion will reach");
+		script.ExplosionRange = EditorGUILayout.Slider (tooltip, script.ExplosionRange, 0.0f, 100.0f);
 
 		EditorGUILayout.Space();
 	}

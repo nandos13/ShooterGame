@@ -10,4 +10,7 @@ public enum COLLISION_MODE { HitSelected, IgnoreSelected }
 public enum WEAPON_TYPE { Bullet, Launcher, Pulse, Beam }
 
 // Behaviour state used by turrets
-public enum TurretBehaviourState { PreparingFire, Firing, Searching }
+public enum TURRET_BEHAVIOUR_STATE { PreparingFire, Firing, Searching }
+
+// Fire mode for guns
+public enum FIRE_MODE { SemiAuto, Auto }
