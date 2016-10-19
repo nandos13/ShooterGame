@@ -85,7 +85,7 @@ public class FPC_Weapon : MonoBehaviour
 						foreach (WeaponBase wb in Guns)
 						{
 							if (wb)
-								wb.canFireSemi = true;
+								wb.semiFireEnable();
 						}
 					}
 				}

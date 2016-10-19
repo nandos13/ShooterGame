@@ -27,7 +27,7 @@ public abstract class WeaponBase : MBAction
 	public float speed;														// Firing speed in Rounds Per Second. Calculated using speedRPM
 	public float spread;													// Accuracy of shots, where 0 = completely accurate
 	protected bool canFire = true;											// Tracks whether or not the gun can fire (based on fire rate)
-	public bool canFireSemi = true;											// Tracks whether or not the gun can fire (based on semi-auto/automatic setting)
+	protected bool canFireSemi = true;										// Tracks whether or not the gun can fire (based on semi-auto/automatic setting)
 
 
 	/* VISUALS VARIABLES */
@@ -97,6 +97,17 @@ public abstract class WeaponBase : MBAction
 			return effect;
 		}
 		return default(ParticleSystem);
+	}
+
+	public void semiFireEnable ()
+	{
+		/* Attempts to re enable firing for semi auto weapons */
+
+		if (!canFireSemi)
+		{
+			if (canFire)
+				canFireSemi = true;
+		}
 	}
 
 	protected void PlayShotSound ()
