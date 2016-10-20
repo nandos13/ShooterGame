@@ -41,7 +41,7 @@ public class FPC_Weapon : MonoBehaviour
 						//TODO: ANIMATE WEAPON GOING UP
 						weaponUp = true;
 					}
-					Debug.Log(hit.transform.name);
+					//Debug.Log("Gun is colliding with: " + hit.transform.name);
 				}
 				else
 				{

@@ -15,6 +15,7 @@ public class BulletWeaponInspector : Editor {
 
 	public bool showSoundList = false;
 	public bool showFireList = false;
+	public bool showDmgTagsList = false;
 
 	public override void OnInspectorGUI ()
 	{
@@ -32,11 +33,6 @@ public class BulletWeaponInspector : Editor {
 		/* VISUAL SETTINGS */
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField ("Visual:", EditorStyles.boldLabel);
-		/* Old code for single muzzle flash particle effect */
-		//tooltip = new GUIContent ("Muzzle Flash:", "Particle System at the end of the muzzle. Played when the gun is fired");
-		//script.muzzleFlash = (ParticleSystem)EditorGUILayout.ObjectField (tooltip, script.muzzleFlash, typeof(ParticleSystem), true);
-		//tooltip = new GUIContent ("Muzzle Emission:", "Number of muzzle particles emitted when the gun is shot");
-		//script.muzzleParticles = (uint)EditorGUILayout.Slider (tooltip, script.muzzleParticles, 0, 100);
 		tooltip = new GUIContent ("Hit Effect:", "Prefab Particle System to be played where the bullet hits");
 		script.hitEffect = (ParticleSystem)EditorGUILayout.ObjectField (tooltip, script.hitEffect, typeof(ParticleSystem), true);
 		tooltip = new GUIContent ("Hit Emission:", "Number of hit particles emitted when the bullet collides");
@@ -61,7 +57,6 @@ public class BulletWeaponInspector : Editor {
 			if (GUILayout.Button("+", GUILayout.Width(23)))
 			{
 				script.onFire.Add(default(MBAction));
-				//script.onFire.Add(new MBAction());
 			}
 		}
 
@@ -119,6 +114,33 @@ public class BulletWeaponInspector : Editor {
 		}
 		tooltip = new GUIContent ("Damage:", "The amount of damage a single bullet will inflict on collision");
 		script.damage = EditorGUILayout.Slider (tooltip, script.damage, 0.1f, 300.0f);
+		tooltip = new GUIContent ("Damage Tags", "A list of tags which will either be ignored or exclusively damaged");
+		showDmgTagsList = EditorGUILayout.Foldout(showDmgTagsList, tooltip);
+		if (showDmgTagsList)
+		{
+			EditorGUILayout.HelpBox ("Please note: This feature is currently not working for guns which fire a physical projectile prefab. (Eg. the launcher and the bullet gun when not using hitscan). \nI will get this working ASAP but had to go to work. Once this feature is working, it should be used on all enemies so they do not shoot and destroy their own buildings, etc. ", MessageType.Info);
+			tooltip = new GUIContent ("Mode", "IgnoreSelected: Any objects with these tags will not be damaged.\nHitSelected: Any objects with these tags will be damaged. All others will be ignored");
+			script.dmgTagsMode = (COLLISION_MODE)EditorGUILayout.EnumPopup (tooltip, script.dmgTagsMode);
+
+			for (int i = 0; i < script.dmgTags.Count; i++)
+			{
+				EditorGUILayout.BeginHorizontal();
+
+				if (GUILayout.Button("-", GUILayout.Width(23)))
+					script.dmgTags.RemoveAt(i);
+				else
+					script.dmgTags[i] = EditorGUILayout.TextField(script.dmgTags[i]);
+
+				EditorGUILayout.EndHorizontal();
+			}
+			if (script.dmgTags.Count > 0)
+				EditorGUILayout.Space();
+			if (GUILayout.Button("+", GUILayout.Width(23)))
+			{
+				script.dmgTags.Add("");
+			}
+		}
+
 		tooltip = new GUIContent ("Shot Speed (rpm)", "Speed or the gun in Rounds Per Minute");
 		script.speedRPM = EditorGUILayout.Slider (tooltip, script.speedRPM, 20.0f, 1500.0f);
 		script.speed = script.speedRPM / 60;

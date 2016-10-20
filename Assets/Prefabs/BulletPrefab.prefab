@@ -26,7 +26,6 @@ GameObject:
   - 114: {fileID: 114000011742846266}
   - 114: {fileID: 114000012010970460}
   - 114: {fileID: 114000010931924042}
-  - 114: {fileID: 114000013617988298}
   - 114: {fileID: 114000011299884056}
   m_Layer: 10
   m_Name: BulletPrefab
@@ -146,12 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a59317615c27a4c9cf5ec959a3d02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTags:
-  - Bullet
+  collisionTags: []
   mode: 1
   Actions:
   - {fileID: 114000010931924042}
-  - {fileID: 114000013617988298}
   - {fileID: 114000011299884056}
 --- !u!114 &114000012010970460
 MonoBehaviour:
@@ -165,15 +162,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Delay: 7
---- !u!114 &114000013617988298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011550910594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f3f86efc6bc4f346a782d3a9c537dc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 0

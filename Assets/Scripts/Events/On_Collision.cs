@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 public class On_Collision : MonoBehaviour {
 
-	public List<string> CollisionTags = new List<string>();			// List of tags that are either ignored or exclusively-hit
+	public List<string> collisionTags = new List<string>();			// List of tags that are either ignored or exclusively-hit
 	public COLLISION_MODE mode = COLLISION_MODE.IgnoreSelected;
 	public List<MBAction> Actions = new List<MBAction>();			// List of actions to execute on collision
 
@@ -19,7 +19,7 @@ public class On_Collision : MonoBehaviour {
 		if (mode == COLLISION_MODE.HitSelected)
 			ignoring = true;
 
-		foreach (string str in CollisionTags)
+		foreach (string str in collisionTags)
 		{
 			if (collision.transform.tag == str)
 			{

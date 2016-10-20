@@ -23,6 +23,8 @@ public abstract class WeaponBase : MBAction
 	public uint startingAmmo = 100;											// Total ammo held on spawn
 	protected uint currentAmmoTotal;										// Tracks current total-ammo count
 	public float damage = 10;												// Damage done per shot/second
+	public List<string> dmgTags = new List<string>();						// A list of tags to either be ignored or exclusively damaged
+	public COLLISION_MODE dmgTagsMode = COLLISION_MODE.IgnoreSelected;		// Choose how dmgTags is used
 	public float speedRPM = 600;											// Firing speed in Rounds Per Minute. Used in inspector
 	public float speed;														// Firing speed in Rounds Per Second. Calculated using speedRPM
 	public float spread;													// Accuracy of shots, where 0 = completely accurate

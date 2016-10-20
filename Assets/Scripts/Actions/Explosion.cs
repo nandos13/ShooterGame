@@ -11,8 +11,8 @@ public class Explosion : MBAction {
 	[Range(0.0f, 100.0f)]
 	public float Radius = 10;
 	public float Damage = 2;
-	public List<Health> affectedHealthComponents = new List<Health>();		// Tracks which components have already been affected by this explosion
-	public List<string> CollisionTags = new List<string>();					// A list of collisions to ignore
+	private List<Health> affectedHealthComponents = new List<Health>();		// Tracks which components have already been affected by this explosion
+	public List<string> collisionTags = new List<string>();					// A list of collisions to ignore
 	public COLLISION_MODE mode = COLLISION_MODE.IgnoreSelected;
 
 	public override void Execute ()
@@ -35,7 +35,7 @@ public class Explosion : MBAction {
 				ignoring = true;
 			
 			// Should we apply the explosion to this collider?
-			foreach (string str in CollisionTags)
+			foreach (string str in collisionTags)
 			{
 				if (col.transform.tag == str)
 				{

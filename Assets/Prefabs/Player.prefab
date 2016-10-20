@@ -563,10 +563,11 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 10
+  dmgTags: []
+  dmgTagsMode: 1
   speedRPM: 20
   speed: 0.33333334
   spread: 2.33
-  canFireSemi: 1
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
@@ -632,10 +633,12 @@ MonoBehaviour:
   unlimitedAmmo: 1
   startingAmmo: 100
   damage: 10
-  speedRPM: 1216
-  speed: 20.266666
+  dmgTags:
+  - TargetBuilding
+  dmgTagsMode: 1
+  speedRPM: 800
+  speed: 13.333333
   spread: 1.54
-  canFireSemi: 1
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -711,7 +714,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013762791866}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 0.1
   startDelay:
     scalar: 0
@@ -749,12 +752,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 0
   moveWithTransform: 1
+  autoRandomSeed: 0
   scalingMode: 2
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2434,7 +2438,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011109951106}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 0.1
   startDelay:
     scalar: 0
@@ -2472,12 +2476,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 0
   prewarm: 0
   playOnAwake: 0
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 2
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1

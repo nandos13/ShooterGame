@@ -53,7 +53,9 @@ public class TurretAIInspector : Editor {
 			EditorGUILayout.Space();
 		}
 
-		tooltip = new GUIContent ("Auto Gun-List:", "If checked, the script will automatically find and use all guns attached to the turret. Otherwise you can specify specific gun scripts to be used");
+		// Show gun information options
+		EditorGUILayout.LabelField ("Guns:", EditorStyles.boldLabel);
+		tooltip = new GUIContent ("Auto Populate List:", "If checked, the script will automatically find and use all guns attached to the turret. Otherwise you can specify specific gun scripts to be used");
 		script.autoPopulateGunList = EditorGUILayout.Toggle(tooltip, script.autoPopulateGunList);
 
 		if (!script.autoPopulateGunList)
@@ -84,7 +86,7 @@ public class TurretAIInspector : Editor {
 			}
 		}
 
-		tooltip = new GUIContent ("Shoot Delay:", "Delay in seconds before starting to fire");
+		tooltip = new GUIContent ("Shoot Delay:", "Delay in seconds before the turret will shoot, after obtaining a direct view to it's target");
 		script.shootDelay = EditorGUILayout.Slider (tooltip, script.shootDelay, 0.0f, 3.0f);
 
 		// Show aim options

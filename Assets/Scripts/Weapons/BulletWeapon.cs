@@ -63,6 +63,18 @@ public class BulletWeapon : WeaponBase
 			bullet.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 			
 			// Add damage to the bullet
+			ApplyDamage damager = bullet.AddComponent<ApplyDamage> ();
+			On_Collision collisionHandler = bullet.AddComponent<On_Collision> ();
+			if (collisionHandler)
+			{
+				damager.Damage = damage;
+				collisionHandler.Actions.Add(damager);
+				collisionHandler.mode = dmgTagsMode;
+				if (collisionHandler.mode == COLLISION_MODE.IgnoreSelected)
+					collisionHandler.collisionTags.Add(transform.tag);
+				foreach (string str in dmgTags)
+					collisionHandler.collisionTags.Add(str);
+			}
 			bullet.GetComponent<ApplyDamage> ().Damage = damage;
 
 			// Add hit effect
@@ -70,7 +82,7 @@ public class BulletWeapon : WeaponBase
 			bullet.GetComponent<EmitParticle> ().particles = AddHitEffectToPool ();
 			
 			// Set collision-ignore-tags
-			bullet.GetComponent<On_Collision> ().CollisionTags.Add(transform.tag);
+			bullet.GetComponent<On_Collision> ().collisionTags.Add(transform.tag);
 			
 			// Add bullet to the pool
 			bulletPool.Add(bullet);
@@ -225,9 +237,34 @@ public class BulletWeapon : WeaponBase
 
 			// Did the ray hit something that has health?
 			if (healthComponent)
-				healthComponent.ApplyDamage(damage);
+			{
+				// Should the hit deal damage or be ignored?
+				bool dmgIgnore = false;
+				if (dmgTagsMode == COLLISION_MODE.HitSelected)
+					dmgIgnore = true;
 
-			// Apply a force if the object has a rigid body
+				foreach (string str in dmgTags)
+				{
+					if (healthComponent.transform.tag == str)
+					{
+						if (dmgTagsMode == COLLISION_MODE.IgnoreSelected)
+						{
+							dmgIgnore = true;
+							break;
+						}
+						else if (dmgTagsMode == COLLISION_MODE.HitSelected)
+						{
+							dmgIgnore = false;
+							break;
+						}
+					}
+				}
+
+				if (!dmgIgnore)
+					healthComponent.ApplyDamage(damage);
+			}
+
+			// Apply  force if the object has a rigid body
 			Rigidbody rb = hit.transform.GetComponent<Rigidbody> ();
 			if (rb)
 			{

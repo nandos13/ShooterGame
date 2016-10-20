@@ -62,10 +62,19 @@ public class LauncherWeapon : WeaponBase {
 			missile.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 
 			// Apply settings to missile explosion
-			missile.GetComponent<Explosion> ().CollisionTags.Add(transform.tag);
-			missile.GetComponent<Explosion> ().Damage = damage;
-			missile.GetComponent<Explosion> ().ExplosiveForce = ExplosiveForce;
-			missile.GetComponent<Explosion> ().Radius = ExplosionRange;
+			Explosion expl = missile.GetComponent<Explosion> ();
+			if (expl)
+			{
+				expl.Damage = damage;
+				expl.mode = dmgTagsMode;
+				if (expl.mode == COLLISION_MODE.IgnoreSelected)
+					expl.collisionTags.Add(transform.tag);
+				foreach (string str in dmgTags)
+					expl.collisionTags.Add(str);
+				
+				expl.ExplosiveForce = ExplosiveForce;
+				expl.Radius = ExplosionRange;
+			}
 
 			// Apply hit effect settings
 			missile.GetComponent<EmitParticle> ().amount = hitParticles;
@@ -83,7 +92,7 @@ public class LauncherWeapon : WeaponBase {
 			}
 
 			// Set collision-ignore-tags
-			missile.GetComponent<On_Collision> ().CollisionTags.Add(transform.tag);
+			missile.GetComponent<On_Collision> ().collisionTags.Add(transform.tag);
 
 			// Add bullet to the pool
 			missilePool.Add(missile);
