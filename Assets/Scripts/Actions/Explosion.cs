@@ -80,7 +80,7 @@ public class Explosion : MBAction {
 					{
 						// Calculate the damage based on the distance from the explosion
 						float damageMultiplier = 1 - (Vector3.Distance (transform.position, col.transform.position) / Radius);
-						h.ApplyDamage (Damage * damageMultiplier);
+						h.ApplyDamage (Damage * damageMultiplier, false);
 
 						// Add the component to the list so it is not damaged twice by a single explosion
 						affectedHealthComponents.Add(h);

@@ -63,17 +63,24 @@ public class BulletWeapon : WeaponBase
 			bullet.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 			
 			// Add damage to the bullet
-			ApplyDamage damager = bullet.AddComponent<ApplyDamage> ();
+			ApplyDamage dmgScript = bullet.AddComponent<ApplyDamage> ();
 			On_Collision collisionHandler = bullet.AddComponent<On_Collision> ();
 			if (collisionHandler)
 			{
-				damager.Damage = damage;
-				collisionHandler.Actions.Add(damager);
+				dmgScript.Damage = damage;
+				collisionHandler.Actions.Add(dmgScript);
+				dmgScript.dmgTagsMode = dmgTagsMode;
 				collisionHandler.mode = dmgTagsMode;
 				if (collisionHandler.mode == COLLISION_MODE.IgnoreSelected)
+				{
 					collisionHandler.collisionTags.Add(transform.tag);
+					dmgScript.dmgTags.Add(transform.tag);
+				}
 				foreach (string str in dmgTags)
+				{
 					collisionHandler.collisionTags.Add(str);
+					dmgScript.dmgTags.Add(str);
+				}
 			}
 			bullet.GetComponent<ApplyDamage> ().Damage = damage;
 

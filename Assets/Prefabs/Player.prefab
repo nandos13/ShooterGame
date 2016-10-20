@@ -562,8 +562,9 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 10
-  dmgTags: []
+  damage: 40
+  dmgTags:
+  - TargetBuilding
   dmgTagsMode: 1
   speedRPM: 20
   speed: 0.33333334
@@ -582,7 +583,7 @@ MonoBehaviour:
   projectileDrag: 10
   projectileAngularDrag: 0
   ExplosiveForce: 19.5
-  ExplosionRange: 5
+  ExplosionRange: 20
 --- !u!114 &114000011898252764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -648,7 +649,7 @@ MonoBehaviour:
   shotSound:
   - {fileID: 8300000, guid: 761ef0dd9ec49974eac749d44c0110c1, type: 3}
   - {fileID: 8300000, guid: 3ef3ac2679cbf004d85a94f74343014d, type: 3}
-  hitscan: 1
+  hitscan: 0
   bulletForce: 80
   bulletProjectile: {fileID: 1000011550910594, guid: 22d1b7e2215653d4fa0f3d65594a4051,
     type: 2}
