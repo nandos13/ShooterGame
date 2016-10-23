@@ -16,21 +16,20 @@ public class ReplaceObject : MBAction {
 	void Start () 
 	{
 		thisObject = gameObject;
-		if (spawnObject)
-		{
-			spawnObject = Instantiate (spawnObject) as GameObject;
-			spawnObject.SetActive (false);
-		}
 	}
 
 	public override void Execute ()
 	{
 		thisObject.SetActive (false);
-		if (spawnObject)
+
+		spawnObject = Instantiate (spawnObject) as GameObject;
+		spawnObject.SetActive (true);
+		spawnObject.transform.position = thisObject.transform.position;
+		spawnObject.transform.rotation = thisObject.transform.rotation;
+
+		if (! (thisObject.transform.parent == this.transform))
 		{
-			spawnObject.SetActive (true);
-			spawnObject.transform.position = thisObject.transform.position;
-			spawnObject.transform.rotation = thisObject.transform.rotation;
+			spawnObject.transform.parent = thisObject.transform.parent;
 		}
 	}
 }

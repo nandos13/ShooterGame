@@ -68,6 +68,14 @@ public class Health : MonoBehaviour {
 	{
 		get { return currentHealth; }
 	}
+	public float CurrentHealthPct
+	{
+		get { return (currentHealth / MaxHealth) * 100; }
+	}
+	public float CurrentHealthDec
+	{
+		get { return (currentHealth / MaxHealth); }
+	}
 
 
 	// Use this for initialization
