@@ -174,4 +174,13 @@ public class Health : MonoBehaviour {
 			}
 		}
 	}
+
+	public void ApplyHeal (float h)
+	{
+		// Is the object alive?
+		if (alive)
+		{
+			currentHealth += h;
+		}
+	}
 }
