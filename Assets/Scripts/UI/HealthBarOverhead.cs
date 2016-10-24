@@ -12,7 +12,7 @@ public class HealthBarOverhead : MonoBehaviour {
 	public Vector3 offset;									// Position offset
 	[Range (0.1f, 3.0f)]
 	public float scale = 1;									// Scale of the health bar element
-	[Range (4.0f, 10.0f)]
+	[Range (4.0f, 100.0f)]
 	public float transitionSpeed = 10;						// Speed of bar movement when damage is taken
 
 	public bool fadeOut = true;
