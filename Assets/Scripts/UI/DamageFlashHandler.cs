@@ -2,7 +2,9 @@
 using System.Collections;
 
 /* DESCRIPTION:
- * 
+ * Handles damage feedback. This will either flash or alter the alpha of an image
+ * which tells the player they have taken damage. Something like a red hue
+ * or a bloody screen overlay.
  */
 
 public class DamageFlashHandler : MonoBehaviour {
@@ -29,8 +31,6 @@ public class DamageFlashHandler : MonoBehaviour {
 
 		if (playerHealth)
 			lastHealth = playerHealth.CurrentHealth;
-
-		Debug.Log(lastHealth);
 		
 		if (flasherCanvas)
 		{

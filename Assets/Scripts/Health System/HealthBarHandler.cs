@@ -2,7 +2,7 @@
 using System.Collections;
 
 /* DESCRIPTION:
- * Creates a health bar above the unit's head.
+ * Creates a health bar above a unit's head.
  */
 
 [RequireComponent (typeof(Health))]
