@@ -49,7 +49,7 @@ public class HealthBarPlayer : MonoBehaviour {
 			if (text)
 			{
 				// Update text
-				text.text = (healthComponent.CurrentHealthPct.ToString());
+				text.text = (int)(healthComponent.CurrentHealthPct.ToString());
 			}
 		}
 	}
