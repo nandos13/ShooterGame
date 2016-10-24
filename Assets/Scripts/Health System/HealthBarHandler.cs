@@ -5,7 +5,6 @@ using System.Collections;
  * Creates a health bar above a unit's head.
  */
 
-[RequireComponent (typeof(Health))]
 public class HealthBarHandler : MonoBehaviour {
 
 	public Vector3 offset = new Vector3(0,1,0);				// Position offset
@@ -40,7 +39,14 @@ public class HealthBarHandler : MonoBehaviour {
 				hbo.fadeOut = fadeOut;
 				hbo.fadeTime = fadeTime;
 
-				hbo.healthComponent = GetComponent<Health>();
+				Health affectedHealth = GetComponent<Health>();
+				if (!affectedHealth)
+					affectedHealth = GetComponentInParent<Health>();
+
+				if (affectedHealth)
+					hbo.healthComponent = affectedHealth;
+				else
+					Debug.Log("Attempted to create health bar on object: " + gameObject.name + ", but no health component was found. Health bar will not update.");
 			}
 		}
 	}
