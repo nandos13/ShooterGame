@@ -74,6 +74,7 @@ GameObject:
   - 95: {fileID: 95000012843979084}
   - 114: {fileID: 114000013243686098}
   - 114: {fileID: 114000013916052652}
+  - 114: {fileID: 114000014180019628}
   m_Layer: 0
   m_Name: MED_START
   m_TagString: Untagged
@@ -158,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011360645644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.54459, y: 4.483305, z: -52.078743}
+  m_LocalPosition: {x: -59.7, y: 4.483305, z: -44.5}
   m_LocalScale: {x: 0.7787069, y: 0.7787069, z: 0.7787069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -619,3 +620,21 @@ MonoBehaviour:
   DeathScripts:
   - {fileID: 114000013243686098}
   DamageScripts: []
+--- !u!114 &114000014180019628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011360645644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2e431b34bdd8d46805979bc61a76a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 10, z: 0}
+  scale: 1
+  transitionSpeed: 100
+  fadeOut: 1
+  fadeTime: 0.1
+  healthBarPrefab: {fileID: 223000010242818292, guid: fce4a26731c787c4980eabbef87622ba,
+    type: 2}

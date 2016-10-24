@@ -48,7 +48,7 @@ GameObject:
   - 114: {fileID: 114000010408565942}
   m_Layer: 0
   m_Name: MissilePrefab
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   JumpModifier: 0.5
   Radius: 10
   Damage: 2
-  CollisionTags: []
+  collisionTags: []
   mode: 1
 --- !u!114 &114000013842198524
 MonoBehaviour:
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c5b75782dd86941862b4c6815b6b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0
 --- !u!114 &114000013974909728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a59317615c27a4c9cf5ec959a3d02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTags: []
+  collisionTags: []
   mode: 1
   Actions:
   - {fileID: 114000013842198524}
