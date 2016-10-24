@@ -49,7 +49,9 @@ public class HealthBarPlayer : MonoBehaviour {
 			if (text)
 			{
 				// Update text
-				text.text = (((int)healthComponent.CurrentHealthPct).ToString());
+				int currHealth = (int)(healthComponent.CurrentHealthPct);
+				currHealth = Mathf.Clamp (currHealth, 0, 100);
+				text.text = currHealth.ToString();
 			}
 		}
 	}
