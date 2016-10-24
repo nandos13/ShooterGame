@@ -154,6 +154,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 765774126}
   m_RootOrder: 1
+--- !u!223 &43268019 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 223000011414854972, guid: 4ce3d59de169a3b4b9059eee152320a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1584228780}
 --- !u!1 &121102672
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,11 +746,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d45272bcfa19b6c4e94766e3f980f73a, type: 2}
   m_IsPrefabParent: 0
---- !u!223 &502600028 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223000010747705430, guid: 4ce3d59de169a3b4b9059eee152320a2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1584228780}
 --- !u!1 &548943902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,7 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3eedabb2fbd8a448b0d9a25208948f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flasherCanvas: {fileID: 502600028}
+  flasherCanvas: {fileID: 43268019}
   mode: 0
   maxOpacity: 0.455
   fadeTime: 0.26
@@ -2066,6 +2066,11 @@ Prefab:
     - target: {fileID: 224000012608740986, guid: 4ce3d59de169a3b4b9059eee152320a2,
         type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225000013168760916, guid: 4ce3d59de169a3b4b9059eee152320a2,
+        type: 2}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
