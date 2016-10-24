@@ -108,7 +108,6 @@ GameObject:
   - 223: {fileID: 223000010626526712}
   - 114: {fileID: 114000013630899542}
   - 114: {fileID: 114000012660433408}
-  - 114: {fileID: 114000010158006138}
   m_Layer: 5
   m_Name: HUD InGame
   m_TagString: Untagged
@@ -151,20 +150,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114000010158006138
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013582930148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e21db905bfa8fc34c96338026f79dbf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 0}
-  text: {fileID: 0}
-  transitionSpeed: 10
 --- !u!114 &114000010239106178
 MonoBehaviour:
   m_ObjectHideFlags: 1
