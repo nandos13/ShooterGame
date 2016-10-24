@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.IO;
 
 
 public class SettingManager : MonoBehaviour
@@ -12,10 +13,11 @@ public class SettingManager : MonoBehaviour
     public Dropdown vSyncDropdown;
     public Slider audioSlider;
     public Slider musicSlider;
+    public Button applyButton;
 
     public AudioSource audioSource;
     public AudioSource musicSource;
-    public Resolution[] resolutions;
+    public Resolution[] resolutions;        // my resolution array of resolutions
     public GameSettings gameSettings;
 
     void OnEnable()
@@ -28,7 +30,13 @@ public class SettingManager : MonoBehaviour
         vSyncDropdown.onValueChanged.AddListener(delegate { VSyncChange(); });
         audioSlider.onValueChanged.AddListener(delegate { AudioVolumeChange(); });
         musicSlider.onValueChanged.AddListener(delegate { MusicVolumeChange(); });
+        applyButton.onClick.AddListener(delegate { OnApplyButton(); });
         resolutions = Screen.resolutions;
+        foreach(Resolution resolution in resolutions)       // every resolution in the resolution list
+        {
+            resolutionDropdown.options.Add(new Dropdown.OptionData(resolution.ToString()));     // adds image of resolution types
+        }
+        LoadSettings();
     }
 
     public void OnFullscreenToggle()
@@ -38,7 +46,8 @@ public class SettingManager : MonoBehaviour
 
     public void OnResolutionChange()
     {
-
+        Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, Screen.fullScreen);
+        gameSettings.resolutionIndex = resolutionDropdown.value;
     }
 
     public void OnTextureQualityChange()
@@ -66,14 +75,32 @@ public class SettingManager : MonoBehaviour
         musicSource.volume = gameSettings.musicVolume = musicSlider.value;
     }
 
+    public void OnApplyButton()
+    {
+        SaveSettings();
+    }
+
     public void SaveSettings()
     {
-
+        string jsonData = JsonUtility.ToJson(gameSettings, true);
+        File.WriteAllText(Application.persistentDataPath + "/gamesettings.json", jsonData);
     }
 
     public void LoadSettings()
     {
+        File.ReadAllText(Application.persistentDataPath + "/gamesettings.json");
+        gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));     // doesnt load. needs work
 
+        musicSlider.value = gameSettings.musicVolume;
+        audioSlider.value = gameSettings.audioVolume;
+        vSyncDropdown.value = gameSettings.vSync;
+        antialiasingDropdown.value = gameSettings.antialiasing;
+        textureDropdown.value = gameSettings.textureQuality;
+        resolutionDropdown.value = gameSettings.resolutionIndex;
+        fullscreenToggle.isOn = gameSettings.fullscreen;
+        Screen.fullScreen = gameSettings.fullscreen;    // fullscreen not saving, so i set it
+
+        resolutionDropdown.RefreshShownValue();
     }
 
 
