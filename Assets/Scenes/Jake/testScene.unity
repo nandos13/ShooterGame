@@ -1683,6 +1683,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000011375305822, guid: 1286a351dff93fe4e93008d7616c4dac,
     type: 2}
   m_PrefabInternal: {fileID: 898805024}
+--- !u!114 &1322158352 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011898252764, guid: 1286a351dff93fe4e93008d7616c4dac,
+    type: 2}
+  m_PrefabInternal: {fileID: 898805024}
+  m_Script: {fileID: 11500000, guid: 05ed0a48fda327a49bbe3e2a07107226, type: 3}
 --- !u!114 &1322158357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2062,8 +2068,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000010158006138, guid: 4ce3d59de169a3b4b9059eee152320a2, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ce3d59de169a3b4b9059eee152320a2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1646426073
@@ -2179,6 +2184,7 @@ GameObject:
   - 23: {fileID: 1889005860}
   - 114: {fileID: 1889005859}
   - 114: {fileID: 1889005858}
+  - 114: {fileID: 1889005863}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2233,7 +2239,8 @@ MonoBehaviour:
   MaxHealth: 100
   StartHealthPercent: 100
   ImmunityTime: 0
-  DeathScripts: []
+  DeathScripts:
+  - {fileID: 1889005863}
   DamageScripts: []
 --- !u!23 &1889005860
 MeshRenderer:
@@ -2283,6 +2290,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1889005856}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1889005863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1889005856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1110758bb8184dbcb23db9f911af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1322158352}
+  value: 20
 --- !u!1 &1962526160
 GameObject:
   m_ObjectHideFlags: 0

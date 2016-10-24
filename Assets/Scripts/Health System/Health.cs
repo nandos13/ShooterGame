@@ -180,7 +180,11 @@ public class Health : MonoBehaviour {
 		// Is the object alive?
 		if (alive)
 		{
+			// Apply heal
 			currentHealth += h;
+
+			// Clamp health value
+			currentHealth = Mathf.Clamp (currentHealth, 0, MaxHealth);
 		}
 	}
 }

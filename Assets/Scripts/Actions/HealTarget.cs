@@ -6,16 +6,9 @@ public class HealTarget : MBAction {
 	public Health target;
 	public float value;
 
-	void Start () 
-	{
-		
-	}
-
-	void Update () 
+	public override void Execute () 
 	{
 		if (target)
-		{
-			
-		}
+			target.ApplyHeal (value);
 	}
 }
