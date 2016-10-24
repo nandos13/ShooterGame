@@ -79,7 +79,7 @@ public class Health : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		if (MaxHealth < 0.0f) 
 		{

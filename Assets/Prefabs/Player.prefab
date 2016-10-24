@@ -166,7 +166,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011375305822}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: -0, y: -0.15633841, z: -0, w: -0.98770356}
   m_LocalPosition: {x: 0, y: -0.7390001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -563,8 +563,7 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 40
-  dmgTags:
-  - TargetBuilding
+  dmgTags: []
   dmgTagsMode: 1
   speedRPM: 20
   speed: 0.33333334
@@ -634,8 +633,7 @@ MonoBehaviour:
   unlimitedAmmo: 1
   startingAmmo: 100
   damage: 10
-  dmgTags:
-  - TargetBuilding
+  dmgTags: []
   dmgTagsMode: 1
   speedRPM: 800
   speed: 13.333333
@@ -715,7 +713,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013762791866}
-  serializedVersion: 4
+  serializedVersion: 2
   lengthInSec: 0.1
   startDelay:
     scalar: 0
@@ -753,13 +751,12 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
+  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 0
   moveWithTransform: 1
-  autoRandomSeed: 0
   scalingMode: 2
-  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2439,7 +2436,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011109951106}
-  serializedVersion: 4
+  serializedVersion: 2
   lengthInSec: 0.1
   startDelay:
     scalar: 0
@@ -2477,13 +2474,12 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
+  randomSeed: 1111302376
   looping: 0
   prewarm: 0
   playOnAwake: 0
   moveWithTransform: 0
-  autoRandomSeed: 0
   scalingMode: 2
-  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1

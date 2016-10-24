@@ -14,3 +14,6 @@ public enum TURRET_BEHAVIOUR_STATE { PreparingFire, Firing, Searching }
 
 // Fire mode for guns
 public enum FIRE_MODE { SemiAuto, Auto }
+
+// Display modes for the player's damage broadcaster
+public enum HEALTH_IDENTIFIER_MODE { Flash, Opacity }

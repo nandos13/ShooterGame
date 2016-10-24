@@ -16,7 +16,7 @@ public class HealthBarOverhead : MonoBehaviour {
 	public float transitionSpeed = 10;						// Speed of bar movement when damage is taken
 
 	public bool fadeOut = true;
-	[Range (0.0f, 3.0f)]
+	[Range (0.01f, 3.0f)]
 	public float fadeTime = 3.0f;
 
 	[HideInInspector] public GameObject owner;				// The owner of the health bar
@@ -38,6 +38,7 @@ public class HealthBarOverhead : MonoBehaviour {
 				// Handle health bar size based on damage
 				Vector3 newScale = innerFill.rectTransform.localScale;
 				newScale.x = Mathf.Lerp (newScale.x, healthComponent.CurrentHealthDec, transitionSpeed * Time.deltaTime);
+				newScale.x = Mathf.Clamp (newScale.x, 0, 1);
 				innerFill.rectTransform.localScale = newScale;
 
 				// Check if the object is now dead
