@@ -456,7 +456,7 @@ GameObject:
   - 4: {fileID: 4000014084386300}
   - 198: {fileID: 198000012988290604}
   - 199: {fileID: 199000012238744584}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PS_Tracer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2151,12 +2151,12 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 40
+  damage: 150
   dmgTags:
   - TargetBuilding
   dmgTagsMode: 1
-  speedRPM: 20
-  speed: 0.33333334
+  speedRPM: 300
+  speed: 5
   spread: 2.33
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
@@ -2164,12 +2164,12 @@ MonoBehaviour:
   onFire: []
   audioSrc: {fileID: 82000013005853320}
   shotSound: []
-  muzzleVelocity: 100
+  muzzleVelocity: 30
   missileProjectile: {fileID: 1000011494532448, guid: 6a10b86d4acdacd4fa2c5905f886e8b5,
     type: 2}
-  despawnAfter: 5
-  projectileGravity: 61.6
-  projectileDrag: 10
+  despawnAfter: 10
+  projectileGravity: 1
+  projectileDrag: 0
   projectileAngularDrag: 0
   ExplosiveForce: 19.5
   ExplosionRange: 20

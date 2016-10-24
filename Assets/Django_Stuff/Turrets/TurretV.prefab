@@ -57,6 +57,8 @@ GameObject:
   - 114: {fileID: 114000010583455586}
   - 114: {fileID: 114000013904020424}
   - 114: {fileID: 114000011303042984}
+  - 114: {fileID: 114000012391367800}
+  - 114: {fileID: 114000011777979010}
   m_Layer: 0
   m_Name: TurretV
   m_TagString: Untagged
@@ -134,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011533134800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6292137, y: 4.97, z: -62.31153}
+  m_LocalPosition: {x: 3.77, y: 4.28, z: -79.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -372,10 +374,10 @@ MonoBehaviour:
   seeThroughTags: []
   autoPopulateGunList: 1
   guns: []
-  trackingRange: 20
+  trackingRange: 50
   clampAngleDown: 17.2
   clampAngleUp: 23.2
-  shootDelay: 1.5
+  shootDelay: 0
 --- !u!114 &114000011303042984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,13 +391,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000013465058540}
   amount: 5
---- !u!114 &114000013904020424
+--- !u!114 &114000011777979010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011533134800}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ad1e91fc92b5646b402822fc0f5430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotOrigin: {fileID: 4000010800643340}
+  fMode: 1
+  bottomlessClip: 1
+  clipSize: 30
+  unlimitedAmmo: 0
+  startingAmmo: 100
+  damage: 10
+  dmgTags: []
+  dmgTagsMode: 1
+  speedRPM: 100
+  speed: 1.6666666
+  spread: 0
+  hitEffect: {fileID: 0}
+  hitParticles: 10
+  onFire: []
+  audioSrc: {fileID: 0}
+  shotSound: []
+  muzzleVelocity: 5
+  missileProjectile: {fileID: 1000011494532448, guid: 6a10b86d4acdacd4fa2c5905f886e8b5,
+    type: 2}
+  despawnAfter: 10
+  projectileGravity: 0
+  projectileDrag: 0
+  projectileAngularDrag: 0
+  ExplosiveForce: 5
+  ExplosionRange: 5
+--- !u!114 &114000012391367800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011533134800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ed0a48fda327a49bbe3e2a07107226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageParents: 0
+  KillChildrenOnDeath: 0
+  MaxHealth: 100
+  StartHealthPercent: 100
+  ImmunityTime: 0
+  DeathScripts: []
+  DamageScripts: []
+--- !u!114 &114000013904020424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011533134800}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b12e27af515302346a862d412b567b5e, type: 3}
   m_Name: 
