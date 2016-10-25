@@ -62,11 +62,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public float deAggro = 40.0f;
         public GameObject target;
 
-        // var for investigation
-        private Vector3 investigateSpot;
-        private float timer = 0;
-        [Range(0, 50)]
-        public float investigateWait = 10;
+        
 
         // var for sight
         public float heightMultiplier;
@@ -95,8 +91,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 state = AIEnemyControl.State.PATROL;
             else if (Vector3.Distance(target.transform.position, transform.position) <= aggroRange)
                 state = AIEnemyControl.State.CHASE;
-            else if (Vector3.Distance(target.transform.position, transform.position) <= sightDist )
-                state = AIEnemyControl.State.INVESTIGATE;
+            
             FSM();
         }
         
@@ -110,9 +105,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 case State.CHASE:
                     Chase();
                     break;
-                case State.INVESTIGATE:
-                    Investigate();
-                    break;
+                
             }
         }
 
@@ -142,28 +135,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         }
 
-        void Investigate()
-        {
-            timer += Time.deltaTime;
-
-            agent.SetDestination(this.transform.position);
-            character.Move(Vector3.zero, false, false);
-            transform.LookAt(investigateSpot);
-            if (timer >= investigateWait)
-            {
-                state = AIEnemyControl.State.PATROL;
-                timer = 0;
-            }
-        }
-
-        //void OnTriggerEnter(Collider coll)
-        //{
-        //    if (coll.tag == "Player")
-        //    {
-        //        state = AIEnemyControl.State.INVESTIGATE;
-        //        investigateSpot = coll.gameObject.transform.position;
-        //    }
-        //}
+        
 
         void FixedUpdate()
         {
