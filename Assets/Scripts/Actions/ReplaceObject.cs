@@ -13,6 +13,9 @@ public class ReplaceObject : MBAction {
 	private GameObject thisObject;
 	public GameObject spawnObject;
 
+	public bool inheritRotation = true;
+	public bool inheritScale = true;
+
 	void Start () 
 	{
 		thisObject = gameObject;
@@ -24,10 +27,14 @@ public class ReplaceObject : MBAction {
 
 		spawnObject = Instantiate (spawnObject) as GameObject;
 		spawnObject.SetActive (true);
-		spawnObject.transform.position = thisObject.transform.position;
-		spawnObject.transform.rotation = thisObject.transform.rotation;
 
-		if (! (thisObject.transform.parent == this.transform))
+		spawnObject.transform.position = thisObject.transform.position;
+		if (inheritRotation)
+			spawnObject.transform.rotation = thisObject.transform.rotation;
+		if (inheritScale)
+			spawnObject.transform.localScale = thisObject.transform.localScale;
+
+		if (! (thisObject.transform.parent == thisObject.transform) )
 		{
 			spawnObject.transform.parent = thisObject.transform.parent;
 		}

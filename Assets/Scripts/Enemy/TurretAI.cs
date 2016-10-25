@@ -10,21 +10,28 @@ using System.Collections.Generic;
 
 public class TurretAI : MonoBehaviour {
 
-	public Transform rotationPiece;								// The part of the turret that will rotate to look towards the target
-	public float rotateSpeed = 2.0f;							// Speed of rotation
-	public float visionAngle;									// Angle in degrees the turret can see the target
-	public List<string>seeThroughTags = new List<string>();		// List of object tags the turret has vision through
-	public bool autoPopulateGunList = true;						// Will the script use GetComponent to automatically fill the guns list?
-	public List<WeaponBase> guns = new List<WeaponBase>();		// List of guns attached to the turret
-	public float trackingRange;									// View distance of the turret
-	public float clampAngleDown;								// Max angle the turret can look down
-	public float clampAngleUp;									// Max angle the turret can look up
-	public float shootDelay;									// Delay in seconds before starting to fire
+	public Transform rotationPiece;										// The part of the turret that will rotate to look towards the target
+	public TURRET_SEARCH_TYPE searchMode = TURRET_SEARCH_TYPE.Random;	// Which type of search method the turret will use
+	public float searchAngle = 10.0f;									// When in PointToPoint search mode, this is the angle it can search
+	private Vector3 searchPoint;
+	private bool goingRight = false;
+	private bool rotationPaused = false;
+	public float pauseTime = 1.0f;
 
-	private GameObject target;									// The turret's target (currently will only ever be the player)
+	public float rotateSpeed = 2.0f;									// Speed of rotation
+	public float visionAngle;											// Angle in degrees the turret can see the target
+	public List<string>seeThroughTags = new List<string>();				// List of object tags the turret has vision through
+	public bool autoPopulateGunList = true;								// Will the script use GetComponent to automatically fill the guns list?
+	public List<WeaponBase> guns = new List<WeaponBase>();				// List of guns attached to the turret
+	public float trackingRange;											// View distance of the turret
+	public float clampAngleDown;										// Max angle the turret can look down
+	public float clampAngleUp;											// Max angle the turret can look up
+	public float shootDelay;											// Delay in seconds before starting to fire
+
+	private GameObject target;											// The turret's target (currently will only ever be the player)
 	private TURRET_BEHAVIOUR_STATE state = 
-		TURRET_BEHAVIOUR_STATE.Searching;						// Tracks current behaviour being acted out
-	private Vector3 randomPoint;								// A point used to randomly search around for the target
+		TURRET_BEHAVIOUR_STATE.Searching;								// Tracks current behaviour being acted out
+	private Vector3 randomPoint;										// A point used to randomly search around for the target
 
 	void Start () 
 	{
@@ -94,7 +101,7 @@ public class TurretAI : MonoBehaviour {
 						if (hit.collider.gameObject == target || hit.collider.transform.IsChildOf(target.transform)) 
 						{
 							// Turret has line of sight to player, rotate to look at the player
-							RotateToFacePoint (target.transform);
+							RotateToFacePoint (target.transform.position);
 
 							// Is the target close to directly in front of the turret?
 							if (angleDegreesToPlayer <= 5.0f)
@@ -155,7 +162,70 @@ public class TurretAI : MonoBehaviour {
 			Debug.Log (transform.name + ": Stopping Turret (line of sight lost), now searching randomly");
 			state = TURRET_BEHAVIOUR_STATE.Searching;
 		}
-		SearchRandomly ();
+		switch (searchMode) 
+		{
+		case TURRET_SEARCH_TYPE.PointToPoint:
+			SearchPtP ();
+			break;
+		case TURRET_SEARCH_TYPE.Random:
+			SearchRandomly ();
+			break;
+		default:
+			SearchRandomly ();
+			break;
+		}
+	}
+
+	private IEnumerator PauseRotation ()
+	{
+		rotationPaused = true;
+		yield return new WaitForSeconds (pauseTime);
+		rotationPaused = false;
+		goingRight = !goingRight;
+	}
+
+	private void SearchPtP()
+	{
+		/* This function makes the turret search in a sweeping motion
+		 * between two specified points. 
+		 */
+
+		// Should the turret move?
+		if (!rotationPaused)
+		{
+			// Is the turret moving left or right?
+			if (goingRight)
+			{
+				// Calculate right vector point based on angle
+				searchPoint.x = Mathf.Sin(searchAngle * Mathf.Deg2Rad);
+				searchPoint.z = Mathf.Cos(searchAngle * Mathf.Deg2Rad);
+				searchPoint *= trackingRange;
+				searchPoint += rotationPiece.position;
+				searchPoint.y = transform.position.y;
+
+				// Look at point
+				RotateToFacePoint (searchPoint, false);
+			}
+			else
+			{
+				// Calculate left vector point based on angle
+				searchPoint.x = Mathf.Sin(-searchAngle * Mathf.Deg2Rad);
+				searchPoint.z = Mathf.Cos(-searchAngle * Mathf.Deg2Rad);
+				searchPoint *= trackingRange;
+				searchPoint += rotationPiece.position;
+				searchPoint.y = transform.position.y;
+
+				// Look at point
+				RotateToFacePoint (searchPoint, false);
+			}
+
+			// Is the turret looking at the point?
+			Vector3 angleTurretToPoint = (searchPoint - rotationPiece.transform.position).normalized;
+			if (Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward) == 1)
+			{
+				StartCoroutine(PauseRotation());
+			}
+		}
 	}
 
 	private void SearchRandomly ()
@@ -259,11 +329,11 @@ public class TurretAI : MonoBehaviour {
 		// Look at the target
 		GameObject temp = new GameObject();
 		temp.transform.position = randomPoint;
-		RotateToFacePoint (temp.transform);
+		RotateToFacePoint (temp.transform.position);
 		Destroy (temp);
 	}
 
-	private void RotateToFacePoint (Transform point)
+	private void RotateToFacePoint (Vector3 point, bool slerp = true)
 	{
 		/* This function handles the turret rotation.
 		 * The turret will smoothly look towards any point specified
@@ -277,7 +347,7 @@ public class TurretAI : MonoBehaviour {
 			Quaternion oldRotation = rotationPiece.transform.rotation;
 
 			// Find vector from the turret to the player
-			Vector3 angleToPoint = point.position - rotationPiece.transform.position;
+			Vector3 angleToPoint = point - rotationPiece.transform.position;
 
 			// Calculate lateral angle needed to rotate towards specified point (angle for turret to look side to side)
 			Vector3 lateralDir = angleToPoint;
@@ -303,7 +373,66 @@ public class TurretAI : MonoBehaviour {
 			if (state == TURRET_BEHAVIOUR_STATE.Firing)
 				currentRotateSpeed *= 2.5f;
 
-			rotationPiece.transform.rotation = Quaternion.Slerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * currentRotateSpeed);
+			if (slerp)
+				rotationPiece.transform.rotation = Quaternion.Slerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * currentRotateSpeed);
+			else
+				rotationPiece.transform.rotation = Quaternion.Lerp (oldRotation, otherRotation * lateralRotation, Time.deltaTime * currentRotateSpeed);
 		}
+	}
+
+	void OnDrawGizmosSelected ()
+	{
+		/* Draws debugging info in the scene if the object is selected */
+
+		if (searchMode == TURRET_SEARCH_TYPE.PointToPoint)
+		{
+			if (rotationPiece)
+			{
+				// Draw rotation range
+				Vector3 angleLeft = new Vector3();
+				angleLeft.x = Mathf.Sin(-searchAngle * Mathf.Deg2Rad);
+				angleLeft.z = Mathf.Cos(-searchAngle * Mathf.Deg2Rad);
+				angleLeft *= trackingRange;
+				angleLeft += rotationPiece.position;
+				angleLeft.y = transform.position.y;
+
+				Vector3 angleRight = new Vector3();
+				angleRight.x = Mathf.Sin(searchAngle * Mathf.Deg2Rad);
+				angleRight.z = Mathf.Cos(searchAngle * Mathf.Deg2Rad);
+				angleRight *= trackingRange;
+				angleRight += rotationPiece.position;
+				angleRight.y = transform.position.y;
+
+				Gizmos.color = Color.blue;
+				Gizmos.DrawLine (rotationPiece.position, angleLeft);
+				Gizmos.DrawLine (rotationPiece.position, angleRight);
+
+				// Draw vision range
+				//Vector3 angleLeftVision = new Vector3();
+				//angleLeftVision.x = Mathf.Sin(-visionAngle * Mathf.Deg2Rad);
+				//angleLeftVision.z = Mathf.Cos(-visionAngle * Mathf.Deg2Rad);
+				//angleLeftVision *= trackingRange;
+				//angleLeftVision += rotationPiece.position;
+				//angleLeftVision.y = transform.position.y;
+				//
+				//Vector3 angleRightVision = new Vector3();
+				//angleRightVision.x = Mathf.Sin(visionAngle * Mathf.Deg2Rad);
+				//angleRightVision.z = Mathf.Cos(visionAngle * Mathf.Deg2Rad);
+				//angleRightVision *= trackingRange;
+				//angleRightVision += rotationPiece.position;
+				//angleRightVision.y = transform.position.y;
+				//
+				//Gizmos.color = Color.green;
+				//Gizmos.DrawLine (rotationPiece.position, angleLeftVision);
+				//Gizmos.DrawLine (rotationPiece.position, angleRightVision);
+			}
+		}
+		else
+		{
+			// Draw a sphere representing tracking range
+			if (rotationPiece)
+				Gizmos.DrawWireSphere (rotationPiece.position, trackingRange);
+		}
+
 	}
 }

@@ -12,6 +12,9 @@ public enum WEAPON_TYPE { Bullet, Launcher, Pulse, Beam }
 // Behaviour state used by turrets
 public enum TURRET_BEHAVIOUR_STATE { PreparingFire, Firing, Searching }
 
+// Search type used by turrets
+public enum TURRET_SEARCH_TYPE { Random, PointToPoint }
+
 // Fire mode for guns
 public enum FIRE_MODE { SemiAuto, Auto }
 

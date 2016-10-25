@@ -26,6 +26,15 @@ public class TurretAIInspector : Editor {
 		EditorGUILayout.LabelField ("General:", EditorStyles.boldLabel);
 		tooltip = new GUIContent ("Rotation Piece:", "The part of the turret that will rotate to look towards the target");
 		script.rotationPiece = (Transform)EditorGUILayout.ObjectField (tooltip, script.rotationPiece, typeof(Transform), true);
+		tooltip = new GUIContent ("Search Mode:", "Will the turret search randomly using the old search method, or scan point to point in a sweeping motion?");
+		script.searchMode = (TURRET_SEARCH_TYPE)EditorGUILayout.EnumPopup (tooltip, script.searchMode);
+		if (script.searchMode == TURRET_SEARCH_TYPE.PointToPoint)
+		{
+			tooltip = new GUIContent ("   Search Angle:", "The angle the turret will sweep to, where 0 is straight ahead");
+			script.searchAngle = EditorGUILayout.Slider (tooltip, script.searchAngle, 0.0f, 90.0f);
+			tooltip = new GUIContent ("   Rotation Pause:", "Time in seconds the turret will stop rotating for at the end of each directional sweep");
+			script.pauseTime = EditorGUILayout.Slider (tooltip, script.pauseTime, 0.0f, 1.5f);
+		}
 		tooltip = new GUIContent ("Vision Angle:", "Angle in degrees the turret can see the target");
 		script.visionAngle = EditorGUILayout.Slider (tooltip, script.visionAngle, 40.0f, 90.0f);
 
