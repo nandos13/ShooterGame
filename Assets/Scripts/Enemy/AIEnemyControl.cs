@@ -35,7 +35,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
     public class AIEnemyControl : MonoBehaviour
     {
         public NavMeshAgent agent;
-        public ThirdPersonCharacter character;
+        //public ThirdPersonCharacter character;
 
         public enum State
         {
@@ -74,7 +74,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();
-            character = GetComponent<ThirdPersonCharacter>();
+            //character = GetComponent<ThirdPersonCharacter>();
 
             agent.updatePosition = true;
             agent.updateRotation = false;
@@ -115,7 +115,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if(Vector3.Distance(this.transform.position, waypoints[waypointInd].transform.position) >= 5)
             {
                 agent.SetDestination(waypoints[waypointInd].transform.position);
-                character.Move(agent.desiredVelocity, false, false);        // 3rdpersoncontroller, false = crouch, jump ect
+               // character.Move(agent.desiredVelocity, false, false);        // 3rdpersoncontroller, false = crouch, jump ect
             }
             else
             {
@@ -131,7 +131,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             agent.speed = chaseSpeed;
             agent.SetDestination(target.transform.position);
-            character.Move(agent.desiredVelocity, false, false);
+            //character.Move(agent.desiredVelocity, false, false);
 
         }
 
