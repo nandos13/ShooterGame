@@ -193,6 +193,7 @@ public class TurretAI : MonoBehaviour {
 		// Should the turret move?
 		if (!rotationPaused)
 		{
+			//TODO: THIS NEEDS TO APPLY CURRENT ROTATION. CURRENTLY CAN ONLY SEARCH IN ONE WORLD DIRECTION
 			// Is the turret moving left or right?
 			if (goingRight)
 			{
