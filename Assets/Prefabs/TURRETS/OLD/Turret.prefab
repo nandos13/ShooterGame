@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c5b75782dd86941862b4c6815b6b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0
 --- !u!114 &114000011765119952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,11 +396,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotOrigin: {fileID: 4000012630260404}
+  fMode: 1
   bottomlessClip: 1
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 10
+  dmgTags: []
+  dmgTagsMode: 1
   speedRPM: 334
   speed: 5.5666666
   spread: 0
