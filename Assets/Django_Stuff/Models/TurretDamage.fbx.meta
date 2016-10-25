@@ -1,42 +1,54 @@
 fileFormatVersion: 2
-guid: 35762fabf663c3f4d849b4abe603c59e
-timeCreated: 1477366327
+guid: 59a97d1b1ff0f0541b4cb7ebfb61ae38
+timeCreated: 1477365415
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: base
-    100002: glow1
-    100004: glow2
-    100006: innercube
-    100008: //RootNode
-    100010: outercube
-    400000: base
-    400002: glow1
-    400004: glow2
-    400006: innercube
-    400008: //RootNode
-    400010: outercube
-    2300000: base
-    2300002: glow1
-    2300004: glow2
-    2300006: innercube
-    2300008: outercube
-    3300000: base
-    3300002: glow1
-    3300004: glow2
-    3300006: innercube
-    3300008: outercube
-    4300000: innercube
-    4300002: outercube
-    4300004: glow1
-    4300006: glow2
-    4300008: base
-    6400000: base
-    6400002: glow1
-    6400004: glow2
-    6400006: innercube
-    6400008: outercube
+    100000: Tbase
+    100002: TDome
+    100004: Tfram1
+    100006: TFrame2
+    100008: TGun
+    100010: THouse
+    100012: TTop
+    100014: //RootNode
+    400000: Tbase
+    400002: TDome
+    400004: Tfram1
+    400006: TFrame2
+    400008: TGun
+    400010: THouse
+    400012: TTop
+    400014: //RootNode
+    2300000: Tbase
+    2300002: TDome
+    2300004: Tfram1
+    2300006: TFrame2
+    2300008: TGun
+    2300010: THouse
+    2300012: TTop
+    3300000: Tbase
+    3300002: TDome
+    3300004: Tfram1
+    3300006: TFrame2
+    3300008: TGun
+    3300010: THouse
+    3300012: TTop
+    4300000: Tbase
+    4300002: TGun
+    4300004: TDome
+    4300006: Tfram1
+    4300008: TTop
+    4300010: TFrame2
+    4300012: THouse
+    6400000: Tbase
+    6400002: TDome
+    6400004: Tfram1
+    6400006: TFrame2
+    6400008: TGun
+    6400010: THouse
+    6400012: TTop
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -62,7 +74,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 1
     importBlendShapes: 1
