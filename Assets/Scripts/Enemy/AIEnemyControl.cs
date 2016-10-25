@@ -40,8 +40,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public enum State
         {
             PATROL,
-            CHASE,
-            INVESTIGATE
+            CHASE
+           
         }
 
         public State state;
