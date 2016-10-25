@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 using System.IO;
 
-
 public class SettingManager : MonoBehaviour
 {
     public Toggle fullscreenToggle;
@@ -14,10 +13,10 @@ public class SettingManager : MonoBehaviour
     public Slider audioSlider;
     public Slider musicSlider;
     public Button applyButton;
-
     public AudioSource audioSource;
     public AudioSource musicSource;
     public Resolution[] resolutions;        // my resolution array of resolutions
+    [HideInInspector]
     public GameSettings gameSettings;
 
     void OnEnable()
@@ -57,7 +56,8 @@ public class SettingManager : MonoBehaviour
 
    public void OnAntialiasingChange()
     {
-        QualitySettings.antiAliasing = gameSettings.antialiasing = (int)Mathf.Pow(2, antialiasingDropdown.value);
+        QualitySettings.antiAliasing = (int)Mathf.Pow(2, antialiasingDropdown.value);
+        gameSettings.antialiasing = antialiasingDropdown.value;
     }
 
     public void VSyncChange()
@@ -89,8 +89,7 @@ public class SettingManager : MonoBehaviour
     public void LoadSettings()
     {
         File.ReadAllText(Application.persistentDataPath + "/gamesettings.json");
-        gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));     // doesnt load. needs work
-
+        gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));    
         musicSlider.value = gameSettings.musicVolume;
         audioSlider.value = gameSettings.audioVolume;
         vSyncDropdown.value = gameSettings.vSync;
@@ -98,10 +97,7 @@ public class SettingManager : MonoBehaviour
         textureDropdown.value = gameSettings.textureQuality;
         resolutionDropdown.value = gameSettings.resolutionIndex;
         fullscreenToggle.isOn = gameSettings.fullscreen;
-        Screen.fullScreen = gameSettings.fullscreen;    // fullscreen not saving, so i set it
-
+        Screen.fullScreen = gameSettings.fullscreen;  
         resolutionDropdown.RefreshShownValue();
     }
-
-
 }
