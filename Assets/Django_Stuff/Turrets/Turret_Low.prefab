@@ -296,6 +296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 1000012289170348, guid: 77e9bfc9cf9c561469b13c1689fb9661,
     type: 2}
+  inheritRotation: 1
+  inheritScale: 1
 --- !u!114 &114000011590189888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,6 +398,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationPiece: {fileID: 4000013384934556}
+  searchMode: 0
+  searchAngle: 10
+  pauseTime: 1
   rotateSpeed: 5
   visionAngle: 60
   seeThroughTags:

@@ -25,7 +25,7 @@ GameObject:
   - 114: {fileID: 114000011843844618}
   m_Layer: 0
   m_Name: Bazooka1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - 23: {fileID: 23000011104638088}
   m_Layer: 0
   m_Name: pCylinder2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - 23: {fileID: 23000010198044174}
   m_Layer: 0
   m_Name: GrenadeNozz1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,9 +93,10 @@ GameObject:
   - 4: {fileID: 4000012871575886}
   - 33: {fileID: 33000011888917012}
   - 23: {fileID: 23000013095221412}
+  - 114: {fileID: 114000012624307586}
   m_Layer: 0
   m_Name: GrenadeFrame1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +113,7 @@ GameObject:
   - 23: {fileID: 23000010683920000}
   m_Layer: 0
   m_Name: ChainRail1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +129,7 @@ GameObject:
   - 95: {fileID: 95000011680406032}
   m_Layer: 0
   m_Name: BaseGunOP1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +146,7 @@ GameObject:
   - 23: {fileID: 23000010182480350}
   m_Layer: 0
   m_Name: ShottyV2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +182,7 @@ GameObject:
   - 23: {fileID: 23000011417970104}
   m_Layer: 0
   m_Name: pCylinder3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +216,7 @@ GameObject:
   - 199: {fileID: 199000010199342550}
   m_Layer: 0
   m_Name: Turret_Muzzle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +233,7 @@ GameObject:
   - 23: {fileID: 23000012661616988}
   m_Layer: 0
   m_Name: pCone1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +250,7 @@ GameObject:
   - 23: {fileID: 23000011841398284}
   m_Layer: 0
   m_Name: ChainBase1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,7 +310,7 @@ GameObject:
   - 199: {fileID: 199000010994127770}
   m_Layer: 8
   m_Name: TEST_MUZZ
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -326,7 +327,7 @@ GameObject:
   - 199: {fileID: 199000012238744584}
   m_Layer: 0
   m_Name: PS_Tracer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +396,7 @@ GameObject:
   - 23: {fileID: 23000011849225238}
   m_Layer: 0
   m_Name: GrenadeRev1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,6 +413,21 @@ GameObject:
   - 23: {fileID: 23000011322231026}
   m_Layer: 0
   m_Name: BaseGun
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000014158251810
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012752219886}
+  m_Layer: 0
+  m_Name: ShotOriginG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +683,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013175159622}
   m_LocalRotation: {x: -0, y: -0.70781356, z: -0, w: 0.7063994}
-  m_LocalPosition: {x: -1.0074562, y: -0.018250018, z: -0.009854436}
+  m_LocalPosition: {x: -0.94, y: -0.018250018, z: -0.01}
   m_LocalScale: {x: 0.026631488, y: 0.022055632, z: 0.141814}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_Children:
@@ -675,6 +691,19 @@ Transform:
   - {fileID: 4000014084386300}
   - {fileID: 4000010341917740}
   m_Father: {fileID: 4000010962194464}
+  m_RootOrder: 0
+--- !u!4 &4000012752219886
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014158251810}
+  m_LocalRotation: {x: -0.28742692, y: -0.69390976, z: -0.25265077, w: 0.6099529}
+  m_LocalPosition: {x: -0.485, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: -44.525, y: -100.104004, z: 7.109}
+  m_Children: []
+  m_Father: {fileID: 4000012871575886}
   m_RootOrder: 0
 --- !u!4 &4000012864743656
 Transform:
@@ -699,7 +728,8 @@ Transform:
   m_LocalPosition: {x: 0.421, y: -0.20182388, z: -0.189}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000012752219886}
   m_Father: {fileID: 4000012263065286}
   m_RootOrder: 4
 --- !u!4 &4000013030110204
@@ -1611,6 +1641,44 @@ MonoBehaviour:
   mode: 0
   maxOpacity: 0.47
   fadeTime: 0.3
+--- !u!114 &114000012624307586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010725647304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ad1e91fc92b5646b402822fc0f5430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotOrigin: {fileID: 4000012752219886}
+  fMode: 0
+  bottomlessClip: 1
+  clipSize: 30
+  unlimitedAmmo: 0
+  startingAmmo: 100
+  damage: 50
+  dmgTags: []
+  dmgTagsMode: 1
+  speedRPM: 600
+  speed: 10
+  spread: 2
+  hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
+    type: 2}
+  hitParticles: 10
+  onFire: []
+  audioSrc: {fileID: 0}
+  shotSound: []
+  muzzleVelocity: 20
+  missileProjectile: {fileID: 1000011494532448, guid: 6a10b86d4acdacd4fa2c5905f886e8b5,
+    type: 2}
+  despawnAfter: 10
+  projectileGravity: 10
+  projectileDrag: 0
+  projectileAngularDrag: 0
+  ExplosiveForce: 5
+  ExplosionRange: 5
 --- !u!114 &114000013282102208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1624,7 +1692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   gravity: 50
-  maxVelocityChange: 12
+  maxVelocityChange: 20
   canJump: 1
   jumpHeight: 8
 --- !u!114 &114000013457922404
@@ -1644,6 +1712,7 @@ MonoBehaviour:
   Guns:
   - {fileID: 114000011642022330}
   - {fileID: 114000011228790662}
+  - {fileID: 114000012624307586}
 --- !u!114 &114000013935076144
 MonoBehaviour:
   m_ObjectHideFlags: 1
