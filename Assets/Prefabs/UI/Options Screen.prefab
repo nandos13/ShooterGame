@@ -1569,7 +1569,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2947761
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1643,7 +1643,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.13827294
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2152,7 +2152,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Off
+  m_Text: Full
 --- !u!114 &114000011003201572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2251,7 +2251,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: None
+  m_Text: Ultra
 --- !u!114 &114000011059039674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.2947761
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2861,7 +2861,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.13827294
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3355,7 +3355,15 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options: []
+    m_Options:
+    - m_Text: 640 x 480 @ 0Hz
+      m_Image: {fileID: 0}
+    - m_Text: 640 x 480 @ 0Hz
+      m_Image: {fileID: 0}
+    - m_Text: 640 x 480 @ 0Hz
+      m_Image: {fileID: 0}
+    - m_Text: 640 x 480 @ 0Hz
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3566,7 +3574,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 640 x 480 @ 0Hz
 --- !u!114 &114000012845952470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3820,7 +3828,7 @@ MonoBehaviour:
   m_CaptionImage: {fileID: 0}
   m_ItemText: {fileID: 114000010124616782}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 1
   m_Options:
     m_Options:
     - m_Text: Off
@@ -4432,7 +4440,7 @@ MonoBehaviour:
   m_CaptionImage: {fileID: 0}
   m_ItemText: {fileID: 114000013892815340}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 3
   m_Options:
     m_Options:
     - m_Text: None

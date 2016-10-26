@@ -43,8 +43,6 @@ public class FPC_Walk : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		//Lock the cursor
-		Cursor.lockState = CursorLockMode.Locked;	//TODO MOVE THIS TO BETTER PLACE
 		rb = GetComponent<Rigidbody>();
 		capCollider = GetComponent<CapsuleCollider>();
 

@@ -29,7 +29,10 @@ public class FPC_Aim : MonoBehaviour {
 		//TODO: Apply initial rotation so the player spawns facing the same direction as it is in the editor
 		smoothV.x = transform.rotation.eulerAngles.y;
 		mouseMovement.x = transform.rotation.eulerAngles.y;
-	}
+
+        //Lock the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
 	// Update is called once per frame
 	void Update () 
