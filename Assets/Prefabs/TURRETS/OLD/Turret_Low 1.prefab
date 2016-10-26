@@ -76,7 +76,7 @@ GameObject:
   - 114: {fileID: 114000013001019518}
   - 114: {fileID: 114000013687401044}
   m_Layer: 0
-  m_Name: Turret_Low 2
+  m_Name: Turret_Low 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,6 +335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationPiece: {fileID: 4000013384934556}
+  searchMode: 0
+  searchAngle: 10
+  pauseTime: 1
   rotateSpeed: 5
   visionAngle: 60
   seeThroughTags:
