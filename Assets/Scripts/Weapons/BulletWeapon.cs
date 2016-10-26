@@ -103,7 +103,7 @@ public class BulletWeapon : WeaponBase
 	{
 		/* Handles weapon firing */
 
-		if (!Options.Paused && enabled)
+		if (!Options.Paused && enabled && transform.gameObject.activeSelf)
 		{
 			// Check firing is not on cooldown, and the gun has an attached muzzle point
 			if (canFire && canFireSemi && shotOrigin)

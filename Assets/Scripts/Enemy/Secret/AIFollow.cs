@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* DESCRIPTION:
+ * Simple script to handle enemy movement using a navmesh agent.
+ */
+
 [RequireComponent (typeof(NavMeshAgent))]
-public class FollowAI : MonoBehaviour {
+public class AIFollow : MonoBehaviour {
 
 	[Range (0.0f, 500.0f)]
 	public float trackingRange = 50.0f;
