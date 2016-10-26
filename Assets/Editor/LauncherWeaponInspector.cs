@@ -118,7 +118,6 @@ public class LauncherWeaponInspector : Editor {
 		showDmgTagsList = EditorGUILayout.Foldout(showDmgTagsList, tooltip);
 		if (showDmgTagsList)
 		{
-			EditorGUILayout.HelpBox ("Please note: This feature is currently not working for guns which fire a physical projectile prefab. (Eg. the launcher and the bullet gun when not using hitscan). \nI will get this working ASAP but had to go to work. Once this feature is working, it should be used on all enemies so they do not shoot and destroy their own buildings, etc. ", MessageType.Info);
 			tooltip = new GUIContent ("Mode", "IgnoreSelected: Any objects with these tags will not be damaged.\nHitSelected: Any objects with these tags will be damaged. All others will be ignored");
 			script.dmgTagsMode = (COLLISION_MODE)EditorGUILayout.EnumPopup (tooltip, script.dmgTagsMode);
 

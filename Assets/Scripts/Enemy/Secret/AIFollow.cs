@@ -24,7 +24,7 @@ public class AIFollow : MonoBehaviour {
 
 	void Update () 
 	{
-		if (navAgent && target && eyes)
+		if (!Options.Paused && navAgent && target && eyes)
 		{
 			// Check target is within range
 			if (Vector3.Distance (target.transform.position, transform.position) < trackingRange)

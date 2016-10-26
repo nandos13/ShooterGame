@@ -13,6 +13,7 @@ public class BulletWeapon : WeaponBase
 	/* BULLET-SPECIFIC VARIABLES */
 
 	public bool hitscan = false;										// Will the gun fire physical bullets or use instant raycasts?
+	public float hitscanRange = 80.0f;									// Max range of gun when in hitscan mode
 	public int bulletForce = 100;										// Initial force of a fired bullet
 	public GameObject bulletProjectile;									// A prefab-object fired from the gun
 	public float despawnAfter = 2.0f;									// Time in seconds a bullet will exist for after firing
@@ -212,71 +213,75 @@ public class BulletWeapon : WeaponBase
 
 		if ( Physics.Raycast (new Ray (shotOrigin.position, projectAngle)) )
 		{
-			// Display hit particle effect where the ray collides
-			if (hitEffect)
+			// Check distance
+			if (Vector3.Distance(shotOrigin.position, hit.point) <= hitscanRange)
 			{
-				// Find next available hit effect particle system in the pool
-				ParticleSystem effect = null;
-				for (int i = 0; i < hitPool.Count; i++) 
+				// Display hit particle effect where the ray collides
+				if (hitEffect)
 				{
-					if (hitPool [i].IsAlive() == false) 
+					// Find next available hit effect particle system in the pool
+					ParticleSystem effect = null;
+					for (int i = 0; i < hitPool.Count; i++) 
 					{
-						effect = hitPool [i];
-						break;
+						if (hitPool [i].IsAlive() == false) 
+						{
+							effect = hitPool [i];
+							break;
+						}
 					}
-				}
-				if (effect == null) 
-				{
-					// Add new particle system to the pool
-					effect = AddHitEffectToPool ();
+					if (effect == null) 
+					{
+						// Add new particle system to the pool
+						effect = AddHitEffectToPool ();
+					}
+
+					effect.transform.position = hit.point;
+					effect.Emit((int)hitParticles);
 				}
 
-				effect.transform.position = hit.point;
-				effect.Emit((int)hitParticles);
-			}
-
-			/* Next we need to get the health script of the object hit. However, it's possible
+				/* Next we need to get the health script of the object hit. However, it's possible
 		 	 * the ray hit a child of the object with health (eg hit an arm, but the body has the health script).
 		 	 * To achieve this, we use a custom function which will return the most immediate instance
 		 	 * of a component contained by a transform or any parent in its family tree.
 		 	 */
-			Health healthComponent = hit.transform.GetComponentAscendingImmediate<Health>(true);
+				Health healthComponent = hit.transform.GetComponentAscendingImmediate<Health>(true);
 
-			// Did the ray hit something that has health?
-			if (healthComponent)
-			{
-				// Should the hit deal damage or be ignored?
-				bool dmgIgnore = false;
-				if (dmgTagsMode == COLLISION_MODE.HitSelected)
-					dmgIgnore = true;
-
-				foreach (string str in dmgTags)
+				// Did the ray hit something that has health?
+				if (healthComponent)
 				{
-					if (healthComponent.transform.tag == str)
+					// Should the hit deal damage or be ignored?
+					bool dmgIgnore = false;
+					if (dmgTagsMode == COLLISION_MODE.HitSelected)
+						dmgIgnore = true;
+
+					foreach (string str in dmgTags)
 					{
-						if (dmgTagsMode == COLLISION_MODE.IgnoreSelected)
+						if (healthComponent.transform.tag == str)
 						{
-							dmgIgnore = true;
-							break;
-						}
-						else if (dmgTagsMode == COLLISION_MODE.HitSelected)
-						{
-							dmgIgnore = false;
-							break;
+							if (dmgTagsMode == COLLISION_MODE.IgnoreSelected)
+							{
+								dmgIgnore = true;
+								break;
+							}
+							else if (dmgTagsMode == COLLISION_MODE.HitSelected)
+							{
+								dmgIgnore = false;
+								break;
+							}
 						}
 					}
+
+					if (!dmgIgnore)
+						healthComponent.ApplyDamage(damage);
 				}
 
-				if (!dmgIgnore)
-					healthComponent.ApplyDamage(damage);
-			}
-
-			// Apply  force if the object has a rigid body
-			Rigidbody rb = hit.transform.GetComponent<Rigidbody> ();
-			if (rb)
-			{
-				Vector3 force = projectAngle.normalized * bulletForce * 20;
-				rb.AddForceAtPosition (force, hit.point);
+				// Apply  force if the object has a rigid body
+				Rigidbody rb = hit.transform.GetComponent<Rigidbody> ();
+				if (rb)
+				{
+					Vector3 force = projectAngle.normalized * bulletForce * 20;
+					rb.AddForceAtPosition (force, hit.point);
+				}
 			}
 		}
 	}

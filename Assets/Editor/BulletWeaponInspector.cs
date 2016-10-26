@@ -118,7 +118,6 @@ public class BulletWeaponInspector : Editor {
 		showDmgTagsList = EditorGUILayout.Foldout(showDmgTagsList, tooltip);
 		if (showDmgTagsList)
 		{
-			EditorGUILayout.HelpBox ("Please note: This feature is currently not working for guns which fire a physical projectile prefab. (Eg. the launcher and the bullet gun when not using hitscan). \nI will get this working ASAP but had to go to work. Once this feature is working, it should be used on all enemies so they do not shoot and destroy their own buildings, etc. ", MessageType.Info);
 			tooltip = new GUIContent ("Mode", "IgnoreSelected: Any objects with these tags will not be damaged.\nHitSelected: Any objects with these tags will be damaged. All others will be ignored");
 			script.dmgTagsMode = (COLLISION_MODE)EditorGUILayout.EnumPopup (tooltip, script.dmgTagsMode);
 
@@ -173,12 +172,14 @@ public class BulletWeaponInspector : Editor {
 			tooltip = new GUIContent ("Muzzle Velocity:", "Initial velocity of the projectile when being fired");
 			script.bulletForce = EditorGUILayout.IntSlider (tooltip, script.bulletForce, 20, 150);
 			tooltip = new GUIContent ("Despawn Time:", "Time in seconds the projectile will stay alive for before despawning");
-			script.despawnAfter = EditorGUILayout.Slider ("Despawn Time:", script.despawnAfter, 1.0f, 10.0f);
+			script.despawnAfter = EditorGUILayout.Slider (tooltip, script.despawnAfter, 1.0f, 10.0f);
 		}
 		else
 		{
+			tooltip = new GUIContent ("Hitscan Range:", "The maximum range of a bullet when using hitscan firing method");
+			script.hitscanRange = EditorGUILayout.Slider (tooltip, script.hitscanRange, 5.0f, 200.0f);
 			tooltip = new GUIContent ("Muzzle Velocity:", "While Hitscan method is in use, muzzle velocity affects the amount of force the projectile will exert on any rigidbody components collided with");
-			script.bulletForce = EditorGUILayout.IntSlider ("Muzzle Velocity:", script.bulletForce, 20, 150);
+			script.bulletForce = EditorGUILayout.IntSlider (tooltip, script.bulletForce, 20, 150);
 		}
 
 		EditorGUILayout.Space();

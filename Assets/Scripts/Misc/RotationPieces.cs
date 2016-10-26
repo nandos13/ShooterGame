@@ -21,6 +21,18 @@ public class RotationPieces {
 
 		if (transform)
 		{
+			// Get information on the rotation of the parent
+			Vector3 parentEulers = new Vector3();
+			bool addParentRotation = false;
+			if (transform.parent)
+			{
+				if (transform.parent.rotation != default(Quaternion))
+				{
+					parentEulers = transform.parent.rotation.eulerAngles;
+					addParentRotation = true;
+				}
+			}
+
 			// Store old rotation for later
 			Quaternion oldRotation = transform.rotation;
 
@@ -36,7 +48,11 @@ public class RotationPieces {
 			float lateralAngle = Vector3.Angle (Vector3.forward, lateralDir) * Mathf.Sign (Vector3.Cross (Vector3.forward, lateralDir).y);
 
 			// Clamp lateral angle to specified range
-			lateralAngle = Mathf.Clamp (lateralAngle, -clampLeft, clampRight);
+			if (addParentRotation)
+				lateralAngle = Mathf.Clamp (lateralAngle, (-clampLeft - parentEulers.y), (clampRight + parentEulers.y));
+			else
+				lateralAngle = Mathf.Clamp (lateralAngle, -clampLeft, clampRight);
+			
 			Quaternion lateralRotation = Quaternion.AngleAxis (lateralAngle, Vector3.up);
 			transform.rotation = lateralRotation;
 
@@ -46,7 +62,11 @@ public class RotationPieces {
 			float medialAngle = Vector3.Angle (transform.forward, medialDir);
 
 			// Clamp medial angle to specified range
-			medialAngle = Mathf.Clamp (medialAngle, -clampDown, clampUp);
+			if (addParentRotation)
+				medialAngle = Mathf.Clamp (medialAngle, (-clampDown - parentEulers.x), (clampUp + parentEulers.x));
+			else
+				medialAngle = Mathf.Clamp (medialAngle, -clampDown, clampUp);
+			
 			Quaternion otherRotation = Quaternion.AngleAxis (medialAngle, Vector3.Cross (transform.forward, medialDir));
 
 			// If speed override is specified, use that. Else, use speed variable

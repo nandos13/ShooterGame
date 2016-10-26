@@ -40,7 +40,7 @@ public class AIGunControl : MonoBehaviour {
 
 	void Update () 
 	{
-		if (target && eyes)
+		if (!Options.Paused && target && eyes)
 		{
 			// Is the target within range?
 			if (Vector3.Distance (target.transform.position, transform.position) < shotRange)
