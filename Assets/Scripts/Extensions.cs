@@ -199,4 +199,43 @@ public static class Extensions {
 		if (h)
 			h.ApplyDamage(dmg);
 	}
+
+	public static RaycastHit ApplyTagMask (this RaycastHit[] target, List<string> tags, COLLISION_MODE mode = COLLISION_MODE.IgnoreSelected)
+	{
+		/* Apply a tag mask to a list of RaycastHits and return the first
+		 * instance of RaycastHit that should not be ignored, based on
+		 * specified list "tags" and collision mode "mode"
+		 */
+
+		RaycastHit result = new RaycastHit();
+
+		// Loop through each raycastHit in the array
+		foreach (RaycastHit hit in target)
+		{
+			bool ignore = false;
+			if (mode == COLLISION_MODE.HitSelected)
+				ignore = true;
+
+			foreach (string str in tags)
+			{
+				// Is the hit tag found in tags list?
+				if (hit.transform.tag == str)
+				{
+					// Toggle bool ignore
+					ignore = !ignore;
+					break;
+				}
+			}
+
+			// Is the hit being ignored?
+			if (!ignore)
+			{
+				result = hit;
+				break;
+			}
+		}
+
+		// Return match
+		return result;
+	}
 }

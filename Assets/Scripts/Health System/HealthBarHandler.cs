@@ -50,4 +50,10 @@ public class HealthBarHandler : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnDrawGizmosSelected ()
+	{
+		Gizmos.color = Color.green;
+		Gizmos.DrawWireSphere (offset + transform.position, 0.2f);
+	}
 }
