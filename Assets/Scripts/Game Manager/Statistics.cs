@@ -5,9 +5,10 @@ using System.Collections;
  * Static Statistics class to hold game stats (Score, Time, etc)
  */
 
+[System.Serializable]
 public class GameStatistics
 {
-	private static int _score = 0;
+	[SerializeField] private static int _score = 0;
 	public static int Score
 	{
 		get { return _score; }

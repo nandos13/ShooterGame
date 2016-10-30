@@ -9,6 +9,7 @@ using System.Collections;
 public class RefreshScore : MonoBehaviour {
 
 	public Text scoreText;
+	public string prefix = "Credits:";
 
 	void Start () 
 	{
@@ -16,6 +17,6 @@ public class RefreshScore : MonoBehaviour {
 
 	void Update () 
 	{
-		scoreText.text = "Score: " + GameStatistics.Score.ToString();
+		scoreText.text = prefix + " " + GameStatistics.Score.ToString();
 	}
 }

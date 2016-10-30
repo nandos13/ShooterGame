@@ -19,7 +19,6 @@ public class DamageFlashHandler : MonoBehaviour {
 	public float fadeTime = 0.3f;
 
 	private CanvasGroup cg;
-	private IEnumerator flasherCo;
 	private float lastHealth;
 
 	void Start () 
@@ -38,8 +37,6 @@ public class DamageFlashHandler : MonoBehaviour {
 			if (cg)
 				cg.alpha = 0;
 		}
-
-		flasherCo = flashCanvas();
 	}
 
 	void Update () 

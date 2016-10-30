@@ -66,7 +66,7 @@ public class TurretAI : MonoBehaviour {
 					Vector3 angleToTarget = target.transform.position - rotationPiece.transform.position;
 					RaycastHit hit = new RaycastHit();
 					RaycastHit[] hits = Physics.RaycastAll (new Ray (rotationPiece.position, angleToTarget), Vector3.Distance(target.transform.position, rotationPiece.transform.position) + 0.01f);
-					Debug.DrawRay (rotationPiece.position, angleToTarget, Color.green);
+					Debug.DrawRay (rotationPiece.position, angleToTarget, Color.red);
 					
 					// Find first collision that shouldn't be ignored (prevents losing LOS if a bullet, etc gets in the way)
 					foreach (RaycastHit h in hits)
@@ -193,13 +193,12 @@ public class TurretAI : MonoBehaviour {
 		// Should the turret move?
 		if (!rotationPaused)
 		{
-			//TODO: THIS NEEDS TO APPLY CURRENT ROTATION. CURRENTLY CAN ONLY SEARCH IN ONE WORLD DIRECTION
 			// Is the turret moving left or right?
 			if (goingRight)
 			{
 				// Calculate right vector point based on angle
-				searchPoint.x = Mathf.Sin(searchAngle * Mathf.Deg2Rad);
-				searchPoint.z = Mathf.Cos(searchAngle * Mathf.Deg2Rad);
+				Quaternion rayRight = Quaternion.AngleAxis (searchAngle, Vector3.up);
+				searchPoint = rayRight * transform.forward;
 				searchPoint *= trackingRange;
 				searchPoint += rotationPiece.position;
 				searchPoint.y = transform.position.y;
@@ -210,8 +209,8 @@ public class TurretAI : MonoBehaviour {
 			else
 			{
 				// Calculate left vector point based on angle
-				searchPoint.x = Mathf.Sin(-searchAngle * Mathf.Deg2Rad);
-				searchPoint.z = Mathf.Cos(-searchAngle * Mathf.Deg2Rad);
+				Quaternion rayLeft = Quaternion.AngleAxis (-searchAngle, Vector3.up);
+				searchPoint = rayLeft * transform.forward;
 				searchPoint *= trackingRange;
 				searchPoint += rotationPiece.position;
 				searchPoint.y = transform.position.y;
@@ -390,42 +389,28 @@ public class TurretAI : MonoBehaviour {
 			if (rotationPiece)
 			{
 				// Draw rotation range
-				Vector3 angleLeft = new Vector3();
-				angleLeft.x = Mathf.Sin(-searchAngle * Mathf.Deg2Rad);
-				angleLeft.z = Mathf.Cos(-searchAngle * Mathf.Deg2Rad);
-				angleLeft *= trackingRange;
-				angleLeft += rotationPiece.position;
-				angleLeft.y = transform.position.y;
-
-				Vector3 angleRight = new Vector3();
-				angleRight.x = Mathf.Sin(searchAngle * Mathf.Deg2Rad);
-				angleRight.z = Mathf.Cos(searchAngle * Mathf.Deg2Rad);
-				angleRight *= trackingRange;
-				angleRight += rotationPiece.position;
-				angleRight.y = transform.position.y;
-
-				Gizmos.color = Color.blue;
-				Gizmos.DrawLine (rotationPiece.position, angleLeft);
-				Gizmos.DrawLine (rotationPiece.position, angleRight);
+				{
+					Quaternion rayLeft = Quaternion.AngleAxis (-searchAngle, Vector3.up);
+					Quaternion rayRight = Quaternion.AngleAxis (searchAngle, Vector3.up);
+					Vector3 rayLeftDir = rayLeft * transform.forward;
+					Vector3 rayRightDir = rayRight * transform.forward;
+					
+					Gizmos.color = Color.magenta;
+					Gizmos.DrawRay (rotationPiece.position, rayLeftDir * trackingRange);
+					Gizmos.DrawRay (rotationPiece.position, rayRightDir * trackingRange);
+				}
 
 				// Draw vision range
-				//Vector3 angleLeftVision = new Vector3();
-				//angleLeftVision.x = Mathf.Sin(-visionAngle * Mathf.Deg2Rad);
-				//angleLeftVision.z = Mathf.Cos(-visionAngle * Mathf.Deg2Rad);
-				//angleLeftVision *= trackingRange;
-				//angleLeftVision += rotationPiece.position;
-				//angleLeftVision.y = transform.position.y;
-				//
-				//Vector3 angleRightVision = new Vector3();
-				//angleRightVision.x = Mathf.Sin(visionAngle * Mathf.Deg2Rad);
-				//angleRightVision.z = Mathf.Cos(visionAngle * Mathf.Deg2Rad);
-				//angleRightVision *= trackingRange;
-				//angleRightVision += rotationPiece.position;
-				//angleRightVision.y = transform.position.y;
-				//
-				//Gizmos.color = Color.green;
-				//Gizmos.DrawLine (rotationPiece.position, angleLeftVision);
-				//Gizmos.DrawLine (rotationPiece.position, angleRightVision);
+				{
+					Quaternion rayLeft = Quaternion.AngleAxis (-visionAngle, Vector3.up);
+					Quaternion rayRight = Quaternion.AngleAxis (visionAngle, Vector3.up);
+					Vector3 rayLeftDir = rayLeft * rotationPiece.transform.forward;
+					Vector3 rayRightDir = rayRight * rotationPiece.transform.forward;
+
+					Gizmos.color = Color.green;
+					Gizmos.DrawRay (rotationPiece.position, rayLeftDir * trackingRange);
+					Gizmos.DrawRay (rotationPiece.position, rayRightDir * trackingRange);
+				}
 			}
 		}
 		else
