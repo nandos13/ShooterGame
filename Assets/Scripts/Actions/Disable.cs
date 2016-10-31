@@ -7,7 +7,7 @@ using System.Collections;
 
 public class Disable : MBAction {
 
-	[Range (0.0f, 10.0f)]
+	[Range (0.0f, 60.0f)]
 	public float waitTime = 0;
 
 	public override void Execute()

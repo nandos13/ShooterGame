@@ -62,7 +62,7 @@ public class Explosion : MBAction {
 				if (rb)
 					rb.AddExplosionForce (ExplosiveForce, transform.position, Radius, JumpModifier, ForceMode.Impulse);
 
-				if (h && Damage != 0)
+				if (h && Damage > 0)
 				{
 					/* Check if the current health module has already been hit by this explosion.
 					 * If it has not, add the component to the list. */
@@ -80,14 +80,13 @@ public class Explosion : MBAction {
 					{
 						// Calculate the damage based on the distance from the explosion
 						float damageMultiplier = 1 - (Vector3.Distance (transform.position, col.transform.position) / Radius);
+						damageMultiplier = Mathf.Clamp01 (damageMultiplier);
 						h.ApplyDamage (Damage * damageMultiplier, false);
 
 						// Add the component to the list so it is not damaged twice by a single explosion
 						affectedHealthComponents.Add(h);
 					}
 				}
-					
-				// TODO: Add damage based on force
 			}
 		}
 

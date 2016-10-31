@@ -7,7 +7,7 @@ using System.Collections;
 
 public class DestroyAfterSeconds : MonoBehaviour {
 
-	[Range(0.1f, 7.0f)]
+	[Range(0.1f, 60.0f)]
 	public float Delay = 7.0f;
 
 	// Called once the object is activated

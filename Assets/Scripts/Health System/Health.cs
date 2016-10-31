@@ -107,8 +107,8 @@ public class Health : MonoBehaviour {
 		/* Directly applies damage to an object. All other classes should call the
 		 * ApplyDamage method which then calls this method with proper values.
 		 */
-		currentHealth -= dmg;
-		//Debug.Log(transform.name + " took " + dmg + " damage. Health now at " + currentHealth);
+		currentHealth -= Mathf.Abs(dmg);
+		//Debug.Log(transform.name + " took " + Mathf.Abs(dmg) + " damage. Health now at " + currentHealth);
 
 		// Run anything that happens on damage here
 		if (DamageScripts.Count > 0) 
