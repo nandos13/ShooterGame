@@ -87,26 +87,4 @@ public class PauseMenuController : MBAction {
             }
         }
     }
-
-    /*  
-                      //-- NEEDS WORK --//
-   while pause - option button will close PausePanel. 
-   then open Options Screen. 
-   hitting Apply will save settings and close Option Screen.
-   then open PausePanel.
-
-    foreach (Transform t in PauseCanvas.transform)
-           {
-               if (t.name == "PauseCanvas")
-                   t.gameObject.SetActive(false);
-               Debug.Log("Closed Menu, and Opened Settings");
-           }
-
-           {
-               menu.GetComponent<Canvas>().enabled = false;
-               PauseCanvas.SetActive(true);
-               Debug.Log("Closed Menu, and Opened Settings");
-           }
-
-    */
 }

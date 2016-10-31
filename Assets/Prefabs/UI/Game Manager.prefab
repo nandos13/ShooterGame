@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000013338697480}
   - 114: {fileID: 114000010184224840}
   - 114: {fileID: 114000011901975702}
+  - 114: {fileID: 114000010306100312}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -53,9 +54,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
-  OnPause: []
+  OnPause:
+  - {fileID: 114000010306100312}
   OnResume:
   - {fileID: 114000011901975702}
+--- !u!114 &114000010306100312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011232718216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786605aed43623146973f5e06f4f2f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011901975702
 MonoBehaviour:
   m_ObjectHideFlags: 1
