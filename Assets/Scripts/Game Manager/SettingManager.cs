@@ -16,12 +16,9 @@ public class SettingManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioSource musicSource;
     public Resolution[] resolutions;        // my resolution array of resolutions
-    [HideInInspector]
-    public GameSettings gameSettings;
 
     void OnEnable()
     {
-        gameSettings = new GameSettings();
         fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
         resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionChange(); });
         textureDropdown.onValueChanged.AddListener(delegate { OnTextureQualityChange(); });
@@ -40,39 +37,39 @@ public class SettingManager : MonoBehaviour
 
     public void OnFullscreenToggle()
     {
-       gameSettings.fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
+       Options.fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
     }
 
     public void OnResolutionChange()
     {
         Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, Screen.fullScreen);
-        gameSettings.resolutionIndex = resolutionDropdown.value;
+        Options.resolutionIndex = resolutionDropdown.value;
     }
 
     public void OnTextureQualityChange()
     {
-        QualitySettings.masterTextureLimit = gameSettings.textureQuality = textureDropdown.value;
+        QualitySettings.masterTextureLimit = Options.textureQuality = textureDropdown.value;
     }
 
    public void OnAntialiasingChange()
     {
         QualitySettings.antiAliasing = (int)Mathf.Pow(2, antialiasingDropdown.value);
-        gameSettings.antialiasing = antialiasingDropdown.value;
+        Options.antialiasing = antialiasingDropdown.value;
     }
 
     public void VSyncChange()
     {
-        QualitySettings.vSyncCount = gameSettings.vSync = vSyncDropdown.value;
+        QualitySettings.vSyncCount = Options.vSync = vSyncDropdown.value;
     }
 
     public void AudioVolumeChange()
     {
-        audioSource.volume = gameSettings.audioVolume = audioSlider.value;
+        audioSource.volume = Options.audioVolume = audioSlider.value;
     }
 
     public void MusicVolumeChange()
     {
-        musicSource.volume = gameSettings.musicVolume = musicSlider.value;
+        musicSource.volume = Options.musicVolume = musicSlider.value;
     }
 
     public void OnApplyButton()
@@ -82,22 +79,33 @@ public class SettingManager : MonoBehaviour
 
     public void SaveSettings()
     {
-        string jsonData = JsonUtility.ToJson(gameSettings, true);
+        // Create a new serializer version of Options and update so all variables are current.
+        OptionsSerializer serializer = new OptionsSerializer();
+        serializer.Update();
+
+        string jsonData = JsonUtility.ToJson(serializer, true);
         File.WriteAllText(Application.persistentDataPath + "/gamesettings.json", jsonData);
     }
 
     public void LoadSettings()
     {
+        // Load data
+        OptionsSerializer serializer = new OptionsSerializer();
         File.ReadAllText(Application.persistentDataPath + "/gamesettings.json");
-        gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));    
-        musicSlider.value = gameSettings.musicVolume;
-        audioSlider.value = gameSettings.audioVolume;
-        vSyncDropdown.value = gameSettings.vSync;
-        antialiasingDropdown.value = gameSettings.antialiasing;
-        textureDropdown.value = gameSettings.textureQuality;
-        resolutionDropdown.value = gameSettings.resolutionIndex;
-        fullscreenToggle.isOn = gameSettings.fullscreen;
-        Screen.fullScreen = gameSettings.fullscreen;  
+        serializer = JsonUtility.FromJson<OptionsSerializer>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
+
+        // Transfer data into static Options class
+        Options.deserialize(serializer);
+
+        // Update values
+        musicSlider.value = Options.musicVolume;
+        audioSlider.value = Options.audioVolume;
+        vSyncDropdown.value = Options.vSync;
+        antialiasingDropdown.value = Options.antialiasing;
+        textureDropdown.value = Options.textureQuality;
+        resolutionDropdown.value = Options.resolutionIndex;
+        fullscreenToggle.isOn = Options.fullscreen;
+        Screen.fullScreen = Options.fullscreen;  
         resolutionDropdown.RefreshShownValue();
     }
 }

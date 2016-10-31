@@ -6,11 +6,30 @@ using UnityEngine.SceneManagement;
 //--    This is for swapping scenes, Loading Scene -> Menu Scene -> Game Scene. 
 
 
-public class ChangeScenes : MonoBehaviour
+public class ChangeScenes : MBAction
 {
-	public void ChangeToScene (string sceneToChangeTo)
+
+    public override void Execute()
     {
-        
-        SceneManager.LoadScene(sceneToChangeTo);
+        // Load next scene
+        string nextSceneName = LevelOrder.NextLevel;
+        Debug.Log(nextSceneName);
+
+        if (nextSceneName != "")
+        {
+            LevelOrder.SetNextLevel();
+            SceneManager.LoadScene(nextSceneName);
+        }
+    }
+
+    public void loadScene(int i)
+    {
+        string nextSceneName = LevelOrder.levelIndex(i);
+
+        if (nextSceneName != "")
+        {
+            LevelOrder.SetNextLevel();
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 }

@@ -5,9 +5,22 @@ using System.Collections;
  * Static Options class to hold game options (Audio, Visual, etc)
  */
 
+[System.Serializable]
 public static class Options 
 {
-	private static bool _paused = false;
+    // Game Settings var
+    public static bool fullscreen;
+    public static int resolutionIndex;
+    public static int textureQuality;
+    public static int antialiasing;
+    public static int vSync;
+    public static float audioVolume;
+    public static float musicVolume;
+
+
+
+    // Pausing
+    private static bool _paused = false;
 	public static bool Paused
 	{
 		get { return _paused; }
@@ -20,4 +33,15 @@ public static class Options
 				Time.timeScale = 1;
 		}
 	}
+
+    public static void deserialize(OptionsSerializer ser)
+    {
+        fullscreen = ser.fullscreen;
+        resolutionIndex = ser.resolutionIndex;
+        textureQuality = ser.textureQuality;
+        antialiasing = ser.antialiasing;
+        vSync = ser.vSync;
+        audioVolume = ser.audioVolume;
+        musicVolume = ser.musicVolume;
+    }
 }

@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 /* DESCRIPTION:
  * Toggles the pause menu
+ 
+    //-- Drag PausePanel to PauseMenuController(script).
+         In ResumeButton add a OnClick() event. Drag GameManager and set to UnPause()
+         Add Lock Curse Script -> drag to OnResume Element.
+
  */
 
 public class PauseMenuController : MBAction {
@@ -70,6 +75,7 @@ public class PauseMenuController : MBAction {
         Options.Paused = false;
         if (menu)
             menu.SetActive(false);
+
         Debug.Log("Playing");
 
         // Run all OnResume scripts
@@ -89,18 +95,18 @@ public class PauseMenuController : MBAction {
    hitting Apply will save settings and close Option Screen.
    then open PausePanel.
 
-    //foreach (Transform t in PauseCanvas.transform)
-           //{
-           //    if (t.name == "PauseCanvas")
-           //        t.gameObject.SetActive(false);
-           //    Debug.Log("Closed Menu, and Opened Settings");
-           //}
+    foreach (Transform t in PauseCanvas.transform)
+           {
+               if (t.name == "PauseCanvas")
+                   t.gameObject.SetActive(false);
+               Debug.Log("Closed Menu, and Opened Settings");
+           }
 
-           //{
-           //    menu.GetComponent<Canvas>().enabled = false;
-           //    PauseCanvas.SetActive(true);
-           //    Debug.Log("Closed Menu, and Opened Settings");
-           //}
+           {
+               menu.GetComponent<Canvas>().enabled = false;
+               PauseCanvas.SetActive(true);
+               Debug.Log("Closed Menu, and Opened Settings");
+           }
 
     */
 }
