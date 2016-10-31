@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class KillObjective : ObjectiveBase {
 
-	public Health target;
+	public List<Health> targets = new List<Health>();
 
 	void Update () 
 	{
@@ -12,17 +13,28 @@ public class KillObjective : ObjectiveBase {
 
 	protected override bool inEvaluate ()
 	{
-		if (target)
+		if (targets.Count > 0)
 		{
-			// Check if the target is dead
-			if (!target.Alive)
-				return true;
-			else
-				return false;
+			bool thisPass = true;
+			foreach (Health h in targets)
+			{
+				if (h)
+				{
+					if (h.Alive)
+					{
+						thisPass = false;
+						break;
+					}
+				}
+			}
+
+			if (thisPass && tick)
+				tick.gameObject.SetActive(true);
+			return thisPass;
 		}
 		else
 		{
-			Debug.LogWarning("No target specified in script KillObjective on: " + transform.name);
+			Debug.LogWarning("No targets specified in script KillObjective on: " + transform.name);
 			return false;
 		}
 	}
