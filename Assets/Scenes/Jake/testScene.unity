@@ -500,6 +500,13 @@ MonoBehaviour:
   speedRPM: 107
   speed: 1.7833333
   spread: 3.5
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -535,6 +542,13 @@ MonoBehaviour:
   speedRPM: 304
   speed: 5.0666666
   spread: 6.8
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -1229,6 +1243,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 765774126}
     m_Modifications:
+    - target: {fileID: 114000012317600870, guid: d45272bcfa19b6c4e94766e3f980f73a,
+        type: 2}
+      propertyPath: DeathScripts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010585656700, guid: d45272bcfa19b6c4e94766e3f980f73a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.2235162
@@ -1268,8 +1287,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013428938868, guid: d45272bcfa19b6c4e94766e3f980f73a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012317600870, guid: d45272bcfa19b6c4e94766e3f980f73a,
+        type: 2}
+      propertyPath: DeathScripts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1695819001}
+    - target: {fileID: 114000012317600870, guid: d45272bcfa19b6c4e94766e3f980f73a,
+        type: 2}
+      propertyPath: DeathScripts.Array.data[0]
+      value: 
+      objectReference: {fileID: 1695819007}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d45272bcfa19b6c4e94766e3f980f73a, type: 2}
   m_IsPrefabParent: 0
@@ -2959,6 +2988,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 269424568}
   m_RootOrder: 1
+--- !u!1 &1695818997 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013428938868, guid: d45272bcfa19b6c4e94766e3f980f73a,
+    type: 2}
+  m_PrefabInternal: {fileID: 499516236}
+--- !u!114 &1695819001 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011445945908, guid: d45272bcfa19b6c4e94766e3f980f73a,
+    type: 2}
+  m_PrefabInternal: {fileID: 499516236}
+  m_Script: {fileID: 11500000, guid: f8c5b75782dd86941862b4c6815b6b38, type: 3}
+--- !u!114 &1695819007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695818997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1110758bb8184dbcb23db9f911af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  value: 10
+  healPlayer: 1
 --- !u!4 &1855417197 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011731586424, guid: 1286a351dff93fe4e93008d7616c4dac,
@@ -3124,6 +3178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1322158352}
   value: 20
+  healPlayer: 1
 --- !u!1 &1902004809
 GameObject:
   m_ObjectHideFlags: 0
