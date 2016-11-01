@@ -59,7 +59,9 @@ public class LauncherWeapon : WeaponBase {
 			missile.SetActive (false);
 
 			// Add despawn conditions
-			missile.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
+			DisableAfterSeconds disTime = missile.GetComponent<DisableAfterSeconds>();
+			if (disTime)
+				disTime.Delay = despawnAfter;
 
 			// Apply settings to missile explosion
 			Explosion expl = missile.GetComponent<Explosion> ();
@@ -77,8 +79,12 @@ public class LauncherWeapon : WeaponBase {
 			}
 
 			// Apply hit effect settings
-			missile.GetComponent<EmitParticle> ().amount = hitParticles;
-			missile.GetComponent<EmitParticle> ().particles = AddHitEffectToPool ();
+			EmitParticle eP = missile.GetComponent<EmitParticle>();
+			if (eP)
+			{
+				eP.amount = hitParticles;
+				eP.particles = AddHitEffectToPool ();
+			}
 
 			// Gravity & rigidbody settings
 			Rigidbody rb = missile.GetComponent<Rigidbody> ();
@@ -92,7 +98,9 @@ public class LauncherWeapon : WeaponBase {
 			}
 
 			// Set collision-ignore-tags
-			missile.GetComponent<On_Collision> ().collisionTags.Add(transform.tag);
+			On_Collision oC = missile.GetComponent<On_Collision>();
+			if (oC)
+				oC.collisionTags.Add(transform.tag);
 
 			// Add bullet to the pool
 			missilePool.Add(missile);
