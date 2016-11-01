@@ -13,7 +13,7 @@ public class ChangeScenes : MBAction
     {
         // Load next scene
         string nextSceneName = LevelOrder.NextLevel;
-        Debug.Log(nextSceneName);
+        Debug.Log("next scene: " + nextSceneName);
 
         if (nextSceneName != "")
         {

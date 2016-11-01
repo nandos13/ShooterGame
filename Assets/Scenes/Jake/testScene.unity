@@ -154,11 +154,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 765774126}
   m_RootOrder: 1
---- !u!223 &43268019 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223000011414854972, guid: 4ce3d59de169a3b4b9059eee152320a2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1584228780}
 --- !u!1001 &49614617
 Prefab:
   m_ObjectHideFlags: 0
@@ -1989,16 +1984,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011898252764, guid: 1286a351dff93fe4e93008d7616c4dac,
-        type: 2}
-      propertyPath: ImmunityTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000010869811016, guid: 1286a351dff93fe4e93008d7616c4dac,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1111302400
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1286a351dff93fe4e93008d7616c4dac, type: 2}
   m_IsPrefabParent: 0
@@ -2518,7 +2503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optional: 0
   tick: {fileID: 0}
-  target: {fileID: 142142363}
+  targets: []
 --- !u!114 &1313046894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2545,21 +2530,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 898805024}
   m_Script: {fileID: 11500000, guid: 05ed0a48fda327a49bbe3e2a07107226, type: 3}
---- !u!114 &1322158357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322158344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3eedabb2fbd8a448b0d9a25208948f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flasherCanvas: {fileID: 43268019}
-  mode: 0
-  maxOpacity: 0.455
-  fadeTime: 0.26
 --- !u!1 &1355097661
 GameObject:
   m_ObjectHideFlags: 0
