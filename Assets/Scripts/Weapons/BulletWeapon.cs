@@ -27,6 +27,12 @@ public class BulletWeapon : WeaponBase
 		MyStart ();
 	}
 
+	void Update ()
+	{
+		// Handle heat fall
+		HeatCoolDown ();
+	}
+
 	protected override void MyStart () 
 	{
 		// Call WeaponBase Start function to initialize basic variables
@@ -106,8 +112,12 @@ public class BulletWeapon : WeaponBase
 
 		if (!Options.Paused && enabled && transform.gameObject.activeSelf)
 		{
+			bool semiFire = true;
+			if (fMode == FIRE_MODE.SemiAuto)
+				semiFire = canFireSemi;
+
 			// Check firing is not on cooldown, and the gun has an attached muzzle point
-			if (canFire && canFireSemi && shotOrigin)
+			if (canFire && semiFire && shotOrigin && checkHeat())
 			{
 				// Is there enough ammo to fire the gun?
 				if (currentClip > 0 || bottomlessClip == true)
@@ -119,9 +129,13 @@ public class BulletWeapon : WeaponBase
 						currentAmmoTotal--;
 					}
 
-					// If semi-auto, disable firing until fire button is up
-					if (fMode == FIRE_MODE.SemiAuto)
-						canFireSemi = false;
+					// Apply heat
+					applyHeat();
+					if (useHeatMechanics)
+						Debug.Log("Current Heat: " + currentHeat);
+
+					// Disable semi fire auto
+					canFireSemi = false;
 
 					// Does this bullet weapon use instant raycast method or physical bullets?
 					if (hitscan)
