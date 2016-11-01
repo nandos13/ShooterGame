@@ -6,6 +6,8 @@ public class KillObjective : ObjectiveBase {
 
 	public List<Health> targets = new List<Health>();
 
+	private bool warningShow = false;
+
 	void Update () 
 	{
 		Evaluate();
@@ -32,10 +34,11 @@ public class KillObjective : ObjectiveBase {
 				tick.gameObject.SetActive(true);
 			return thisPass;
 		}
-		else
+		else if (!warningShow)
 		{
+			warningShow = true;
 			Debug.LogWarning("No targets specified in script KillObjective on: " + transform.name);
-			return false;
 		}
+		return false;
 	}
 }

@@ -21,6 +21,9 @@ public class ObjectiveHandler : MonoBehaviour {
 			Destroy(this);
 			Debug.LogWarning("More than one instance of class ObjectiveHandler exists. Deleting duplicate instance.");
 		}
+
+		if (objectives.Count <= 0)
+			Debug.LogWarning("ObjectiveHandler has no specified objectives.");
 	}
 
 	void Update () 
@@ -50,8 +53,6 @@ public class ObjectiveHandler : MonoBehaviour {
 					OnPass();
 			}
 		}
-		else
-			Debug.LogWarning("ObjectiveHandler has no specified objectives.");
 	}
 
 	private void OnPass ()
