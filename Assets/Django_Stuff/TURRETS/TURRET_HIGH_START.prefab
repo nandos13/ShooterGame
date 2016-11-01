@@ -62,8 +62,9 @@ GameObject:
   - 114: {fileID: 114000011409928304}
   - 114: {fileID: 114000012325128002}
   - 114: {fileID: 114000014166147066}
+  - 114: {fileID: 114000011269915114}
   m_Layer: 0
-  m_Name: TURRET_HIGH_START
+  m_Name: TURRET_HIGH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012137089432}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -46.919624, y: 6.175782, z: -62.143982}
+  m_LocalPosition: {x: -41.640385, y: 5.62, z: -84.368515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -387,7 +388,21 @@ MonoBehaviour:
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000014053190638}
+  - {fileID: 114000011269915114}
   DamageScripts: []
+--- !u!114 &114000011269915114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012137089432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1110758bb8184dbcb23db9f911af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  value: 30
 --- !u!114 &114000011409928304
 MonoBehaviour:
   m_ObjectHideFlags: 1
