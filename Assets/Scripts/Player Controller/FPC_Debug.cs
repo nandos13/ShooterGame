@@ -12,7 +12,7 @@ public class FPC_Debug : MonoBehaviour {
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.L))    // skips between scenes
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Debug.Log("pressed l");
             sceneChanger.Execute();

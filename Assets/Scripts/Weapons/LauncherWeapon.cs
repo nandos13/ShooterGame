@@ -59,9 +59,7 @@ public class LauncherWeapon : WeaponBase {
 			missile.SetActive (false);
 
 			// Add despawn conditions
-			DisableAfterSeconds disTime = missile.GetComponent<DisableAfterSeconds>();
-			if (disTime)
-				disTime.Delay = despawnAfter;
+			missile.GetComponent<DisableAfterSeconds> ().Delay = despawnAfter;
 
 			// Apply settings to missile explosion
 			Explosion expl = missile.GetComponent<Explosion> ();
@@ -79,12 +77,8 @@ public class LauncherWeapon : WeaponBase {
 			}
 
 			// Apply hit effect settings
-			EmitParticle eP = missile.GetComponent<EmitParticle>();
-			if (eP)
-			{
-				eP.amount = hitParticles;
-				eP.particles = AddHitEffectToPool ();
-			}
+			missile.GetComponent<EmitParticle> ().amount = hitParticles;
+			missile.GetComponent<EmitParticle> ().particles = AddHitEffectToPool ();
 
 			// Gravity & rigidbody settings
 			Rigidbody rb = missile.GetComponent<Rigidbody> ();
@@ -98,9 +92,7 @@ public class LauncherWeapon : WeaponBase {
 			}
 
 			// Set collision-ignore-tags
-			On_Collision oC = missile.GetComponent<On_Collision>();
-			if (oC)
-				oC.collisionTags.Add(transform.tag);
+			missile.GetComponent<On_Collision> ().collisionTags.Add(transform.tag);
 
 			// Add bullet to the pool
 			missilePool.Add(missile);
@@ -116,8 +108,12 @@ public class LauncherWeapon : WeaponBase {
 
 		if (!Options.Paused && enabled && transform.gameObject.activeSelf)
 		{
+			bool semiFire = true;
+			if (fMode == FIRE_MODE.SemiAuto)
+				semiFire = canFireSemi;
+
 			// Check firing is not on cooldown, and the gun has an attached muzzle point
-			if (canFire && canFireSemi && shotOrigin)
+			if (canFire && semiFire && shotOrigin && checkHeat())
 			{
 				// Is there enough ammo to fire the gun?
 				if (currentClip > 0 || bottomlessClip == true)
@@ -129,9 +125,13 @@ public class LauncherWeapon : WeaponBase {
 						currentAmmoTotal--;
 					}
 
-					// If semi-auto, disable firing until fire button is up
-					if (fMode == FIRE_MODE.SemiAuto)
-						canFireSemi = false;
+					// Apply heat
+					applyHeat();
+					if (useHeatMechanics)
+						Debug.Log("Current Heat: " + currentHeat);
+
+					// Disable semi fire auto
+					canFireSemi = false;
 
 					ShootMissile ();
 
