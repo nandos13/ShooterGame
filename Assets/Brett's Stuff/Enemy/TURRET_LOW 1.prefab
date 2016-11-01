@@ -108,8 +108,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012674192124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 4.56, z: -86.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 12.019463, y: 2.3405738, z: 17.44149}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000010678793006}
@@ -313,11 +313,11 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 10
+  damage: 15
   dmgTags: []
   dmgTagsMode: 1
-  speedRPM: 20
-  speed: 0.33333334
+  speedRPM: 45
+  speed: 0.75
   spread: 1
   hitEffect: {fileID: 0}
   hitParticles: 10
@@ -325,7 +325,7 @@ MonoBehaviour:
   - {fileID: 114000012128372916}
   audioSrc: {fileID: 0}
   shotSound: []
-  muzzleVelocity: 5
+  muzzleVelocity: 60
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
   despawnAfter: 10

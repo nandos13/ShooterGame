@@ -59,6 +59,7 @@ GameObject:
   - 114: {fileID: 114000014052944986}
   - 114: {fileID: 114000011057116872}
   - 114: {fileID: 114000010168645968}
+  - 114: {fileID: 114000010032878802}
   m_Layer: 0
   m_Name: TURRET_MED_START 1
   m_TagString: TargetEnemy
@@ -134,10 +135,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011917002866}
-  m_LocalRotation: {x: -0, y: 0.9739647, z: -0, w: 0.22669992}
-  m_LocalPosition: {x: -40.203148, y: 9.3, z: 34.731426}
-  m_LocalScale: {x: 2.3999996, y: 2.4, z: 2.3999996}
-  m_LocalEulerAnglesHint: {x: 0, y: 153.925, z: 0}
+  m_LocalRotation: {x: -0, y: 0.9872993, z: -0, w: 0.15887114}
+  m_LocalPosition: {x: 69.56697, y: -1.2723274, z: 34.65456}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
+  m_LocalEulerAnglesHint: {x: 5.341, y: 207.68999, z: -6.352}
   m_Children:
   - {fileID: 4000011486584690}
   - {fileID: 4000011869376268}
@@ -283,6 +284,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010032878802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011917002866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1110758bb8184dbcb23db9f911af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  value: 20
+  healPlayer: 1
 --- !u!114 &114000010168645968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,6 +329,7 @@ MonoBehaviour:
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000011843222008}
+  - {fileID: 114000010032878802}
   DamageScripts: []
 --- !u!114 &114000011843222008
 MonoBehaviour:
@@ -342,18 +358,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationPiece: {fileID: 4000011869376268}
-  searchMode: 0
-  searchAngle: 10
+  searchMode: 1
+  searchAngle: 25
   pauseTime: 1
   rotateSpeed: 5
-  visionAngle: 80
+  visionAngle: 40
   seeThroughTags:
   - Bullet
   autoPopulateGunList: 1
   guns: []
-  trackingRange: 50
-  clampAngleDown: 80
-  clampAngleUp: 80
+  trackingRange: 30
+  clampAngleDown: 20
+  clampAngleUp: 20
   shootDelay: 0
 --- !u!114 &114000012874480324
 MonoBehaviour:
@@ -375,8 +391,8 @@ MonoBehaviour:
   damage: 25
   dmgTags: []
   dmgTagsMode: 1
-  speedRPM: 80
-  speed: 1.3333334
+  speedRPM: 45
+  speed: 0.75
   spread: 2
   hitEffect: {fileID: 0}
   hitParticles: 10
@@ -384,7 +400,7 @@ MonoBehaviour:
   - {fileID: 114000010168645968}
   audioSrc: {fileID: 0}
   shotSound: []
-  muzzleVelocity: 45
+  muzzleVelocity: 60
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
   despawnAfter: 10
