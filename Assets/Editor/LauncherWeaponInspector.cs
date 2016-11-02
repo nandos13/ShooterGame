@@ -177,35 +177,6 @@ public class LauncherWeaponInspector : Editor {
 		script.ExplosiveForce = EditorGUILayout.Slider (tooltip, script.ExplosiveForce, 0.0f, 50.0f);
 		tooltip = new GUIContent ("Explosive Radius:", "How far the explosion will reach");
 		script.ExplosionRange = EditorGUILayout.Slider (tooltip, script.ExplosionRange, 0.0f, 100.0f);
-		EditorGUILayout.Space();
-
-		/* HEAT MECHANICS */
-		EditorGUILayout.LabelField ("Heat Mechanics:", EditorStyles.boldLabel);
-
-		tooltip = new GUIContent ("Use Heat:", "Toggle the use of heat mechanics for this weapon");
-		script.useHeatMechanics = EditorGUILayout.Toggle (tooltip, script.useHeatMechanics);
-		if (script.useHeatMechanics)
-		{
-			// Show all heat mechanics settings here
-			tooltip = new GUIContent ("Heat/Time:", "If true, 'heatRise' heat will be applied over one second while firing. \nElse 'heatRise' heat will be applied with each shot.");
-			script.heatOverTime = EditorGUILayout.Toggle (tooltip, script.heatOverTime);
-			tooltip = new GUIContent ("Heat Rise:", "Amount heat will rise while firing");
-			script.heatRise = EditorGUILayout.Slider (tooltip, script.heatRise, 0, 100);
-
-			tooltip = new GUIContent ("Instant Reset:", "If true, heat will instantly reset to 0 once cooldown begins. Else 'heatFall' heat will be subtracted over each second");
-			script.instantHeatReset = EditorGUILayout.Toggle (tooltip, script.instantHeatReset);
-			if (!script.instantHeatReset)
-			{
-				tooltip = new GUIContent ("   Heat Fall:", "Amount heat will fall while not firing");
-				script.heatFall = EditorGUILayout.Slider (tooltip, script.heatFall, 0, 100);
-			}
-
-			tooltip = new GUIContent ("Cooldown Delay:", "Delay in seconds before the gun will begin to cool down");
-			script.heatFallWait = EditorGUILayout.Slider (tooltip, script.heatFallWait, 0, 10);
-
-			tooltip = new GUIContent ("Cool Enable:", "Firing will be re-enabled once the gun cools to this value");
-			script.heatReEnable = EditorGUILayout.Slider (tooltip, script.heatReEnable, 0, 100);
-		}
 
 		EditorGUILayout.Space();
 	}
