@@ -2522,6 +2522,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.3999994
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014052944986, guid: f146db8c23a343f429e8e54ab2137807,
+        type: 2}
+      propertyPath: offset.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f146db8c23a343f429e8e54ab2137807, type: 2}
   m_IsPrefabParent: 0
@@ -3614,7 +3619,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013582930148, guid: 4ce3d59de169a3b4b9059eee152320a2, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ce3d59de169a3b4b9059eee152320a2, type: 2}
@@ -3722,6 +3727,11 @@ Prefab:
     - target: {fileID: 4000011731586424, guid: 037dcd2e854eabe44a54a06a797e0e7a, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136000011900773598, guid: 037dcd2e854eabe44a54a06a797e0e7a,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 037dcd2e854eabe44a54a06a797e0e7a, type: 2}
@@ -8751,7 +8761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2146627032
 MonoBehaviour:
   m_ObjectHideFlags: 0
