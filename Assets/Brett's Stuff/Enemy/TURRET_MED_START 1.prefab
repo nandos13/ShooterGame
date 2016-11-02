@@ -135,10 +135,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011917002866}
-  m_LocalRotation: {x: -0, y: 0.9872993, z: -0, w: 0.15887114}
-  m_LocalPosition: {x: 69.56697, y: -1.2723274, z: 34.65456}
-  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
-  m_LocalEulerAnglesHint: {x: 5.341, y: 207.68999, z: -6.352}
+  m_LocalRotation: {x: 0.019833732, y: 0.88088465, z: 0.01386356, w: 0.47271213}
+  m_LocalPosition: {x: 23.67828, y: -4.9770155, z: 25.916588}
+  m_LocalScale: {x: 2.4000015, y: 2.4, z: 2.4000008}
+  m_LocalEulerAnglesHint: {x: -0.321, y: 123.714005, z: 2.674}
   m_Children:
   - {fileID: 4000011486584690}
   - {fileID: 4000011869376268}
@@ -297,7 +297,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   value: 20
-  healPlayer: 1
 --- !u!114 &114000010168645968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,7 +366,7 @@ MonoBehaviour:
   - Bullet
   autoPopulateGunList: 1
   guns: []
-  trackingRange: 30
+  trackingRange: 50
   clampAngleDown: 20
   clampAngleUp: 20
   shootDelay: 0
@@ -394,6 +393,13 @@ MonoBehaviour:
   speedRPM: 45
   speed: 0.75
   spread: 2
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
