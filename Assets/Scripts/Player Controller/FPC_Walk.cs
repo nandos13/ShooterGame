@@ -1,186 +1,114 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-/* DESCRIPTION:
- * This script handles movement for the player, including walking and jumping.
- */
-
-/* TODO: (Coding, Designers ignore this)
- * Rewrite this code.
- * Use the Normal angle of the surface the player is walking on to affect 
- * the vertical force and prevent the bunny-hop issue.
- * Implement maximum walking slope and more directly controlled walking conditions
- * rather than just adding force regardless.
- */
-
-//wiki.unity3d.com/index.php?title=RigidbodyFPSWalker
+using System.Collections.Generic;
 
 [RequireComponent (typeof (Rigidbody))]
 [RequireComponent (typeof (CapsuleCollider))]
 public class FPC_Walk : MonoBehaviour {
 
-	[Range (1.0f, 50.0f)]
-	public float speed = 10.0f;					// Walk speed
-	public float gravity = 9.8f;				// Manual gravity factor
-	public float maxVelocityChange = 8.0f;		// Lower values mean more acceleration, feels like ice skates
-	public bool canJump = true;					// Whether or not the player can jump
-	public float jumpHeight = 2.0f;				// Height of the player's jump
+	[Range (1, 1000)]
+	public float mass = 100;
+	[Range (1, 100)]
+	public float movementSpeed = 15;
+	[Range (0, 20)]
+	public float jumpHeight = 10;
+	[Range (0, 150)]
+	public float gravity = 50;
 
-	//[Range(10.0f, 80.0f)]
-	//public float maxWalkableSlope = 45.0f;		// NOT CURRENTLY IN USE
+	private Rigidbody rb;
+	private CapsuleCollider col;
 
-	private bool onGround = false;
-
-	public bool OnGround
-	{
-		get{ return onGround; }
-		set{ onGround = value; }
-	}
-
-	Rigidbody rb;
-	CapsuleCollider capCollider;
-
-	// Use this for initialization
 	void Start () 
 	{
-		rb = GetComponent<Rigidbody>();
-		capCollider = GetComponent<CapsuleCollider>();
-
-		// Prevent the player from being knocked over by walking into objects
-		rb.freezeRotation = true;
-		rb.useGravity = false;
-	}
-
-	// Update is called once per frame
-	void FixedUpdate () 
-	{
-		/* DESCRIPTION:
-		 * Each Fixed Update call, this function calculates how the player object should
-		 * move around the world, based on input and surrounding forces. */
-
-		// Get the position at the bottom of the players collider (where the feet are)
-		//Vector3 feetPosition = transform.position - new Vector3 (0, (capCollider.height / 2) + capCollider.radius, 0);
-		//
-		//// Spherecast to check all objects below the player's feet.
-		//RaycastHit[] castHits = Physics.SphereCastAll (new Ray (feetPosition, Vector3.down), 
-		//	capCollider.radius, 
-		//	0.62f - capCollider.radius);
-		//
-		//foreach (RaycastHit hit in castHits)
-		//{
-		//	// Check everything under the player's feet
-		//	float walkableSlopeNormal = Mathf.Sin(maxWalkableSlope);
-		//	if (hit.normal.y >= walkableSlopeNormal)
-		//	{
-		//		Vector3 tangent = Vector3.Cross (transform.forward, hit.normal);
-		//		Vector3 bitangent = Vector3.Cross (hit.normal, tangent);
-		//
-		//		Vector3 forwardForce = bitangent * Input.GetAxis ("Vertical");
-		//		Vector3 strafeForce = bitangent * Input.GetAxis ("Horizontal");
-		//
-		//		//Vector3 targetVelocity = strafeForce + forwardForce;
-		//		Vector3 targetVelocity = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
-		//
-		//		// Normalize the vector, apply rotation based on look angle and then apply speed
-		//		targetVelocity = targetVelocity.normalized;
-		//		targetVelocity = transform.TransformDirection (targetVelocity);
-		//		targetVelocity *= speed;
-		//
-		//		// Find difference between current and target velocity
-		//		Vector3 currentVelocity = rb.velocity;
-		//		Vector3 deltaVelocity = (targetVelocity - currentVelocity);
-		//
-		//		// Prevent velocity from exceeding the max velocity change
-		//		// This will prevent insane acceleration which would cause the player to go flying
-		//		deltaVelocity.x = Mathf.Clamp(deltaVelocity.x, -maxVelocityChange, maxVelocityChange);
-		//		deltaVelocity.z = Mathf.Clamp(deltaVelocity.z, -maxVelocityChange, maxVelocityChange);
-		//		deltaVelocity.y = 0;
-		//
-		//		// Apply the force
-		//		rb.AddForce (deltaVelocity, ForceMode.VelocityChange);
-		//
-		//		// Only allow player to jump if on the ground
-		//		if (canJump && Input.GetButton ("Jump"))
-		//		{
-		//			rb.velocity = new Vector3 (currentVelocity.x, CalculateJumpSpeedVertical(), currentVelocity.z);
-		//		}
-		//
-		//		break;
-		//	}
-		//}
-		//
-		//// Add manual gravity
-		//rb.AddForce(new Vector3(0, -gravity * rb.mass, 0));
-
-		// Calculate the force to be applied
-		float forwardWalk = Input.GetAxis ("Vertical");
-		float sideStrafe = Input.GetAxis ("Horizontal");
-		Vector3 targetVelocity = new Vector3 (sideStrafe, 0, forwardWalk);
-		targetVelocity = targetVelocity.normalized;
-
-		// Normalize the vector then apply speed
-		targetVelocity = transform.TransformDirection (targetVelocity);
-		targetVelocity *= speed;
-
-		Vector3 currentVelocity = rb.velocity;
-		Vector3 deltaVelocity = (targetVelocity - currentVelocity);
-
-		// Do not allow the force to exceed the maxVelocityChange
-		deltaVelocity.x = Mathf.Clamp(deltaVelocity.x, -maxVelocityChange, maxVelocityChange);
-		deltaVelocity.z = Mathf.Clamp(deltaVelocity.z, -maxVelocityChange, maxVelocityChange);
-		deltaVelocity.y = 0;
-
-		// Add the force
-		rb.AddForce(deltaVelocity, ForceMode.VelocityChange);
-
-		// Apply manual gravity
-		onGround = checkOnGround ();
-		if (!onGround)
-			rb.AddForce(new Vector3(0, -gravity, 0), ForceMode.Acceleration);
-
-		// Only allow player to jump if on the ground
-		if (onGround && canJump && Input.GetButton ("Jump"))
+		rb = GetComponent<Rigidbody> ();
+		if (rb)
 		{
-			rb.velocity = new Vector3 (currentVelocity.x, CalculateJumpSpeedVertical(), currentVelocity.z);
+			rb.useGravity = false;
+			rb.interpolation = RigidbodyInterpolation.Interpolate;
+			rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+			rb.angularDrag = 0;
+			rb.drag = 0;
+			rb.mass = mass;
 		}
 
-		//TODO MOVE THIS SHIZ
-		if (Input.GetKeyDown ("escape"))
-			Cursor.lockState = CursorLockMode.None;
+		col = GetComponent<CapsuleCollider> ();
 	}
 
-	bool checkOnGround()
+	void FixedUpdate () 
 	{
-		/* Raycast from several points below the player to determine
-		 * whether or not the player is on the ground. This is used
-		 * for jumping, etc.
-		 */
+		// Calculate the force to be applied based on player input
+		float vert = Input.GetAxis ("Vertical");
+		float horz = Input.GetAxis ("Horizontal");
+		Vector3 targetVel = new Vector3 (horz, 0, vert);
 
-		float playerHeight = capCollider.bounds.size.y;
-		float playerRadius = capCollider.radius * 0.8f;
-		Vector3 playerFeetOffset = transform.position + (new Vector3 (0, -(playerHeight / 2), 0));
-		float detectionDist = 0.38f;
+		// Normalize to prevent movement speed variance
+		targetVel.Normalize ();
 
-		// Raycast from the center of the player's feet position
-		if (Physics.Raycast (playerFeetOffset, Vector3.down, detectionDist))
-			return true;
+		// Get direction in world space
+		targetVel = transform.TransformDirection (targetVel);
 
-		// Linecast from all sides
-		Vector3 detectionLength = new Vector3 (0, -detectionDist, 0);
-		if (	Physics.Linecast (playerFeetOffset + new Vector3(playerRadius, 0, 0), playerFeetOffset + new Vector3(playerRadius, 0, 0) + detectionLength)
-			||	Physics.Linecast (playerFeetOffset + new Vector3(-playerRadius, 0, 0), playerFeetOffset + new Vector3(-playerRadius, 0, 0) + detectionLength)
-			||	Physics.Linecast (playerFeetOffset + new Vector3(0, 0, playerRadius), playerFeetOffset + new Vector3(0, 0, playerRadius) + detectionLength)
-			||	Physics.Linecast (playerFeetOffset + new Vector3(0, 0, -playerRadius), playerFeetOffset + new Vector3(0, 0, -playerRadius) + detectionLength))
-			return true;
+		// Apply movement speed
+		targetVel *= movementSpeed;
 
-		// All failed, the player is not grounded
+		// Calculate change in velocity
+		Vector3 currVel = rb.velocity;
+		Vector3 deltaVel = targetVel - currVel;
+		deltaVel.y = 0;
+
+		// Add force
+		rb.AddForce (deltaVel, ForceMode.VelocityChange);
+
+		// Prevent "bunnyhopping" issue when walking up slopes, etc.
+		currVel = rb.velocity;
+		if (currVel.y > 0 && grounded())
+		{
+			currVel.y = 0;
+			rb.velocity = currVel;
+		}
+
+		applyGravity();
+
+		handleJumping();
+	}
+
+	private void applyGravity ()
+	{
+		/* Handles the manual application of gravity if the player is grounded */
+
+		if (!grounded())
+			rb.AddForce (new Vector3 (0, -gravity, 0), ForceMode.Acceleration);
+	}
+
+	private bool grounded ()
+	{
+		/* Check if the player is currently standing on an object */
+		// Spherecast down
+		RaycastHit[] hits = 
+			Physics.SphereCastAll (new Ray (transform.position, Vector3.down), col.radius, (col.bounds.extents.y) + 0.1f);
+
+		if (hits.Length > 0)
+		{
+			// Disregard hits that are children of the player
+			RaycastHit[] newHits = hits.IgnoreChildren (this.gameObject);
+
+			if (newHits.Length > 0)
+				return true;
+		}
+
 		return false;
 	}
 
-	float CalculateJumpSpeedVertical()
+	private void handleJumping ()
 	{
-		return Mathf.Sqrt (jumpHeight * gravity * 1.5f);
+		if (grounded() && Input.GetButton("Jump"))
+		{
+			float jumpSpeed = Mathf.Sqrt (jumpHeight * gravity * 2);
+			rb.velocity = new Vector3 (rb.velocity.x, jumpSpeed, rb.velocity.z);
+		}
+	}
+
+	void OnDrawGizmosSelected ()
+	{
+		
 	}
 }
-
-

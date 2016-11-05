@@ -17,6 +17,7 @@ public class RefreshScore : MonoBehaviour {
 
 	void Update () 
 	{
-		scoreText.text = prefix + " " + GameStatistics.Score.ToString();
+		if (scoreText)
+			scoreText.text = prefix + " " + GameStatistics.Score.ToString();
 	}
 }

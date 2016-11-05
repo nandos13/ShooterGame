@@ -238,4 +238,63 @@ public static class Extensions {
 		// Return match
 		return result;
 	}
+
+	public static RaycastHit[] IgnoreChildren (this RaycastHit[] target, GameObject parent)
+	{
+		/* Return an array of RaycastHit that does not contain any
+		 * children of the specified GameObject "parent"
+		 */
+
+		List<Transform> children = (parent.GetComponentsInChildren<Transform> ()).ToList ();
+
+		List<RaycastHit> newHitsList = new List<RaycastHit> ();
+
+		foreach (RaycastHit hit in target)
+		{
+			bool ignore = false;
+
+			foreach (Transform go in children)
+			{
+				if (go == hit.transform)
+				{
+					ignore = true;
+					break;
+				}
+			}
+
+			if (!ignore)
+				newHitsList.Add(hit);
+		}
+
+		return newHitsList.ToArray();
+	}
+
+	public static T[] ToArray<T> (this List<T> target)
+	{
+		/* Convert a List of type T to an array containing type T */
+
+		T[] result = new T[target.Count];
+
+		for (int i = 0; i < result.Length; i++)
+		{
+			if (i < target.Count)
+				result[i] = target[i];
+		}
+
+		return result;
+	}
+
+	public static List<T> ToList<T> (this T[] target)
+	{
+		/* Convert an array containing type T to a List of type T */
+
+		List<T> result = new List<T>();
+
+		foreach (T data in target)
+		{
+			result.Add(data);
+		}
+
+		return result;
+	}
 }
