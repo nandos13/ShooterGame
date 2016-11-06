@@ -62,6 +62,7 @@ GameObject:
   - 114: {fileID: 114000011409928304}
   - 114: {fileID: 114000012325128002}
   - 114: {fileID: 114000014166147066}
+  - 114: {fileID: 114000013157973678}
   m_Layer: 0
   m_Name: TURRET_HIGH_START 1
   m_TagString: Untagged
@@ -132,8 +133,8 @@ GameObject:
   m_Name: TurretBasMed1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4000010398956558
 Transform:
@@ -141,8 +142,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012137089432}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -56.1484, y: 4.851948, z: -69.18502}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -89.01, y: 4.49, z: -42.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -366,8 +367,8 @@ MonoBehaviour:
   autoPopulateGunList: 1
   guns: []
   trackingRange: 40
-  clampAngleDown: 0
-  clampAngleUp: 0
+  clampAngleDown: 30
+  clampAngleUp: 30
   shootDelay: 0
 --- !u!114 &114000010929579708
 MonoBehaviour:
@@ -387,6 +388,7 @@ MonoBehaviour:
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000014053190638}
+  - {fileID: 114000013157973678}
   DamageScripts: []
 --- !u!114 &114000011409928304
 MonoBehaviour:
@@ -495,6 +497,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000011008537682}
   amount: 100
+--- !u!114 &114000013157973678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012137089432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1110758bb8184dbcb23db9f911af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  value: 30
+  healPlayer: 1
 --- !u!114 &114000014053190638
 MonoBehaviour:
   m_ObjectHideFlags: 1

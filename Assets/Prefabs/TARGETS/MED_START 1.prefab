@@ -75,6 +75,7 @@ GameObject:
   - 114: {fileID: 114000013846954812}
   - 114: {fileID: 114000013916052652}
   - 114: {fileID: 114000013243686098}
+  - 114: {fileID: 114000011858044852}
   m_Layer: 0
   m_Name: MED_START 1
   m_TagString: Untagged
@@ -159,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011360645644}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.630225, y: 4.46, z: -37.21025}
+  m_LocalPosition: {x: -51.911102, y: 5.2477922, z: -57.80756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -588,6 +589,18 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114000011858044852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011360645644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5877b682bac0ec44a8a1a7da8d3ab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 200
 --- !u!114 &114000013243686098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -601,6 +614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 1000010243566562, guid: 322cbf385c7a15e4a927f91ca96acff4,
     type: 2}
+  inheritRotation: 1
+  inheritScale: 1
 --- !u!114 &114000013846954812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -637,4 +652,5 @@ MonoBehaviour:
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000013243686098}
+  - {fileID: 114000011858044852}
   DamageScripts: []

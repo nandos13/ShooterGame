@@ -26,8 +26,8 @@ GameObject:
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1000010360638590
 GameObject:
@@ -44,7 +44,7 @@ GameObject:
   m_Name: glow1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000010977148802
@@ -59,11 +59,12 @@ GameObject:
   - 114: {fileID: 114000010411042328}
   - 114: {fileID: 114000011016805104}
   - 114: {fileID: 114000011782341780}
+  - 114: {fileID: 114000012907958216}
   m_Layer: 0
   m_Name: LOW_START 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000011755888150
@@ -81,7 +82,7 @@ GameObject:
   m_Name: outercube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000013232438250
@@ -97,7 +98,7 @@ GameObject:
   m_Name: Point light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000013524150994
@@ -115,7 +116,7 @@ GameObject:
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4000011613140432
@@ -189,8 +190,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010977148802}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.035568, y: 4.55, z: -34.202374}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.67, y: 4.13, z: -83.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -457,6 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 1000011497865016, guid: ba77c002a8b8d1544962dd01f3a5d274,
     type: 2}
+  inheritRotation: 1
+  inheritScale: 1
 --- !u!114 &114000011016805104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,6 +478,7 @@ MonoBehaviour:
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000010411042328}
+  - {fileID: 114000012907958216}
   DamageScripts: []
 --- !u!114 &114000011782341780
 MonoBehaviour:
@@ -494,3 +498,15 @@ MonoBehaviour:
   fadeTime: 0.1
   healthBarPrefab: {fileID: 223000010242818292, guid: fce4a26731c787c4980eabbef87622ba,
     type: 2}
+--- !u!114 &114000012907958216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010977148802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5877b682bac0ec44a8a1a7da8d3ab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 100

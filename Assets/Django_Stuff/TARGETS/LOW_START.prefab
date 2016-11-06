@@ -24,7 +24,7 @@ GameObject:
   m_Name: Point light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000010124611094
@@ -42,7 +42,7 @@ GameObject:
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000010360638590
@@ -60,7 +60,7 @@ GameObject:
   m_Name: glow1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000010977148802
@@ -75,11 +75,12 @@ GameObject:
   - 114: {fileID: 114000010411042328}
   - 114: {fileID: 114000011016805104}
   - 114: {fileID: 114000010462265050}
+  - 114: {fileID: 114000012008939392}
   m_Layer: 0
   m_Name: LOW_START
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000011755888150
@@ -97,7 +98,7 @@ GameObject:
   m_Name: outercube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000013524150994
@@ -115,7 +116,7 @@ GameObject:
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4000010681285582
@@ -190,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010977148802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.18265, y: 4.13, z: -90.32195}
+  m_LocalPosition: {x: -29.8, y: 4.2745013, z: -70.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -457,6 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 1000011497865016, guid: ba77c002a8b8d1544962dd01f3a5d274,
     type: 2}
+  inheritRotation: 1
+  inheritScale: 1
 --- !u!114 &114000010462265050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,4 +496,17 @@ MonoBehaviour:
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000010411042328}
+  - {fileID: 114000012008939392}
   DamageScripts: []
+--- !u!114 &114000012008939392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010977148802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5877b682bac0ec44a8a1a7da8d3ab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 100
