@@ -84,7 +84,7 @@ public class FPC_Walk : MonoBehaviour {
 		/* Check if the player is currently standing on an object */
 		// Spherecast down
 		RaycastHit[] hits = 
-			Physics.SphereCastAll (new Ray (transform.position, Vector3.down), col.radius, (col.bounds.extents.y) + 0.1f);
+			Physics.SphereCastAll (new Ray (transform.position, Vector3.down), col.radius * 0.9f, (col.bounds.extents.y) + 0.1f);
 
 		if (hits.Length > 0)
 		{
@@ -102,7 +102,7 @@ public class FPC_Walk : MonoBehaviour {
 	{
 		if (grounded() && Input.GetButton("Jump"))
 		{
-			float jumpSpeed = Mathf.Sqrt (jumpHeight * gravity * 2);
+			float jumpSpeed = Mathf.Sqrt (jumpHeight * gravity * 100 * Time.fixedDeltaTime);
 			rb.velocity = new Vector3 (rb.velocity.x, jumpSpeed, rb.velocity.z);
 		}
 	}

@@ -32,6 +32,19 @@ public abstract class WeaponBase : MBAction
 	protected bool canFireSemi = true;										// Tracks whether or not the gun can fire (based on semi-auto/automatic setting)
 
 
+	/* HEAT MECHANIC VARIABLES */
+	public bool useHeatMechanics = false;									// Does this weapon use heat mechanics?
+	public float heatRise = 30;												// How much heat will rise each shot (or per second)
+	public bool heatOverTime = true;										// if true, heat over time. else heat instant on fire
+	public float heatFall = 20;												// How much heat will fall each second
+	public float heatFallWait = 1;											// Time in seconds before gun will begin cooling after ceasefire
+	public bool instantHeatReset = false;									// If true, heat will instantly hit 0 when cooling
+	public float heatReEnable = 80;											// Can begin firing if heat is lower than this
+	protected float currentHeat = 0;										// Tracks current heat. Should be clamped 0-100
+	protected bool coolDownAvailable = true;								// Tracks if the gun hasn't been fired within heatFallWait time and is able to cool
+	protected IEnumerator cooler;
+
+
 	/* VISUALS VARIABLES */
 
 	public ParticleSystem hitEffect;										// Particle system played where the projectile collides
@@ -76,6 +89,9 @@ public abstract class WeaponBase : MBAction
 			if (shotSound.Count > 0)
 				audioSrc.clip = shotSound[0];
 		}
+
+		// Initialize cooler coroutine
+		cooler = CoolDownWaitTime();
 	}
 
 	protected ParticleSystem AddHitEffectToPool ()
@@ -209,5 +225,75 @@ public abstract class WeaponBase : MBAction
 		vec.x += Random.Range (-spread / 100.0f, spread / 100.0f);
 		vec.y += Random.Range (-spread / 100.0f, spread / 100.0f);
 		vec.z += Random.Range (-spread / 100.0f, spread / 100.0f);
+	}
+
+	protected void HeatCoolDown ()
+	{
+		/* Cools the gun over time */
+		if (useHeatMechanics && currentHeat > 0 && coolDownAvailable)
+		{
+			if (instantHeatReset)
+				currentHeat = 0;
+			else
+			{
+				currentHeat -= heatFall * Time.deltaTime;
+				currentHeat = Mathf.Clamp (currentHeat, 0, 100);
+			}
+			Debug.Log ("Cooling down: " + currentHeat);
+		}
+	}
+
+	protected IEnumerator CoolDownWaitTime ()
+	{
+		/* After the gun has been fired, wait for heatFallTime before enabling cooling */
+		yield return new WaitForSeconds(heatFallWait);
+		coolDownAvailable = true;
+	}
+
+	protected bool checkHeat ()
+	{
+		/* Check heat mechanics to determine if the gun can fire */
+		bool heatFire = false;
+		if (useHeatMechanics)
+		{
+			if (currentHeat < 100)
+			{
+				if (!canFireSemi)
+					heatFire = true;
+				else
+				{
+					if (currentHeat < heatReEnable)
+						heatFire = true;
+				}
+			}
+		}
+		else
+			heatFire = true;
+
+		return heatFire;
+	}
+
+	protected void applyHeat ()
+	{
+		/* Add heat if needed */
+		if (useHeatMechanics && currentHeat < 100)
+		{
+			// Cancel cooldown ability
+			coolDownAvailable = false;
+			StopCoroutine (cooler);
+			cooler = CoolDownWaitTime();
+
+			float generatedHeat = heatRise;
+			if (heatOverTime)
+			{
+				generatedHeat *= Time.deltaTime;
+			}
+
+			currentHeat += generatedHeat;
+			currentHeat = Mathf.Clamp (currentHeat, 0, 100);
+
+			// Begin cooling down
+			StartCoroutine(cooler);
+		}
 	}
 }
