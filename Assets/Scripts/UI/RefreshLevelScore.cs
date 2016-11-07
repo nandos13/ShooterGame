@@ -6,10 +6,10 @@ using System.Collections;
  * Updates the score each frame
  */
 
-public class RefreshScore : MonoBehaviour {
+public class RefreshLevelScore : MonoBehaviour {
 
 	public Text scoreText;
-	public string prefix = "Credits: $";
+	public string prefix = "Current Level Damage: $";
 
 	void Start () 
 	{
@@ -18,9 +18,6 @@ public class RefreshScore : MonoBehaviour {
 	void Update () 
 	{
 		if (scoreText)
-		{
-			int total = GameStatistics.Score + GameStatistics.LevelScore;
-			scoreText.text = prefix + " " + total.ToString();
-		}
+			scoreText.text = prefix + " " + GameStatistics.LevelScore.ToString();
 	}
 }

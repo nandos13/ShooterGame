@@ -20,3 +20,6 @@ public enum FIRE_MODE { SemiAuto, Auto }
 
 // Display modes for the player's damage broadcaster
 public enum HEALTH_IDENTIFIER_MODE { Flash, Opacity }
+
+// Available attachments
+public enum GUN_ATTACHMENTS { MainAuto, Shotty, FlameThrower, Laser, Minigun, Bomber, RPG }

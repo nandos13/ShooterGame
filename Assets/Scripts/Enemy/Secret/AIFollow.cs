@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /* DESCRIPTION:
  * Simple script to handle enemy movement using a navmesh agent.
@@ -14,6 +15,7 @@ public class AIFollow : MonoBehaviour {
 	public float closeRange = 5.0f;
 	public Transform eyes;
 	public GameObject target;
+	public List<string>seeThroughTags = new List<string>();
 
 	private NavMeshAgent navAgent;
 
@@ -29,11 +31,16 @@ public class AIFollow : MonoBehaviour {
 			// Check target is within range
 			if (Vector3.Distance (target.transform.position, transform.position) < trackingRange)
 			{
-				// Linecast for line of sight
+				// Raycast for line of sight
+				float distToTarget = Vector3.Distance (transform.position, target.transform.position);
 				RaycastHit hit = new RaycastHit();
-				if (Physics.Linecast(eyes.position, target.transform.position, out hit))
+				RaycastHit[] hits = Physics.RaycastAll (eyes.position, (target.transform.position - eyes.position), distToTarget);
+				if (hits.Length > 0)
 				{
-					if (hit.collider.gameObject == target)
+					// Ignore specified tags and get first raycastHit that should be visible
+					hit = hits.ApplyTagMask (seeThroughTags);
+
+					if (hitIsTarget(hit))
 					{
 						navAgent.destination = target.transform.position;
 					}
@@ -46,5 +53,15 @@ public class AIFollow : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	protected bool hitIsTarget (RaycastHit hit)
+	{
+		if (hit.collider)
+		{
+			if (hit.collider.gameObject == target)
+				return true;
+		}
+		return false;
 	}
 }

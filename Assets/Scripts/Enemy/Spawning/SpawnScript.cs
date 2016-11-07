@@ -9,6 +9,7 @@ public class SpawnScript : MBAction {
 
 	public SpawnerHandler spawnHandler;
 	public GameObject spawnObject;
+	public uint quantity = 0;
 	public bool aggroOnSpawn = true;
 
 	void Start () 
@@ -23,6 +24,9 @@ public class SpawnScript : MBAction {
 	public override void Execute () 
 	{
 		if (spawnHandler && spawnObject)
-			spawnHandler.Spawn(spawnObject, aggroOnSpawn);
+		{
+			for (int i = 0; i < quantity; i++)
+				spawnHandler.Spawn(spawnObject, aggroOnSpawn);
+		}
 	}
 }
