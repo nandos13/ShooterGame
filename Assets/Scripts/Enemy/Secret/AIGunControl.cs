@@ -53,7 +53,7 @@ public class AIGunControl : MonoBehaviour {
 			if (Vector3.Distance (target.transform.position, transform.position) < shotRange)
 			{
 				// Does the AI have line of sight to the target?
-				float distToTarget = Vector3.Distance (transform.position, target.transform.position);
+				float distToTarget = Vector3.Distance (eyes.transform.position, target.transform.position);
 				RaycastHit hit = new RaycastHit();
 				RaycastHit[] hits = Physics.RaycastAll (eyes.position, (target.transform.position - eyes.position), distToTarget);
 				if (hits.Length > 0)

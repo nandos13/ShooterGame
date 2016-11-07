@@ -32,13 +32,13 @@ public class AIFollow : MonoBehaviour {
 			if (Vector3.Distance (target.transform.position, transform.position) < trackingRange)
 			{
 				// Raycast for line of sight
-				float distToTarget = Vector3.Distance (transform.position, target.transform.position);
+				float distToTarget = Vector3.Distance (eyes.transform.position, target.transform.position);
 				RaycastHit hit = new RaycastHit();
 				RaycastHit[] hits = Physics.RaycastAll (eyes.position, (target.transform.position - eyes.position), distToTarget);
 				if (hits.Length > 0)
 				{
 					// Ignore specified tags and get first raycastHit that should be visible
-					hit = hits.ApplyTagMask (seeThroughTags);
+					hit = hits.ApplyTagMask (seeThroughTags, COLLISION_MODE.IgnoreSelected);
 
 					if (hitIsTarget(hit))
 					{
