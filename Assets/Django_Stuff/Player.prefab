@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011737704260}
+  - 114: {fileID: 114000013471302748}
   m_Layer: 0
   m_Name: Shot_OriginShot
   m_TagString: Untagged
@@ -161,6 +162,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011701533534}
+  - 114: {fileID: 114000010613564644}
   m_Layer: 0
   m_Name: Shot_OriginMG
   m_TagString: Untagged
@@ -694,7 +696,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012222110058}
-  m_LocalRotation: {x: 0.015681809, y: -0.043355454, z: 0.00914916, w: 0.9988948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05, y: 0.03, z: -0.104}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -761,7 +763,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014002827020}
-  m_LocalRotation: {x: 0.015681807, y: -0.043355454, z: 0.009149159, w: 0.9988948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.05, z: -0.104}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -817,7 +819,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011070729102}
-  m_LocalRotation: {x: 0.015681809, y: -0.043355454, z: 0.00914916, w: 0.9988948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: -0.03, z: -0.104}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -984,7 +986,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010450324432}
-  m_LocalRotation: {x: 0.015681809, y: -0.043355454, z: 0.00914916, w: 0.9988948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: 0.03, z: -0.104}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1011,7 +1013,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010495689012}
-  m_LocalRotation: {x: 0.015681805, y: -0.04335543, z: 0.009149158, w: 0.9988948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.05, z: -0.104}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1134,7 +1136,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011974309766}
-  m_LocalRotation: {x: 0.015681805, y: -0.04335545, z: 0.009149158, w: 0.9988948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1173,7 +1175,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011125927432}
-  m_LocalRotation: {x: 0.015681809, y: -0.043355454, z: 0.00914916, w: 0.9988948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05, y: -0.03, z: -0.104}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2020,6 +2022,13 @@ MonoBehaviour:
   speedRPM: 300
   speed: 5
   spread: 2.33
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
@@ -2048,6 +2057,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000013864553126}
   amount: 1
+--- !u!114 &114000010613564644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010521097388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f45444141823cb4080ae607cd54bb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010866945762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2071,6 +2091,13 @@ MonoBehaviour:
   speedRPM: 1000
   speed: 16.666666
   spread: 2
+  useHeatMechanics: 1
+  heatRise: 20
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 3
+  instantHeatReset: 1
+  heatReEnable: 100
   hitEffect: {fileID: 198000010135003000, guid: 0ef7bc2483d675443939b70c75bce3ed,
     type: 2}
   hitParticles: 10
@@ -2148,6 +2175,13 @@ MonoBehaviour:
   speedRPM: 30
   speed: 0.5
   spread: 3
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
@@ -2210,6 +2244,13 @@ MonoBehaviour:
   speedRPM: 800
   speed: 13.333333
   spread: 1.5
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 198000010135003000, guid: 0ef7bc2483d675443939b70c75bce3ed,
     type: 2}
   hitParticles: 10
@@ -2262,6 +2303,13 @@ MonoBehaviour:
   speedRPM: 600
   speed: 10
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -2296,6 +2344,13 @@ MonoBehaviour:
   speedRPM: 40
   speed: 0.6666667
   spread: 10
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -2424,7 +2479,14 @@ MonoBehaviour:
   speedRPM: 20
   speed: 0.33333334
   spread: 2
-  hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
+  hitEffect: {fileID: 198000013144784168, guid: 240109177bcdec94996a4919ca01cb87,
     type: 2}
   hitParticles: 10
   onFire:
@@ -2581,6 +2643,13 @@ MonoBehaviour:
   speedRPM: 600
   speed: 10
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -2614,6 +2683,17 @@ MonoBehaviour:
   - {fileID: 114000010866945762}
   - {fileID: 114000012624307586}
   - {fileID: 114000011228790662}
+--- !u!114 &114000013471302748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010484477992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f45444141823cb4080ae607cd54bb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013935076144
 MonoBehaviour:
   m_ObjectHideFlags: 1

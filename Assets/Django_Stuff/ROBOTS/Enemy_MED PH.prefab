@@ -731,7 +731,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011338493150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -71.1, y: 4.981694, z: 16.01}
+  m_LocalPosition: {x: 59.5, y: 4.550506, z: -68.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1660,7 +1660,13 @@ MonoBehaviour:
   autoGunList: 0
   guns:
   - {fileID: 114000013272786082}
-  rotationPieces: []
+  rotationPieces:
+  - transform: {fileID: 4000013526145100}
+    clampUp: 20
+    clampDown: 20
+    clampLeft: 180
+    clampRight: 180
+    speed: 18.3
   seeThroughTags: []
   shotRange: 50
   persistTime: 2
@@ -1741,7 +1747,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_Radius: 0.5
   m_Speed: 20
-  m_Acceleration: 8
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 200
   m_StoppingDistance: 0

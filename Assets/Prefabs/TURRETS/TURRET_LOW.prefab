@@ -334,7 +334,15 @@ MonoBehaviour:
   speedRPM: 20
   speed: 0.33333334
   spread: 1
-  hitEffect: {fileID: 0}
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
+  hitEffect: {fileID: 198000013144784168, guid: 240109177bcdec94996a4919ca01cb87,
+    type: 2}
   hitParticles: 10
   onFire:
   - {fileID: 114000012128372916}
