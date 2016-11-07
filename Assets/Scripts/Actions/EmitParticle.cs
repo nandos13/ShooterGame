@@ -10,10 +10,10 @@ public class EmitParticle : MBAction {
 	{
 		if (particles)
 		{
+			particles.transform.position = transform.position;
 			if (collision.collider)
 				particles.transform.position = collision.contacts[0].point;
 			particles.Emit((int)amount);
-			particles.transform.position = transform.position;
 		}
 	}
 }
