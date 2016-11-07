@@ -58,7 +58,6 @@ GameObject:
   - 33: {fileID: 33000011827710968}
   - 136: {fileID: 136000011900773598}
   - 54: {fileID: 54000014232711202}
-  - 114: {fileID: 114000010687968070}
   - 114: {fileID: 114000011898252764}
   - 114: {fileID: 114000013687865020}
   - 114: {fileID: 114000011553360304}
@@ -68,6 +67,7 @@ GameObject:
   - 114: {fileID: 114000012622591178}
   - 114: {fileID: 114000011610560578}
   - 114: {fileID: 114000011573416980}
+  - 114: {fileID: 114000012133177092}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -168,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011375305822}
   m_LocalRotation: {x: -0, y: -0.15633841, z: -0, w: -0.98770356}
-  m_LocalPosition: {x: 2.9, y: -0.7390001, z: -0.9}
+  m_LocalPosition: {x: 45.8, y: 26.6, z: 140.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -500,22 +500,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000010687968070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011375305822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbdab5b4b4f88941b551be03166bf62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  gravity: 50
-  maxVelocityChange: 12
-  canJump: 1
-  jumpHeight: 8
 --- !u!114 &114000011553360304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -580,6 +564,13 @@ MonoBehaviour:
   speedRPM: 20
   speed: 0.33333334
   spread: 2.33
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
@@ -614,6 +605,21 @@ MonoBehaviour:
   DeathScripts:
   - {fileID: 0}
   DamageScripts: []
+--- !u!114 &114000012133177092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011375305822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70efa44e44f828b4d9507c317948ca6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 100
+  movementSpeed: 31.6
+  jumpHeight: 10
+  gravity: 50
 --- !u!114 &114000012622591178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,6 +656,13 @@ MonoBehaviour:
   speedRPM: 800
   speed: 13.333333
   spread: 1.54
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
