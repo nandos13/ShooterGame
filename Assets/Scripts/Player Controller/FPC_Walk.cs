@@ -84,7 +84,7 @@ public class FPC_Walk : MonoBehaviour {
 		/* Check if the player is currently standing on an object */
 		// Spherecast down
 		RaycastHit[] hits = 
-			Physics.SphereCastAll (new Ray (transform.position, Vector3.down), col.radius * 0.9f, (col.bounds.extents.y) + 0.1f);
+			Physics.SphereCastAll (new Ray (transform.position, Vector3.down), col.radius * 0.7f, (col.bounds.extents.y) + 0.1f);
 
 		if (hits.Length > 0)
 		{
