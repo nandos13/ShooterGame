@@ -18,14 +18,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: -39.301544, y: -1015, z: 0}
-        inSlope: {x: 0, y: 80.73333, z: 0}
-        outSlope: {x: 0, y: 80.73333, z: 0}
+        value: {x: -39.301544, y: -1170, z: 0}
+        inSlope: {x: 0, y: 85.9, z: 0}
+        outSlope: {x: 0, y: 85.9, z: 0}
         tangentMode: 0
       - time: 30
         value: {x: -39.301544, y: 1407, z: 0}
-        inSlope: {x: 0, y: 80.73333, z: 0}
-        outSlope: {x: 0, y: 80.73333, z: 0}
+        inSlope: {x: 0, y: 85.9, z: 0}
+        outSlope: {x: 0, y: 85.9, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -263,14 +263,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -1015
-        inSlope: 80.73333
-        outSlope: 80.73333
+        value: -1170
+        inSlope: 85.9
+        outSlope: 85.9
         tangentMode: 10
       - time: 30
         value: 1407
-        inSlope: 80.73333
-        outSlope: 80.73333
+        inSlope: 85.9
+        outSlope: 85.9
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -443,4 +443,11 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 34.5
+    functionName: loadScene
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
