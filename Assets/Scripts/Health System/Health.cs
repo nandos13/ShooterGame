@@ -32,6 +32,7 @@ public class Health : MonoBehaviour {
 			if (value == false && alive == true)
 			{
 				Debug.Log(transform.name + " died");
+				currentHealth = 0;
 				// Run anything that happens on death here
 				if (DeathScripts.Count > 0) 
 				{

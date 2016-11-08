@@ -12,7 +12,7 @@ public static class LevelOrder {
             currentGameLevel++;
     }
 
-    private static string[] levelOrder = { "Main Menu", "AI Test Scene" };      //-- {" main menu" -> "tutorial" -> "first scene" -> "next scene ect"};
+    private static string[] levelOrder = { "Main Menu", "testScene" };      //-- {" main menu" -> "tutorial" -> "first scene" -> "next scene ect"};
     public static string NextLevel
     {
         get {

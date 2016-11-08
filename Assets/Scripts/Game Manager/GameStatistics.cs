@@ -9,7 +9,7 @@ using System.Collections;
 public class GameStatistics
 {
 	/* SCORE TRACKING */
-	[SerializeField] private static int _score = 0;
+	[SerializeField] private static int _score = 1000;
 	private static int _levelScore = 0;
 	public static int Score
 	{
@@ -34,58 +34,60 @@ public class GameStatistics
 	[SerializeField] public static bool _atMinigun = false;
 	[SerializeField] public static bool _atBomber = false;
 	[SerializeField] public static bool _atRPG = false;
-	public static void unlockAttachment (GUN_ATTACHMENTS type, int cost)
+	public static bool unlockAttachment (GUN_ATTACHMENTS type, int cost)
 	{
 		/* Attempts to unlock an attachment for the player weapon */
 	
 		switch (type)
 		{
 		case GUN_ATTACHMENTS.MainAuto:
-			inUnlock (_atMainAuto, cost);
-			break;
+			return inUnlock (ref _atMainAuto, cost);
 	
 		case GUN_ATTACHMENTS.Shotty:
 			if (_atMainAuto)
-				inUnlock (_atShotty, cost);
+				return inUnlock (ref _atShotty, cost);
 			break;
 	
 		case GUN_ATTACHMENTS.FlameThrower:
 			if (_atMainAuto)
-				inUnlock (_atFlameThrower, cost);
+				return inUnlock (ref _atFlameThrower, cost);
 			break;
 	
 		case GUN_ATTACHMENTS.Laser:
 			if (_atShotty)
-				inUnlock (_atLaser, cost);
+				return inUnlock (ref _atLaser, cost);
 			break;
 	
 		case GUN_ATTACHMENTS.Minigun:
 			if (_atFlameThrower)
-				inUnlock (_atMinigun, cost);
+				return inUnlock (ref _atMinigun, cost);
 			break;
 	
 		case GUN_ATTACHMENTS.Bomber:
 			if (_atLaser)
-				inUnlock (_atBomber, cost);
+				return inUnlock (ref _atBomber, cost);
 			break;
 	
 		case GUN_ATTACHMENTS.RPG:
 			if (_atMinigun)
-				inUnlock (_atRPG, cost);
+				return inUnlock (ref _atRPG, cost);
 			break;
 	
 		default:
-			break;
+			return false;
 		}
+		return false;
 	}
 	
-	private static void inUnlock (bool attachment, int cost)
+	private static bool inUnlock (ref bool attachment, int cost)
 	{
 		if ( (_score > cost) && !attachment)
 		{
 			// Not currently unlocked, and unlock is affordable
 			_score -= cost;
 			attachment = true;
+			return true;
 		}
+		return false;
 	}
 }

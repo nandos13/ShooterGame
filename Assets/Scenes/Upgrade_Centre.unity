@@ -478,6 +478,7 @@ GameObject:
   - 222: {fileID: 741370590}
   - 114: {fileID: 741370589}
   - 114: {fileID: 741370588}
+  - 114: {fileID: 741370591}
   m_Layer: 5
   m_Name: U7_Button
   m_TagString: Untagged
@@ -542,7 +543,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 741370589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 741370591}
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &741370589
@@ -578,6 +590,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741370586}
+--- !u!114 &741370591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741370586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0ae28e44d7c344d9b0b7d804185743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
+  expensiveColour: {r: 1, g: 0, b: 0, a: 1}
+  onPurchase: []
 --- !u!1 &845188736
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +901,7 @@ GameObject:
   - 222: {fileID: 1051873667}
   - 114: {fileID: 1051873666}
   - 114: {fileID: 1051873665}
+  - 114: {fileID: 1051873668}
   m_Layer: 5
   m_Name: U3_Button
   m_TagString: Untagged
@@ -938,7 +966,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1051873666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1051873668}
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1051873666
@@ -974,6 +1013,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1051873663}
+--- !u!114 &1051873668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051873663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deb01a4ec048e84fb89fb9cc3816a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  purchasedColour: {r: 0, g: 1, b: 0.25517225, a: 1}
+  expensiveColour: {r: 1, g: 0, b: 0, a: 1}
+  onPurchase: []
 --- !u!1 &1115712730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1101,7 @@ GameObject:
   - 222: {fileID: 1167182699}
   - 114: {fileID: 1167182698}
   - 114: {fileID: 1167182697}
+  - 114: {fileID: 1167182700}
   m_Layer: 5
   m_Name: U4_Button
   m_TagString: Untagged
@@ -1111,7 +1166,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1167182698}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1167182700}
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1167182698
@@ -1147,6 +1213,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1167182695}
+--- !u!114 &1167182700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1167182695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0780d37c863ccc44aac4478267bbb6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
+  expensiveColour: {r: 1, g: 0, b: 0, a: 1}
+  onPurchase: []
 --- !u!1 &1180995519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1456,7 @@ GameObject:
   - 222: {fileID: 1320612000}
   - 114: {fileID: 1320611999}
   - 114: {fileID: 1320611998}
+  - 114: {fileID: 1320612001}
   m_Layer: 5
   m_Name: U5_Button
   m_TagString: Untagged
@@ -1439,7 +1521,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1320611999}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1320612001}
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1320611999
@@ -1475,6 +1568,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1320611996}
+--- !u!114 &1320612001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320611996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caaa00157f31ba14da6a13ddad8a1d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
+  expensiveColour: {r: 1, g: 0, b: 0, a: 1}
+  onPurchase: []
 --- !u!1 &1329263025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,6 +1744,7 @@ GameObject:
   - 222: {fileID: 1622910803}
   - 114: {fileID: 1622910802}
   - 114: {fileID: 1622910801}
+  - 114: {fileID: 1622910804}
   m_Layer: 5
   m_Name: U6_Button
   m_TagString: Untagged
@@ -1700,7 +1809,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1622910802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1622910804}
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1622910802
@@ -1736,6 +1856,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1622910799}
+--- !u!114 &1622910804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1622910799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a967fef049ce7b4795cbfaae6a665f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
+  expensiveColour: {r: 1, g: 0, b: 0, a: 1}
+  onPurchase: []
 --- !u!1 &1704467992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +2145,7 @@ GameObject:
   - 222: {fileID: 1943276012}
   - 114: {fileID: 1943276011}
   - 114: {fileID: 1943276010}
+  - 114: {fileID: 1943276014}
   m_Layer: 5
   m_Name: U2_Button
   m_TagString: Untagged
@@ -2074,7 +2210,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1943276011}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1943276014}
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1943276011
@@ -2110,6 +2257,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1943276008}
+--- !u!114 &1943276014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943276008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b487a57faffdeb5409c30f11cd994d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
+  expensiveColour: {r: 1, g: 0, b: 0, a: 1}
+  onPurchase: []
 --- !u!1 &2014606736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,7 +2422,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2047617876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2047617878}
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2047617876
@@ -2304,7 +2477,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2047617873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 920300d99700b3949ac0860f42340a22, type: 3}
+  m_Script: {fileID: 11500000, guid: eb3da643d3431944eb61ccab9406f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  varName: _atMainAuto
+  cost: 0
+  purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
+  expensiveColour: {r: 1, g: 0, b: 0, a: 1}
+  onPurchase: []
