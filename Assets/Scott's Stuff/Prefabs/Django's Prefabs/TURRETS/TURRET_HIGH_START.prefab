@@ -142,10 +142,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012137089432}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -65.97771, y: 4.8107595, z: -69.4214}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.027681256, y: 0.998358, z: -0.049889185, w: 0.005115167}
+  m_LocalPosition: {x: 24.034138, y: -10.595392, z: 130.09949}
+  m_LocalScale: {x: 2.5000005, y: 2.5, z: 2.5000014}
+  m_LocalEulerAnglesHint: {x: 5.656, y: 179.27501, z: -3.1200001}
   m_Children:
   - {fileID: 4000013024090280}
   - {fileID: 4000012242542746}
@@ -358,11 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationPiece: {fileID: 4000012242542746}
-  searchMode: 0
-  searchAngle: 10
-  pauseTime: 1
+  searchMode: 1
+  searchAngle: 50
+  pauseTime: 0.5
   rotateSpeed: 5
-  visionAngle: 60
+  visionAngle: 70
   seeThroughTags: []
   autoPopulateGunList: 1
   guns: []
@@ -403,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 114000014105187510, guid: d46bd88059ca51d4c80303d21d00fd5d, type: 2}
   value: 30
+  healPlayer: 1
 --- !u!114 &114000011409928304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,6 +427,13 @@ MonoBehaviour:
   speedRPM: 40
   speed: 0.6666667
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -482,6 +490,13 @@ MonoBehaviour:
   speedRPM: 40
   speed: 0.6666667
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -510,6 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000011008537682}
   amount: 100
+  inheritTransformPos: 0
 --- !u!114 &114000014053190638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -538,6 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000010732866564}
   amount: 100
+  inheritTransformPos: 0
 --- !u!198 &198000010732866564
 ParticleSystem:
   m_ObjectHideFlags: 1

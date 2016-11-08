@@ -122,10 +122,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013978014078}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -82.14446, y: 4.6211863, z: -65.09729}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.048266906, y: -0, z: -0, w: 0.9988345}
+  m_LocalPosition: {x: 37.470818, y: 28.2, z: 288.88}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalEulerAnglesHint: {x: 5.4890003, y: 0, z: 0}
   m_Children:
   - {fileID: 4000014169225780}
   - {fileID: 4000013384934556}
@@ -312,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000014091776220}
   amount: 100
+  inheritTransformPos: 0
 --- !u!114 &114000011873106230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,6 +374,13 @@ MonoBehaviour:
   speedRPM: 20
   speed: 0.33333334
   spread: 1
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -414,11 +422,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationPiece: {fileID: 4000013384934556}
-  searchMode: 0
-  searchAngle: 10
-  pauseTime: 1
+  searchMode: 1
+  searchAngle: 50
+  pauseTime: 0.5
   rotateSpeed: 5
-  visionAngle: 60
+  visionAngle: 70
   seeThroughTags:
   - Bullet
   autoPopulateGunList: 1
