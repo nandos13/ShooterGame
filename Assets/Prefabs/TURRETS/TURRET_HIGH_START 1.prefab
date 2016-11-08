@@ -143,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012137089432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -89.01, y: 4.49, z: -42.04}
+  m_LocalPosition: {x: -42.955406, y: 9.560841, z: -76.81731}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -413,6 +413,13 @@ MonoBehaviour:
   speedRPM: 40
   speed: 0.6666667
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -469,6 +476,13 @@ MonoBehaviour:
   speedRPM: 40
   speed: 0.6666667
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -497,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000011008537682}
   amount: 100
+  inheritTransformPos: 0
 --- !u!114 &114000013157973678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -522,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1000010802328606, guid: 94707a112eb8fe640be0a7dc29ca2b30,
+  spawnObject: {fileID: 1000010802328606, guid: 75aa80e73ce92dd41a08f3c60deaf6e9,
     type: 2}
   inheritRotation: 1
   inheritScale: 1
@@ -539,6 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000010732866564}
   amount: 100
+  inheritTransformPos: 0
 --- !u!198 &198000010732866564
 ParticleSystem:
   m_ObjectHideFlags: 1

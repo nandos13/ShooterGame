@@ -136,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011917002866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.84, y: 4.66, z: -49.93}
+  m_LocalPosition: {x: -30.953571, y: 9.32, z: -71.2302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000012935314126}
   amount: 100
+  inheritTransformPos: 0
 --- !u!114 &114000011057116872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1000013755917470, guid: 74b3374f8a2a629448aa3b9ecec70101,
+  spawnObject: {fileID: 1000011992427496, guid: a9bdc7f1961dc674eab03d2f9aff0f50,
     type: 2}
   inheritRotation: 1
   inheritScale: 1
@@ -394,6 +395,13 @@ MonoBehaviour:
   speedRPM: 20
   speed: 0.33333334
   spread: 2
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
