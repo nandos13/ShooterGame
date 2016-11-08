@@ -1,66 +1,72 @@
 fileFormatVersion: 2
-guid: 226194c21fe8dcc44b4feb4eb16033a9
-timeCreated: 1478047910
+guid: bcd44e5033c0e6f40b715c71ae34447b
+timeCreated: 1476764700
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Floor_01
-    100002: Floor_02
-    100004: Floor_03
-    100006: Floor_04
-    100008: Floor_emission_01
-    100010: floor_emission_03
-    100012: Hatch_Door_01
-    100014: Hatch_Door_02
-    100016: //RootNode
-    100018: Walls
-    400000: Floor_01
-    400002: Floor_02
-    400004: Floor_03
-    400006: Floor_04
-    400008: Floor_emission_01
-    400010: floor_emission_03
-    400012: Hatch_Door_01
-    400014: Hatch_Door_02
-    400016: //RootNode
-    400018: Walls
-    2300000: Floor_01
-    2300002: Floor_02
-    2300004: Floor_03
-    2300006: Floor_04
-    2300008: Floor_emission_01
-    2300010: floor_emission_03
-    2300012: Hatch_Door_01
-    2300014: Hatch_Door_02
-    2300016: Walls
-    3300000: Floor_01
-    3300002: Floor_02
-    3300004: Floor_03
-    3300006: Floor_04
-    3300008: Floor_emission_01
-    3300010: floor_emission_03
-    3300012: Hatch_Door_01
-    3300014: Hatch_Door_02
-    3300016: Walls
-    4300000: Hatch_Door_01
-    4300002: Hatch_Door_02
-    4300004: Walls
-    4300006: Floor_emission_01
-    4300008: floor_emission_03
-    4300010: Floor_01
-    4300012: Floor_02
-    4300014: Floor_03
-    4300016: Floor_04
-    6400000: Floor_01
-    6400002: Floor_02
-    6400004: Floor_03
-    6400006: Floor_04
-    6400008: Floor_emission_01
-    6400010: floor_emission_03
-    6400012: Hatch_Door_01
-    6400014: Hatch_Door_02
-    6400016: Walls
+    100000: BaseGun
+    100002: Bazooka
+    100004: ChainBase
+    100006: ChainRail
+    100008: Chamber
+    100010: FLameCylinder
+    100012: Flamehose
+    100014: GrenadeFrame
+    100016: GrenadeNozz
+    100018: GrenadeRev
+    100020: //RootNode
+    100022: PumpAct
+    100024: Rail_Las
+    400000: BaseGun
+    400002: Bazooka
+    400004: ChainBase
+    400006: ChainRail
+    400008: Chamber
+    400010: FLameCylinder
+    400012: Flamehose
+    400014: GrenadeFrame
+    400016: GrenadeNozz
+    400018: GrenadeRev
+    400020: //RootNode
+    400022: PumpAct
+    400024: Rail_Las
+    2300000: BaseGun
+    2300002: Bazooka
+    2300004: ChainBase
+    2300006: ChainRail
+    2300008: Chamber
+    2300010: FLameCylinder
+    2300012: Flamehose
+    2300014: GrenadeFrame
+    2300016: GrenadeNozz
+    2300018: GrenadeRev
+    2300020: PumpAct
+    2300022: Rail_Las
+    3300000: BaseGun
+    3300002: Bazooka
+    3300004: ChainBase
+    3300006: ChainRail
+    3300008: Chamber
+    3300010: FLameCylinder
+    3300012: Flamehose
+    3300014: GrenadeFrame
+    3300016: GrenadeNozz
+    3300018: GrenadeRev
+    3300020: PumpAct
+    3300022: Rail_Las
+    4300000: GrenadeNozz
+    4300002: GrenadeRev
+    4300004: GrenadeFrame
+    4300006: FLameCylinder
+    4300008: Chamber
+    4300010: Flamehose
+    4300012: ChainBase
+    4300014: ChainRail
+    4300016: Rail_Las
+    4300018: Bazooka
+    4300020: BaseGun
+    4300022: PumpAct
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -86,12 +92,12 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 200
+    globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
