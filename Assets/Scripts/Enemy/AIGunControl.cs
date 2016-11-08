@@ -11,6 +11,7 @@ using System.Collections.Generic;
 public class AIGunControl : MonoBehaviour {
 
 	public Transform eyes;															// Vision point
+	public bool targetPlayer = true;
 	public GameObject target;
 	public bool autoGunList = true;													// If true, auto populate the gun list. Else, individual guns can be specified
 	public List<WeaponBase> guns = new List<WeaponBase>();							// A list of guns useable by the AI
@@ -43,6 +44,9 @@ public class AIGunControl : MonoBehaviour {
 			foreach (WeaponBase tGun in tempGuns)
 				guns.Add(tGun);
 		}
+
+		if (targetPlayer)
+			target = GameObject.Find("Player");
 	}
 
 	void Update () 

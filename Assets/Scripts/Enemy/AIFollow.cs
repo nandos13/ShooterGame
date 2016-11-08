@@ -15,6 +15,7 @@ public class AIFollow : MonoBehaviour {
 	public float closeRange = 5.0f;
 	public Transform eyes;
 	public GameObject target;
+	public bool targetPlayer = true;
 	public List<string>seeThroughTags = new List<string>();
 
 	private NavMeshAgent navAgent;
@@ -22,6 +23,8 @@ public class AIFollow : MonoBehaviour {
 	void Start () 
 	{
 		navAgent = GetComponent<NavMeshAgent>();
+		if (targetPlayer)
+			target = GameObject.Find("Player");
 	}
 
 	void Update () 

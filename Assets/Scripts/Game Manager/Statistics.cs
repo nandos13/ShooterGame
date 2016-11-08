@@ -37,42 +37,48 @@ public class GameStatistics
 	public static void unlockAttachment (GUN_ATTACHMENTS type, int cost)
 	{
 		/* Attempts to unlock an attachment for the player weapon */
-
+	
 		switch (type)
 		{
 		case GUN_ATTACHMENTS.MainAuto:
 			inUnlock (_atMainAuto, cost);
 			break;
-
+	
 		case GUN_ATTACHMENTS.Shotty:
-			inUnlock (_atShotty, cost);
+			if (_atMainAuto)
+				inUnlock (_atShotty, cost);
 			break;
-
+	
 		case GUN_ATTACHMENTS.FlameThrower:
-			inUnlock (_atFlameThrower, cost);
+			if (_atMainAuto)
+				inUnlock (_atFlameThrower, cost);
 			break;
-
+	
 		case GUN_ATTACHMENTS.Laser:
-			inUnlock (_atLaser, cost);
+			if (_atShotty)
+				inUnlock (_atLaser, cost);
 			break;
-
+	
 		case GUN_ATTACHMENTS.Minigun:
-			inUnlock (_atMinigun, cost);
+			if (_atFlameThrower)
+				inUnlock (_atMinigun, cost);
 			break;
-
+	
 		case GUN_ATTACHMENTS.Bomber:
-			inUnlock (_atBomber, cost);
+			if (_atLaser)
+				inUnlock (_atBomber, cost);
 			break;
-
+	
 		case GUN_ATTACHMENTS.RPG:
-			inUnlock (_atRPG, cost);
+			if (_atMinigun)
+				inUnlock (_atRPG, cost);
 			break;
-
+	
 		default:
 			break;
 		}
 	}
-
+	
 	private static void inUnlock (bool attachment, int cost)
 	{
 		if ( (_score > cost) && !attachment)
