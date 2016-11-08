@@ -76,6 +76,7 @@ GameObject:
   - 114: {fileID: 114000013916052652}
   - 114: {fileID: 114000013243686098}
   - 114: {fileID: 114000010648401148}
+  - 114: {fileID: 114000013507180524}
   m_Layer: 0
   m_Name: MED_START
   m_TagString: Untagged
@@ -160,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011360645644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 69.6, y: 4.25, z: -51.06216}
+  m_LocalPosition: {x: -82.7, y: 4.02, z: -83.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -616,6 +617,22 @@ MonoBehaviour:
     type: 2}
   inheritRotation: 1
   inheritScale: 1
+--- !u!114 &114000013507180524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011360645644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abec57e7734c61408566d9e4ac0d784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnHandler: {fileID: 0}
+  spawnObject: {fileID: 1000013889533792, guid: 6dfeca2d8aa57604a8e796b426c5c270,
+    type: 2}
+  quantity: 3
+  aggroOnSpawn: 1
 --- !u!114 &114000013916052652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,6 +652,7 @@ MonoBehaviour:
   DeathScripts:
   - {fileID: 114000013243686098}
   - {fileID: 114000010648401148}
+  - {fileID: 114000013507180524}
   DamageScripts: []
 --- !u!114 &114000014180019628
 MonoBehaviour:
