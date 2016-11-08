@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 114000013652980752}
   - 114: {fileID: 114000013135671112}
   - 114: {fileID: 114000013234625182}
+  - 114: {fileID: 114000011474789408}
   m_Layer: 0
   m_Name: HIGH_START
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010794282434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 80.32867, y: 4.84, z: -20.075571}
+  m_LocalPosition: {x: 80.32867, y: 1.85, z: -20.075571}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -112,6 +113,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000011474789408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010794282434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abec57e7734c61408566d9e4ac0d784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnHandler: {fileID: 0}
+  spawnObject: {fileID: 1000013889533792, guid: 6dfeca2d8aa57604a8e796b426c5c270,
+    type: 2}
+  quantity: 3
+  aggroOnSpawn: 1
 --- !u!114 &114000012773899880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +148,7 @@ MonoBehaviour:
   DeathScripts:
   - {fileID: 114000013652980752}
   - {fileID: 114000013234625182}
+  - {fileID: 114000011474789408}
   DamageScripts: []
 --- !u!114 &114000013135671112
 MonoBehaviour:

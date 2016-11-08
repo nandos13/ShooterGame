@@ -265,7 +265,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013024741480}
   m_LocalRotation: {x: -0, y: -0.493745, z: -0, w: 0.8696068}
-  m_LocalPosition: {x: -76.96059, y: 6.58, z: -56.51712}
+  m_LocalPosition: {x: -42.693333, y: 9.32, z: -63.037395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -59.123, z: 0}
   m_Children:
@@ -560,8 +560,8 @@ MonoBehaviour:
   dmgTags:
   - TargetEnemy
   dmgTagsMode: 1
-  speedRPM: 600
-  speed: 10
+  speedRPM: 500
+  speed: 8.333333
   spread: 0
   useHeatMechanics: 0
   heatRise: 30
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1000014023275210, guid: 5ebad9844839f2540b26be896421620d,
+  spawnObject: {fileID: 1000010736391572, guid: 5123c3e7560084d44a24fb39f65f648b,
     type: 2}
   inheritRotation: 1
   inheritScale: 1
@@ -681,7 +681,7 @@ MonoBehaviour:
     speed: 50
   seeThroughTags:
   - TargetEnemy
-  shotRange: 50
+  shotRange: 30
   persistTime: 1.5
 --- !u!114 &114000012102911378
 MonoBehaviour:
@@ -736,8 +736,8 @@ MonoBehaviour:
   dmgTags:
   - TargetEnemy
   dmgTagsMode: 1
-  speedRPM: 600
-  speed: 10
+  speedRPM: 500
+  speed: 8.333333
   spread: 0
   useHeatMechanics: 0
   heatRise: 30
@@ -785,7 +785,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1000013024741480}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 15
+  m_Speed: 5
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 200

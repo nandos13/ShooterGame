@@ -145,7 +145,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.07180661, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 168, z: 0}
   m_Children: []
   m_Father: {fileID: 4000010871991880}
   m_RootOrder: 1
@@ -169,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011636986986}
   m_LocalRotation: {x: -0, y: -0.30223504, z: -0, w: -0.9532335}
-  m_LocalPosition: {x: -46.9, y: 5.47, z: -55.4}
+  m_LocalPosition: {x: -59.32801, y: 8.491197, z: -59.13793}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -324.6, z: 0}
   m_Children:
@@ -339,7 +339,7 @@ Animator:
   m_GameObject: {fileID: 1000010077064742}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 67a98c923814f2c4b99c2f6accd19cde, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1357906d5a1a2347bfe02f2eb1c6523, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -362,6 +362,7 @@ MonoBehaviour:
   closeRange: 4
   eyes: {fileID: 4000012712021532}
   target: {fileID: 0}
+  targetPlayer: 1
   seeThroughTags:
   - TargetEnemy
 --- !u!114 &114000010173681010
@@ -390,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyes: {fileID: 4000012712021532}
+  targetPlayer: 1
   target: {fileID: 0}
   autoGunList: 0
   guns:
@@ -409,7 +411,7 @@ MonoBehaviour:
     speed: 50
   seeThroughTags:
   - TargetEnemy
-  shotRange: 60
+  shotRange: 30
   persistTime: 2
 --- !u!114 &114000012938408932
 MonoBehaviour:
@@ -436,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1000014023275210, guid: 5ebad9844839f2540b26be896421620d,
+  spawnObject: {fileID: 1000013450344330, guid: 7075cb94bab82de4d903f7e605653127,
     type: 2}
   inheritRotation: 1
   inheritScale: 1
@@ -527,7 +529,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1000011636986986}
   m_Enabled: 1
   m_Radius: 2
-  m_Speed: 15
+  m_Speed: 5
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 200

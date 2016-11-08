@@ -1856,6 +1856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000013864553126}
   amount: 1
+  inheritTransformPos: 0
 --- !u!114 &114000010304785882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1880,6 +1881,13 @@ MonoBehaviour:
   speedRPM: 300
   speed: 5
   spread: 2.33
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
@@ -1908,6 +1916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000013607862490}
   amount: 20
+  inheritTransformPos: 0
 --- !u!114 &114000010975633420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1942,6 +1951,13 @@ MonoBehaviour:
   speedRPM: 300
   speed: 5
   spread: 2.33
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
@@ -2004,6 +2020,13 @@ MonoBehaviour:
   speedRPM: 800
   speed: 13.333333
   spread: 1.54
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -2032,6 +2055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000013265512436}
   amount: 50
+  inheritTransformPos: 0
 --- !u!114 &114000011954467182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2055,6 +2079,13 @@ MonoBehaviour:
   speedRPM: 600
   speed: 10
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -2079,6 +2110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000010569054690}
   amount: 1
+  inheritTransformPos: 0
 --- !u!114 &114000012510199272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2143,6 +2175,13 @@ MonoBehaviour:
   speedRPM: 600
   speed: 10
   spread: 2
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 198000014277910952, guid: 464a4b33e8aa9b846ab6834d8f979d1b,
     type: 2}
   hitParticles: 10
@@ -2197,6 +2236,13 @@ MonoBehaviour:
   speedRPM: 600
   speed: 10
   spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
   hitEffect: {fileID: 0}
   hitParticles: 10
   onFire:
@@ -2241,6 +2287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198000010703370020}
   amount: 5
+  inheritTransformPos: 0
 --- !u!114 &114000013949274346
 MonoBehaviour:
   m_ObjectHideFlags: 1
