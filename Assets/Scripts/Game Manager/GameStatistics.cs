@@ -9,7 +9,7 @@ using System.Collections;
 public class GameStatistics
 {
 	/* SCORE TRACKING */
-	[SerializeField] private static int _score = 1000;
+	[SerializeField] private static int _score = 0;
 	private static int _levelScore = 0;
 	public static int Score
 	{

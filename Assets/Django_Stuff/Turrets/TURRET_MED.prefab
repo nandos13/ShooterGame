@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000011938597946}
   m_Layer: 0
   m_Name: Shot_Origin
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,10 +39,10 @@ GameObject:
   - 64: {fileID: 64000012016590112}
   m_Layer: 0
   m_Name: TurretBasMed
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1000011292713462
 GameObject:
@@ -56,7 +56,7 @@ GameObject:
   - 199: {fileID: 199000013541857932}
   m_Layer: 0
   m_Name: Turret_Muzzle
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - 64: {fileID: 64000013637088512}
   m_Layer: 0
   m_Name: TurretHeadMed
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,8 +162,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013250080846}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.43, y: 9.49, z: -80.479294}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -49.43, y: 9.63, z: -84.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -415,6 +415,8 @@ MonoBehaviour:
   visionAngle: 60
   seeThroughTags:
   - Bullet
+  - TargetEnemy
+  - TargetBuilding
   autoPopulateGunList: 1
   guns: []
   trackingRange: 50

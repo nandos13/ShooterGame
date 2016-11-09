@@ -23,7 +23,7 @@ GameObject:
   - 199: {fileID: 199000010239924962}
   m_Layer: 0
   m_Name: Turret_Muzzle
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ GameObject:
   - 4: {fileID: 4000012900022010}
   m_Layer: 0
   m_Name: ShotOrigin
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ GameObject:
   - 114: {fileID: 114000010259202734}
   m_Layer: 0
   m_Name: ShotOriginR1
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +217,7 @@ GameObject:
   - 114: {fileID: 114000013093116524}
   m_Layer: 0
   m_Name: ROBOT_HIGH
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013762580182}
   m_LocalRotation: {x: -0, y: -0.30223504, z: -0, w: -0.9532335}
-  m_LocalPosition: {x: -44.85467, y: 8.772938, z: -69.53661}
+  m_LocalPosition: {x: -70.9, y: 10.22, z: 37.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -324.6, z: 0}
   m_Children:
@@ -859,7 +859,9 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 10
-  dmgTags: []
+  dmgTags:
+  - TargetEnemy
+  - TargetBuilding
   dmgTagsMode: 1
   speedRPM: 20
   speed: 0.33333334

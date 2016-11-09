@@ -23,7 +23,7 @@ GameObject:
   - 199: {fileID: 199000011907651838}
   m_Layer: 0
   m_Name: Turret_Muzzle
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ GameObject:
   - 199: {fileID: 199000014118820726}
   m_Layer: 0
   m_Name: Turret_Muzzle
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ GameObject:
   - 114: {fileID: 114000011269915114}
   m_Layer: 0
   m_Name: TURRET_HIGH_START
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ GameObject:
   - 64: {fileID: 64000013173950298}
   m_Layer: 0
   m_Name: TurretHeadMed1
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   - 4: {fileID: 4000011071660084}
   m_Layer: 0
   m_Name: ShotOriginR
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   - 4: {fileID: 4000012599222862}
   m_Layer: 0
   m_Name: ShotOriginL
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,10 +131,10 @@ GameObject:
   - 64: {fileID: 64000012360290410}
   m_Layer: 0
   m_Name: TurretBasMed1
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4000010398956558
 Transform:
@@ -142,8 +142,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012137089432}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.321342, y: 9.34, z: -73.209175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 38.82, y: 9.34, z: -73.209175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -422,7 +422,9 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 20
-  dmgTags: []
+  dmgTags:
+  - TargetEnemy
+  - TargetBuilding
   dmgTagsMode: 1
   speedRPM: 40
   speed: 0.6666667

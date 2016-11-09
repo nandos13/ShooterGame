@@ -41,7 +41,7 @@ GameObject:
   - 199: {fileID: 199000011351070488}
   m_Layer: 0
   m_Name: Turret_Muzzle
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ GameObject:
   - 4: {fileID: 4000010206522342}
   m_Layer: 0
   m_Name: ShotOrigin
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012674192124}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -27.3611, y: 9.33, z: -77.1382}
+  m_LocalPosition: {x: -86.96, y: 9.566, z: -67.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_Children:
@@ -330,7 +330,9 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 10
-  dmgTags: []
+  dmgTags:
+  - TargetEnemy
+  - TargetBuilding
   dmgTagsMode: 1
   speedRPM: 20
   speed: 0.33333334
