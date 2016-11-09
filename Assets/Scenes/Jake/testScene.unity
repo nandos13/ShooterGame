@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &43611462
 Transform:
   m_ObjectHideFlags: 0
@@ -333,6 +333,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b46aac1e97a46141965a052ed4159f5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &68240496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 68240497}
+  m_Layer: 8
+  m_Name: LaserStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &68240497
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 68240496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.404, y: 0.0232, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1212026999}
+  m_RootOrder: 1
 --- !u!1 &74461135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,7 +2422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &142142353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4755,7 +4783,6 @@ GameObject:
   - 114: {fileID: 184530965}
   - 114: {fileID: 184530964}
   - 114: {fileID: 184530963}
-  - 114: {fileID: 184530977}
   - 114: {fileID: 184530978}
   m_Layer: 9
   m_Name: Player
@@ -5015,7 +5042,7 @@ MonoBehaviour:
   - {fileID: 184530969}
   - {fileID: 475706244}
   - {fileID: 1430807991}
-  - {fileID: 1212027001}
+  - {fileID: 824713065}
   - {fileID: 606534968}
   - {fileID: 43611464}
   - {fileID: 1865138107}
@@ -5109,24 +5136,6 @@ Transform:
   - {fileID: 1354856780}
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!114 &184530977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 184530962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9285cb6aa32f644871a88492f3e422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainAuto: {fileID: 184530969}
-  Shotty: {fileID: 475706240}
-  FlameThrower: {fileID: 1430807988}
-  Laser: {fileID: 1212026998}
-  Minigun: {fileID: 606534960}
-  Bomber: {fileID: 43611461}
-  RPG: {fileID: 1865138105}
 --- !u!114 &184530978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5139,7 +5148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Actions:
-  - {fileID: 184530977}
+  - {fileID: 0}
 --- !u!1001 &236033031
 Prefab:
   m_ObjectHideFlags: 0
@@ -8461,7 +8470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &606534961
 Transform:
   m_ObjectHideFlags: 0
@@ -8848,7 +8857,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 824713062}
   - 114: {fileID: 824713063}
-  m_Layer: 8
+  - 114: {fileID: 824713065}
+  - 120: {fileID: 824713064}
+  m_Layer: 0
   m_Name: Shot_OriginL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8882,6 +8893,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f45444141823cb4080ae607cd54bb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!120 &824713064
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 824713061}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dc78332fbcaa2284e9f0698d0507ea27, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
+--- !u!114 &824713065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 824713061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bef59a8c6ef9c4c90c0e6f9c27417e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotOrigin: {fileID: 824713062}
+  fMode: 1
+  bottomlessClip: 1
+  clipSize: 30
+  unlimitedAmmo: 1
+  startingAmmo: 100
+  damage: 10
+  dmgTags: []
+  dmgTagsMode: 1
+  speedRPM: 600
+  speed: 0
+  spread: 0
+  useHeatMechanics: 0
+  heatRise: 30
+  heatOverTime: 1
+  heatFall: 20
+  heatFallWait: 1
+  instantHeatReset: 0
+  heatReEnable: 80
+  hitEffect: {fileID: 0}
+  hitParticles: 10
+  onFire: []
+  audioSrc: {fileID: 0}
+  shotSound: []
+  pulseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.4958333
+      value: 0.3062501
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lr: {fileID: 824713064}
+  laserStart: {fileID: 68240497}
+  hitscanRange: 200
 --- !u!1 &827453371
 GameObject:
   m_ObjectHideFlags: 0
@@ -13430,7 +13542,6 @@ GameObject:
   - 33: {fileID: 1212027004}
   - 23: {fileID: 1212027003}
   - 95: {fileID: 1212027002}
-  - 114: {fileID: 1212027001}
   - 114: {fileID: 1212027000}
   m_Layer: 8
   m_Name: RailGun2
@@ -13452,6 +13563,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 824713062}
+  - {fileID: 68240497}
   m_Father: {fileID: 1116155008}
   m_RootOrder: 5
 --- !u!114 &1212027000
@@ -13469,48 +13581,6 @@ MonoBehaviour:
   particles: {fileID: 2067070162}
   amount: 1
   inheritTransformPos: 0
---- !u!114 &1212027001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000011845673448, guid: d46bd88059ca51d4c80303d21d00fd5d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1212026998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b12e27af515302346a862d412b567b5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shotOrigin: {fileID: 824713062}
-  fMode: 1
-  bottomlessClip: 1
-  clipSize: 30
-  unlimitedAmmo: 0
-  startingAmmo: 100
-  damage: 10
-  dmgTags: []
-  dmgTagsMode: 1
-  speedRPM: 600
-  speed: 10
-  spread: 0
-  useHeatMechanics: 0
-  heatRise: 30
-  heatOverTime: 1
-  heatFall: 20
-  heatFallWait: 1
-  instantHeatReset: 0
-  heatReEnable: 80
-  hitEffect: {fileID: 0}
-  hitParticles: 10
-  onFire:
-  - {fileID: 1212027000}
-  audioSrc: {fileID: 0}
-  shotSound: []
-  hitscan: 1
-  hitscanRange: 80
-  bulletForce: 100
-  bulletProjectile: {fileID: 0}
-  despawnAfter: 2
 --- !u!95 &1212027002
 Animator:
   serializedVersion: 3
@@ -14118,7 +14188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1430807989
 Transform:
   m_ObjectHideFlags: 0
@@ -16308,7 +16378,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5
-  field of view: 80
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
@@ -23874,7 +23944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1865138106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26360,7 +26430,7 @@ GameObject:
   - 4: {fileID: 2067070160}
   - 198: {fileID: 2067070162}
   - 199: {fileID: 2067070161}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PS_Tracer_Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}

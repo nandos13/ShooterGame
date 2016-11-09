@@ -11,12 +11,10 @@ using System.Collections;
 
 public class JerryStop : MonoBehaviour {
 
-	private Camera cam;
 	private NavMeshAgent agent;
 
 	void Start () 
 	{
-		cam = Camera.main;
 		agent = GetComponent<NavMeshAgent>();
 	}
 

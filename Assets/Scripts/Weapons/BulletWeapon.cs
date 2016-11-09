@@ -254,10 +254,10 @@ public class BulletWeapon : WeaponBase
 				}
 
 				/* Next we need to get the health script of the object hit. However, it's possible
-		 	 * the ray hit a child of the object with health (eg hit an arm, but the body has the health script).
-		 	 * To achieve this, we use a custom function which will return the most immediate instance
-		 	 * of a component contained by a transform or any parent in its family tree.
-		 	 */
+		 		 * the ray hit a child of the object with health (eg hit an arm, but the body has the health script).
+		 		 * To achieve this, we use a custom function which will return the most immediate instance
+		 		 * of a component contained by a transform or any parent in its family tree.
+		 		 */
 				Health healthComponent = hit.transform.GetComponentAscendingImmediate<Health>(true);
 
 				// Did the ray hit something that has health?
@@ -289,7 +289,7 @@ public class BulletWeapon : WeaponBase
 						healthComponent.ApplyDamage(damage);
 				}
 
-				// Apply  force if the object has a rigid body
+				// Apply force if the object has a rigid body
 				Rigidbody rb = hit.transform.GetComponent<Rigidbody> ();
 				if (rb)
 				{
