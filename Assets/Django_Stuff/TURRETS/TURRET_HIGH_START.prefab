@@ -143,10 +143,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012137089432}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.82, y: 9.34, z: -73.209175}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 21.27, y: 9.6, z: 76.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 4000013024090280}
   - {fileID: 4000012242542746}
@@ -519,7 +519,7 @@ MonoBehaviour:
   audioSrc: {fileID: 82000012958939370}
   shotSound:
   - {fileID: 8300000, guid: d7c4310a67563b249a0df48117c68d14, type: 3}
-  muzzleVelocity: 15
+  muzzleVelocity: 18
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
   despawnAfter: 10

@@ -143,10 +143,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012137089432}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.82, y: 9.34, z: -73.209175}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 11.58, y: 2.38, z: -29.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 4000013024090280}
   - {fileID: 4000012242542746}
@@ -442,8 +442,8 @@ MonoBehaviour:
   autoPopulateGunList: 1
   guns: []
   trackingRange: 40
-  clampAngleDown: 0
-  clampAngleUp: 0
+  clampAngleDown: 40
+  clampAngleUp: 40
   shootDelay: 0
 --- !u!114 &114000010929579708
 MonoBehaviour:
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 200
+  MaxHealth: 250
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
