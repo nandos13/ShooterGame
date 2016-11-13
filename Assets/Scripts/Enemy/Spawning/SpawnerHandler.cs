@@ -43,12 +43,15 @@ public class SpawnerHandler : MonoBehaviour {
 			// Choose random spawn point
 			int i = pickSpawn ();
 
-			newObj.transform.position = spawnPoints[i].position;
+			// Get NavMeshAgent component. If the spawned object has one, use the Warp function to set the initial spawn position
+			NavMeshAgent navAgent = newObj.GetComponent<NavMeshAgent>();
+			if (navAgent)
+				navAgent.Warp(spawnPoints[i].position);
+			else
+				newObj.transform.position = spawnPoints[i].position;
 
 			if (aggroPlayer)
 			{
-				// Get attached navmesh agent and set destination to player position
-				NavMeshAgent navAgent = newObj.GetComponent<NavMeshAgent>();
 				if (navAgent)
 				{
 					if (player)
