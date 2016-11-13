@@ -174,49 +174,6 @@ public abstract class WeaponBase : MBAction
 		canFire = true;
 	}
 
-	protected Vector3 VectorToCrosshair ()
-	{
-		/* Calculates and returns the vector between the shot origin and
-		 * the surface under the crosshair (in the center of the screen).
-		 * 
-		 * ----PLEASE NOTE----
-		 * Should only be called to calculate the aim direction of the
-		 * player's gun. Do not use for any enemy weapons.
-		 */
-
-		// Raycast forward from the center of the camera
-		Ray ray = Camera.main.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0.0f));
-		RaycastHit[] hits = Physics.RaycastAll (ray, 1000.0f);
-		RaycastHit hit = new RaycastHit();
-
-		// Find the first hit that is not part of the player
-		bool aimingCollides = false;
-		foreach (RaycastHit h in hits)
-		{
-			// Ignore player
-			if ( !(h.collider.tag == "Player") )
-			{
-				aimingCollides = true;
-				hit = h;
-				break;
-			}
-		}
-
-		// Is the raycast aiming at something?
-		if (aimingCollides)
-		{
-			float distance = Vector3.Distance (shotOrigin.transform.position, hit.point);
-			Vector3 result = (hit.point - shotOrigin.position).normalized * distance;
-			return result;
-		}
-		else
-		{
-			// Point 1000 units away from the center of the screen
-			Vector3 result = ray.direction.normalized * 1000.0f;
-			return result;
-		}
-	}
-
 	protected void ApplySpread(ref Vector3 vec)
 	{
 		/* Applies bullet spread to a Vector3

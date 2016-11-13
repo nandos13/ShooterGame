@@ -162,11 +162,7 @@ public class LauncherWeapon : WeaponBase {
 		/* Fires the gun using a physical projectile */
 
 		// Get angle of projectile
-		Vector3 projectAngle;
-		if (transform.tag == "Player")
-			projectAngle = VectorToCrosshair();
-		else
-			projectAngle = shotOrigin.forward;
+		Vector3 projectAngle = shotOrigin.forward;
 
 		projectAngle.Normalize ();
 
