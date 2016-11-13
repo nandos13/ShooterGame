@@ -31,7 +31,7 @@ public class TurretAI : MonoBehaviour {
 	private GameObject target;											// The turret's target (currently will only ever be the player)
 	private TURRET_BEHAVIOUR_STATE state = 
 		TURRET_BEHAVIOUR_STATE.Searching;								// Tracks current behaviour being acted out
-	private Vector3 randomPoint;										// A point used to randomly search around for the target
+	private Vector3 randomPoint = Vector3.zero;							// A point used to randomly search around for the target
 
 	void Start () 
 	{
@@ -47,6 +47,8 @@ public class TurretAI : MonoBehaviour {
 				guns.Add(gun);
 			}
 		}
+
+		randomPoint = Vector3.zero;
 	}
 
 	void Update () 
@@ -249,7 +251,7 @@ public class TurretAI : MonoBehaviour {
 		{
 			float precision = Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward);
 
-			if (precision == 1) 
+			if (precision >= 0.999f) 
 			{
 				// Turret is looking at it's target point and must choose a new one to look at
 				needsNewTarget = true;
@@ -268,7 +270,7 @@ public class TurretAI : MonoBehaviour {
 			// turret to stare at a wall
 			for (uint i = 0; i < 4; i++) 
 			{
-				randomPoint = Random.insideUnitSphere;
+				randomPoint = Random.insideUnitSphere * 10;
 				randomPoint += rotationPiece.transform.position;
 				randomPoint.y = rotationPiece.transform.position.y;
 
@@ -327,10 +329,7 @@ public class TurretAI : MonoBehaviour {
 		}
 
 		// Look at the target
-		GameObject temp = new GameObject();
-		temp.transform.position = randomPoint;
-		RotateToFacePoint (temp.transform.position);
-		Destroy (temp);
+		RotateToFacePoint (randomPoint);
 	}
 
 	private void RotateToFacePoint (Vector3 point, bool slerp = true)
@@ -420,5 +419,9 @@ public class TurretAI : MonoBehaviour {
 				Gizmos.DrawWireSphere (rotationPiece.position, trackingRange);
 		}
 
+
+		// TESTING
+		Gizmos.color = Color.black;
+		Gizmos.DrawWireSphere (randomPoint, 2);
 	}
 }
