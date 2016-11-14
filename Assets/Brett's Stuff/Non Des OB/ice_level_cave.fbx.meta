@@ -1,37 +1,26 @@
 fileFormatVersion: 2
-guid: 206250849cd3743409b093f5b8d1abe5
-timeCreated: 1476678252
+guid: 016517b1c83003048bc4188cc76bd1dc
+timeCreated: 1479093771
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: base
-    100002: glow1
-    100004: glow2
-    100006: innercube
-    100008: //RootNode
-    100010: outercube
-    400000: base
-    400002: glow1
-    400004: glow2
-    400006: innercube
-    400008: //RootNode
-    400010: outercube
-    2300000: base
-    2300002: glow1
-    2300004: glow2
-    2300006: innercube
-    2300008: outercube
-    3300000: base
-    3300002: glow1
-    3300004: glow2
-    3300006: innercube
-    3300008: outercube
-    4300000: innercube
-    4300002: outercube
-    4300004: glow1
-    4300006: glow2
-    4300008: base
+    100000: Cave
+    100002: cave_floor
+    100004: cave_walls
+    100006: //RootNode
+    400000: Cave
+    400002: cave_floor
+    400004: cave_walls
+    400006: //RootNode
+    2300000: cave_floor
+    2300002: cave_walls
+    3300000: cave_floor
+    3300002: cave_walls
+    4300000: cave_walls
+    4300002: cave_floor
+    6400000: cave_floor
+    6400002: cave_walls
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -57,9 +46,9 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 70
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
