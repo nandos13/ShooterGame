@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000010263381604
 GameObject:
   m_ObjectHideFlags: 1
@@ -300,7 +300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000012117747920
 GameObject:
   m_ObjectHideFlags: 1
@@ -1674,7 +1674,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.15
-  m_Pitch: 1
+  m_Pitch: 1.95
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1729,7 +1729,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: 0.752
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1830,6 +1830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 100
   movementSpeed: 30
+  maxWalkSlope: 60
   jumpHeight: 15
   gravity: 150
 --- !u!114 &114000010952519280
@@ -2378,7 +2379,8 @@ MonoBehaviour:
   onFire:
   - {fileID: 114000014064300634}
   audioSrc: {fileID: 82000011802966822}
-  shotSound: []
+  shotSound:
+  - {fileID: 8300000, guid: 6cfa8aaee1c0be34f870973887dc16be, type: 3}
   muzzleVelocity: 50
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}

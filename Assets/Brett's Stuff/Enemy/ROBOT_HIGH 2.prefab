@@ -1012,7 +1012,7 @@ MonoBehaviour:
     speed: 50
   seeThroughTags:
   - TargetEnemy
-  shotRange: 30
+  shotRange: 60
   persistTime: 2
 --- !u!114 &114000012000598528
 MonoBehaviour:
@@ -1046,12 +1046,12 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 1
+  damage: 6
   dmgTags: []
   dmgTagsMode: 1
-  speedRPM: 600
-  speed: 10
-  spread: 0
+  speedRPM: 400
+  speed: 6.6666665
+  spread: 5
   useHeatMechanics: 0
   heatRise: 30
   heatOverTime: 1

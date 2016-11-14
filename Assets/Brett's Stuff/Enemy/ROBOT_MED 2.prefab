@@ -781,13 +781,13 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 2
+  damage: 3
   dmgTags:
   - TargetEnemy
   dmgTagsMode: 1
-  speedRPM: 500
-  speed: 8.333333
-  spread: 0
+  speedRPM: 350
+  speed: 5.8333335
+  spread: 5
   useHeatMechanics: 0
   heatRise: 30
   heatOverTime: 1
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8339e785aebb17e499cf58e3402541ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackingRange: 60
+  trackingRange: 100
   closeRange: 4
   eyes: {fileID: 4000013387506564}
   target: {fileID: 0}
@@ -907,7 +907,7 @@ MonoBehaviour:
     speed: 50
   seeThroughTags:
   - TargetEnemy
-  shotRange: 30
+  shotRange: 50
   persistTime: 1.5
 --- !u!114 &114000012102911378
 MonoBehaviour:
