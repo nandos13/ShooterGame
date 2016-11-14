@@ -3,9 +3,9 @@ using System.Collections;
 
 public class TextureOffset : MonoBehaviour {
 
-	[Range (0, 100)]
+	[Range (-10, 10)]
 	public float xSpeed;
-	[Range (0, 100)]
+	[Range (-10, 10)]
 	public float ySpeed;
 
 	private Renderer r;
