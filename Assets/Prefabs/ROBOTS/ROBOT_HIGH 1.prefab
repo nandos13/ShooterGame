@@ -127,7 +127,7 @@ GameObject:
   - 82: {fileID: 82000013803872142}
   m_Layer: 0
   m_Name: ShotOriginR2
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - 199: {fileID: 199000010566266632}
   m_Layer: 0
   m_Name: Turret_Muzzle
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,7 +284,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013762580182}
   m_LocalRotation: {x: -0, y: -0.30223504, z: -0, w: -0.9532335}
-  m_LocalPosition: {x: -57.75, y: 10.22, z: 25}
+  m_LocalPosition: {x: 19.9, y: 10.22, z: 52.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -324.6, z: 0}
   m_Children:
@@ -1049,8 +1049,8 @@ MonoBehaviour:
   damage: 1
   dmgTags: []
   dmgTagsMode: 1
-  speedRPM: 600
-  speed: 10
+  speedRPM: 100
+  speed: 1.6666666
   spread: 0
   useHeatMechanics: 0
   heatRise: 30
