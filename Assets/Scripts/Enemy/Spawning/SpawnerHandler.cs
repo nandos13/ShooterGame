@@ -9,21 +9,12 @@ using System.Collections.Generic;
 
 public class SpawnerHandler : MonoBehaviour {
 
-	public static SpawnerHandler instance;							// Only allow a single instance of this script to exist
 	public List<Transform> spawnPoints = new List<Transform>();		// List of spawn points
 
 	private GameObject player;										// Reference to player, used for aggro on spawn
 
 	void Start () 
 	{
-		if (!instance)
-			instance = this;
-		else
-		{
-			Destroy(this);
-			Debug.LogWarning("More than one instance of class SpawnerHandler exists. Deleting duplicate instance.");
-		}
-
 		if (spawnPoints.Count <= 0)
 			Debug.LogWarning("No spawn points specified in SpawnHandler script. No enemies will spawn.");
 

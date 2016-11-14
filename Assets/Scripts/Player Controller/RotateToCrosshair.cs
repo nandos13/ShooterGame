@@ -22,36 +22,26 @@ public class RotateToCrosshair : MonoBehaviour {
 
 	void Update () 
 	{
-		// Raycast forward from the center of the camera
-		ray = Camera.main.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0.0f));
-		hits = Physics.RaycastAll (ray, 1000.0f);
-		hit = new RaycastHit ();
-
-		hit = hits.ApplyTagMask (tags);
-
-		//// Find the first hit that is not part of the player
-		//bool aimingCollides = false;
-		//foreach (RaycastHit h in hits)
-		//{
-		//	// Ignore player
-		//	if ( !(h.collider.tag == "Player") )
-		//	{
-		//		aimingCollides = true;
-		//		hit = h;
-		//		break;
-		//	}
-		//}
-
-		// Is the raycast aiming at something?
-		if (hit.collider)
+		if (enabled)
 		{
-			transform.LookAt (hit.point);
-		}
-		else
-		{
-			// Point 1000 units away from the center of the screen
-			Vector3 lookPoint = ray.GetPoint(1000);
-			transform.LookAt (lookPoint);
+			// Raycast forward from the center of the camera
+			ray = Camera.main.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0.0f));
+			hits = Physics.RaycastAll (ray, 1000.0f);
+			hit = new RaycastHit ();
+
+			hit = hits.ApplyTagMask (tags);
+
+			// Is the raycast aiming at something?
+			if (hit.collider)
+			{
+				transform.LookAt (hit.point);
+			}
+			else
+			{
+				// Point 1000 units away from the center of the screen
+				Vector3 lookPoint = ray.GetPoint(1000);
+				transform.LookAt (lookPoint);
+			}
 		}
 	}
 }

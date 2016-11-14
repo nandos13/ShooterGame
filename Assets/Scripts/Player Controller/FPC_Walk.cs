@@ -10,6 +10,8 @@ public class FPC_Walk : MonoBehaviour {
 	public float mass = 100;
 	[Range (1, 100)]
 	public float movementSpeed = 15;
+	[Range (10.0f, 85.0f)]
+	public float maxWalkSlope = 60.0f;
 	[Range (0, 20)]
 	public float jumpHeight = 10;
 	[Range (0, 150)]
@@ -84,15 +86,28 @@ public class FPC_Walk : MonoBehaviour {
 		/* Check if the player is currently standing on an object */
 		// Spherecast down
 		RaycastHit[] hits = 
-			Physics.SphereCastAll (new Ray (transform.position, Vector3.down), col.radius * 0.7f, (col.bounds.extents.y) + 0.1f);
+			Physics.SphereCastAll (new Ray (transform.position, Vector3.down), col.radius * 0.7f, (col.bounds.extents.y) - (col.radius * 0.7f) + 0.1f);
 
 		if (hits.Length > 0)
 		{
 			// Disregard hits that are children of the player
 			RaycastHit[] newHits = hits.IgnoreChildren (this.gameObject);
 
-			if (newHits.Length > 0)
-				return true;
+			// Check the slope of all objects under the player
+			bool goodSlope = false;
+			foreach (RaycastHit h in newHits)
+			{
+				float surfaceSlope = Vector3.Angle(h.normal, Vector3.up);
+				//Debug.Log("Surface Slope: " + surfaceSlope);
+				if (surfaceSlope <= maxWalkSlope)
+				{
+					goodSlope = true;
+					break;
+				}
+			}
+			return goodSlope;
+			//if (newHits.Length > 0)
+			//	return true;
 		}
 
 		return false;
