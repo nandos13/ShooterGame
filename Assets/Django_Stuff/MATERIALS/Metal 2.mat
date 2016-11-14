@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Red Glow
-  m_Shader: {fileID: 4800000, guid: 01a668cc78047034a8a0c5ca2d24c6f7, type: 3}
+  m_Name: Metal 2
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -46,12 +46,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
-        name: _FalloffTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
         name: _MainTex
       second:
         m_Texture: {fileID: 0}
@@ -75,22 +69,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _ShadowTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _SpecGlossMap
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _BumpAmt
-      second: 10
     - first:
         name: _BumpScale
       second: 1
@@ -142,10 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.9485294, g: 0.11856618, b: 0.11856618, a: 1}
+      second: {r: 0.41911763, g: 0.41911763, b: 0.41911763, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0.8602941, g: 0, b: 0, a: 1}
-    - first:
-        name: _SpecColor
-      second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      second: {r: 0.066176474, g: 0.066176474, b: 0.066176474, a: 1}
