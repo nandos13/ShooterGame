@@ -2114,6 +2114,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1917728109}
+  - 114: {fileID: 1917728111}
+  - 114: {fileID: 1917728110}
   m_Layer: 0
   m_Name: Updater
   m_TagString: Untagged
@@ -2134,6 +2136,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &1917728110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917728108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786605aed43623146973f5e06f4f2f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1917728111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917728108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65cbb9f7dce9f0244834324554f65b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Actions:
+  - {fileID: 1917728110}
 --- !u!1 &1943276008
 GameObject:
   m_ObjectHideFlags: 0
