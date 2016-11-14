@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Interaction : MBAction {
 
+	public string hoverMessage = "";
 	public List<MBAction> actions = new List<MBAction> ();
 
 	void Start ()

@@ -166,7 +166,7 @@ public class LauncherWeaponInspector : Editor {
 		tooltip = new GUIContent ("Muzzle Velocity:", "Initial Velocity of the projectile when being fired");
 		script.muzzleVelocity = EditorGUILayout.IntSlider (tooltip, script.muzzleVelocity, 1, 100);
 		tooltip = new GUIContent ("Despawn Time:", "Time in seconds the projectile will stay alive for before despawning");
-		script.despawnAfter = EditorGUILayout.Slider (tooltip, script.despawnAfter, 1.0f, 10.0f);
+		script.despawnAfter = EditorGUILayout.Slider (tooltip, script.despawnAfter, 1.0f, 60.0f);
 		tooltip = new GUIContent ("Gravity:", "Custom gravity amount to be applied to the projectile");
 		script.projectileGravity = EditorGUILayout.Slider (tooltip, script.projectileGravity, 0.0f, 100.0f);
 		tooltip = new GUIContent ("Drag:", "Amount of drag on the projectile's rigidbody");

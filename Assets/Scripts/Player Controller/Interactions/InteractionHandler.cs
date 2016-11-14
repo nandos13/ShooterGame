@@ -113,9 +113,12 @@ public class InteractionHandler : MBAction {
 	private void updateHudText (Interaction script)
 	{
 		/* Updates a text element on the HUD to show the player which item they will be interacting with */
-		if (HUDText && closest)
+		if (HUDText)
 		{
-			HUDText.text = ("Activate: " + closest.name);
+			if (closest)
+				HUDText.text = ("'E' " + closest.hoverMessage);
+			else
+				HUDText.text = "";
 		}
 	}
 	 

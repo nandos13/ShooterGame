@@ -140,12 +140,16 @@ public abstract class WeaponBase : MBAction
 				int soundIndex = Random.Range(0, shotSound.Count);
 			
 				// Set volume
-				float soundVol = Random.Range(0.8f, 1.0f);
-				audioSrc.volume = soundVol;
+				float oldVol = audioSrc.volume;
+				float newVol = Random.Range(0.8f * oldVol, 1.0f * oldVol);
+				audioSrc.volume = newVol;
 				audioSrc.pitch = Random.Range(0.75f, 1.25f);
 
 				// Play sound
 				audioSrc.PlayOneShot(shotSound[soundIndex]);
+
+				// Reset volume
+				audioSrc.volume = oldVol;
 			}
 		}
 	}
