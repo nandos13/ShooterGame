@@ -146,7 +146,7 @@ GameObject:
   - 222: {fileID: 222000012052224058}
   - 114: {fileID: 114000011380160496}
   - 114: {fileID: 114000012297802716}
-  - 114: {fileID: 114000011955721072}
+  - 114: {fileID: 114000010712611114}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7586207, g: 1, b: 0.76572007, a: 1}
-    m_PressedColor: {r: 0, g: 1, b: 0.07352948, a: 1}
+    m_HighlightedColor: {r: 0.5382786, g: 0.6291314, b: 0.9632353, a: 1}
+    m_PressedColor: {r: 0.09488535, g: 0.10107676, b: 0.99264705, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -374,6 +374,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: gun show
+--- !u!114 &114000010712611114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012979881972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68198a6c69f66ea49bada4c5d619657d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 7
 --- !u!114 &114000010878844416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,8 +433,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7586207, g: 1, b: 0.76572007, a: 1}
-    m_PressedColor: {r: 0, g: 1, b: 0.07352948, a: 1}
+    m_HighlightedColor: {r: 0.5382786, g: 0.6291314, b: 0.9632353, a: 1}
+    m_PressedColor: {r: 0.09488535, g: 0.10107676, b: 0.99264705, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -567,17 +579,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 0
   m_Text: Options
---- !u!114 &114000011955721072
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012979881972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7aad205e6848be4c9b30f6396d82ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000012260850926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -625,8 +626,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7586207, g: 1, b: 0.76572007, a: 1}
-    m_PressedColor: {r: 0, g: 1, b: 0.07352948, a: 1}
+    m_HighlightedColor: {r: 0.5382786, g: 0.6291314, b: 0.9632353, a: 1}
+    m_PressedColor: {r: 0.09488535, g: 0.10107676, b: 0.99264705, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -644,13 +645,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000011955721072}
-        m_MethodName: loadScene
-        m_Mode: 3
+      - m_Target: {fileID: 114000010712611114}
+        m_MethodName: Execute
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -726,8 +727,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7586207, g: 1, b: 0.76572007, a: 1}
-    m_PressedColor: {r: 0, g: 1, b: 0.07352948, a: 1}
+    m_HighlightedColor: {r: 0.5382786, g: 0.6291314, b: 0.9632353, a: 1}
+    m_PressedColor: {r: 0.09488535, g: 0.10107676, b: 0.99264705, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
