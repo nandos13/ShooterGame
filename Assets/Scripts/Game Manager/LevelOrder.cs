@@ -12,7 +12,8 @@ public static class LevelOrder {
             currentGameLevel++;
     }
 
-    private static string[] levelOrder = { "Main_Menu", "testScene", "Credit_Scene" };      //-- {" main menu" -> "tutorial" -> "desert" -> "forest" -> "ice" -> "boss" -> "shop" -> "credits" -> "deathscreen"};
+    private static string[] levelOrder = { "Main_Menu", "Level_0_Tutorial", "Level_1_Desert", "Level_2_Forest", "Level_3_Ice", "Level_4_Boss", "Shop_Scene", "Credit_Scene", "Death_Scene" };
+	//-- {" main menu" -> "tutorial" -> "desert" -> "forest" -> "ice" -> "boss" -> "shop" -> "credits" -> "deathscreen"};
     public static string NextLevel
     {
         get {

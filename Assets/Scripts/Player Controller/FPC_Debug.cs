@@ -3,11 +3,11 @@ using System.Collections;
 
 public class FPC_Debug : MonoBehaviour {
 
-    private ChangeScenes sceneChanger;
+    private NextScene sceneChanger;
 
 	void Start ()
     {
-        sceneChanger = gameObject.AddComponent<ChangeScenes>();
+		sceneChanger = gameObject.AddComponent<NextScene>();
 	}
 	
 	void Update ()
