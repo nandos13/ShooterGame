@@ -24,6 +24,12 @@ public class GameStatistics
 		_levelScore += s;
 	}
 
+	public static void applyScore ()
+	{
+		_score += _levelScore;
+		_levelScore = 0;
+	}
+
 
 	/* WEAPON-ATTACHMENTS */
 	// SIDE NOTE: I realize this is a very unclean way of achieving weapon attachments but it works well enough and does not need to be modular for this project.
