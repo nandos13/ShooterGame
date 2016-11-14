@@ -200,7 +200,7 @@ public abstract class WeaponBase : MBAction
 				currentHeat -= heatFall * Time.deltaTime;
 				currentHeat = Mathf.Clamp (currentHeat, 0, 100);
 			}
-			Debug.Log ("Cooling down: " + currentHeat);
+			//Debug.Log ("Cooling down: " + currentHeat);
 		}
 	}
 
