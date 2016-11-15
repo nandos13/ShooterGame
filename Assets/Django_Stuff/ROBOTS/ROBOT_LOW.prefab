@@ -156,10 +156,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013889533792}
-  m_LocalRotation: {x: -0, y: -0.30223504, z: -0, w: -0.9532335}
-  m_LocalPosition: {x: -76.14, y: 10.55, z: -67.9}
+  m_LocalRotation: {x: -0, y: -0.93475103, z: -0, w: -0.35530353}
+  m_LocalPosition: {x: -18.315342, y: 9.24, z: 52.27642}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: -324.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -221.795, z: 0}
   m_Children:
   - {fileID: 4000013285763598}
   - {fileID: 4000014023647930}
@@ -578,7 +578,7 @@ MonoBehaviour:
     clampDown: 5
     clampLeft: 5
     clampRight: 5
-    speed: 50
+    speed: 5
   seeThroughTags:
   - TargetEnemy
   shotRange: 30
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  value: 10
+  value: 20
   healPlayer: 1
 --- !u!195 &195000010248721072
 NavMeshAgent:

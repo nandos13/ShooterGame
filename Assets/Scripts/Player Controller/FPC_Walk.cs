@@ -57,20 +57,55 @@ public class FPC_Walk : MonoBehaviour {
 		Vector3 deltaVel = targetVel - currVel;
 		deltaVel.y = 0;
 
-		// Add force
-		rb.AddForce (deltaVel, ForceMode.VelocityChange);
+		// Check for slopes
 
-		// Prevent "bunnyhopping" issue when walking up slopes, etc.
-		currVel = rb.velocity;
-		if (currVel.y > 0 && grounded())
+		if (slopeCheck(deltaVel))
 		{
-			currVel.y = 0;
-			rb.velocity = currVel;
+			// Add force
+			rb.AddForce (deltaVel, ForceMode.VelocityChange);
+
+			// Prevent "bunnyhopping" issue when walking up slopes, etc.
+			currVel = rb.velocity;
+			if (currVel.y > 0 && grounded())
+			{
+				currVel.y = 0;
+				rb.velocity = currVel;
+			}
 		}
 
 		applyGravity();
 
 		handleJumping();
+	}
+
+	private bool slopeCheck (Vector3 dir)
+	{
+		// Start a ray from the feet position
+		Vector3 feet = transform.position;
+		feet.y -= col.height / 2;
+		Ray ray = new Ray (feet, dir);
+		RaycastHit hit = new RaycastHit();
+		RaycastHit[] hits = Physics.RaycastAll (ray, col.radius + 0.1f);
+		Debug.DrawRay(ray.origin, ray.direction, Color.cyan, 1.0f);
+
+		if (hits.Length > 0)
+		{
+			hits = hits.IgnoreChildren(transform.gameObject);
+
+			// Are there any slopes that are too steep in this direction?
+			bool goodSlope = true;
+			foreach (RaycastHit h in hits)
+			{
+				if (Vector3.Angle (h.normal, Vector3.up) >= maxWalkSlope)
+				{
+					goodSlope = false;
+					break;
+				}
+				Debug.Log("angle: " + Vector3.Angle(h.normal, Vector3.up));
+			}
+			return goodSlope;
+		}
+		return true;
 	}
 
 	private void applyGravity ()
