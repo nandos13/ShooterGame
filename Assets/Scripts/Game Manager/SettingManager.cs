@@ -13,7 +13,7 @@ public class SettingManager : MonoBehaviour
     public Slider audioSlider;
     public Slider musicSlider;
     public Button applyButton;
-    public AudioSource audioSource;
+    
     public AudioSource musicSource;
     public Resolution[] resolutions;        // my resolution array of resolutions
 
@@ -24,7 +24,7 @@ public class SettingManager : MonoBehaviour
         textureDropdown.onValueChanged.AddListener(delegate { OnTextureQualityChange(); });
         antialiasingDropdown.onValueChanged.AddListener(delegate { OnAntialiasingChange(); });
         vSyncDropdown.onValueChanged.AddListener(delegate { VSyncChange(); });
-        audioSlider.onValueChanged.AddListener(delegate { AudioVolumeChange(); });
+        
         musicSlider.onValueChanged.AddListener(delegate { MusicVolumeChange(); });
         applyButton.onClick.AddListener(delegate { OnApplyButton(); });
         resolutions = Screen.resolutions;
@@ -62,10 +62,7 @@ public class SettingManager : MonoBehaviour
         QualitySettings.vSyncCount = Options.vSync = vSyncDropdown.value;
     }
 
-    public void AudioVolumeChange()
-    {
-        audioSource.volume = Options.audioVolume = audioSlider.value;
-    }
+    
 
     public void MusicVolumeChange()
     {
@@ -99,7 +96,7 @@ public class SettingManager : MonoBehaviour
 
         // Update values
         musicSlider.value = Options.musicVolume;
-        audioSlider.value = Options.audioVolume;
+        
         vSyncDropdown.value = Options.vSync;
         antialiasingDropdown.value = Options.antialiasing;
         textureDropdown.value = Options.textureQuality;

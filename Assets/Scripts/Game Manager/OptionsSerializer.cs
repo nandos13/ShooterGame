@@ -9,7 +9,7 @@ public class OptionsSerializer {
     public int textureQuality;
     public int antialiasing;
     public int vSync;
-    public float audioVolume;
+
     public float musicVolume;
 
     public OptionsSerializer()
@@ -25,7 +25,7 @@ public class OptionsSerializer {
         textureQuality = Options.textureQuality;
         antialiasing = Options.antialiasing;
         vSync = Options.vSync;
-        audioVolume = Options.audioVolume;
+
         musicVolume = Options.musicVolume;
     }
 }

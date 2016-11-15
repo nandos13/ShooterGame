@@ -14,7 +14,7 @@ public static class Options
     public static int textureQuality;
     public static int antialiasing;
     public static int vSync;
-    public static float audioVolume;
+   
     public static float musicVolume;
 
 
@@ -41,7 +41,7 @@ public static class Options
         textureQuality = ser.textureQuality;
         antialiasing = ser.antialiasing;
         vSync = ser.vSync;
-        audioVolume = ser.audioVolume;
+
         musicVolume = ser.musicVolume;
     }
 }
