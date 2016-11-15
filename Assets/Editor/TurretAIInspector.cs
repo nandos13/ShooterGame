@@ -101,7 +101,7 @@ public class TurretAIInspector : Editor {
 		// Show aim options
 		EditorGUILayout.LabelField ("Aiming:", EditorStyles.boldLabel);
 		tooltip = new GUIContent ("Tracking Range:", "View distance of the turret");
-		script.trackingRange = EditorGUILayout.Slider (tooltip, script.trackingRange, 10.0f, 50.0f);
+		script.trackingRange = EditorGUILayout.Slider (tooltip, script.trackingRange, 10.0f, 500.0f);
 		tooltip = new GUIContent ("Aim-Up Clamp:", "Max angle the turret can look up");
 		script.clampAngleUp = EditorGUILayout.Slider (tooltip, script.clampAngleUp, 0.0f, 88.0f);
 		tooltip = new GUIContent ("Aim-Down Clamp:", "Max angle the turret can look down");
