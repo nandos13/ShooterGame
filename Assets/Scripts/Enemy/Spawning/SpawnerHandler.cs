@@ -93,4 +93,25 @@ public class SpawnerHandler : MonoBehaviour {
 			}
 		}
 	}
+
+	public void SpawnOverTime (GameObject obj, bool aggroPlayer, uint amount, float time)
+	{
+		// Use a CoRoutine to spawn enemies over time
+		IEnumerator cr = spawnOverTime(obj, aggroPlayer, amount, time);
+		StartCoroutine(cr);
+	}
+
+	private IEnumerator spawnOverTime (GameObject obj, bool aggroPlayer, uint amount, float time)
+	{
+		if (amount > 0 && time > 0)
+		{
+			uint amountLeft = amount;
+			while (amountLeft > 0)
+			{
+				yield return new WaitForSeconds (time / (float)amount);
+				Spawn(obj, aggroPlayer);
+				amountLeft--;
+			}
+		}
+	}
 }
