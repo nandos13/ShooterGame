@@ -22,9 +22,9 @@ GameObject:
   - 108: {fileID: 108000011116180864}
   m_Layer: 0
   m_Name: Point light Up (1)
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000010852604296
@@ -40,9 +40,9 @@ GameObject:
   - 64: {fileID: 64000013292875322}
   m_Layer: 0
   m_Name: glow2
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000011329527070
@@ -58,9 +58,9 @@ GameObject:
   - 64: {fileID: 64000013166236836}
   m_Layer: 0
   m_Name: outercube
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000011360645644
@@ -75,12 +75,13 @@ GameObject:
   - 114: {fileID: 114000013846954812}
   - 114: {fileID: 114000013916052652}
   - 114: {fileID: 114000013243686098}
+  - 114: {fileID: 114000013937568230}
   - 114: {fileID: 114000011713080804}
   m_Layer: 0
   m_Name: MED_START 1
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000012543296478
@@ -94,9 +95,9 @@ GameObject:
   - 108: {fileID: 108000012894056352}
   m_Layer: 0
   m_Name: Point light Down (1)
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000013136879158
@@ -112,9 +113,9 @@ GameObject:
   - 64: {fileID: 64000010937892230}
   m_Layer: 0
   m_Name: glow1
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000014129833322
@@ -130,10 +131,10 @@ GameObject:
   - 64: {fileID: 64000012564973696}
   m_Layer: 0
   m_Name: base
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1000014154596516
 GameObject:
@@ -148,9 +149,9 @@ GameObject:
   - 64: {fileID: 64000012716494878}
   m_Layer: 0
   m_Name: innercube
-  m_TagString: Untagged
+  m_TagString: TargetBuilding
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4000010328048846
@@ -159,10 +160,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011360645644}
-  m_LocalRotation: {x: -0, y: 0.3819053, z: -0, w: 0.9242015}
-  m_LocalPosition: {x: -117.7, y: 5.3, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.44927347, y: 5.3699203, z: -119.878555}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 44.673, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013707749172}
   - {fileID: 4000012576314024}
@@ -601,9 +602,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHandler: {fileID: 0}
-  spawnObject: {fileID: 1000013762580182, guid: 9dc5318431ac1734f8cfada357f5878c,
+  spawnObject: {fileID: 1000013024741480, guid: 1898696cc6ff7ab48b68bd473dc35809,
     type: 2}
-  quantity: 5
+  quantity: 2
   aggroOnSpawn: 1
 --- !u!114 &114000013243686098
 MonoBehaviour:
@@ -616,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1000010243566562, guid: 322cbf385c7a15e4a927f91ca96acff4,
+  spawnObject: {fileID: 1000010243566562, guid: 38a94bcccf234df45b4559028d062fe6,
     type: 2}
   inheritRotation: 1
   inheritScale: 1
@@ -651,9 +652,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 350
+  MaxHealth: 200
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000013243686098}
+  - {fileID: 114000013937568230}
+  - {fileID: 114000011713080804}
   DamageScripts: []
+--- !u!114 &114000013937568230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011360645644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5877b682bac0ec44a8a1a7da8d3ab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 200
