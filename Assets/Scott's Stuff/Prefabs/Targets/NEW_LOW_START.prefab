@@ -58,6 +58,7 @@ GameObject:
   - 114: {fileID: 114000012081252476}
   - 114: {fileID: 114000013259584516}
   - 114: {fileID: 114000010118026908}
+  - 114: {fileID: 114000013054387506}
   m_Layer: 0
   m_Name: NEW_LOW_START
   m_TagString: Untagged
@@ -470,12 +471,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 200
+  MaxHealth: 250
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000012747169098}
   - {fileID: 114000010118026908}
+  - {fileID: 114000013054387506}
   DamageScripts: []
 --- !u!114 &114000012747169098
 MonoBehaviour:
@@ -492,6 +494,22 @@ MonoBehaviour:
     type: 2}
   inheritRotation: 1
   inheritScale: 1
+--- !u!114 &114000013054387506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010704130792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abec57e7734c61408566d9e4ac0d784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnHandler: {fileID: 0}
+  spawnObject: {fileID: 1000012243853046, guid: f85fc7e615dd7cd4f9c210a081b9618a,
+    type: 2}
+  quantity: 2
+  aggroOnSpawn: 1
 --- !u!114 &114000013259584516
 MonoBehaviour:
   m_ObjectHideFlags: 1

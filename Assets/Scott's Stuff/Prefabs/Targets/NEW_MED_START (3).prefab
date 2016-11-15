@@ -24,6 +24,7 @@ GameObject:
   - 114: {fileID: 114000010877824828}
   - 114: {fileID: 114000013329359734}
   - 114: {fileID: 114000012146252428}
+  - 114: {fileID: 114000011773854434}
   m_Layer: 0
   m_Name: NEW_MED_START (3)
   m_TagString: Untagged
@@ -159,10 +160,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011615125538}
-  m_LocalRotation: {x: -0.056363195, y: 0.000014828693, z: 0.00026267418, w: 0.99841034}
-  m_LocalPosition: {x: -27.22586, y: -16.685392, z: -34.35051}
+  m_LocalRotation: {x: -0.013161026, y: 0.0000034625273, z: 0.00026306979, w: 0.9999134}
+  m_LocalPosition: {x: 46.7, y: -18.46, z: 12.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -6.4140005, y: 0, z: 0.029000001}
+  m_LocalEulerAnglesHint: {x: -1.4920001, y: 0.002, z: 0.029000001}
   m_Children:
   - {fileID: 4000012148177090}
   - {fileID: 4000011672154198}
@@ -602,13 +603,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 400
+  MaxHealth: 500
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
   - {fileID: 114000013329359734}
   - {fileID: 114000012146252428}
+  - {fileID: 114000011773854434}
   DamageScripts: []
+--- !u!114 &114000011773854434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011615125538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abec57e7734c61408566d9e4ac0d784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnHandler: {fileID: 0}
+  spawnObject: {fileID: 1000013132569844, guid: 5cc664c072839e94398c10aabe2d8af7,
+    type: 2}
+  quantity: 2
+  aggroOnSpawn: 1
 --- !u!114 &114000012146252428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1000012362360944, guid: 1a75a3a743e2b374994de400b2260791,
+  spawnObject: {fileID: 1000013717771628, guid: bf885b4c0b7f10f41bb96df33e93f657,
     type: 2}
   inheritRotation: 1
   inheritScale: 1
