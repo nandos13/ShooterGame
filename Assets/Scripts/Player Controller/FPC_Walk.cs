@@ -101,7 +101,6 @@ public class FPC_Walk : MonoBehaviour {
 					goodSlope = false;
 					break;
 				}
-				Debug.Log("angle: " + Vector3.Angle(h.normal, Vector3.up));
 			}
 			return goodSlope;
 		}

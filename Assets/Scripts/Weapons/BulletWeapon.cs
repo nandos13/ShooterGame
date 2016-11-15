@@ -217,11 +217,10 @@ public class BulletWeapon : WeaponBase
 		//projectAngle.Normalize();
 		
 		// Apply random bullet spread
-		//ApplySpread(ref projectAngle);
+		ApplySpread(ref projectAngle);
 
 		// Raycast from the muzzle to see what the gun hit
 		Ray ray = new Ray (shotOrigin.position, projectAngle);
-		Debug.Log(ray.ToString());
 		RaycastHit hit = new RaycastHit();
 		Physics.Raycast (ray, out hit, hitscanRange);
 
