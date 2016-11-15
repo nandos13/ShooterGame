@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000011156726414}
   m_Layer: 0
   m_Name: Shot_Origin
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ GameObject:
   - 64: {fileID: 64000012604304232}
   m_Layer: 0
   m_Name: TurretHeadMed
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   - 64: {fileID: 64000013635075066}
   m_Layer: 0
   m_Name: TurretBasMed
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,10 +135,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011917002866}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.953571, y: 9.32, z: -71.2302}
+  m_LocalRotation: {x: 0.016857771, y: -0.9948537, z: -0.02044897, w: -0.09779478}
+  m_LocalPosition: {x: 119.63, y: -13.99, z: 30.29}
   m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.496, y: -190.918, z: -1.6450001}
   m_Children:
   - {fileID: 4000011486584690}
   - {fileID: 4000011869376268}
@@ -376,7 +376,9 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 25
-  dmgTags: []
+  dmgTags:
+  - TargetEnemy
+  - TargetBuilding
   dmgTagsMode: 1
   speedRPM: 45
   speed: 0.75
@@ -388,8 +390,9 @@ MonoBehaviour:
   heatFallWait: 1
   instantHeatReset: 0
   heatReEnable: 80
-  hitEffect: {fileID: 0}
-  hitParticles: 10
+  hitEffect: {fileID: 198000013144784168, guid: 14cc7529f69b5414b8965b6a4bd52c0a,
+    type: 2}
+  hitParticles: 100
   onFire:
   - {fileID: 114000010168645968}
   audioSrc: {fileID: 0}

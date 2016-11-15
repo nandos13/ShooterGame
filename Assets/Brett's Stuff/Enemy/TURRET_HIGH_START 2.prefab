@@ -41,7 +41,7 @@ GameObject:
   - 64: {fileID: 64000011888769112}
   m_Layer: 0
   m_Name: TurretBasMed1
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -59,7 +59,7 @@ GameObject:
   - 64: {fileID: 64000010641866396}
   m_Layer: 0
   m_Name: TurretHeadMed1
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ GameObject:
   - 114: {fileID: 114000014197929068}
   m_Layer: 0
   m_Name: TURRET_HIGH_START 2
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - 4: {fileID: 4000013646938168}
   m_Layer: 0
   m_Name: ShotOriginL
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ GameObject:
   - 4: {fileID: 4000013664521900}
   m_Layer: 0
   m_Name: ShotOriginR
-  m_TagString: Untagged
+  m_TagString: TargetEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,10 +142,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011853169140}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.955406, y: 9.560841, z: -76.81731}
+  m_LocalRotation: {x: -0.04624404, y: 0.20046543, z: 0.006372452, w: -0.97858804}
+  m_LocalPosition: {x: 127.270004, y: -7.86, z: -27.560427}
   m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.004, y: 336.987, z: -1.7320001}
   m_Children:
   - {fileID: 4000012436694418}
   - {fileID: 4000014103638616}
@@ -364,7 +364,9 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 25
-  dmgTags: []
+  dmgTags:
+  - TargetEnemy
+  - TargetBuilding
   dmgTagsMode: 1
   speedRPM: 65
   speed: 1.0833334
@@ -376,8 +378,9 @@ MonoBehaviour:
   heatFallWait: 1
   instantHeatReset: 0
   heatReEnable: 80
-  hitEffect: {fileID: 0}
-  hitParticles: 10
+  hitEffect: {fileID: 198000013144784168, guid: 14cc7529f69b5414b8965b6a4bd52c0a,
+    type: 2}
+  hitParticles: 100
   onFire:
   - {fileID: 114000012325675562}
   audioSrc: {fileID: 0}
@@ -409,7 +412,9 @@ MonoBehaviour:
   unlimitedAmmo: 0
   startingAmmo: 100
   damage: 25
-  dmgTags: []
+  dmgTags:
+  - TargetEnemy
+  - TargetBuilding
   dmgTagsMode: 1
   speedRPM: 65
   speed: 1.0833334
@@ -421,8 +426,9 @@ MonoBehaviour:
   heatFallWait: 1
   instantHeatReset: 0
   heatReEnable: 80
-  hitEffect: {fileID: 0}
-  hitParticles: 10
+  hitEffect: {fileID: 198000013144784168, guid: 14cc7529f69b5414b8965b6a4bd52c0a,
+    type: 2}
+  hitParticles: 100
   onFire:
   - {fileID: 114000012573916998}
   audioSrc: {fileID: 0}
