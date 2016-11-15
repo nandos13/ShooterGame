@@ -519,10 +519,10 @@ MonoBehaviour:
   audioSrc: {fileID: 82000012958939370}
   shotSound:
   - {fileID: 8300000, guid: d7c4310a67563b249a0df48117c68d14, type: 3}
-  muzzleVelocity: 18
+  muzzleVelocity: 20
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
-  despawnAfter: 10
+  despawnAfter: 30
   projectileGravity: 0
   projectileDrag: 0
   projectileAngularDrag: 0
@@ -585,8 +585,8 @@ MonoBehaviour:
   muzzleVelocity: 20
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
-  despawnAfter: 5
-  projectileGravity: 1
+  despawnAfter: 30
+  projectileGravity: 0
   projectileDrag: 0
   projectileAngularDrag: 0
   ExplosiveForce: 5

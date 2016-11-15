@@ -743,7 +743,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -754,7 +754,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -765,7 +765,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &82000014168560584
 AudioSource:
   m_ObjectHideFlags: 1
@@ -817,7 +817,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -828,7 +828,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -839,7 +839,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &95000011410561100
 Animator:
   serializedVersion: 3
@@ -960,7 +960,7 @@ MonoBehaviour:
   muzzleVelocity: 30
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
-  despawnAfter: 10
+  despawnAfter: 30
   projectileGravity: 0
   projectileDrag: 0
   projectileAngularDrag: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   muzzleVelocity: 30
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
-  despawnAfter: 10
+  despawnAfter: 30
   projectileGravity: 0
   projectileDrag: 0
   projectileAngularDrag: 0
