@@ -7840,9 +7840,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c25c21335b998d44e91f70b84488c3c2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 429274b2954e0b6499b681e1c47a47d5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.04
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8015,7 +8015,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -14116,34 +14116,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000010328048846, guid: 4355e48ac1bc9be4db42b7f806ec9455, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -2.292
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010328048846, guid: 4355e48ac1bc9be4db42b7f806ec9455, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.030000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010328048846, guid: 4355e48ac1bc9be4db42b7f806ec9455, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.75200003
-      objectReference: {fileID: 0}
     - target: {fileID: 114000011694018672, guid: 4355e48ac1bc9be4db42b7f806ec9455,
         type: 2}
       propertyPath: spawnHandler
       value: 
       objectReference: {fileID: 1282267430}
-    - target: {fileID: 114000011694018672, guid: 4355e48ac1bc9be4db42b7f806ec9455,
-        type: 2}
-      propertyPath: spawnObject
-      value: 
-      objectReference: {fileID: 1000013762580182, guid: 84041d88e2d140f41bdfba262d8bfc7b,
-        type: 2}
-    - target: {fileID: 114000011694018672, guid: 4355e48ac1bc9be4db42b7f806ec9455,
-        type: 2}
-      propertyPath: quantity
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4355e48ac1bc9be4db42b7f806ec9455, type: 2}
   m_IsPrefabParent: 0

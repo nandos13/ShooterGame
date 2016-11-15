@@ -160,10 +160,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011360645644}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.41, y: 14.84, z: 76.06}
+  m_LocalRotation: {x: -0.020204326, y: 0.00013643633, z: -0.006751299, w: 0.9997731}
+  m_LocalPosition: {x: 25.36, y: -15.84, z: 12.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.292, y: 0.030000001, z: -0.75200003}
   m_Children:
   - {fileID: 4000013707749172}
   - {fileID: 4000012576314024}
@@ -620,9 +620,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHandler: {fileID: 0}
-  spawnObject: {fileID: 1000013024741480, guid: 1898696cc6ff7ab48b68bd473dc35809,
+  spawnObject: {fileID: 1000013762580182, guid: 84041d88e2d140f41bdfba262d8bfc7b,
     type: 2}
-  quantity: 2
+  quantity: 3
+  overSeconds: 0
   aggroOnSpawn: 1
 --- !u!114 &114000013243686098
 MonoBehaviour:
