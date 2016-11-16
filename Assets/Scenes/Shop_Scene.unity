@@ -307,7 +307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: rpg
+  m_Text: rpg $3000
 --- !u!222 &327905044
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -378,10 +378,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Bomb thrower
+  m_Text: "Bomb thrower \n$2500"
 --- !u!222 &497248354
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0ae28e44d7c344d9b0b7d804185743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 3000
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
   onPurchase: []
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4deb01a4ec048e84fb89fb9cc3816a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 1500
   purchasedColour: {r: 0, g: 1, b: 0.25517225, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
   onPurchase: []
@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0780d37c863ccc44aac4478267bbb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 2500
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
   onPurchase: []
@@ -1295,7 +1295,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: minigun
+  m_Text: minigun $2000
 --- !u!222 &1180995522
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1580,7 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaa00157f31ba14da6a13ddad8a1d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 1500
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
   onPurchase: []
@@ -1956,7 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a967fef049ce7b4795cbfaae6a665f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 2000
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
   onPurchase: []
@@ -2027,7 +2027,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Laser
+  m_Text: Laser $1500
 --- !u!222 &1704467995
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2451,10 +2451,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: flamethrower
+  m_Text: flamer $1500
 --- !u!222 &2014606739
 CanvasRenderer:
   m_ObjectHideFlags: 0
