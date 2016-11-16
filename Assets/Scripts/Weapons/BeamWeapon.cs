@@ -186,7 +186,10 @@ public class BeamWeapon : WeaponBase {
 			}
 			else
 			{
-				lineEndPos = hit.point.normalized * hitscanRange;
+				Vector3 tempPoint = hit.point - transform.position;
+				tempPoint.Normalize();
+				tempPoint *= hitscanRange;
+				lineEndPos = tempPoint + transform.position;
 			}
 		}
 		else
