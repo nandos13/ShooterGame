@@ -71,8 +71,8 @@ public class BeamWeapon : WeaponBase {
 
 					// Apply heat
 					applyHeat();
-					if (useHeatMechanics)
-						Debug.Log("Current Heat: " + currentHeat);
+					//if (useHeatMechanics)
+					//	Debug.Log("Current Heat: " + currentHeat);
 
 					// Disable semi fire auto
 					canFireSemi = false;
