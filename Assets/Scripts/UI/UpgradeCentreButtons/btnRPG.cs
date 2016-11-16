@@ -29,7 +29,7 @@ public class btnRPG : MBAction {
 				temp.disabledColor = purchasedColour;
 				btn.colors = temp;
 			}
-			else if (GameStatistics.Score > cost && checkCriteria())
+			else if (GameStatistics.Score >= cost && checkCriteria())
 			{
 				// Upgrade can be purchased
 				btn.interactable = true;

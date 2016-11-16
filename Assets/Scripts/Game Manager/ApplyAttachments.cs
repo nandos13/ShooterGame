@@ -20,10 +20,20 @@ public class ApplyAttachments : MBAction {
 	{
 		if (MainAuto)
 		{
+			//if (GameStatistics._atMainAuto)
+			//	MainAuto.fMode = FIRE_MODE.Auto;
+			//else
+			//	MainAuto.fMode = FIRE_MODE.SemiAuto;
 			if (GameStatistics._atMainAuto)
-				MainAuto.fMode = FIRE_MODE.Auto;
+			{
+				MainAuto.speedRPM = 800;
+				MainAuto.speed = 800 / 60;
+			}
 			else
-				MainAuto.fMode = FIRE_MODE.SemiAuto;
+			{
+				MainAuto.speedRPM = 400;
+				MainAuto.speed = 400 / 60;
+			}
 		}
 
 		if (Shotty)

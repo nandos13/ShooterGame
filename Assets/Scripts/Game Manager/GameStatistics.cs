@@ -87,7 +87,7 @@ public class GameStatistics
 	
 	private static bool inUnlock (ref bool attachment, int cost)
 	{
-		if ( (_score > cost) && !attachment)
+		if ( (_score >= cost) && !attachment)
 		{
 			// Not currently unlocked, and unlock is affordable
 			_score -= cost;
