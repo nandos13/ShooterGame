@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MBAction {
 
 	public int index;
+	public bool setNextLevel = false;
 
 	public override void Execute ()
 	{
@@ -16,7 +17,8 @@ public class LoadScene : MBAction {
 
 		if (nextSceneName != "")
 		{
-			LevelOrder.SetNextLevel();
+			if(setNextLevel)
+				LevelOrder.SetNextLevel();
 			SceneManager.LoadScene(nextSceneName);
 		}
 	}
