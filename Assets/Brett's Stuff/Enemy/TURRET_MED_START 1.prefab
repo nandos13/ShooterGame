@@ -60,6 +60,7 @@ GameObject:
   - 114: {fileID: 114000011057116872}
   - 114: {fileID: 114000010168645968}
   - 114: {fileID: 114000013865266024}
+  - 82: {fileID: 82000014231799764}
   m_Layer: 0
   m_Name: TURRET_MED_START 1
   m_TagString: TargetEnemy
@@ -267,6 +268,80 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: b16e0cc7e56f34347afae8244a3f8318, type: 3}
+--- !u!82 &82000014231799764
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011917002866}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95000012313828956
 Animator:
   serializedVersion: 3
@@ -375,7 +450,7 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 25
+  damage: 20
   dmgTags:
   - TargetEnemy
   - TargetBuilding
@@ -395,9 +470,10 @@ MonoBehaviour:
   hitParticles: 100
   onFire:
   - {fileID: 114000010168645968}
-  audioSrc: {fileID: 0}
-  shotSound: []
-  muzzleVelocity: 35
+  audioSrc: {fileID: 82000014231799764}
+  shotSound:
+  - {fileID: 8300000, guid: ca610ccfbae842b42b75084541979b20, type: 3}
+  muzzleVelocity: 45
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
   despawnAfter: 10
@@ -431,8 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2e431b34bdd8d46805979bc61a76a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 1, z: 0}
-  scale: 0.5
+  offset: {x: 0, y: 1.6, z: 0}
+  scale: 1
   transitionSpeed: 100
   fadeOut: 1
   fadeTime: 0.2
