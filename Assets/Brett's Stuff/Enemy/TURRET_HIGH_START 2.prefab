@@ -156,8 +156,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011853169140}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 136.56, y: -16.13, z: 6.92}
+  m_LocalRotation: {x: -0, y: 0.99975914, z: -0, w: 0.021948198}
+  m_LocalPosition: {x: 56.04, y: -16.13, z: 39.68}
   m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
@@ -375,7 +375,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -443,8 +443,8 @@ MonoBehaviour:
   - TargetEnemy
   - TargetBuilding
   dmgTagsMode: 1
-  speedRPM: 65
-  speed: 1.0833334
+  speedRPM: 70
+  speed: 1.1666666
   spread: 0
   useHeatMechanics: 0
   heatRise: 30
@@ -461,7 +461,7 @@ MonoBehaviour:
   audioSrc: {fileID: 82000010840694692}
   shotSound:
   - {fileID: 8300000, guid: d7c4310a67563b249a0df48117c68d14, type: 3}
-  muzzleVelocity: 65
+  muzzleVelocity: 70
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
   despawnAfter: 30
@@ -490,8 +490,8 @@ MonoBehaviour:
   damage: 35
   dmgTags: []
   dmgTagsMode: 1
-  speedRPM: 65
-  speed: 1.0833334
+  speedRPM: 70
+  speed: 1.1666666
   spread: 0
   useHeatMechanics: 0
   heatRise: 30
@@ -506,7 +506,7 @@ MonoBehaviour:
   - {fileID: 114000012573916998}
   audioSrc: {fileID: 0}
   shotSound: []
-  muzzleVelocity: 65
+  muzzleVelocity: 70
   missileProjectile: {fileID: 1000011494532448, guid: a53a1e570890c6b4dbf3c2d4a5b4b3de,
     type: 2}
   despawnAfter: 30
@@ -611,12 +611,12 @@ MonoBehaviour:
   searchMode: 1
   searchAngle: 65
   pauseTime: 1
-  rotateSpeed: 6
+  rotateSpeed: 7
   visionAngle: 80
   seeThroughTags: []
   autoPopulateGunList: 1
   guns: []
-  trackingRange: 80
+  trackingRange: 100
   clampAngleDown: 40
   clampAngleUp: 40
   shootDelay: 0
