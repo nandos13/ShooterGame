@@ -84,7 +84,6 @@ public class FPC_Walk : MonoBehaviour {
 		Vector3 feet = transform.position;
 		feet.y -= col.height / 2;
 		Ray ray = new Ray (feet, dir);
-		RaycastHit hit = new RaycastHit();
 		RaycastHit[] hits = Physics.RaycastAll (ray, col.radius + 0.1f);
 		Debug.DrawRay(ray.origin, ray.direction, Color.cyan, 1.0f);
 
