@@ -223,7 +223,7 @@ public class TurretAI : MonoBehaviour {
 
 			// Is the turret looking at the point?
 			Vector3 angleTurretToPoint = (searchPoint - rotationPiece.transform.position).normalized;
-			if (Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward) == 1)
+			if (Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward) == 0.99f)
 			{
 				StartCoroutine(PauseRotation());
 			}
@@ -251,7 +251,7 @@ public class TurretAI : MonoBehaviour {
 		{
 			float precision = Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward);
 
-			if (precision >= 0.999f) 
+			if (precision >= 0.99f) 
 			{
 				// Turret is looking at it's target point and must choose a new one to look at
 				needsNewTarget = true;
