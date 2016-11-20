@@ -203,7 +203,7 @@ public class TurretAI : MonoBehaviour {
 				searchPoint = rayRight * transform.forward;
 				searchPoint *= trackingRange;
 				searchPoint += rotationPiece.position;
-				searchPoint.y = transform.position.y;
+				searchPoint.y = rotationPiece.position.y;
 
 				// Look at point
 				RotateToFacePoint (searchPoint, false);
@@ -215,7 +215,7 @@ public class TurretAI : MonoBehaviour {
 				searchPoint = rayLeft * transform.forward;
 				searchPoint *= trackingRange;
 				searchPoint += rotationPiece.position;
-				searchPoint.y = transform.position.y;
+				searchPoint.y = rotationPiece.position.y;
 
 				// Look at point
 				RotateToFacePoint (searchPoint, false);
@@ -223,7 +223,7 @@ public class TurretAI : MonoBehaviour {
 
 			// Is the turret looking at the point?
 			Vector3 angleTurretToPoint = (searchPoint - rotationPiece.transform.position).normalized;
-			if (Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward) == 0.99f)
+			if (Vector3.Dot (angleTurretToPoint, rotationPiece.transform.forward) >= 0.99f)
 			{
 				StartCoroutine(PauseRotation());
 			}
@@ -422,6 +422,8 @@ public class TurretAI : MonoBehaviour {
 
 		// TESTING
 		Gizmos.color = Color.black;
-		Gizmos.DrawWireSphere (randomPoint, 2);
+		Gizmos.DrawWireSphere (randomPoint, 1);
+		Gizmos.color = Color.magenta;
+		Gizmos.DrawWireSphere (searchPoint, 1);
 	}
 }
