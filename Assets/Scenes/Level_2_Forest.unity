@@ -14490,6 +14490,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014250208478, guid: 3c5bbfa4b8276ff46a97b414d0f279e9,
+        type: 2}
+      propertyPath: flasherCanvas
+      value: 
+      objectReference: {fileID: 1999350904}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c5bbfa4b8276ff46a97b414d0f279e9, type: 2}
   m_IsPrefabParent: 0
@@ -15559,11 +15564,16 @@ Prefab:
     - target: {fileID: 114000014112701634, guid: 4ce3d59de169a3b4b9059eee152320a2,
         type: 2}
       propertyPath: m_Text
-      value: Cause $2000 worth of damage
+      value: Cause $2500 worth of damage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ce3d59de169a3b4b9059eee152320a2, type: 2}
   m_IsPrefabParent: 0
+--- !u!223 &1999350904 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 223000011414854972, guid: 4ce3d59de169a3b4b9059eee152320a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999350903}
 --- !u!1001 &1999447175
 Prefab:
   m_ObjectHideFlags: 0
