@@ -53,7 +53,10 @@ public class SettingManager : MonoBehaviour
 
    public void OnAntialiasingChange()
     {
-        QualitySettings.antiAliasing = (int)Mathf.Pow(2, antialiasingDropdown.value);
+		if (antialiasingDropdown.value > 0)
+        	QualitySettings.antiAliasing = (int)Mathf.Pow(2, antialiasingDropdown.value);
+		else
+			QualitySettings.antiAliasing = 0;
         Options.antialiasing = antialiasingDropdown.value;
     }
 
