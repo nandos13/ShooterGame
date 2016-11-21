@@ -944,7 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  value: 10
+  value: 25
   healPlayer: 1
 --- !u!114 &114000010259202734
 MonoBehaviour:
@@ -1066,13 +1066,13 @@ MonoBehaviour:
     clampDown: 20
     clampLeft: 180
     clampRight: 180
-    speed: 4
+    speed: 3
   - transform: {fileID: 4000012900022010}
     clampUp: 5
     clampDown: 5
     clampLeft: 5
     clampRight: 5
-    speed: 4
+    speed: 3
   - transform: {fileID: 4000011114690448}
     clampUp: 5
     clampDown: 5
@@ -1087,7 +1087,7 @@ MonoBehaviour:
     speed: 4
   seeThroughTags:
   - TargetEnemy
-  shotRange: 60
+  shotRange: 75
   persistTime: 2
 --- !u!114 &114000012000598528
 MonoBehaviour:
@@ -1121,11 +1121,11 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 6
+  damage: 5
   dmgTags: []
   dmgTagsMode: 1
-  speedRPM: 350
-  speed: 5.8333335
+  speedRPM: 200
+  speed: 3.3333333
   spread: 2
   useHeatMechanics: 0
   heatRise: 30
