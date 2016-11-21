@@ -4,33 +4,45 @@ using System.Collections;
 
 public abstract class upgradeBtnBase : MBAction {
 
-	public Text priceText;
+	public Text lockPriceText;
 	public Text unlockedText;
 	public Image lockImage;
+	public string upgradeName = "";
 	public int cost;
 
-	protected void UpdateVisuals (bool unlocked)
+	protected void UpdateVisuals (bool unlocked, bool unlockable)
 	{
-		if (priceText)
+		if (lockPriceText)
 		{
-			priceText.text = cost.ToString();
-			if (!unlocked)
-				priceText.enabled = true;
+			lockPriceText.text = cost.ToString();
+			if (!unlocked && !unlockable)
+				lockPriceText.enabled = true;
 			else
-				priceText.enabled = false;
+				lockPriceText.enabled = false;
 		}
 
 		if (unlockedText)
 		{
 			if (!unlocked)
-				unlockedText.enabled = false;
+			{
+				if (!unlockable)
+					unlockedText.enabled = false;
+				else
+				{
+					unlockedText.text = "$" + cost.ToString() + " - " + upgradeName;
+					unlockedText.enabled = true;
+				}
+			}
 			else
+			{
+				unlockedText.text = upgradeName;
 				unlockedText.enabled = true;
+			}
 		}
 
 		if (lockImage)
 		{
-			if (!unlocked)
+			if (!unlocked && !unlockable)
 				lockImage.enabled = true;
 			else
 				lockImage.enabled = false;

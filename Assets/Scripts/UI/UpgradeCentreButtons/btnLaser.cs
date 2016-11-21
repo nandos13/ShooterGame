@@ -43,7 +43,7 @@ public class btnLaser : upgradeBtnBase {
 			}
 		}
 
-		base.UpdateVisuals(GameStatistics._atLaser);
+		base.UpdateVisuals(GameStatistics._atLaser, checkCriteria());
 	}
 
 	private bool checkCriteria ()

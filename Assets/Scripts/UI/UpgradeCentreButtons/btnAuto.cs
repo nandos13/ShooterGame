@@ -43,7 +43,7 @@ public class btnAuto : upgradeBtnBase {
 			}
 		}
 
-		base.UpdateVisuals(GameStatistics._atMainAuto);
+		base.UpdateVisuals(GameStatistics._atMainAuto, checkCriteria());
 	}
 
 	private bool checkCriteria ()

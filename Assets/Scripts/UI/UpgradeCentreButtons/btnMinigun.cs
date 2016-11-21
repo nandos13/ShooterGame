@@ -43,7 +43,7 @@ public class btnMinigun : upgradeBtnBase {
 			}
 		}
 
-		base.UpdateVisuals(GameStatistics._atMinigun);
+		base.UpdateVisuals(GameStatistics._atMinigun, checkCriteria());
 	}
 
 	private bool checkCriteria ()

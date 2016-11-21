@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692546, g: 0.49678695, b: 0.5750854, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -312,9 +312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3da643d3431944eb61ccab9406f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 1862631198}
+  lockPriceText: {fileID: 1862631198}
   unlockedText: {fileID: 1307594720}
   lockImage: {fileID: 913959101}
+  upgradeName: Shoot Faster!
   cost: 400
   purchasedColour: {r: 0.09558821, g: 1, b: 0.40121713, a: 1}
   expensiveColour: {r: 1, g: 1, b: 1, a: 1}
@@ -418,8 +419,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -27}
-  m_SizeDelta: {x: 530, y: 129}
+  m_AnchoredPosition: {x: 177, y: -27}
+  m_SizeDelta: {x: 600, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222233338
 MonoBehaviour:
@@ -517,9 +518,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaa00157f31ba14da6a13ddad8a1d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 270056308}
+  lockPriceText: {fileID: 270056308}
   unlockedText: {fileID: 1755691775}
   lockImage: {fileID: 1395933264}
+  upgradeName: Fiery Death Blast
   cost: 1000
   purchasedColour: {r: 0.09411765, g: 1, b: 0.4, a: 1}
   expensiveColour: {r: 1, g: 1, b: 1, a: 1}
@@ -1165,8 +1167,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -27}
-  m_SizeDelta: {x: 530, y: 129}
+  m_AnchoredPosition: {x: 219, y: -27}
+  m_SizeDelta: {x: 600, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537299990
 MonoBehaviour:
@@ -1264,9 +1266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b487a57faffdeb5409c30f11cd994d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 974360585}
+  lockPriceText: {fileID: 974360585}
   unlockedText: {fileID: 798948955}
   lockImage: {fileID: 958197616}
+  upgradeName: Shooty McScattergun
   cost: 500
   purchasedColour: {r: 0.09411765, g: 1, b: 0.4, a: 1}
   expensiveColour: {r: 1, g: 1, b: 1, a: 1}
@@ -1906,9 +1909,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0ae28e44d7c344d9b0b7d804185743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 0}
+  lockPriceText: {fileID: 0}
   unlockedText: {fileID: 0}
   lockImage: {fileID: 0}
+  upgradeName: 
   cost: 3000
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
@@ -2264,8 +2268,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -65.99997}
-  m_SizeDelta: {x: 530, y: 129}
+  m_AnchoredPosition: {x: 177, y: -65.99997}
+  m_SizeDelta: {x: 600, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832758437
 MonoBehaviour:
@@ -2363,9 +2367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a967fef049ce7b4795cbfaae6a665f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 1181097143}
+  lockPriceText: {fileID: 1181097143}
   unlockedText: {fileID: 770249437}
   lockImage: {fileID: 1253974673}
+  upgradeName: Rapid Lead Launcher
   cost: 2000
   purchasedColour: {r: 0.09411765, g: 1, b: 0.4, a: 1}
   expensiveColour: {r: 1, g: 1, b: 1, a: 1}
@@ -3078,9 +3083,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4deb01a4ec048e84fb89fb9cc3816a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 0}
+  lockPriceText: {fileID: 0}
   unlockedText: {fileID: 0}
   lockImage: {fileID: 0}
+  upgradeName: 
   cost: 1500
   purchasedColour: {r: 0, g: 1, b: 0.25517225, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
@@ -3281,9 +3287,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0780d37c863ccc44aac4478267bbb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 0}
+  lockPriceText: {fileID: 0}
   unlockedText: {fileID: 0}
   lockImage: {fileID: 0}
+  upgradeName: 
   cost: 2500
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
@@ -4044,9 +4051,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaa00157f31ba14da6a13ddad8a1d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 0}
+  lockPriceText: {fileID: 0}
   unlockedText: {fileID: 0}
   lockImage: {fileID: 0}
+  upgradeName: 
   cost: 1000
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
@@ -4087,8 +4095,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200.00005, y: -66}
-  m_SizeDelta: {x: 530, y: 129}
+  m_AnchoredPosition: {x: 219, y: -66}
+  m_SizeDelta: {x: 600, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1326506959
 MonoBehaviour:
@@ -4186,9 +4194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4deb01a4ec048e84fb89fb9cc3816a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 1281801868}
+  lockPriceText: {fileID: 1281801868}
   unlockedText: {fileID: 597000272}
   lockImage: {fileID: 864334360}
+  upgradeName: Beam of Destruction
   cost: 1500
   purchasedColour: {r: 0.09411765, g: 1, b: 0.4, a: 1}
   expensiveColour: {r: 1, g: 1, b: 1, a: 1}
@@ -4774,9 +4783,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a967fef049ce7b4795cbfaae6a665f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 0}
+  lockPriceText: {fileID: 0}
   unlockedText: {fileID: 0}
   lockImage: {fileID: 0}
+  upgradeName: 
   cost: 2000
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
@@ -4817,8 +4827,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -104.3}
-  m_SizeDelta: {x: 530, y: 129}
+  m_AnchoredPosition: {x: 177, y: -104.3}
+  m_SizeDelta: {x: 600, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647319179
 MonoBehaviour:
@@ -4916,9 +4926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0ae28e44d7c344d9b0b7d804185743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 1825653280}
+  lockPriceText: {fileID: 1825653280}
   unlockedText: {fileID: 411077369}
   lockImage: {fileID: 561563932}
+  upgradeName: Hyper-Sonic Annihilator
   cost: 3000
   purchasedColour: {r: 0.09411765, g: 1, b: 0.4, a: 1}
   expensiveColour: {r: 1, g: 1, b: 1, a: 1}
@@ -5277,8 +5288,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200.00012, y: -104.3}
-  m_SizeDelta: {x: 530, y: 129}
+  m_AnchoredPosition: {x: 219, y: -104.3}
+  m_SizeDelta: {x: 600, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1778618176
 MonoBehaviour:
@@ -5376,9 +5387,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0780d37c863ccc44aac4478267bbb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 708954224}
+  lockPriceText: {fileID: 708954224}
   unlockedText: {fileID: 526280433}
   lockImage: {fileID: 1516850447}
+  upgradeName: Ten-Ton Shell Slinger
   cost: 2500
   purchasedColour: {r: 0.09411765, g: 1, b: 0.4, a: 1}
   expensiveColour: {r: 1, g: 1, b: 1, a: 1}
@@ -5890,9 +5902,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b487a57faffdeb5409c30f11cd994d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 0}
+  lockPriceText: {fileID: 0}
   unlockedText: {fileID: 0}
   lockImage: {fileID: 0}
+  upgradeName: 
   cost: 500
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
@@ -6176,9 +6189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3da643d3431944eb61ccab9406f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceText: {fileID: 0}
+  lockPriceText: {fileID: 0}
   unlockedText: {fileID: 0}
   lockImage: {fileID: 0}
+  upgradeName: 
   cost: 400
   purchasedColour: {r: 0, g: 1, b: 0.25490198, a: 1}
   expensiveColour: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}

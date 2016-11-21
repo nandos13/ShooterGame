@@ -43,7 +43,7 @@ public class btnFlame : upgradeBtnBase {
 			}
 		}
 
-		base.UpdateVisuals(GameStatistics._atFlameThrower);
+		base.UpdateVisuals(GameStatistics._atFlameThrower, checkCriteria());
 	}
 
 	private bool checkCriteria ()

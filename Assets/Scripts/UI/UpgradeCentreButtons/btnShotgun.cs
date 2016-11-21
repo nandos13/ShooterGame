@@ -43,7 +43,7 @@ public class btnShotgun : upgradeBtnBase {
 			}
 		}
 
-		base.UpdateVisuals(GameStatistics._atShotty);
+		base.UpdateVisuals(GameStatistics._atShotty, checkCriteria());
 	}
 
 	private bool checkCriteria ()

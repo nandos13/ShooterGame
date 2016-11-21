@@ -43,7 +43,7 @@ public class btnRPG : upgradeBtnBase {
 			}
 		}
 
-		base.UpdateVisuals(GameStatistics._atRPG);
+		base.UpdateVisuals(GameStatistics._atRPG, checkCriteria());
 	}
 
 	private bool checkCriteria ()
