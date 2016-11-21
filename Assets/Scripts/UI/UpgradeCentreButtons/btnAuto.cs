@@ -3,10 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class btnAuto : MBAction {
+public class btnAuto : upgradeBtnBase {
 
 	private Button btn;
-	public int cost;
 	public Color purchasedColour;
 	public Color expensiveColour;
 	public List<MBAction> onPurchase = new List<MBAction> ();
@@ -43,6 +42,8 @@ public class btnAuto : MBAction {
 				btn.colors = temp;
 			}
 		}
+
+		base.UpdateVisuals(GameStatistics._atMainAuto);
 	}
 
 	private bool checkCriteria ()
