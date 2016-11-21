@@ -122,8 +122,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013978014078}
-  m_LocalRotation: {x: 0.04348513, y: -0.93371326, z: 0.15675004, w: 0.31893277}
-  m_LocalPosition: {x: 32.074135, y: 2.0446072, z: 207.83948}
+  m_LocalRotation: {x: 0.09855041, y: -0.9275871, z: 0.15464592, w: 0.3255069}
+  m_LocalPosition: {x: 35.984135, y: -0.18539286, z: 199.26949}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 18.645, y: -141.828, z: 1.103}
   m_Children:
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 100
+  MaxHealth: 150
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 114000014105187510, guid: d46bd88059ca51d4c80303d21d00fd5d, type: 2}
-  value: 8
+  value: 15
   healPlayer: 1
 --- !u!114 &114000013687401044
 MonoBehaviour:

@@ -471,7 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 250
+  MaxHealth: 200
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b89c3f9fe04a540b5908a41d229176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1000013274426362, guid: 9022d5c72a2646a49a25efc6993dda93,
+  spawnObject: {fileID: 1000012161102260, guid: 79290b829cd3b8b47a3a13149449a176,
     type: 2}
   inheritRotation: 1
   inheritScale: 1
@@ -509,6 +509,7 @@ MonoBehaviour:
   spawnObject: {fileID: 1000012243853046, guid: f85fc7e615dd7cd4f9c210a081b9618a,
     type: 2}
   quantity: 2
+  overSeconds: 5
   aggroOnSpawn: 1
 --- !u!114 &114000013259584516
 MonoBehaviour:

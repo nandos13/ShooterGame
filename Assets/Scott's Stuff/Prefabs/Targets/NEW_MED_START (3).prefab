@@ -160,10 +160,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011615125538}
-  m_LocalRotation: {x: -0.013161026, y: 0.0000034625273, z: 0.00026306979, w: 0.9999134}
-  m_LocalPosition: {x: 46.7, y: -18.46, z: 12.9}
+  m_LocalRotation: {x: -0.026042726, y: 0.000022792126, z: 0.0002621033, w: 0.99966085}
+  m_LocalPosition: {x: 15.744137, y: -19.595394, z: -42.630512}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -1.4920001, y: 0.002, z: 0.029000001}
+  m_LocalEulerAnglesHint: {x: 7.0320005, y: -0.20300001, z: -1.1400001}
   m_Children:
   - {fileID: 4000012148177090}
   - {fileID: 4000011672154198}
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 500
+  MaxHealth: 300
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
@@ -626,6 +626,7 @@ MonoBehaviour:
   spawnObject: {fileID: 1000013132569844, guid: 5cc664c072839e94398c10aabe2d8af7,
     type: 2}
   quantity: 2
+  overSeconds: 5
   aggroOnSpawn: 1
 --- !u!114 &114000012146252428
 MonoBehaviour:

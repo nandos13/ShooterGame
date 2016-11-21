@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 1000012137089432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 194.17413, y: 32.26, z: 82.50949}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -3.509, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013024090280}
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 200
+  MaxHealth: 250
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 114000014105187510, guid: d46bd88059ca51d4c80303d21d00fd5d, type: 2}
-  value: 12
+  value: 25
   healPlayer: 1
 --- !u!114 &114000011409928304
 MonoBehaviour:
