@@ -28,6 +28,8 @@ public class HealthBarHandler : MonoBehaviour {
 		{
 			hbInstance = Instantiate (healthBarPrefab) as Canvas;
 			hbInstance.transform.SetParent(hbInstance.transform, true);
+			hbInstance.gameObject.hideFlags = HideFlags.HideInHierarchy;
+
 			// Set the appropriate variables
 			HealthBarOverhead hbo = hbInstance.GetComponent<HealthBarOverhead>();
 			if (hbo)
