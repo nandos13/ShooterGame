@@ -5255,6 +5255,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!223 &420800953 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 223000011414854972, guid: 4ce3d59de169a3b4b9059eee152320a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999350903}
 --- !u!1001 &434167688
 Prefab:
   m_ObjectHideFlags: 0
@@ -16982,6 +16987,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cc664c072839e94398c10aabe2d8af7, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1291335215 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013700721080, guid: 4ce3d59de169a3b4b9059eee152320a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999350903}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!4 &1301966105 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013202611908, guid: b47d79c86166b524a86f0b5dbb8457e7,
@@ -23434,6 +23445,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014250208478, guid: 3c5bbfa4b8276ff46a97b414d0f279e9,
+        type: 2}
+      propertyPath: flasherCanvas
+      value: 
+      objectReference: {fileID: 420800953}
+    - target: {fileID: 114000012839130244, guid: 3c5bbfa4b8276ff46a97b414d0f279e9,
+        type: 2}
+      propertyPath: HUDText
+      value: 
+      objectReference: {fileID: 1291335215}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c5bbfa4b8276ff46a97b414d0f279e9, type: 2}
   m_IsPrefabParent: 0
