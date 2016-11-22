@@ -22,8 +22,8 @@ GameObject:
   - 114: {fileID: 114000010184224840}
   - 114: {fileID: 114000011901975702}
   - 114: {fileID: 114000010306100312}
-  - 114: {fileID: 114000013508312932}
-  - 114: {fileID: 114000010016900594}
+  - 114: {fileID: 114000013667437202}
+  - 114: {fileID: 114000011664776818}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -44,19 +44,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010016900594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011232718216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b93e419075f5a4097498cadc2aa073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  target: {fileID: 0}
 --- !u!114 &114000010184224840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,11 +57,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
   OnPause:
-  - {fileID: 114000011901975702}
-  OnResume:
   - {fileID: 114000010306100312}
-  - {fileID: 114000010016900594}
-  - {fileID: 114000013508312932}
+  OnResume:
+  - {fileID: 114000011901975702}
+  - {fileID: 114000013667437202}
+  - {fileID: 114000011664776818}
 --- !u!114 &114000010306100312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,6 +73,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786605aed43623146973f5e06f4f2f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011664776818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011232718216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b93e419075f5a4097498cadc2aa073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  target: {fileID: 0}
 --- !u!114 &114000011901975702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27739a55090dc5a4d9d27a94fb410352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114000013508312932
+--- !u!114 &114000013667437202
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
