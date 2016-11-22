@@ -8,6 +8,13 @@ using System.Collections;
 [System.Serializable]
 public class GameStatistics
 {
+	private static bool introMusicPlayed = false;
+	public static bool introPlayed
+	{
+		get { return introMusicPlayed; }
+		set {introMusicPlayed = value; }
+	}
+
 	/* SCORE TRACKING */
 	[SerializeField] private static int _score = 0;
 	private static int _levelScore = 0;
