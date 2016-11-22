@@ -132,6 +132,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012105614910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010610241638}
+  - 108: {fileID: 108000013699211722}
+  m_Layer: 0
+  m_Name: Point light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &1000012116129292
 GameObject:
   m_ObjectHideFlags: 1
@@ -265,8 +281,22 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -324.6, z: 0}
   m_Children:
   - {fileID: 4000011905182606}
+  - {fileID: 4000010610241638}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &4000010610241638
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012105614910}
+  m_LocalRotation: {x: -0, y: 0.30223504, z: -0, w: -0.9532335}
+  m_LocalPosition: {x: 0.016356017, y: 0.0075683594, z: 0.037542354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000010577357284}
+  m_RootOrder: 1
 --- !u!4 &4000011149839046
 Transform:
   m_ObjectHideFlags: 1
@@ -632,6 +662,40 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &108000013699211722
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012105614910}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 2
+  m_Color: {r: 0.94509804, g: 0.11764706, b: 0.11764706, a: 1}
+  m_Intensity: 5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114000010101513816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -915,25 +979,25 @@ MonoBehaviour:
     clampDown: 20
     clampLeft: 180
     clampRight: 180
-    speed: 5
+    speed: 3
   - transform: {fileID: 4000011798745938}
     clampUp: 5
     clampDown: 5
     clampLeft: 5
     clampRight: 5
-    speed: 50
+    speed: 3
   - transform: {fileID: 4000012783028580}
     clampUp: 5
     clampDown: 5
     clampLeft: 2
     clampRight: 2
-    speed: 50
+    speed: 3
   - transform: {fileID: 4000012238072072}
     clampUp: 5
     clampDown: 5
     clampLeft: 2
     clampRight: 2
-    speed: 50
+    speed: 3
   seeThroughTags:
   - TargetEnemy
   shotRange: 30
