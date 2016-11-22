@@ -43,14 +43,15 @@ public class FPC_Walk : MonoBehaviour {
 		// Calculate the force to be applied based on player input
 		inputDevice = InputManager.ActiveDevice;
 		float vert = Input.GetAxis ("Vertical");
-		vert += inputDevice.LeftStickY;
+		vert += inputDevice.LeftStick.Y;
 		float horz = Input.GetAxis ("Horizontal");
-		horz += inputDevice.LeftStickX;
+		horz += inputDevice.LeftStick.X;
 
 		Vector3 targetVel = new Vector3 (horz, 0, vert);
 
 		// Normalize to prevent movement speed variance
-		targetVel.Normalize ();
+		if (targetVel.magnitude > 1)
+			targetVel.Normalize ();
 
 		// Get direction in world space
 		targetVel = transform.TransformDirection (targetVel);
