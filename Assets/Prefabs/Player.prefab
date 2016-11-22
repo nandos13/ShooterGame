@@ -79,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000010289904810
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000012502887020
 GameObject:
   m_ObjectHideFlags: 1
@@ -288,7 +288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000012569376630
 GameObject:
   m_ObjectHideFlags: 1
@@ -489,7 +489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000013524146508
 GameObject:
   m_ObjectHideFlags: 1
@@ -526,7 +526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000013616249608
 GameObject:
   m_ObjectHideFlags: 1
@@ -620,7 +620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000013911690026
 GameObject:
   m_ObjectHideFlags: 1
@@ -1010,7 +1010,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012611839444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.97, y: 7.73, z: -66.15}
+  m_LocalPosition: {x: -17.91, y: 10.43, z: -143.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   sepBlurSpread: 5
   quality: 1
   bloomIntensity: 0.5
-  bloomThreshold: 0.37
+  bloomThreshold: 0.8
   bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
   bloomBlurIterations: 3
   hollywoodFlareBlurIterations: 2
@@ -2158,7 +2158,7 @@ MonoBehaviour:
   heatReEnable: 80
   hitEffect: {fileID: 198000013144784168, guid: 240109177bcdec94996a4919ca01cb87,
     type: 2}
-  hitParticles: 10
+  hitParticles: 100
   onFire:
   - {fileID: 114000012132399616}
   audioSrc: {fileID: 0}
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012611839444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65cbb9f7dce9f0244834324554f65b01, type: 3}
   m_Name: 
