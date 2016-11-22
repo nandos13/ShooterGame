@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 
 /* DESCRIPTION:
  * Handles player look behaviour.
@@ -23,6 +24,8 @@ public class FPC_Aim : MonoBehaviour {
 	public Camera WorldViewCam;
 	public Camera ViewModelCam;
 
+	private InputDevice inputDevice;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -39,7 +42,10 @@ public class FPC_Aim : MonoBehaviour {
 	{
 		if (!Options.Paused)
 		{
-			Vector2 moveDirection = new Vector2 (Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+			inputDevice = InputManager.ActiveDevice;
+			Vector2 moveDirection;
+			moveDirection = new Vector2 (inputDevice.RightStickX, inputDevice.RightStickY);
+			moveDirection += new Vector2 (Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
 			moveDirection = Vector2.Scale (moveDirection, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
 

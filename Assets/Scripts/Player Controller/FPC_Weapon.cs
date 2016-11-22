@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using InControl;
 
 /* DESCRIPTION:
  * 
@@ -13,6 +14,7 @@ public class FPC_Weapon : MonoBehaviour
 	public List<WeaponBase> Guns = new List<WeaponBase>();		// A list of all the weapons held by the player
 	private WeaponBase currentWeapon;
 	private bool weaponUp = false;								// Track if the weapon is up while against a wall
+	private InputDevice inputDevice;
 
 	// Use this for initialization
 	void Start () 
@@ -55,7 +57,12 @@ public class FPC_Weapon : MonoBehaviour
 					// Primary fire will handle all auto weapons, secondary fire will handle all semiauto weapons
 
 					// Has the player tried to primary-fire?
-					if (Input.GetAxisRaw ("Fire1") > 0) 
+					inputDevice = InputManager.ActiveDevice;
+					bool fire1Used = Input.GetMouseButton(0);
+					if (!fire1Used)
+						fire1Used = (inputDevice.RightTrigger > 0);
+					
+					if (fire1Used) 
 					{
 						foreach (WeaponBase wb in Guns)
 						{
@@ -68,7 +75,11 @@ public class FPC_Weapon : MonoBehaviour
 					}
 
 					// Has the player tried to secondary-fire?
-					if (Input.GetAxisRaw ("Fire2") > 0)
+					bool fire2Used = (Input.GetAxisRaw ("Fire1") > 0);
+					if (!fire2Used)
+						fire2Used = (inputDevice.RightTrigger > 0);
+					
+					if (fire2Used)
 					{
 						foreach (WeaponBase wb in Guns)
 						{

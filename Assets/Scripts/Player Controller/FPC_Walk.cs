@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using InControl;
 
 [RequireComponent (typeof (Rigidbody))]
 [RequireComponent (typeof (CapsuleCollider))]
@@ -19,6 +20,7 @@ public class FPC_Walk : MonoBehaviour {
 
 	private Rigidbody rb;
 	private CapsuleCollider col;
+	private InputDevice inputDevice;
 
 	void Start () 
 	{
@@ -39,8 +41,12 @@ public class FPC_Walk : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		// Calculate the force to be applied based on player input
+		inputDevice = InputManager.ActiveDevice;
 		float vert = Input.GetAxis ("Vertical");
+		vert += inputDevice.LeftStickY;
 		float horz = Input.GetAxis ("Horizontal");
+		horz += inputDevice.LeftStickX;
+
 		Vector3 targetVel = new Vector3 (horz, 0, vert);
 
 		// Normalize to prevent movement speed variance
@@ -148,7 +154,12 @@ public class FPC_Walk : MonoBehaviour {
 
 	private void handleJumping ()
 	{
-		if (grounded() && Input.GetButton("Jump"))
+		inputDevice = InputManager.ActiveDevice;
+		bool jumpUsed = Input.GetButton("Jump");
+		if (!jumpUsed)
+			jumpUsed = (inputDevice.Action1 > 0);
+
+		if (grounded() && jumpUsed)
 		{
 			float jumpSpeed = Mathf.Sqrt (jumpHeight * gravity * 100 * Time.fixedDeltaTime);
 			rb.velocity = new Vector3 (rb.velocity.x, jumpSpeed, rb.velocity.z);

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using InControl;
 
 /* DESCRIPTION:
  * This script is intended to go on the player. 
@@ -24,6 +25,7 @@ public class InteractionHandler : MBAction {
 	private Interaction closest;
 	private Vector3 debugSpherePos;
 	private bool pressed = false;
+	private InputDevice inputDevice;
 
 	void Start ()
 	{
@@ -55,7 +57,11 @@ public class InteractionHandler : MBAction {
 			findClosest (transform.position);
 		}
 
-		if (Input.GetAxisRaw("Interact") > 0)
+		inputDevice = InputManager.ActiveDevice;
+		bool interactUsed = (Input.GetAxisRaw ("Interact") > 0);
+		if (!interactUsed)
+			interactUsed = (inputDevice.Action3);
+		if (interactUsed)
 		{
 			if (!pressed)
 			{
