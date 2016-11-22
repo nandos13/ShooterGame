@@ -65,6 +65,12 @@ public class btnAuto : upgradeBtnBase {
 				if (action)
 					action.Execute();
 			}
+
+			// Select next button
+			if (btn.navigation.selectOnDown)
+				btn.navigation.selectOnDown.Select();
+			else if (btn.navigation.selectOnRight)
+				btn.navigation.selectOnRight.Select();
 		}
 	}
 }
