@@ -3045,7 +3045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageParents: 0
   KillChildrenOnDeath: 0
-  MaxHealth: 500
+  MaxHealth: 700
   StartHealthPercent: 100
   ImmunityTime: 0
   DeathScripts:
@@ -8179,7 +8179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &404133930
 Transform:
   m_ObjectHideFlags: 0
@@ -16985,7 +16985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &775899281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23163,7 +23163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1120495670
 Transform:
   m_ObjectHideFlags: 0
@@ -30456,7 +30456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1482840305
 Transform:
   m_ObjectHideFlags: 0
@@ -30575,7 +30575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1488114248
 Transform:
   m_ObjectHideFlags: 0
@@ -38306,7 +38306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1748933209
 AudioSource:
   m_ObjectHideFlags: 0
@@ -42343,6 +42343,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1395961866}
+    - target: {fileID: 82000012387520044, guid: fb7a4db341ae7b74292a596e343c18ed,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bc005d1342bf1b247a479b794b2c8460, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb7a4db341ae7b74292a596e343c18ed, type: 2}
   m_IsPrefabParent: 0
