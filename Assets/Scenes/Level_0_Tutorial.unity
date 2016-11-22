@@ -5895,7 +5895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  target: {fileID: 854454121}
+  target: {fileID: 0}
 --- !u!114 &553921812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9153,6 +9153,11 @@ Prefab:
       propertyPath: flasherCanvas
       value: 
       objectReference: {fileID: 1681357522}
+    - target: {fileID: 114000011418127982, guid: 3c5bbfa4b8276ff46a97b414d0f279e9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c5bbfa4b8276ff46a97b414d0f279e9, type: 2}
   m_IsPrefabParent: 0
@@ -11554,11 +11559,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb7a4db341ae7b74292a596e343c18ed, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &854454121 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000013657625308, guid: fb7a4db341ae7b74292a596e343c18ed,
-    type: 2}
-  m_PrefabInternal: {fileID: 854454120}
 --- !u!1 &870040098
 GameObject:
   m_ObjectHideFlags: 0
@@ -25201,7 +25201,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &1685321993
 MonoBehaviour:
   m_ObjectHideFlags: 0
