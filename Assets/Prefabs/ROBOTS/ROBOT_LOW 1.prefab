@@ -173,7 +173,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.30223504, z: -0, w: -0.9532335}
   m_LocalPosition: {x: -85.15, y: 10.55, z: -80.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: -324.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -442.012, z: 0}
   m_Children:
   - {fileID: 4000010871991880}
   - {fileID: 4000010589397448}
@@ -341,16 +341,16 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c4b2f860cf3801c4aa6dfeff02016ce6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1d2798404a38bd440a40517c3a7a9fb6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.7103424
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -417,14 +417,14 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.6662903
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  value: 20
+  value: 15
   healPlayer: 1
 --- !u!114 &114000013510310706
 MonoBehaviour:

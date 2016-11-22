@@ -187,6 +187,7 @@ GameObject:
   - 4: {fileID: 4000012563677664}
   - 114: {fileID: 114000012876043446}
   - 114: {fileID: 114000011512058718}
+  - 82: {fileID: 82000013108868820}
   m_Layer: 0
   m_Name: ShotOrigin (1)
   m_TagString: Untagged
@@ -281,7 +282,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013024741480}
   m_LocalRotation: {x: -0, y: -0.493745, z: -0, w: 0.8696068}
-  m_LocalPosition: {x: -38.75, y: 2.74, z: -25.82}
+  m_LocalPosition: {x: 59.25, y: 2.74, z: -32.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -59.123, z: 0}
   m_Children:
@@ -531,7 +532,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010384139598}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c4b2f860cf3801c4aa6dfeff02016ce6, type: 3}
@@ -543,7 +544,7 @@ AudioSource:
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 7.673794
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -610,14 +611,14 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.8040981
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -673,6 +674,80 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!82 &82000013108868820
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014034404252}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2.4172745
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!82 &82000014264596634
 AudioSource:
   m_ObjectHideFlags: 1
@@ -682,7 +757,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c4b2f860cf3801c4aa6dfeff02016ce6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -691,7 +766,7 @@ AudioSource:
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 11.138851
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -820,7 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  value: 30
+  value: 20
   healPlayer: 1
 --- !u!114 &114000010458455392
 MonoBehaviour:
@@ -978,8 +1053,9 @@ MonoBehaviour:
   hitParticles: 10
   onFire:
   - {fileID: 114000011512058718}
-  audioSrc: {fileID: 0}
-  shotSound: []
+  audioSrc: {fileID: 82000013108868820}
+  shotSound:
+  - {fileID: 8300000, guid: acf7b0cf47a490c4a9543739344bf818, type: 3}
   hitscan: 1
   hitscanRange: 80
   bulletForce: 100
