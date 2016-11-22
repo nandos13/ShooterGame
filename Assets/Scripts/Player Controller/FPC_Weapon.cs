@@ -75,9 +75,9 @@ public class FPC_Weapon : MonoBehaviour
 					}
 
 					// Has the player tried to secondary-fire?
-					bool fire2Used = (Input.GetAxisRaw ("Fire1") > 0);
+					bool fire2Used = Input.GetMouseButton(1);
 					if (!fire2Used)
-						fire2Used = (inputDevice.RightTrigger > 0);
+						fire2Used = (inputDevice.LeftTrigger > 0);
 					
 					if (fire2Used)
 					{
