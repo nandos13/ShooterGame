@@ -156,8 +156,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011853169140}
-  m_LocalRotation: {x: -0, y: 0.99975914, z: -0, w: 0.021948198}
-  m_LocalPosition: {x: 56.04, y: -16.13, z: 39.68}
+  m_LocalRotation: {x: -0.04624404, y: 0.20046543, z: 0.006372452, w: -0.97858804}
+  m_LocalPosition: {x: 127.270004, y: -7.86, z: -27.560427}
   m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
@@ -438,7 +438,7 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 35
+  damage: 20
   dmgTags:
   - TargetEnemy
   - TargetBuilding
@@ -487,7 +487,7 @@ MonoBehaviour:
   clipSize: 30
   unlimitedAmmo: 0
   startingAmmo: 100
-  damage: 35
+  damage: 20
   dmgTags: []
   dmgTagsMode: 1
   speedRPM: 70
@@ -611,12 +611,12 @@ MonoBehaviour:
   searchMode: 1
   searchAngle: 65
   pauseTime: 1
-  rotateSpeed: 7
+  rotateSpeed: 6
   visionAngle: 80
   seeThroughTags: []
   autoPopulateGunList: 1
   guns: []
-  trackingRange: 100
+  trackingRange: 80
   clampAngleDown: 40
   clampAngleUp: 40
   shootDelay: 0
