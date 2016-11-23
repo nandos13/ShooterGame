@@ -42,10 +42,16 @@ public class FPC_Walk : MonoBehaviour {
 	{
 		// Calculate the force to be applied based on player input
 		inputDevice = InputManager.ActiveDevice;
-		float vert = Input.GetAxis ("Vertical");
-		vert += inputDevice.LeftStick.Y;
-		float horz = Input.GetAxis ("Horizontal");
-		horz += inputDevice.LeftStick.X;
+		// Get input from controller
+		float vert = inputDevice.LeftStick.Y;
+		float horz = inputDevice.LeftStick.X;
+
+		// Add input from keyboard (if running on pc)
+		if (!Application.isConsolePlatform)
+		{
+			vert += Input.GetAxis ("Vertical");
+			horz += Input.GetAxis ("Horizontal");
+		}
 
 		Vector3 targetVel = new Vector3 (horz, 0, vert);
 

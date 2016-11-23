@@ -98,7 +98,8 @@ public class Health : MonoBehaviour {
 		/* Puts the player in an immune state for a number of seconds.
 		 */
 		immune = true;
-		yield return new WaitForSeconds (ImmunityTime);
+		if (ImmunityTime > 0)
+			yield return new WaitForSeconds (ImmunityTime);
 		immune = false;
 		immuneCurHighestDmg = 0;
 	}

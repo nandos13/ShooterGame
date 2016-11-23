@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using InControl;
 
 /* DESCRIPTION:
  * Toggles the pause menu
@@ -19,6 +20,8 @@ public class PauseMenuController : MBAction {
 	public List<MBAction> OnPause = new List<MBAction>();
 	public List<MBAction> OnResume = new List<MBAction>();
 
+	private InputDevice inputDevice;
+
 	void Awake ()
 	{
 		if (!instance)
@@ -32,7 +35,11 @@ public class PauseMenuController : MBAction {
 
 	void Update () 
 	{
-        if (Input.GetKeyDown("escape"))
+		inputDevice = InputManager.ActiveDevice;
+		bool pausePressed = Input.GetKeyDown("escape");
+		if (!pausePressed)
+			pausePressed = inputDevice.MenuWasPressed;
+		if (pausePressed)
             Execute();
     }
 

@@ -7,7 +7,7 @@
 public enum COLLISION_MODE { HitSelected, IgnoreSelected }
 
 // Type of weapon, used in weapon script
-public enum WEAPON_TYPE { Bullet, Launcher, Beam }
+public enum WEAPON_TYPE { Bullet, Scatter, Launcher, Beam }
 
 // Behaviour state used by turrets
 public enum TURRET_BEHAVIOUR_STATE { PreparingFire, Firing, Searching }
